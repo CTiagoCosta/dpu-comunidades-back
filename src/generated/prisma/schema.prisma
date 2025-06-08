@@ -1,0 +1,221 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Modelo de usuário (operadores e administradores)
+model User {
+  id           String   @id @default(uuid())
+  email        String   @unique
+  nome         String
+  senha        String
+  role         Role     @default(OPERADOR)
+  aprovado     Boolean  @default(false)
+  dataCadastro DateTime @default(now())
+
+  // Relacionamentos
+  atendimentosRealizados   Atendimento[]     @relation("OperadorAtendimento")
+  atendimentosTriagem      FilaAtendimento[] @relation("OperadorTriagem")
+  atendimentosEmAndamento  FilaAtendimento[] @relation("OperadorAtendimento")
+  documentosUploadOperador Documento[]       @relation("OperadorUpload")
+
+  @@map("usuarios")
+}
+
+enum Role {
+  ADMIN
+  OPERADOR
+  JURISTA
+}
+
+// Modelo para a fila de atendimentos
+model FilaAtendimento {
+  id           String                @id @default(uuid())
+  nomeCompleto String
+  nomeSocial   String?
+  cpf          String
+  telefone     String
+  isPrioridade Boolean               @default(false)
+  status       StatusFilaAtendimento
+  dataEntrada  DateTime              @default(now())
+  dataInicio   DateTime?
+  dataFim      DateTime?
+
+  // Relacionamentos
+  operadorTriagemId     String
+  operadorTriagem       User         @relation("OperadorTriagem", fields: [operadorTriagemId], references: [id])
+  operadorAtendimentoId String?
+  operadorAtendimento   User?        @relation("OperadorAtendimento", fields: [operadorAtendimentoId], references: [id])
+  atendimento           Atendimento?
+
+  @@map("fila_atendimentos")
+}
+
+enum StatusFilaAtendimento {
+  AGUARDANDO
+  EM_ATENDIMENTO
+  ATENDIDO
+  CANCELADO
+
+  @@map("status_fila_atendimento")
+}
+
+// Modelo para atendimentos
+model Atendimento {
+  id                   String            @id @default(uuid())
+  nomeCompleto         String
+  nomeSocial           String?
+  cpf                  String
+  dataNascimento       String
+  telefone             String
+  email                String?
+  tipoAtendimento      String
+  capacidadeCivil      String?
+  estadoCivil          String?
+  profissao            String?
+  tipoDomicilio        String?
+  descricaoDomicilio   String?
+  membrosFamiliares    String?
+  rendaFamiliar        String?
+  tipoDemanda          String?
+  descricaoAtendimento String
+  observacoes          String?
+  formId               String
+  formTipo             String
+  dataCriacao          DateTime          @default(now())
+  status               StatusAtendimento @default(NOVO)
+
+  // Endereço
+  logradouro  String
+  numero      String
+  complemento String?
+  bairro      String
+  cidade      String
+  estado      String
+  cep         String
+
+  // Relacionamentos
+  operadorId  String
+  operador    User                   @relation("OperadorAtendimento", fields: [operadorId], references: [id])
+  filaId      String?                @unique
+  fila        FilaAtendimento?       @relation(fields: [filaId], references: [id])
+  processo    Processo?
+  formularios FormularioPreenchido[]
+  documentos  Documento[]
+
+  @@map("atendimentos")
+}
+
+enum StatusAtendimento {
+  NOVO
+  EM_ANDAMENTO
+  CONCLUIDO
+  ARQUIVADO
+
+  @@map("status_atendimento")
+}
+
+// Modelo para processos judiciais
+model Processo {
+  id                 String   @id @default(uuid())
+  numeroProcesso     String
+  resultado          String
+  resultadoDetalhado String?
+  valoresAtrasados   String?
+  beneficios         String?
+  dataAtualizacao    DateTime @default(now())
+
+  // Relacionamentos
+  atendimentoId String      @unique
+  atendimento   Atendimento @relation(fields: [atendimentoId], references: [id])
+
+  @@map("processos")
+}
+
+// Modelo para formulários preenchidos
+model FormularioPreenchido {
+  id              String         @id @default(uuid())
+  tipoFormulario  TipoFormulario
+  dadosFormulario Json // Armazena os dados específicos de cada formulário em formato JSON
+  dataCriacao     DateTime       @default(now())
+
+  // Relacionamentos
+  atendimentoId String
+  atendimento   Atendimento @relation(fields: [atendimentoId], references: [id])
+
+  @@map("formularios_preenchidos")
+}
+
+enum TipoFormulario {
+  TRIAGEM
+  CAPACIDADE_CIVIL
+  COMPLEMENTO_DADOS
+  TIPO_DEMANDA
+  TIPO_DEMANDA_PREVIDENCIARIA
+  LOAS_IDOSO
+  LOAS_DEFICIENTE
+  APOSENTADORIA_RURAL
+  PENSAO_MORTE_RURAL
+  AUXILIO_RECLUSAO_RURAL
+  SALARIO_MATERNIDADE_URBANO
+  SALARIO_MATERNIDADE_RURAL
+  AUXILIO_DOENCA_INVALIDEZ
+  SEGURO_DEFESO
+  REPRESENTANTE_LEGAL
+  ANALISE_RENDA
+  VIABILIDADE_DEMANDA
+  DOCUMENTOS_OBRIGATORIOS
+  JUSTIFICATIVA_ARQUIVAMENTO
+
+  @@map("tipo_formulario")
+}
+
+// Modelo para documentos/arquivos
+model Documento {
+  id                String        @id @default(uuid())
+  nomeOriginal      String // Nome original do arquivo
+  nomeArmazenamento String // Nome do arquivo no sistema de armazenamento
+  tipo              String // Tipo MIME do arquivo
+  tamanho           Int // Tamanho em bytes
+  caminho           String // Caminho para o arquivo no sistema de armazenamento
+  tipoDocumento     TipoDocumento // Categoria do documento
+  dataCriacao       DateTime      @default(now())
+
+  // Relacionamentos
+  atendimentoId    String
+  atendimento      Atendimento @relation(fields: [atendimentoId], references: [id])
+  operadorUploadId String
+  operadorUpload   User        @relation("OperadorUpload", fields: [operadorUploadId], references: [id])
+
+  @@map("documentos")
+}
+
+enum TipoDocumento {
+  DOCUMENTO_PESSOAL
+  COMPROVANTE_RESIDENCIA
+  COMPROVANTE_RENDA
+  LAUDO_MEDICO
+  PRONTUARIO
+  EXAME_MEDICO
+  CARTEIRA_TRABALHO
+  COMPROVANTE_ATIVIDADE_RURAL
+  CERTIDAO_OBITO
+  CERTIDAO_CASAMENTO
+  CERTIDAO_NASCIMENTO
+  PROCURACAO
+  TERMO_REPRESENTACAO
+  OUTROS
+
+  @@map("tipo_documento")
+}
