@@ -147,34 +147,24 @@ exports.Prisma.FilaAtendimentoScalarFieldEnum = {
 
 exports.Prisma.AtendimentoScalarFieldEnum = {
   id: 'id',
-  nomeCompleto: 'nomeCompleto',
-  nomeSocial: 'nomeSocial',
-  cpf: 'cpf',
-  dataNascimento: 'dataNascimento',
-  telefone: 'telefone',
-  email: 'email',
-  tipoAtendimento: 'tipoAtendimento',
   capacidadeCivil: 'capacidadeCivil',
-  estadoCivil: 'estadoCivil',
-  profissao: 'profissao',
-  tipoDomicilio: 'tipoDomicilio',
-  descricaoDomicilio: 'descricaoDomicilio',
-  membrosFamiliares: 'membrosFamiliares',
-  rendaFamiliar: 'rendaFamiliar',
-  tipoDemanda: 'tipoDemanda',
-  descricaoAtendimento: 'descricaoAtendimento',
-  observacoes: 'observacoes',
-  formId: 'formId',
-  formTipo: 'formTipo',
-  dataCriacao: 'dataCriacao',
-  status: 'status',
-  logradouro: 'logradouro',
+  cep: 'cep',
+  endereco: 'endereco',
   numero: 'numero',
   complemento: 'complemento',
   bairro: 'bairro',
   cidade: 'cidade',
-  estado: 'estado',
-  cep: 'cep',
+  uf: 'uf',
+  dataInicioBeneficio: 'dataInicioBeneficio',
+  parcelasVencidas: 'parcelasVencidas',
+  valorCausa: 'valorCausa',
+  processosAndamento: 'processosAndamento',
+  tipoAtendimentoId: 'tipoAtendimentoId',
+  estadoCivilId: 'estadoCivilId',
+  profissaoId: 'profissaoId',
+  tipoDomicilioId: 'tipoDomicilioId',
+  tipoDemandaPrevidenciariaId: 'tipoDemandaPrevidenciariaId',
+  competenciaJudicialId: 'competenciaJudicialId',
   operadorId: 'operadorId',
   filaId: 'filaId'
 };
@@ -209,6 +199,75 @@ exports.Prisma.DocumentoScalarFieldEnum = {
   dataCriacao: 'dataCriacao',
   atendimentoId: 'atendimentoId',
   operadorUploadId: 'operadorUploadId'
+};
+
+exports.Prisma.TipoAtendimentoScalarFieldEnum = {
+  id: 'id',
+  descricao: 'descricao'
+};
+
+exports.Prisma.TipoPrioridadeScalarFieldEnum = {
+  id: 'id',
+  descricao: 'descricao',
+  valorPrioridade: 'valorPrioridade',
+  tipoAtendimentoId: 'tipoAtendimentoId'
+};
+
+exports.Prisma.AssistidoScalarFieldEnum = {
+  id: 'id',
+  nomeCompleto: 'nomeCompleto',
+  nomeSocial: 'nomeSocial',
+  cpf: 'cpf',
+  telefone: 'telefone',
+  dataEntrada: 'dataEntrada',
+  descricaoPrioridade: 'descricaoPrioridade',
+  tipoAtendimentoId: 'tipoAtendimentoId',
+  tipoServicoAtendimentoId: 'tipoServicoAtendimentoId',
+  tipoPrioridadeId: 'tipoPrioridadeId'
+};
+
+exports.Prisma.TipoServicoAtendimentoScalarFieldEnum = {
+  id: 'id',
+  descricao: 'descricao',
+  atendimentoId: 'atendimentoId'
+};
+
+exports.Prisma.EstadoCivilScalarFieldEnum = {
+  id: 'id',
+  descricao: 'descricao'
+};
+
+exports.Prisma.ProfissaoScalarFieldEnum = {
+  id: 'id',
+  descricao: 'descricao'
+};
+
+exports.Prisma.TipoDomicilioScalarFieldEnum = {
+  id: 'id',
+  descricao: 'descricao'
+};
+
+exports.Prisma.MembroFamiliarScalarFieldEnum = {
+  id: 'id',
+  nomeCompleto: 'nomeCompleto',
+  cpf: 'cpf',
+  rendaMensal: 'rendaMensal',
+  atendimentoId: 'atendimentoId'
+};
+
+exports.Prisma.TipoVulnerabilidadeScalarFieldEnum = {
+  id: 'id',
+  descricao: 'descricao'
+};
+
+exports.Prisma.TipoDemandaPrevidenciariaScalarFieldEnum = {
+  id: 'id',
+  descricao: 'descricao'
+};
+
+exports.Prisma.CompetenciaJudicialScalarFieldEnum = {
+  id: 'id',
+  descricao: 'descricao'
 };
 
 exports.Prisma.SortOrder = {
@@ -248,11 +307,10 @@ exports.StatusFilaAtendimento = exports.$Enums.StatusFilaAtendimento = {
   CANCELADO: 'CANCELADO'
 };
 
-exports.StatusAtendimento = exports.$Enums.StatusAtendimento = {
-  NOVO: 'NOVO',
-  EM_ANDAMENTO: 'EM_ANDAMENTO',
-  CONCLUIDO: 'CONCLUIDO',
-  ARQUIVADO: 'ARQUIVADO'
+exports.ProcessosAndamento = exports.$Enums.ProcessosAndamento = {
+  SIM_MAS_DIFERENTE: 'SIM_MAS_DIFERENTE',
+  NAO: 'NAO',
+  SIM_MAS_IGUAL: 'SIM_MAS_IGUAL'
 };
 
 exports.TipoFormulario = exports.$Enums.TipoFormulario = {
@@ -300,7 +358,18 @@ exports.Prisma.ModelName = {
   Atendimento: 'Atendimento',
   Processo: 'Processo',
   FormularioPreenchido: 'FormularioPreenchido',
-  Documento: 'Documento'
+  Documento: 'Documento',
+  TipoAtendimento: 'TipoAtendimento',
+  TipoPrioridade: 'TipoPrioridade',
+  Assistido: 'Assistido',
+  TipoServicoAtendimento: 'TipoServicoAtendimento',
+  EstadoCivil: 'EstadoCivil',
+  Profissao: 'Profissao',
+  TipoDomicilio: 'TipoDomicilio',
+  MembroFamiliar: 'MembroFamiliar',
+  TipoVulnerabilidade: 'TipoVulnerabilidade',
+  TipoDemandaPrevidenciaria: 'TipoDemandaPrevidenciaria',
+  CompetenciaJudicial: 'CompetenciaJudicial'
 };
 
 /**

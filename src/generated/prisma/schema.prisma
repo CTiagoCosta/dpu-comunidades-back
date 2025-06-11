@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
   output   = "../src/generated/prisma"
@@ -14,9 +8,9 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// Modelo de usuário (operadores e administradores)
+// Usuários
 model User {
-  id           String   @id @default(uuid())
+  id           Int      @id @default(autoincrement())
   email        String   @unique
   nome         String
   senha        String
@@ -37,11 +31,13 @@ enum Role {
   ADMIN
   OPERADOR
   JURISTA
+
+  @@map("Role")
 }
 
-// Modelo para a fila de atendimentos
+// Fila de atendimentos
 model FilaAtendimento {
-  id           String                @id @default(uuid())
+  id           Int                   @id @default(autoincrement())
   nomeCompleto String
   nomeSocial   String?
   cpf          String
@@ -53,9 +49,9 @@ model FilaAtendimento {
   dataFim      DateTime?
 
   // Relacionamentos
-  operadorTriagemId     String
+  operadorTriagemId     Int
   operadorTriagem       User         @relation("OperadorTriagem", fields: [operadorTriagemId], references: [id])
-  operadorAtendimentoId String?
+  operadorAtendimentoId Int?
   operadorAtendimento   User?        @relation("OperadorAtendimento", fields: [operadorAtendimentoId], references: [id])
   atendimento           Atendimento?
 
@@ -71,88 +67,75 @@ enum StatusFilaAtendimento {
   @@map("status_fila_atendimento")
 }
 
-// Modelo para atendimentos
+// Atendimentos
 model Atendimento {
-  id                   String            @id @default(uuid())
-  nomeCompleto         String
-  nomeSocial           String?
-  cpf                  String
-  dataNascimento       String
-  telefone             String
-  email                String?
-  tipoAtendimento      String
-  capacidadeCivil      String?
-  estadoCivil          String?
-  profissao            String?
-  tipoDomicilio        String?
-  descricaoDomicilio   String?
-  membrosFamiliares    String?
-  rendaFamiliar        String?
-  tipoDemanda          String?
-  descricaoAtendimento String
-  observacoes          String?
-  formId               String
-  formTipo             String
-  dataCriacao          DateTime          @default(now())
-  status               StatusAtendimento @default(NOVO)
-
-  // Endereço
-  logradouro  String
-  numero      String
-  complemento String?
-  bairro      String
-  cidade      String
-  estado      String
-  cep         String
-
+  id                          Int                       @id @default(autoincrement())
+  capacidadeCivil             Boolean
+  cep                         String
+  endereco                    String
+  numero                      Int
+  complemento                 String?
+  bairro                      String
+  cidade                      String
+  uf                          String
+  dataInicioBeneficio         DateTime?
+  parcelasVencidas            Int?
+  valorCausa                  Float?
+  processosAndamento          ProcessosAndamento
+  tipoAtendimentoId           Int
+  estadoCivilId               Int
+  profissaoId                 Int
+  tipoDomicilioId             Int
+  tipoDemandaPrevidenciariaId Int
+  competenciaJudicialId       Int
+  operadorId                  Int
+  filaId                      Int?                      @unique
   // Relacionamentos
-  operadorId  String
-  operador    User                   @relation("OperadorAtendimento", fields: [operadorId], references: [id])
-  filaId      String?                @unique
-  fila        FilaAtendimento?       @relation(fields: [filaId], references: [id])
-  processo    Processo?
-  formularios FormularioPreenchido[]
-  documentos  Documento[]
+  tipoAtendimento             TipoAtendimento           @relation(fields: [tipoAtendimentoId], references: [id])
+  estadoCivil                 EstadoCivil               @relation(fields: [estadoCivilId], references: [id])
+  profissao                   Profissao                 @relation(fields: [profissaoId], references: [id])
+  tipoDomicilio               TipoDomicilio             @relation(fields: [tipoDomicilioId], references: [id])
+  tipoDemandaPrevidenciaria   TipoDemandaPrevidenciaria @relation(fields: [tipoDemandaPrevidenciariaId], references: [id])
+  competenciaJudicial         CompetenciaJudicial       @relation(fields: [competenciaJudicialId], references: [id])
+  operador                    User                      @relation("OperadorAtendimento", fields: [operadorId], references: [id])
+  fila                        FilaAtendimento?          @relation(fields: [filaId], references: [id])
+  membrosFamiliares           MembroFamiliar[]
+  processo                    Processo?
+  formularios                 FormularioPreenchido[]
+  documentos                  Documento[]
 
   @@map("atendimentos")
 }
 
-enum StatusAtendimento {
-  NOVO
-  EM_ANDAMENTO
-  CONCLUIDO
-  ARQUIVADO
-
-  @@map("status_atendimento")
+enum ProcessosAndamento {
+  SIM_MAS_DIFERENTE
+  NAO
+  SIM_MAS_IGUAL
 }
 
-// Modelo para processos judiciais
+// Processos judiciais
 model Processo {
-  id                 String   @id @default(uuid())
+  id                 Int         @id @default(autoincrement())
   numeroProcesso     String
   resultado          String
   resultadoDetalhado String?
   valoresAtrasados   String?
   beneficios         String?
-  dataAtualizacao    DateTime @default(now())
-
-  // Relacionamentos
-  atendimentoId String      @unique
-  atendimento   Atendimento @relation(fields: [atendimentoId], references: [id])
+  dataAtualizacao    DateTime    @default(now())
+  atendimentoId      Int         @unique
+  atendimento        Atendimento @relation(fields: [atendimentoId], references: [id])
 
   @@map("processos")
 }
 
-// Modelo para formulários preenchidos
+// Formulários preenchidos
 model FormularioPreenchido {
-  id              String         @id @default(uuid())
+  id              Int            @id @default(autoincrement())
   tipoFormulario  TipoFormulario
-  dadosFormulario Json // Armazena os dados específicos de cada formulário em formato JSON
+  dadosFormulario Json
   dataCriacao     DateTime       @default(now())
-
-  // Relacionamentos
-  atendimentoId String
-  atendimento   Atendimento @relation(fields: [atendimentoId], references: [id])
+  atendimentoId   Int
+  atendimento     Atendimento    @relation(fields: [atendimentoId], references: [id])
 
   @@map("formularios_preenchidos")
 }
@@ -181,22 +164,20 @@ enum TipoFormulario {
   @@map("tipo_formulario")
 }
 
-// Modelo para documentos/arquivos
+// Documentos
 model Documento {
-  id                String        @id @default(uuid())
-  nomeOriginal      String // Nome original do arquivo
-  nomeArmazenamento String // Nome do arquivo no sistema de armazenamento
-  tipo              String // Tipo MIME do arquivo
-  tamanho           Int // Tamanho em bytes
-  caminho           String // Caminho para o arquivo no sistema de armazenamento
-  tipoDocumento     TipoDocumento // Categoria do documento
+  id                Int           @id @default(autoincrement())
+  nomeOriginal      String
+  nomeArmazenamento String
+  tipo              String
+  tamanho           Int
+  caminho           String
+  tipoDocumento     TipoDocumento
   dataCriacao       DateTime      @default(now())
-
-  // Relacionamentos
-  atendimentoId    String
-  atendimento      Atendimento @relation(fields: [atendimentoId], references: [id])
-  operadorUploadId String
-  operadorUpload   User        @relation("OperadorUpload", fields: [operadorUploadId], references: [id])
+  atendimentoId     Int
+  atendimento       Atendimento   @relation(fields: [atendimentoId], references: [id])
+  operadorUploadId  Int
+  operadorUpload    User          @relation("OperadorUpload", fields: [operadorUploadId], references: [id])
 
   @@map("documentos")
 }
@@ -218,4 +199,113 @@ enum TipoDocumento {
   OUTROS
 
   @@map("tipo_documento")
+}
+
+// Tabelas auxiliares
+model TipoAtendimento {
+  id              Int                      @id @default(autoincrement())
+  descricao       String
+  assistidos      Assistido[]
+  tipoPrioridades TipoPrioridade[]
+  servicos        TipoServicoAtendimento[]
+  antendimentos   Atendimento[]
+
+  @@map("tipo_atendimento")
+}
+
+model TipoPrioridade {
+  id                Int              @id @default(autoincrement())
+  descricao         String
+  valorPrioridade   Int
+  assistidos        Assistido[]
+  tipoAtendimentoId Int?
+  tipoAtendimento   TipoAtendimento? @relation(fields: [tipoAtendimentoId], references: [id])
+
+  @@map("tipo_prioridade")
+}
+
+model Assistido {
+  id                       Int                    @id @default(autoincrement())
+  nomeCompleto             String
+  nomeSocial               String?
+  cpf                      String
+  telefone                 String
+  dataEntrada              DateTime
+  descricaoPrioridade      String?
+  tipoAtendimentoId        Int
+  tipoServicoAtendimentoId Int
+  tipoPrioridadeId         Int
+  tipoServicoAtendimento   TipoServicoAtendimento @relation(fields: [tipoServicoAtendimentoId], references: [id])
+  tipoAtendimento          TipoAtendimento        @relation(fields: [tipoAtendimentoId], references: [id])
+  tipoPrioridade           TipoPrioridade         @relation(fields: [tipoPrioridadeId], references: [id])
+
+  @@map("assistido")
+}
+
+model TipoServicoAtendimento {
+  id            Int             @id @default(autoincrement())
+  descricao     String
+  atendimentoId Int
+  atendimento   TipoAtendimento @relation(fields: [atendimentoId], references: [id])
+  assistidos    Assistido[] // <-- Add this line
+
+  @@map("tipo_servico_atendimento")
+}
+
+model EstadoCivil {
+  id           Int           @id @default(autoincrement())
+  descricao    String
+  atendimentos Atendimento[]
+
+  @@map("estado_civil")
+}
+
+model Profissao {
+  id           Int           @id @default(autoincrement())
+  descricao    String
+  atendimentos Atendimento[]
+
+  @@map("profissao")
+}
+
+model TipoDomicilio {
+  id           Int           @id @default(autoincrement())
+  descricao    String
+  atendimentos Atendimento[]
+
+  @@map("tipo_domicilio")
+}
+
+model MembroFamiliar {
+  id            Int         @id @default(autoincrement())
+  nomeCompleto  String
+  cpf           String
+  rendaMensal   Float
+  atendimentoId Int
+  atendimento   Atendimento @relation(fields: [atendimentoId], references: [id])
+
+  @@map("membro_familiar")
+}
+
+model TipoVulnerabilidade {
+  id        Int    @id @default(autoincrement())
+  descricao String
+
+  @@map("tipo_vulnerabilidae")
+}
+
+model TipoDemandaPrevidenciaria {
+  id           Int           @id @default(autoincrement())
+  descricao    String
+  atendimentos Atendimento[]
+
+  @@map("tipo_demanda_previdenciaria")
+}
+
+model CompetenciaJudicial {
+  id           Int           @id @default(autoincrement())
+  descricao    String
+  atendimentos Atendimento[]
+
+  @@map("competencia_judicial")
 }

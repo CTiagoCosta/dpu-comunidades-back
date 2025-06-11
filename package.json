@@ -6,6 +6,9 @@
   "scripts": {
     "dev": "ts-node-dev src/server.ts"
   },
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
+  },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",
     "@types/cors": "^2.8.18",
@@ -14,6 +17,7 @@
     "@types/multer": "^1.4.12",
     "@types/next": "^8.0.7",
     "@types/next-auth": "^3.13.0",
+    "@types/node": "^24.0.0",
     "next": "^15.3.2",
     "next-auth": "^4.24.11",
     "prisma": "^6.8.2",
