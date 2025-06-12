@@ -8,7 +8,7 @@ import { ComplementaryDataServices } from "../../services/ComplementaryDataServi
 
 export class ListTypeOfServiceController extends BaseController {
   constructor(private complementaryDataServices: ComplementaryDataServices) {
-    super("Erro ao criar novo usuário");
+    super("Sucesso ao listar tipos de serviço");
   }
 
   protected validateRequest(
@@ -20,14 +20,8 @@ export class ListTypeOfServiceController extends BaseController {
   protected async specificImplementation(
     request: HttpRequest
   ): Promise<HttpResponse> {
-    // const result = await this.createUserUseCase.handler(this.getCreateUserDto(request));
+    const result = await this.complementaryDataServices.listTypeofService();
 
-    // if ('refreshToken' in result) {
-    //   return HandleResponse.cookies(result, 'Conta criada com sucesso.', [
-    //     { key: 'refreshToken', value: result.refreshToken }
-    //   ]);
-    // }
-
-    return HandleResponse.success("s", "Conta criada com sucesso.");
+    return HandleResponse.success(result, "Conta criada com sucesso.");
   }
 }
