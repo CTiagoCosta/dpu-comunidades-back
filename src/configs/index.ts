@@ -1,0 +1,16 @@
+import dotenvConfig from './dotenvConfig';
+
+dotenvConfig();
+
+export default {
+  PORT: process.env.PORT || 3003,
+  SECRET: process.env.API_SECRET_KEY || 'secret',
+  REFRESH_SECRET: process.env.API_REFRESH_SECRET || 'refresh-secret',
+  API_SERVICES_URL: process.env.API_SERVICES_URL || 'http://localhost:3003',
+  ALLOWED_ORIGINS: process.env.ALLOWED_ORIGINS || 'http://localhost:5173',
+  GOVBR_URL: process.env.API_GOVBR_URL,
+  GOVBR_REDIRECT_URL: process.env.API_GOVBR_REDIRECT_URL,
+  GOVBR_CLIENT_ID: process.env.API_GOVBR_CLIENT_ID,
+  GOVBR_CLIENT_SECRET: process.env.API_GOVBR_CLIENT_SECRET,
+  URL_MEU_DETRAN: process.env.API_URL_MEU_DETRAN || ''
+};

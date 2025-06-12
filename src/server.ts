@@ -1,29 +1,13 @@
-import express, { Request, Response, NextFunction } from 'express';
-import 'express-async-errors';
-import cors from 'cors'; 
-import path from "path";
+import { App } from "./app";
 
-import { router } from './routes';
+async function bootstrap() {
+  try {
+    const application = new App();
+    await application.create();
+    await application.start();
+  } catch (error) {
+    console.log("[server] > error to up application: ", error);
+  }
+}
 
-const app = express();
-app.use(express.json());
-app.use(cors());
-
-app.use(router);
-
-app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
-    if(err instanceof Error) {
-        res.status(400).json({
-            error: err.message,
-        });
-    }
-
-    res.status(500).json({
-        status: 'error',    
-        message: 'Internal server error',
-    });
-})
-
-app.use("/files", express.static(path.resolve(__dirname, "..", "uploads")));
-
-app.listen(3333, () => console.log('Servidor online na porta 3333'));
+bootstrap();

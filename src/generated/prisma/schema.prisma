@@ -10,7 +10,7 @@ datasource db {
 
 // Usuários
 model User {
-  id           Int      @id @default(autoincrement())
+  id           String   @id @default(uuid())
   email        String   @unique
   nome         String
   senha        String
@@ -37,7 +37,7 @@ enum Role {
 
 // Fila de atendimentos
 model FilaAtendimento {
-  id           Int                   @id @default(autoincrement())
+  id           String                @id @default(uuid())
   nomeCompleto String
   nomeSocial   String?
   cpf          String
@@ -49,9 +49,9 @@ model FilaAtendimento {
   dataFim      DateTime?
 
   // Relacionamentos
-  operadorTriagemId     Int
+  operadorTriagemId     String
   operadorTriagem       User         @relation("OperadorTriagem", fields: [operadorTriagemId], references: [id])
-  operadorAtendimentoId Int?
+  operadorAtendimentoId String?
   operadorAtendimento   User?        @relation("OperadorAtendimento", fields: [operadorAtendimentoId], references: [id])
   atendimento           Atendimento?
 
@@ -69,7 +69,7 @@ enum StatusFilaAtendimento {
 
 // Atendimentos
 model Atendimento {
-  id                          Int                       @id @default(autoincrement())
+  id                          String                    @id @default(uuid())
   capacidadeCivil             Boolean
   cep                         String
   endereco                    String
@@ -84,12 +84,12 @@ model Atendimento {
   processosAndamento          ProcessosAndamento
   tipoAtendimentoId           Int
   estadoCivilId               Int
-  profissaoId                 Int
+  profissaoId                 String
   tipoDomicilioId             Int
   tipoDemandaPrevidenciariaId Int
   competenciaJudicialId       Int
-  operadorId                  Int
-  filaId                      Int?                      @unique
+  operadorId                  String
+  filaId                      String?                   @unique
   // Relacionamentos
   tipoAtendimento             TipoAtendimento           @relation(fields: [tipoAtendimentoId], references: [id])
   estadoCivil                 EstadoCivil               @relation(fields: [estadoCivilId], references: [id])
@@ -115,14 +115,14 @@ enum ProcessosAndamento {
 
 // Processos judiciais
 model Processo {
-  id                 Int         @id @default(autoincrement())
+  id                 String      @id @default(uuid())
   numeroProcesso     String
   resultado          String
   resultadoDetalhado String?
   valoresAtrasados   String?
   beneficios         String?
   dataAtualizacao    DateTime    @default(now())
-  atendimentoId      Int         @unique
+  atendimentoId      String      @unique
   atendimento        Atendimento @relation(fields: [atendimentoId], references: [id])
 
   @@map("processos")
@@ -134,7 +134,7 @@ model FormularioPreenchido {
   tipoFormulario  TipoFormulario
   dadosFormulario Json
   dataCriacao     DateTime       @default(now())
-  atendimentoId   Int
+  atendimentoId   String
   atendimento     Atendimento    @relation(fields: [atendimentoId], references: [id])
 
   @@map("formularios_preenchidos")
@@ -166,7 +166,7 @@ enum TipoFormulario {
 
 // Documentos
 model Documento {
-  id                Int           @id @default(autoincrement())
+  id                String        @id @default(uuid())
   nomeOriginal      String
   nomeArmazenamento String
   tipo              String
@@ -174,9 +174,9 @@ model Documento {
   caminho           String
   tipoDocumento     TipoDocumento
   dataCriacao       DateTime      @default(now())
-  atendimentoId     Int
+  atendimentoId     String
   atendimento       Atendimento   @relation(fields: [atendimentoId], references: [id])
-  operadorUploadId  Int
+  operadorUploadId  String
   operadorUpload    User          @relation("OperadorUpload", fields: [operadorUploadId], references: [id])
 
   @@map("documentos")
@@ -225,7 +225,7 @@ model TipoPrioridade {
 }
 
 model Assistido {
-  id                       Int                    @id @default(autoincrement())
+  id                       String                 @id @default(uuid())
   nomeCompleto             String
   nomeSocial               String?
   cpf                      String
@@ -261,7 +261,7 @@ model EstadoCivil {
 }
 
 model Profissao {
-  id           Int           @id @default(autoincrement())
+  id           String        @id @default(uuid())
   descricao    String
   atendimentos Atendimento[]
 
@@ -277,11 +277,11 @@ model TipoDomicilio {
 }
 
 model MembroFamiliar {
-  id            Int         @id @default(autoincrement())
+  id            String      @id @default(uuid())
   nomeCompleto  String
   cpf           String
   rendaMensal   Float
-  atendimentoId Int
+  atendimentoId String
   atendimento   Atendimento @relation(fields: [atendimentoId], references: [id])
 
   @@map("membro_familiar")

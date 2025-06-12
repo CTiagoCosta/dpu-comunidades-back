@@ -1,4 +1,5 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from "../src/generated/prisma";
+
 const prisma = new PrismaClient();
 
 async function main() {
@@ -6,27 +7,30 @@ async function main() {
     data: [{ id: 1, descricao: "Assistencia Jurídica DPU em Mutirão" }],
     skipDuplicates: true,
   }),
-    await prisma.TipoPrioridade.createMany({
+    await prisma.tipoPrioridade.createMany({
       data: [
-        { descricao: "Idoso (60 anos ou mais)" },
-        { descricao: "Gestante" },
-        { descricao: "Lactante" },
-        { descricao: "Pessoa com Deficiência" },
-        { descricao: "Pessoa com Criança de Colo" },
-        { descricao: "Outro" },
+        { descricao: "Idoso (60 anos ou mais)", valorPrioridade: 2 },
+        { descricao: "Gestante", valorPrioridade: 3 },
+        { descricao: "Lactante", valorPrioridade: 4 },
+        { descricao: "Pessoa com Deficiência", valorPrioridade: 1 },
+        { descricao: "Pessoa com Criança de Colo", valorPrioridade: 5 },
+        { descricao: "Outro", valorPrioridade: 6 },
       ],
       skipDuplicates: true,
     }),
-    await prisma.TipoServicoAtendimento.createMany({
+    await prisma.tipoServicoAtendimento.createMany({
       data: [
-        { descricao: "Primeiro Atendimento - Demanda Judicial", atendimentoId: 1 },
+        {
+          descricao: "Primeiro Atendimento - Demanda Judicial",
+          atendimentoId: 1,
+        },
         { descricao: "Retorno - Demanda Judicial", atendimentoId: 1 },
         { descricao: "Orientação Jurídica", atendimentoId: 1 },
         { descricao: "Encaminhamento a Outro Órgão", atendimentoId: 1 },
       ],
       skipDuplicates: true,
     }),
-    await prisma.EstadoCivil.createMany({
+    await prisma.estadoCivil.createMany({
       data: [
         { descricao: "Solteiro(a)" },
         { descricao: "Casado(a)" },
@@ -37,7 +41,7 @@ async function main() {
       ],
       skipDuplicates: true,
     }),
-    await prisma.Profissao.createMany({
+    await prisma.profissao.createMany({
       data: [
         { descricao: "Indígena Rural" },
         { descricao: "Pescador" },
@@ -48,7 +52,7 @@ async function main() {
       ],
       skipDuplicates: true,
     }),
-    await prisma.TipoDomicilio.createMany({
+    await prisma.tipoDomicilio.createMany({
       data: [
         { descricao: "Urbano" },
         { descricao: "Rural" },
@@ -61,7 +65,7 @@ async function main() {
       ],
       skipDuplicates: true,
     }),
-    await prisma.TipoVulnerabilidade.createMany({
+    await prisma.tipoVulnerabilidade.createMany({
       data: [
         {
           descricao:
@@ -91,10 +95,10 @@ async function main() {
 }
 
 main()
+  .then(async () => {
+    await prisma.$disconnect();
+  })
   .catch((e) => {
     console.error(`[SEEDER] ${e}`);
-    process.exit(1);
-  })
-  .finally(async () => {
-    await prisma.$disconnect();
+    prisma.$disconnect().then(() => process.exit(1));
   });

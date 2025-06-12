@@ -549,8 +549,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 6.8.2
-   * Query Engine version: 2060c79ba17c6bb9f5823312b6f6b7f4a845738e
+   * Prisma Client JS version: 6.9.0
+   * Query Engine version: 81e4af48011447c3cc503a190e86995b66d2a28e
    */
   export type PrismaVersion = {
     client: string
@@ -2810,22 +2810,12 @@ export namespace Prisma {
 
   export type AggregateUser = {
     _count: UserCountAggregateOutputType | null
-    _avg: UserAvgAggregateOutputType | null
-    _sum: UserSumAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
   }
 
-  export type UserAvgAggregateOutputType = {
-    id: number | null
-  }
-
-  export type UserSumAggregateOutputType = {
-    id: number | null
-  }
-
   export type UserMinAggregateOutputType = {
-    id: number | null
+    id: string | null
     email: string | null
     nome: string | null
     senha: string | null
@@ -2835,7 +2825,7 @@ export namespace Prisma {
   }
 
   export type UserMaxAggregateOutputType = {
-    id: number | null
+    id: string | null
     email: string | null
     nome: string | null
     senha: string | null
@@ -2855,14 +2845,6 @@ export namespace Prisma {
     _all: number
   }
 
-
-  export type UserAvgAggregateInputType = {
-    id?: true
-  }
-
-  export type UserSumAggregateInputType = {
-    id?: true
-  }
 
   export type UserMinAggregateInputType = {
     id?: true
@@ -2933,18 +2915,6 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Select which fields to average
-    **/
-    _avg?: UserAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: UserSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
      * Select which fields to find the minimum value
     **/
     _min?: UserMinAggregateInputType
@@ -2975,14 +2945,12 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: UserCountAggregateInputType | true
-    _avg?: UserAvgAggregateInputType
-    _sum?: UserSumAggregateInputType
     _min?: UserMinAggregateInputType
     _max?: UserMaxAggregateInputType
   }
 
   export type UserGroupByOutputType = {
-    id: number
+    id: string
     email: string
     nome: string
     senha: string
@@ -2990,8 +2958,6 @@ export namespace Prisma {
     aprovado: boolean
     dataCadastro: Date
     _count: UserCountAggregateOutputType | null
-    _avg: UserAvgAggregateOutputType | null
-    _sum: UserSumAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
   }
@@ -3075,7 +3041,7 @@ export namespace Prisma {
       documentosUploadOperador: Prisma.$DocumentoPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
-      id: number
+      id: string
       email: string
       nome: string
       senha: string
@@ -3509,7 +3475,7 @@ export namespace Prisma {
    * Fields of the User model
    */
   interface UserFieldRefs {
-    readonly id: FieldRef<"User", 'Int'>
+    readonly id: FieldRef<"User", 'String'>
     readonly email: FieldRef<"User", 'String'>
     readonly nome: FieldRef<"User", 'String'>
     readonly senha: FieldRef<"User", 'String'>
@@ -4024,26 +3990,12 @@ export namespace Prisma {
 
   export type AggregateFilaAtendimento = {
     _count: FilaAtendimentoCountAggregateOutputType | null
-    _avg: FilaAtendimentoAvgAggregateOutputType | null
-    _sum: FilaAtendimentoSumAggregateOutputType | null
     _min: FilaAtendimentoMinAggregateOutputType | null
     _max: FilaAtendimentoMaxAggregateOutputType | null
   }
 
-  export type FilaAtendimentoAvgAggregateOutputType = {
-    id: number | null
-    operadorTriagemId: number | null
-    operadorAtendimentoId: number | null
-  }
-
-  export type FilaAtendimentoSumAggregateOutputType = {
-    id: number | null
-    operadorTriagemId: number | null
-    operadorAtendimentoId: number | null
-  }
-
   export type FilaAtendimentoMinAggregateOutputType = {
-    id: number | null
+    id: string | null
     nomeCompleto: string | null
     nomeSocial: string | null
     cpf: string | null
@@ -4053,12 +4005,12 @@ export namespace Prisma {
     dataEntrada: Date | null
     dataInicio: Date | null
     dataFim: Date | null
-    operadorTriagemId: number | null
-    operadorAtendimentoId: number | null
+    operadorTriagemId: string | null
+    operadorAtendimentoId: string | null
   }
 
   export type FilaAtendimentoMaxAggregateOutputType = {
-    id: number | null
+    id: string | null
     nomeCompleto: string | null
     nomeSocial: string | null
     cpf: string | null
@@ -4068,8 +4020,8 @@ export namespace Prisma {
     dataEntrada: Date | null
     dataInicio: Date | null
     dataFim: Date | null
-    operadorTriagemId: number | null
-    operadorAtendimentoId: number | null
+    operadorTriagemId: string | null
+    operadorAtendimentoId: string | null
   }
 
   export type FilaAtendimentoCountAggregateOutputType = {
@@ -4088,18 +4040,6 @@ export namespace Prisma {
     _all: number
   }
 
-
-  export type FilaAtendimentoAvgAggregateInputType = {
-    id?: true
-    operadorTriagemId?: true
-    operadorAtendimentoId?: true
-  }
-
-  export type FilaAtendimentoSumAggregateInputType = {
-    id?: true
-    operadorTriagemId?: true
-    operadorAtendimentoId?: true
-  }
 
   export type FilaAtendimentoMinAggregateInputType = {
     id?: true
@@ -4185,18 +4125,6 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Select which fields to average
-    **/
-    _avg?: FilaAtendimentoAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: FilaAtendimentoSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
      * Select which fields to find the minimum value
     **/
     _min?: FilaAtendimentoMinAggregateInputType
@@ -4227,14 +4155,12 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: FilaAtendimentoCountAggregateInputType | true
-    _avg?: FilaAtendimentoAvgAggregateInputType
-    _sum?: FilaAtendimentoSumAggregateInputType
     _min?: FilaAtendimentoMinAggregateInputType
     _max?: FilaAtendimentoMaxAggregateInputType
   }
 
   export type FilaAtendimentoGroupByOutputType = {
-    id: number
+    id: string
     nomeCompleto: string
     nomeSocial: string | null
     cpf: string
@@ -4244,11 +4170,9 @@ export namespace Prisma {
     dataEntrada: Date
     dataInicio: Date | null
     dataFim: Date | null
-    operadorTriagemId: number
-    operadorAtendimentoId: number | null
+    operadorTriagemId: string
+    operadorAtendimentoId: string | null
     _count: FilaAtendimentoCountAggregateOutputType | null
-    _avg: FilaAtendimentoAvgAggregateOutputType | null
-    _sum: FilaAtendimentoSumAggregateOutputType | null
     _min: FilaAtendimentoMinAggregateOutputType | null
     _max: FilaAtendimentoMaxAggregateOutputType | null
   }
@@ -4357,7 +4281,7 @@ export namespace Prisma {
       atendimento: Prisma.$AtendimentoPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
-      id: number
+      id: string
       nomeCompleto: string
       nomeSocial: string | null
       cpf: string
@@ -4367,8 +4291,8 @@ export namespace Prisma {
       dataEntrada: Date
       dataInicio: Date | null
       dataFim: Date | null
-      operadorTriagemId: number
-      operadorAtendimentoId: number | null
+      operadorTriagemId: string
+      operadorAtendimentoId: string | null
     }, ExtArgs["result"]["filaAtendimento"]>
     composites: {}
   }
@@ -4795,7 +4719,7 @@ export namespace Prisma {
    * Fields of the FilaAtendimento model
    */
   interface FilaAtendimentoFieldRefs {
-    readonly id: FieldRef<"FilaAtendimento", 'Int'>
+    readonly id: FieldRef<"FilaAtendimento", 'String'>
     readonly nomeCompleto: FieldRef<"FilaAtendimento", 'String'>
     readonly nomeSocial: FieldRef<"FilaAtendimento", 'String'>
     readonly cpf: FieldRef<"FilaAtendimento", 'String'>
@@ -4805,8 +4729,8 @@ export namespace Prisma {
     readonly dataEntrada: FieldRef<"FilaAtendimento", 'DateTime'>
     readonly dataInicio: FieldRef<"FilaAtendimento", 'DateTime'>
     readonly dataFim: FieldRef<"FilaAtendimento", 'DateTime'>
-    readonly operadorTriagemId: FieldRef<"FilaAtendimento", 'Int'>
-    readonly operadorAtendimentoId: FieldRef<"FilaAtendimento", 'Int'>
+    readonly operadorTriagemId: FieldRef<"FilaAtendimento", 'String'>
+    readonly operadorAtendimentoId: FieldRef<"FilaAtendimento", 'String'>
   }
     
 
@@ -5272,37 +5196,29 @@ export namespace Prisma {
   }
 
   export type AtendimentoAvgAggregateOutputType = {
-    id: number | null
     numero: number | null
     parcelasVencidas: number | null
     valorCausa: number | null
     tipoAtendimentoId: number | null
     estadoCivilId: number | null
-    profissaoId: number | null
     tipoDomicilioId: number | null
     tipoDemandaPrevidenciariaId: number | null
     competenciaJudicialId: number | null
-    operadorId: number | null
-    filaId: number | null
   }
 
   export type AtendimentoSumAggregateOutputType = {
-    id: number | null
     numero: number | null
     parcelasVencidas: number | null
     valorCausa: number | null
     tipoAtendimentoId: number | null
     estadoCivilId: number | null
-    profissaoId: number | null
     tipoDomicilioId: number | null
     tipoDemandaPrevidenciariaId: number | null
     competenciaJudicialId: number | null
-    operadorId: number | null
-    filaId: number | null
   }
 
   export type AtendimentoMinAggregateOutputType = {
-    id: number | null
+    id: string | null
     capacidadeCivil: boolean | null
     cep: string | null
     endereco: string | null
@@ -5317,16 +5233,16 @@ export namespace Prisma {
     processosAndamento: $Enums.ProcessosAndamento | null
     tipoAtendimentoId: number | null
     estadoCivilId: number | null
-    profissaoId: number | null
+    profissaoId: string | null
     tipoDomicilioId: number | null
     tipoDemandaPrevidenciariaId: number | null
     competenciaJudicialId: number | null
-    operadorId: number | null
-    filaId: number | null
+    operadorId: string | null
+    filaId: string | null
   }
 
   export type AtendimentoMaxAggregateOutputType = {
-    id: number | null
+    id: string | null
     capacidadeCivil: boolean | null
     cep: string | null
     endereco: string | null
@@ -5341,12 +5257,12 @@ export namespace Prisma {
     processosAndamento: $Enums.ProcessosAndamento | null
     tipoAtendimentoId: number | null
     estadoCivilId: number | null
-    profissaoId: number | null
+    profissaoId: string | null
     tipoDomicilioId: number | null
     tipoDemandaPrevidenciariaId: number | null
     competenciaJudicialId: number | null
-    operadorId: number | null
-    filaId: number | null
+    operadorId: string | null
+    filaId: string | null
   }
 
   export type AtendimentoCountAggregateOutputType = {
@@ -5376,33 +5292,25 @@ export namespace Prisma {
 
 
   export type AtendimentoAvgAggregateInputType = {
-    id?: true
     numero?: true
     parcelasVencidas?: true
     valorCausa?: true
     tipoAtendimentoId?: true
     estadoCivilId?: true
-    profissaoId?: true
     tipoDomicilioId?: true
     tipoDemandaPrevidenciariaId?: true
     competenciaJudicialId?: true
-    operadorId?: true
-    filaId?: true
   }
 
   export type AtendimentoSumAggregateInputType = {
-    id?: true
     numero?: true
     parcelasVencidas?: true
     valorCausa?: true
     tipoAtendimentoId?: true
     estadoCivilId?: true
-    profissaoId?: true
     tipoDomicilioId?: true
     tipoDemandaPrevidenciariaId?: true
     competenciaJudicialId?: true
-    operadorId?: true
-    filaId?: true
   }
 
   export type AtendimentoMinAggregateInputType = {
@@ -5565,7 +5473,7 @@ export namespace Prisma {
   }
 
   export type AtendimentoGroupByOutputType = {
-    id: number
+    id: string
     capacidadeCivil: boolean
     cep: string
     endereco: string
@@ -5580,12 +5488,12 @@ export namespace Prisma {
     processosAndamento: $Enums.ProcessosAndamento
     tipoAtendimentoId: number
     estadoCivilId: number
-    profissaoId: number
+    profissaoId: string
     tipoDomicilioId: number
     tipoDemandaPrevidenciariaId: number
     competenciaJudicialId: number
-    operadorId: number
-    filaId: number | null
+    operadorId: string
+    filaId: string | null
     _count: AtendimentoCountAggregateOutputType | null
     _avg: AtendimentoAvgAggregateOutputType | null
     _sum: AtendimentoSumAggregateOutputType | null
@@ -5786,7 +5694,7 @@ export namespace Prisma {
       documentos: Prisma.$DocumentoPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
-      id: number
+      id: string
       capacidadeCivil: boolean
       cep: string
       endereco: string
@@ -5801,12 +5709,12 @@ export namespace Prisma {
       processosAndamento: $Enums.ProcessosAndamento
       tipoAtendimentoId: number
       estadoCivilId: number
-      profissaoId: number
+      profissaoId: string
       tipoDomicilioId: number
       tipoDemandaPrevidenciariaId: number
       competenciaJudicialId: number
-      operadorId: number
-      filaId: number | null
+      operadorId: string
+      filaId: string | null
     }, ExtArgs["result"]["atendimento"]>
     composites: {}
   }
@@ -6242,7 +6150,7 @@ export namespace Prisma {
    * Fields of the Atendimento model
    */
   interface AtendimentoFieldRefs {
-    readonly id: FieldRef<"Atendimento", 'Int'>
+    readonly id: FieldRef<"Atendimento", 'String'>
     readonly capacidadeCivil: FieldRef<"Atendimento", 'Boolean'>
     readonly cep: FieldRef<"Atendimento", 'String'>
     readonly endereco: FieldRef<"Atendimento", 'String'>
@@ -6257,12 +6165,12 @@ export namespace Prisma {
     readonly processosAndamento: FieldRef<"Atendimento", 'ProcessosAndamento'>
     readonly tipoAtendimentoId: FieldRef<"Atendimento", 'Int'>
     readonly estadoCivilId: FieldRef<"Atendimento", 'Int'>
-    readonly profissaoId: FieldRef<"Atendimento", 'Int'>
+    readonly profissaoId: FieldRef<"Atendimento", 'String'>
     readonly tipoDomicilioId: FieldRef<"Atendimento", 'Int'>
     readonly tipoDemandaPrevidenciariaId: FieldRef<"Atendimento", 'Int'>
     readonly competenciaJudicialId: FieldRef<"Atendimento", 'Int'>
-    readonly operadorId: FieldRef<"Atendimento", 'Int'>
-    readonly filaId: FieldRef<"Atendimento", 'Int'>
+    readonly operadorId: FieldRef<"Atendimento", 'String'>
+    readonly filaId: FieldRef<"Atendimento", 'String'>
   }
     
 
@@ -6793,42 +6701,30 @@ export namespace Prisma {
 
   export type AggregateProcesso = {
     _count: ProcessoCountAggregateOutputType | null
-    _avg: ProcessoAvgAggregateOutputType | null
-    _sum: ProcessoSumAggregateOutputType | null
     _min: ProcessoMinAggregateOutputType | null
     _max: ProcessoMaxAggregateOutputType | null
   }
 
-  export type ProcessoAvgAggregateOutputType = {
-    id: number | null
-    atendimentoId: number | null
-  }
-
-  export type ProcessoSumAggregateOutputType = {
-    id: number | null
-    atendimentoId: number | null
-  }
-
   export type ProcessoMinAggregateOutputType = {
-    id: number | null
+    id: string | null
     numeroProcesso: string | null
     resultado: string | null
     resultadoDetalhado: string | null
     valoresAtrasados: string | null
     beneficios: string | null
     dataAtualizacao: Date | null
-    atendimentoId: number | null
+    atendimentoId: string | null
   }
 
   export type ProcessoMaxAggregateOutputType = {
-    id: number | null
+    id: string | null
     numeroProcesso: string | null
     resultado: string | null
     resultadoDetalhado: string | null
     valoresAtrasados: string | null
     beneficios: string | null
     dataAtualizacao: Date | null
-    atendimentoId: number | null
+    atendimentoId: string | null
   }
 
   export type ProcessoCountAggregateOutputType = {
@@ -6843,16 +6739,6 @@ export namespace Prisma {
     _all: number
   }
 
-
-  export type ProcessoAvgAggregateInputType = {
-    id?: true
-    atendimentoId?: true
-  }
-
-  export type ProcessoSumAggregateInputType = {
-    id?: true
-    atendimentoId?: true
-  }
 
   export type ProcessoMinAggregateInputType = {
     id?: true
@@ -6926,18 +6812,6 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Select which fields to average
-    **/
-    _avg?: ProcessoAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: ProcessoSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
      * Select which fields to find the minimum value
     **/
     _min?: ProcessoMinAggregateInputType
@@ -6968,24 +6842,20 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: ProcessoCountAggregateInputType | true
-    _avg?: ProcessoAvgAggregateInputType
-    _sum?: ProcessoSumAggregateInputType
     _min?: ProcessoMinAggregateInputType
     _max?: ProcessoMaxAggregateInputType
   }
 
   export type ProcessoGroupByOutputType = {
-    id: number
+    id: string
     numeroProcesso: string
     resultado: string
     resultadoDetalhado: string | null
     valoresAtrasados: string | null
     beneficios: string | null
     dataAtualizacao: Date
-    atendimentoId: number
+    atendimentoId: string
     _count: ProcessoCountAggregateOutputType | null
-    _avg: ProcessoAvgAggregateOutputType | null
-    _sum: ProcessoSumAggregateOutputType | null
     _min: ProcessoMinAggregateOutputType | null
     _max: ProcessoMaxAggregateOutputType | null
   }
@@ -7068,14 +6938,14 @@ export namespace Prisma {
       atendimento: Prisma.$AtendimentoPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
-      id: number
+      id: string
       numeroProcesso: string
       resultado: string
       resultadoDetalhado: string | null
       valoresAtrasados: string | null
       beneficios: string | null
       dataAtualizacao: Date
-      atendimentoId: number
+      atendimentoId: string
     }, ExtArgs["result"]["processo"]>
     composites: {}
   }
@@ -7500,14 +7370,14 @@ export namespace Prisma {
    * Fields of the Processo model
    */
   interface ProcessoFieldRefs {
-    readonly id: FieldRef<"Processo", 'Int'>
+    readonly id: FieldRef<"Processo", 'String'>
     readonly numeroProcesso: FieldRef<"Processo", 'String'>
     readonly resultado: FieldRef<"Processo", 'String'>
     readonly resultadoDetalhado: FieldRef<"Processo", 'String'>
     readonly valoresAtrasados: FieldRef<"Processo", 'String'>
     readonly beneficios: FieldRef<"Processo", 'String'>
     readonly dataAtualizacao: FieldRef<"Processo", 'DateTime'>
-    readonly atendimentoId: FieldRef<"Processo", 'Int'>
+    readonly atendimentoId: FieldRef<"Processo", 'String'>
   }
     
 
@@ -7936,26 +7806,24 @@ export namespace Prisma {
 
   export type FormularioPreenchidoAvgAggregateOutputType = {
     id: number | null
-    atendimentoId: number | null
   }
 
   export type FormularioPreenchidoSumAggregateOutputType = {
     id: number | null
-    atendimentoId: number | null
   }
 
   export type FormularioPreenchidoMinAggregateOutputType = {
     id: number | null
     tipoFormulario: $Enums.TipoFormulario | null
     dataCriacao: Date | null
-    atendimentoId: number | null
+    atendimentoId: string | null
   }
 
   export type FormularioPreenchidoMaxAggregateOutputType = {
     id: number | null
     tipoFormulario: $Enums.TipoFormulario | null
     dataCriacao: Date | null
-    atendimentoId: number | null
+    atendimentoId: string | null
   }
 
   export type FormularioPreenchidoCountAggregateOutputType = {
@@ -7970,12 +7838,10 @@ export namespace Prisma {
 
   export type FormularioPreenchidoAvgAggregateInputType = {
     id?: true
-    atendimentoId?: true
   }
 
   export type FormularioPreenchidoSumAggregateInputType = {
     id?: true
-    atendimentoId?: true
   }
 
   export type FormularioPreenchidoMinAggregateInputType = {
@@ -8092,7 +7958,7 @@ export namespace Prisma {
     tipoFormulario: $Enums.TipoFormulario
     dadosFormulario: JsonValue
     dataCriacao: Date
-    atendimentoId: number
+    atendimentoId: string
     _count: FormularioPreenchidoCountAggregateOutputType | null
     _avg: FormularioPreenchidoAvgAggregateOutputType | null
     _sum: FormularioPreenchidoSumAggregateOutputType | null
@@ -8170,7 +8036,7 @@ export namespace Prisma {
       tipoFormulario: $Enums.TipoFormulario
       dadosFormulario: Prisma.JsonValue
       dataCriacao: Date
-      atendimentoId: number
+      atendimentoId: string
     }, ExtArgs["result"]["formularioPreenchido"]>
     composites: {}
   }
@@ -8599,7 +8465,7 @@ export namespace Prisma {
     readonly tipoFormulario: FieldRef<"FormularioPreenchido", 'TipoFormulario'>
     readonly dadosFormulario: FieldRef<"FormularioPreenchido", 'Json'>
     readonly dataCriacao: FieldRef<"FormularioPreenchido", 'DateTime'>
-    readonly atendimentoId: FieldRef<"FormularioPreenchido", 'Int'>
+    readonly atendimentoId: FieldRef<"FormularioPreenchido", 'String'>
   }
     
 
@@ -9027,21 +8893,15 @@ export namespace Prisma {
   }
 
   export type DocumentoAvgAggregateOutputType = {
-    id: number | null
     tamanho: number | null
-    atendimentoId: number | null
-    operadorUploadId: number | null
   }
 
   export type DocumentoSumAggregateOutputType = {
-    id: number | null
     tamanho: number | null
-    atendimentoId: number | null
-    operadorUploadId: number | null
   }
 
   export type DocumentoMinAggregateOutputType = {
-    id: number | null
+    id: string | null
     nomeOriginal: string | null
     nomeArmazenamento: string | null
     tipo: string | null
@@ -9049,12 +8909,12 @@ export namespace Prisma {
     caminho: string | null
     tipoDocumento: $Enums.TipoDocumento | null
     dataCriacao: Date | null
-    atendimentoId: number | null
-    operadorUploadId: number | null
+    atendimentoId: string | null
+    operadorUploadId: string | null
   }
 
   export type DocumentoMaxAggregateOutputType = {
-    id: number | null
+    id: string | null
     nomeOriginal: string | null
     nomeArmazenamento: string | null
     tipo: string | null
@@ -9062,8 +8922,8 @@ export namespace Prisma {
     caminho: string | null
     tipoDocumento: $Enums.TipoDocumento | null
     dataCriacao: Date | null
-    atendimentoId: number | null
-    operadorUploadId: number | null
+    atendimentoId: string | null
+    operadorUploadId: string | null
   }
 
   export type DocumentoCountAggregateOutputType = {
@@ -9082,17 +8942,11 @@ export namespace Prisma {
 
 
   export type DocumentoAvgAggregateInputType = {
-    id?: true
     tamanho?: true
-    atendimentoId?: true
-    operadorUploadId?: true
   }
 
   export type DocumentoSumAggregateInputType = {
-    id?: true
     tamanho?: true
-    atendimentoId?: true
-    operadorUploadId?: true
   }
 
   export type DocumentoMinAggregateInputType = {
@@ -9222,7 +9076,7 @@ export namespace Prisma {
   }
 
   export type DocumentoGroupByOutputType = {
-    id: number
+    id: string
     nomeOriginal: string
     nomeArmazenamento: string
     tipo: string
@@ -9230,8 +9084,8 @@ export namespace Prisma {
     caminho: string
     tipoDocumento: $Enums.TipoDocumento
     dataCriacao: Date
-    atendimentoId: number
-    operadorUploadId: number
+    atendimentoId: string
+    operadorUploadId: string
     _count: DocumentoCountAggregateOutputType | null
     _avg: DocumentoAvgAggregateOutputType | null
     _sum: DocumentoSumAggregateOutputType | null
@@ -9332,7 +9186,7 @@ export namespace Prisma {
       operadorUpload: Prisma.$UserPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
-      id: number
+      id: string
       nomeOriginal: string
       nomeArmazenamento: string
       tipo: string
@@ -9340,8 +9194,8 @@ export namespace Prisma {
       caminho: string
       tipoDocumento: $Enums.TipoDocumento
       dataCriacao: Date
-      atendimentoId: number
-      operadorUploadId: number
+      atendimentoId: string
+      operadorUploadId: string
     }, ExtArgs["result"]["documento"]>
     composites: {}
   }
@@ -9767,7 +9621,7 @@ export namespace Prisma {
    * Fields of the Documento model
    */
   interface DocumentoFieldRefs {
-    readonly id: FieldRef<"Documento", 'Int'>
+    readonly id: FieldRef<"Documento", 'String'>
     readonly nomeOriginal: FieldRef<"Documento", 'String'>
     readonly nomeArmazenamento: FieldRef<"Documento", 'String'>
     readonly tipo: FieldRef<"Documento", 'String'>
@@ -9775,8 +9629,8 @@ export namespace Prisma {
     readonly caminho: FieldRef<"Documento", 'String'>
     readonly tipoDocumento: FieldRef<"Documento", 'TipoDocumento'>
     readonly dataCriacao: FieldRef<"Documento", 'DateTime'>
-    readonly atendimentoId: FieldRef<"Documento", 'Int'>
-    readonly operadorUploadId: FieldRef<"Documento", 'Int'>
+    readonly atendimentoId: FieldRef<"Documento", 'String'>
+    readonly operadorUploadId: FieldRef<"Documento", 'String'>
   }
     
 
@@ -12489,21 +12343,19 @@ export namespace Prisma {
   }
 
   export type AssistidoAvgAggregateOutputType = {
-    id: number | null
     tipoAtendimentoId: number | null
     tipoServicoAtendimentoId: number | null
     tipoPrioridadeId: number | null
   }
 
   export type AssistidoSumAggregateOutputType = {
-    id: number | null
     tipoAtendimentoId: number | null
     tipoServicoAtendimentoId: number | null
     tipoPrioridadeId: number | null
   }
 
   export type AssistidoMinAggregateOutputType = {
-    id: number | null
+    id: string | null
     nomeCompleto: string | null
     nomeSocial: string | null
     cpf: string | null
@@ -12516,7 +12368,7 @@ export namespace Prisma {
   }
 
   export type AssistidoMaxAggregateOutputType = {
-    id: number | null
+    id: string | null
     nomeCompleto: string | null
     nomeSocial: string | null
     cpf: string | null
@@ -12544,14 +12396,12 @@ export namespace Prisma {
 
 
   export type AssistidoAvgAggregateInputType = {
-    id?: true
     tipoAtendimentoId?: true
     tipoServicoAtendimentoId?: true
     tipoPrioridadeId?: true
   }
 
   export type AssistidoSumAggregateInputType = {
-    id?: true
     tipoAtendimentoId?: true
     tipoServicoAtendimentoId?: true
     tipoPrioridadeId?: true
@@ -12684,7 +12534,7 @@ export namespace Prisma {
   }
 
   export type AssistidoGroupByOutputType = {
-    id: number
+    id: string
     nomeCompleto: string
     nomeSocial: string | null
     cpf: string
@@ -12801,7 +12651,7 @@ export namespace Prisma {
       tipoPrioridade: Prisma.$TipoPrioridadePayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
-      id: number
+      id: string
       nomeCompleto: string
       nomeSocial: string | null
       cpf: string
@@ -13237,7 +13087,7 @@ export namespace Prisma {
    * Fields of the Assistido model
    */
   interface AssistidoFieldRefs {
-    readonly id: FieldRef<"Assistido", 'Int'>
+    readonly id: FieldRef<"Assistido", 'String'>
     readonly nomeCompleto: FieldRef<"Assistido", 'String'>
     readonly nomeSocial: FieldRef<"Assistido", 'String'>
     readonly cpf: FieldRef<"Assistido", 'String'>
@@ -15832,27 +15682,17 @@ export namespace Prisma {
 
   export type AggregateProfissao = {
     _count: ProfissaoCountAggregateOutputType | null
-    _avg: ProfissaoAvgAggregateOutputType | null
-    _sum: ProfissaoSumAggregateOutputType | null
     _min: ProfissaoMinAggregateOutputType | null
     _max: ProfissaoMaxAggregateOutputType | null
   }
 
-  export type ProfissaoAvgAggregateOutputType = {
-    id: number | null
-  }
-
-  export type ProfissaoSumAggregateOutputType = {
-    id: number | null
-  }
-
   export type ProfissaoMinAggregateOutputType = {
-    id: number | null
+    id: string | null
     descricao: string | null
   }
 
   export type ProfissaoMaxAggregateOutputType = {
-    id: number | null
+    id: string | null
     descricao: string | null
   }
 
@@ -15862,14 +15702,6 @@ export namespace Prisma {
     _all: number
   }
 
-
-  export type ProfissaoAvgAggregateInputType = {
-    id?: true
-  }
-
-  export type ProfissaoSumAggregateInputType = {
-    id?: true
-  }
 
   export type ProfissaoMinAggregateInputType = {
     id?: true
@@ -15925,18 +15757,6 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Select which fields to average
-    **/
-    _avg?: ProfissaoAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: ProfissaoSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
      * Select which fields to find the minimum value
     **/
     _min?: ProfissaoMinAggregateInputType
@@ -15967,18 +15787,14 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: ProfissaoCountAggregateInputType | true
-    _avg?: ProfissaoAvgAggregateInputType
-    _sum?: ProfissaoSumAggregateInputType
     _min?: ProfissaoMinAggregateInputType
     _max?: ProfissaoMaxAggregateInputType
   }
 
   export type ProfissaoGroupByOutputType = {
-    id: number
+    id: string
     descricao: string
     _count: ProfissaoCountAggregateOutputType | null
-    _avg: ProfissaoAvgAggregateOutputType | null
-    _sum: ProfissaoSumAggregateOutputType | null
     _min: ProfissaoMinAggregateOutputType | null
     _max: ProfissaoMaxAggregateOutputType | null
   }
@@ -16033,7 +15849,7 @@ export namespace Prisma {
       atendimentos: Prisma.$AtendimentoPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
-      id: number
+      id: string
       descricao: string
     }, ExtArgs["result"]["profissao"]>
     composites: {}
@@ -16459,7 +16275,7 @@ export namespace Prisma {
    * Fields of the Profissao model
    */
   interface ProfissaoFieldRefs {
-    readonly id: FieldRef<"Profissao", 'Int'>
+    readonly id: FieldRef<"Profissao", 'String'>
     readonly descricao: FieldRef<"Profissao", 'String'>
   }
     
@@ -17969,31 +17785,27 @@ export namespace Prisma {
   }
 
   export type MembroFamiliarAvgAggregateOutputType = {
-    id: number | null
     rendaMensal: number | null
-    atendimentoId: number | null
   }
 
   export type MembroFamiliarSumAggregateOutputType = {
-    id: number | null
     rendaMensal: number | null
-    atendimentoId: number | null
   }
 
   export type MembroFamiliarMinAggregateOutputType = {
-    id: number | null
+    id: string | null
     nomeCompleto: string | null
     cpf: string | null
     rendaMensal: number | null
-    atendimentoId: number | null
+    atendimentoId: string | null
   }
 
   export type MembroFamiliarMaxAggregateOutputType = {
-    id: number | null
+    id: string | null
     nomeCompleto: string | null
     cpf: string | null
     rendaMensal: number | null
-    atendimentoId: number | null
+    atendimentoId: string | null
   }
 
   export type MembroFamiliarCountAggregateOutputType = {
@@ -18007,15 +17819,11 @@ export namespace Prisma {
 
 
   export type MembroFamiliarAvgAggregateInputType = {
-    id?: true
     rendaMensal?: true
-    atendimentoId?: true
   }
 
   export type MembroFamiliarSumAggregateInputType = {
-    id?: true
     rendaMensal?: true
-    atendimentoId?: true
   }
 
   export type MembroFamiliarMinAggregateInputType = {
@@ -18130,11 +17938,11 @@ export namespace Prisma {
   }
 
   export type MembroFamiliarGroupByOutputType = {
-    id: number
+    id: string
     nomeCompleto: string
     cpf: string
     rendaMensal: number
-    atendimentoId: number
+    atendimentoId: string
     _count: MembroFamiliarCountAggregateOutputType | null
     _avg: MembroFamiliarAvgAggregateOutputType | null
     _sum: MembroFamiliarSumAggregateOutputType | null
@@ -18208,11 +18016,11 @@ export namespace Prisma {
       atendimento: Prisma.$AtendimentoPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
-      id: number
+      id: string
       nomeCompleto: string
       cpf: string
       rendaMensal: number
-      atendimentoId: number
+      atendimentoId: string
     }, ExtArgs["result"]["membroFamiliar"]>
     composites: {}
   }
@@ -18637,11 +18445,11 @@ export namespace Prisma {
    * Fields of the MembroFamiliar model
    */
   interface MembroFamiliarFieldRefs {
-    readonly id: FieldRef<"MembroFamiliar", 'Int'>
+    readonly id: FieldRef<"MembroFamiliar", 'String'>
     readonly nomeCompleto: FieldRef<"MembroFamiliar", 'String'>
     readonly cpf: FieldRef<"MembroFamiliar", 'String'>
     readonly rendaMensal: FieldRef<"MembroFamiliar", 'Float'>
-    readonly atendimentoId: FieldRef<"MembroFamiliar", 'Int'>
+    readonly atendimentoId: FieldRef<"MembroFamiliar", 'String'>
   }
     
 
@@ -22437,20 +22245,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Int'
-   */
-  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
-    
-
-
-  /**
-   * Reference to a field of type 'Int[]'
-   */
-  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
-    
-
-
-  /**
    * Reference to a field of type 'String'
    */
   export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String'>
@@ -22510,6 +22304,20 @@ export namespace Prisma {
    * Reference to a field of type 'StatusFilaAtendimento[]'
    */
   export type ListEnumStatusFilaAtendimentoFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'StatusFilaAtendimento[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Int'
+   */
+  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+    
+
+
+  /**
+   * Reference to a field of type 'Int[]'
+   */
+  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
     
 
 
@@ -22590,7 +22398,7 @@ export namespace Prisma {
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
-    id?: IntFilter<"User"> | number
+    id?: StringFilter<"User"> | string
     email?: StringFilter<"User"> | string
     nome?: StringFilter<"User"> | string
     senha?: StringFilter<"User"> | string
@@ -22618,7 +22426,7 @@ export namespace Prisma {
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
+    id?: string
     email?: string
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
@@ -22643,17 +22451,15 @@ export namespace Prisma {
     aprovado?: SortOrder
     dataCadastro?: SortOrder
     _count?: UserCountOrderByAggregateInput
-    _avg?: UserAvgOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
     _min?: UserMinOrderByAggregateInput
-    _sum?: UserSumOrderByAggregateInput
   }
 
   export type UserScalarWhereWithAggregatesInput = {
     AND?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
     OR?: UserScalarWhereWithAggregatesInput[]
     NOT?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"User"> | number
+    id?: StringWithAggregatesFilter<"User"> | string
     email?: StringWithAggregatesFilter<"User"> | string
     nome?: StringWithAggregatesFilter<"User"> | string
     senha?: StringWithAggregatesFilter<"User"> | string
@@ -22666,7 +22472,7 @@ export namespace Prisma {
     AND?: FilaAtendimentoWhereInput | FilaAtendimentoWhereInput[]
     OR?: FilaAtendimentoWhereInput[]
     NOT?: FilaAtendimentoWhereInput | FilaAtendimentoWhereInput[]
-    id?: IntFilter<"FilaAtendimento"> | number
+    id?: StringFilter<"FilaAtendimento"> | string
     nomeCompleto?: StringFilter<"FilaAtendimento"> | string
     nomeSocial?: StringNullableFilter<"FilaAtendimento"> | string | null
     cpf?: StringFilter<"FilaAtendimento"> | string
@@ -22676,8 +22482,8 @@ export namespace Prisma {
     dataEntrada?: DateTimeFilter<"FilaAtendimento"> | Date | string
     dataInicio?: DateTimeNullableFilter<"FilaAtendimento"> | Date | string | null
     dataFim?: DateTimeNullableFilter<"FilaAtendimento"> | Date | string | null
-    operadorTriagemId?: IntFilter<"FilaAtendimento"> | number
-    operadorAtendimentoId?: IntNullableFilter<"FilaAtendimento"> | number | null
+    operadorTriagemId?: StringFilter<"FilaAtendimento"> | string
+    operadorAtendimentoId?: StringNullableFilter<"FilaAtendimento"> | string | null
     operadorTriagem?: XOR<UserScalarRelationFilter, UserWhereInput>
     operadorAtendimento?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     atendimento?: XOR<AtendimentoNullableScalarRelationFilter, AtendimentoWhereInput> | null
@@ -22702,7 +22508,7 @@ export namespace Prisma {
   }
 
   export type FilaAtendimentoWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
+    id?: string
     AND?: FilaAtendimentoWhereInput | FilaAtendimentoWhereInput[]
     OR?: FilaAtendimentoWhereInput[]
     NOT?: FilaAtendimentoWhereInput | FilaAtendimentoWhereInput[]
@@ -22715,8 +22521,8 @@ export namespace Prisma {
     dataEntrada?: DateTimeFilter<"FilaAtendimento"> | Date | string
     dataInicio?: DateTimeNullableFilter<"FilaAtendimento"> | Date | string | null
     dataFim?: DateTimeNullableFilter<"FilaAtendimento"> | Date | string | null
-    operadorTriagemId?: IntFilter<"FilaAtendimento"> | number
-    operadorAtendimentoId?: IntNullableFilter<"FilaAtendimento"> | number | null
+    operadorTriagemId?: StringFilter<"FilaAtendimento"> | string
+    operadorAtendimentoId?: StringNullableFilter<"FilaAtendimento"> | string | null
     operadorTriagem?: XOR<UserScalarRelationFilter, UserWhereInput>
     operadorAtendimento?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     atendimento?: XOR<AtendimentoNullableScalarRelationFilter, AtendimentoWhereInput> | null
@@ -22736,17 +22542,15 @@ export namespace Prisma {
     operadorTriagemId?: SortOrder
     operadorAtendimentoId?: SortOrderInput | SortOrder
     _count?: FilaAtendimentoCountOrderByAggregateInput
-    _avg?: FilaAtendimentoAvgOrderByAggregateInput
     _max?: FilaAtendimentoMaxOrderByAggregateInput
     _min?: FilaAtendimentoMinOrderByAggregateInput
-    _sum?: FilaAtendimentoSumOrderByAggregateInput
   }
 
   export type FilaAtendimentoScalarWhereWithAggregatesInput = {
     AND?: FilaAtendimentoScalarWhereWithAggregatesInput | FilaAtendimentoScalarWhereWithAggregatesInput[]
     OR?: FilaAtendimentoScalarWhereWithAggregatesInput[]
     NOT?: FilaAtendimentoScalarWhereWithAggregatesInput | FilaAtendimentoScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"FilaAtendimento"> | number
+    id?: StringWithAggregatesFilter<"FilaAtendimento"> | string
     nomeCompleto?: StringWithAggregatesFilter<"FilaAtendimento"> | string
     nomeSocial?: StringNullableWithAggregatesFilter<"FilaAtendimento"> | string | null
     cpf?: StringWithAggregatesFilter<"FilaAtendimento"> | string
@@ -22756,15 +22560,15 @@ export namespace Prisma {
     dataEntrada?: DateTimeWithAggregatesFilter<"FilaAtendimento"> | Date | string
     dataInicio?: DateTimeNullableWithAggregatesFilter<"FilaAtendimento"> | Date | string | null
     dataFim?: DateTimeNullableWithAggregatesFilter<"FilaAtendimento"> | Date | string | null
-    operadorTriagemId?: IntWithAggregatesFilter<"FilaAtendimento"> | number
-    operadorAtendimentoId?: IntNullableWithAggregatesFilter<"FilaAtendimento"> | number | null
+    operadorTriagemId?: StringWithAggregatesFilter<"FilaAtendimento"> | string
+    operadorAtendimentoId?: StringNullableWithAggregatesFilter<"FilaAtendimento"> | string | null
   }
 
   export type AtendimentoWhereInput = {
     AND?: AtendimentoWhereInput | AtendimentoWhereInput[]
     OR?: AtendimentoWhereInput[]
     NOT?: AtendimentoWhereInput | AtendimentoWhereInput[]
-    id?: IntFilter<"Atendimento"> | number
+    id?: StringFilter<"Atendimento"> | string
     capacidadeCivil?: BoolFilter<"Atendimento"> | boolean
     cep?: StringFilter<"Atendimento"> | string
     endereco?: StringFilter<"Atendimento"> | string
@@ -22779,12 +22583,12 @@ export namespace Prisma {
     processosAndamento?: EnumProcessosAndamentoFilter<"Atendimento"> | $Enums.ProcessosAndamento
     tipoAtendimentoId?: IntFilter<"Atendimento"> | number
     estadoCivilId?: IntFilter<"Atendimento"> | number
-    profissaoId?: IntFilter<"Atendimento"> | number
+    profissaoId?: StringFilter<"Atendimento"> | string
     tipoDomicilioId?: IntFilter<"Atendimento"> | number
     tipoDemandaPrevidenciariaId?: IntFilter<"Atendimento"> | number
     competenciaJudicialId?: IntFilter<"Atendimento"> | number
-    operadorId?: IntFilter<"Atendimento"> | number
-    filaId?: IntNullableFilter<"Atendimento"> | number | null
+    operadorId?: StringFilter<"Atendimento"> | string
+    filaId?: StringNullableFilter<"Atendimento"> | string | null
     tipoAtendimento?: XOR<TipoAtendimentoScalarRelationFilter, TipoAtendimentoWhereInput>
     estadoCivil?: XOR<EstadoCivilScalarRelationFilter, EstadoCivilWhereInput>
     profissao?: XOR<ProfissaoScalarRelationFilter, ProfissaoWhereInput>
@@ -22836,8 +22640,8 @@ export namespace Prisma {
   }
 
   export type AtendimentoWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
-    filaId?: number
+    id?: string
+    filaId?: string
     AND?: AtendimentoWhereInput | AtendimentoWhereInput[]
     OR?: AtendimentoWhereInput[]
     NOT?: AtendimentoWhereInput | AtendimentoWhereInput[]
@@ -22855,11 +22659,11 @@ export namespace Prisma {
     processosAndamento?: EnumProcessosAndamentoFilter<"Atendimento"> | $Enums.ProcessosAndamento
     tipoAtendimentoId?: IntFilter<"Atendimento"> | number
     estadoCivilId?: IntFilter<"Atendimento"> | number
-    profissaoId?: IntFilter<"Atendimento"> | number
+    profissaoId?: StringFilter<"Atendimento"> | string
     tipoDomicilioId?: IntFilter<"Atendimento"> | number
     tipoDemandaPrevidenciariaId?: IntFilter<"Atendimento"> | number
     competenciaJudicialId?: IntFilter<"Atendimento"> | number
-    operadorId?: IntFilter<"Atendimento"> | number
+    operadorId?: StringFilter<"Atendimento"> | string
     tipoAtendimento?: XOR<TipoAtendimentoScalarRelationFilter, TipoAtendimentoWhereInput>
     estadoCivil?: XOR<EstadoCivilScalarRelationFilter, EstadoCivilWhereInput>
     profissao?: XOR<ProfissaoScalarRelationFilter, ProfissaoWhereInput>
@@ -22907,7 +22711,7 @@ export namespace Prisma {
     AND?: AtendimentoScalarWhereWithAggregatesInput | AtendimentoScalarWhereWithAggregatesInput[]
     OR?: AtendimentoScalarWhereWithAggregatesInput[]
     NOT?: AtendimentoScalarWhereWithAggregatesInput | AtendimentoScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"Atendimento"> | number
+    id?: StringWithAggregatesFilter<"Atendimento"> | string
     capacidadeCivil?: BoolWithAggregatesFilter<"Atendimento"> | boolean
     cep?: StringWithAggregatesFilter<"Atendimento"> | string
     endereco?: StringWithAggregatesFilter<"Atendimento"> | string
@@ -22922,26 +22726,26 @@ export namespace Prisma {
     processosAndamento?: EnumProcessosAndamentoWithAggregatesFilter<"Atendimento"> | $Enums.ProcessosAndamento
     tipoAtendimentoId?: IntWithAggregatesFilter<"Atendimento"> | number
     estadoCivilId?: IntWithAggregatesFilter<"Atendimento"> | number
-    profissaoId?: IntWithAggregatesFilter<"Atendimento"> | number
+    profissaoId?: StringWithAggregatesFilter<"Atendimento"> | string
     tipoDomicilioId?: IntWithAggregatesFilter<"Atendimento"> | number
     tipoDemandaPrevidenciariaId?: IntWithAggregatesFilter<"Atendimento"> | number
     competenciaJudicialId?: IntWithAggregatesFilter<"Atendimento"> | number
-    operadorId?: IntWithAggregatesFilter<"Atendimento"> | number
-    filaId?: IntNullableWithAggregatesFilter<"Atendimento"> | number | null
+    operadorId?: StringWithAggregatesFilter<"Atendimento"> | string
+    filaId?: StringNullableWithAggregatesFilter<"Atendimento"> | string | null
   }
 
   export type ProcessoWhereInput = {
     AND?: ProcessoWhereInput | ProcessoWhereInput[]
     OR?: ProcessoWhereInput[]
     NOT?: ProcessoWhereInput | ProcessoWhereInput[]
-    id?: IntFilter<"Processo"> | number
+    id?: StringFilter<"Processo"> | string
     numeroProcesso?: StringFilter<"Processo"> | string
     resultado?: StringFilter<"Processo"> | string
     resultadoDetalhado?: StringNullableFilter<"Processo"> | string | null
     valoresAtrasados?: StringNullableFilter<"Processo"> | string | null
     beneficios?: StringNullableFilter<"Processo"> | string | null
     dataAtualizacao?: DateTimeFilter<"Processo"> | Date | string
-    atendimentoId?: IntFilter<"Processo"> | number
+    atendimentoId?: StringFilter<"Processo"> | string
     atendimento?: XOR<AtendimentoScalarRelationFilter, AtendimentoWhereInput>
   }
 
@@ -22958,8 +22762,8 @@ export namespace Prisma {
   }
 
   export type ProcessoWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
-    atendimentoId?: number
+    id?: string
+    atendimentoId?: string
     AND?: ProcessoWhereInput | ProcessoWhereInput[]
     OR?: ProcessoWhereInput[]
     NOT?: ProcessoWhereInput | ProcessoWhereInput[]
@@ -22982,24 +22786,22 @@ export namespace Prisma {
     dataAtualizacao?: SortOrder
     atendimentoId?: SortOrder
     _count?: ProcessoCountOrderByAggregateInput
-    _avg?: ProcessoAvgOrderByAggregateInput
     _max?: ProcessoMaxOrderByAggregateInput
     _min?: ProcessoMinOrderByAggregateInput
-    _sum?: ProcessoSumOrderByAggregateInput
   }
 
   export type ProcessoScalarWhereWithAggregatesInput = {
     AND?: ProcessoScalarWhereWithAggregatesInput | ProcessoScalarWhereWithAggregatesInput[]
     OR?: ProcessoScalarWhereWithAggregatesInput[]
     NOT?: ProcessoScalarWhereWithAggregatesInput | ProcessoScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"Processo"> | number
+    id?: StringWithAggregatesFilter<"Processo"> | string
     numeroProcesso?: StringWithAggregatesFilter<"Processo"> | string
     resultado?: StringWithAggregatesFilter<"Processo"> | string
     resultadoDetalhado?: StringNullableWithAggregatesFilter<"Processo"> | string | null
     valoresAtrasados?: StringNullableWithAggregatesFilter<"Processo"> | string | null
     beneficios?: StringNullableWithAggregatesFilter<"Processo"> | string | null
     dataAtualizacao?: DateTimeWithAggregatesFilter<"Processo"> | Date | string
-    atendimentoId?: IntWithAggregatesFilter<"Processo"> | number
+    atendimentoId?: StringWithAggregatesFilter<"Processo"> | string
   }
 
   export type FormularioPreenchidoWhereInput = {
@@ -23010,7 +22812,7 @@ export namespace Prisma {
     tipoFormulario?: EnumTipoFormularioFilter<"FormularioPreenchido"> | $Enums.TipoFormulario
     dadosFormulario?: JsonFilter<"FormularioPreenchido">
     dataCriacao?: DateTimeFilter<"FormularioPreenchido"> | Date | string
-    atendimentoId?: IntFilter<"FormularioPreenchido"> | number
+    atendimentoId?: StringFilter<"FormularioPreenchido"> | string
     atendimento?: XOR<AtendimentoScalarRelationFilter, AtendimentoWhereInput>
   }
 
@@ -23031,7 +22833,7 @@ export namespace Prisma {
     tipoFormulario?: EnumTipoFormularioFilter<"FormularioPreenchido"> | $Enums.TipoFormulario
     dadosFormulario?: JsonFilter<"FormularioPreenchido">
     dataCriacao?: DateTimeFilter<"FormularioPreenchido"> | Date | string
-    atendimentoId?: IntFilter<"FormularioPreenchido"> | number
+    atendimentoId?: StringFilter<"FormularioPreenchido"> | string
     atendimento?: XOR<AtendimentoScalarRelationFilter, AtendimentoWhereInput>
   }, "id">
 
@@ -23056,14 +22858,14 @@ export namespace Prisma {
     tipoFormulario?: EnumTipoFormularioWithAggregatesFilter<"FormularioPreenchido"> | $Enums.TipoFormulario
     dadosFormulario?: JsonWithAggregatesFilter<"FormularioPreenchido">
     dataCriacao?: DateTimeWithAggregatesFilter<"FormularioPreenchido"> | Date | string
-    atendimentoId?: IntWithAggregatesFilter<"FormularioPreenchido"> | number
+    atendimentoId?: StringWithAggregatesFilter<"FormularioPreenchido"> | string
   }
 
   export type DocumentoWhereInput = {
     AND?: DocumentoWhereInput | DocumentoWhereInput[]
     OR?: DocumentoWhereInput[]
     NOT?: DocumentoWhereInput | DocumentoWhereInput[]
-    id?: IntFilter<"Documento"> | number
+    id?: StringFilter<"Documento"> | string
     nomeOriginal?: StringFilter<"Documento"> | string
     nomeArmazenamento?: StringFilter<"Documento"> | string
     tipo?: StringFilter<"Documento"> | string
@@ -23071,8 +22873,8 @@ export namespace Prisma {
     caminho?: StringFilter<"Documento"> | string
     tipoDocumento?: EnumTipoDocumentoFilter<"Documento"> | $Enums.TipoDocumento
     dataCriacao?: DateTimeFilter<"Documento"> | Date | string
-    atendimentoId?: IntFilter<"Documento"> | number
-    operadorUploadId?: IntFilter<"Documento"> | number
+    atendimentoId?: StringFilter<"Documento"> | string
+    operadorUploadId?: StringFilter<"Documento"> | string
     atendimento?: XOR<AtendimentoScalarRelationFilter, AtendimentoWhereInput>
     operadorUpload?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
@@ -23093,7 +22895,7 @@ export namespace Prisma {
   }
 
   export type DocumentoWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
+    id?: string
     AND?: DocumentoWhereInput | DocumentoWhereInput[]
     OR?: DocumentoWhereInput[]
     NOT?: DocumentoWhereInput | DocumentoWhereInput[]
@@ -23104,8 +22906,8 @@ export namespace Prisma {
     caminho?: StringFilter<"Documento"> | string
     tipoDocumento?: EnumTipoDocumentoFilter<"Documento"> | $Enums.TipoDocumento
     dataCriacao?: DateTimeFilter<"Documento"> | Date | string
-    atendimentoId?: IntFilter<"Documento"> | number
-    operadorUploadId?: IntFilter<"Documento"> | number
+    atendimentoId?: StringFilter<"Documento"> | string
+    operadorUploadId?: StringFilter<"Documento"> | string
     atendimento?: XOR<AtendimentoScalarRelationFilter, AtendimentoWhereInput>
     operadorUpload?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
@@ -23132,7 +22934,7 @@ export namespace Prisma {
     AND?: DocumentoScalarWhereWithAggregatesInput | DocumentoScalarWhereWithAggregatesInput[]
     OR?: DocumentoScalarWhereWithAggregatesInput[]
     NOT?: DocumentoScalarWhereWithAggregatesInput | DocumentoScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"Documento"> | number
+    id?: StringWithAggregatesFilter<"Documento"> | string
     nomeOriginal?: StringWithAggregatesFilter<"Documento"> | string
     nomeArmazenamento?: StringWithAggregatesFilter<"Documento"> | string
     tipo?: StringWithAggregatesFilter<"Documento"> | string
@@ -23140,8 +22942,8 @@ export namespace Prisma {
     caminho?: StringWithAggregatesFilter<"Documento"> | string
     tipoDocumento?: EnumTipoDocumentoWithAggregatesFilter<"Documento"> | $Enums.TipoDocumento
     dataCriacao?: DateTimeWithAggregatesFilter<"Documento"> | Date | string
-    atendimentoId?: IntWithAggregatesFilter<"Documento"> | number
-    operadorUploadId?: IntWithAggregatesFilter<"Documento"> | number
+    atendimentoId?: StringWithAggregatesFilter<"Documento"> | string
+    operadorUploadId?: StringWithAggregatesFilter<"Documento"> | string
   }
 
   export type TipoAtendimentoWhereInput = {
@@ -23254,7 +23056,7 @@ export namespace Prisma {
     AND?: AssistidoWhereInput | AssistidoWhereInput[]
     OR?: AssistidoWhereInput[]
     NOT?: AssistidoWhereInput | AssistidoWhereInput[]
-    id?: IntFilter<"Assistido"> | number
+    id?: StringFilter<"Assistido"> | string
     nomeCompleto?: StringFilter<"Assistido"> | string
     nomeSocial?: StringNullableFilter<"Assistido"> | string | null
     cpf?: StringFilter<"Assistido"> | string
@@ -23286,7 +23088,7 @@ export namespace Prisma {
   }
 
   export type AssistidoWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
+    id?: string
     AND?: AssistidoWhereInput | AssistidoWhereInput[]
     OR?: AssistidoWhereInput[]
     NOT?: AssistidoWhereInput | AssistidoWhereInput[]
@@ -23326,7 +23128,7 @@ export namespace Prisma {
     AND?: AssistidoScalarWhereWithAggregatesInput | AssistidoScalarWhereWithAggregatesInput[]
     OR?: AssistidoScalarWhereWithAggregatesInput[]
     NOT?: AssistidoScalarWhereWithAggregatesInput | AssistidoScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"Assistido"> | number
+    id?: StringWithAggregatesFilter<"Assistido"> | string
     nomeCompleto?: StringWithAggregatesFilter<"Assistido"> | string
     nomeSocial?: StringNullableWithAggregatesFilter<"Assistido"> | string | null
     cpf?: StringWithAggregatesFilter<"Assistido"> | string
@@ -23434,7 +23236,7 @@ export namespace Prisma {
     AND?: ProfissaoWhereInput | ProfissaoWhereInput[]
     OR?: ProfissaoWhereInput[]
     NOT?: ProfissaoWhereInput | ProfissaoWhereInput[]
-    id?: IntFilter<"Profissao"> | number
+    id?: StringFilter<"Profissao"> | string
     descricao?: StringFilter<"Profissao"> | string
     atendimentos?: AtendimentoListRelationFilter
   }
@@ -23446,7 +23248,7 @@ export namespace Prisma {
   }
 
   export type ProfissaoWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
+    id?: string
     AND?: ProfissaoWhereInput | ProfissaoWhereInput[]
     OR?: ProfissaoWhereInput[]
     NOT?: ProfissaoWhereInput | ProfissaoWhereInput[]
@@ -23458,17 +23260,15 @@ export namespace Prisma {
     id?: SortOrder
     descricao?: SortOrder
     _count?: ProfissaoCountOrderByAggregateInput
-    _avg?: ProfissaoAvgOrderByAggregateInput
     _max?: ProfissaoMaxOrderByAggregateInput
     _min?: ProfissaoMinOrderByAggregateInput
-    _sum?: ProfissaoSumOrderByAggregateInput
   }
 
   export type ProfissaoScalarWhereWithAggregatesInput = {
     AND?: ProfissaoScalarWhereWithAggregatesInput | ProfissaoScalarWhereWithAggregatesInput[]
     OR?: ProfissaoScalarWhereWithAggregatesInput[]
     NOT?: ProfissaoScalarWhereWithAggregatesInput | ProfissaoScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"Profissao"> | number
+    id?: StringWithAggregatesFilter<"Profissao"> | string
     descricao?: StringWithAggregatesFilter<"Profissao"> | string
   }
 
@@ -23518,11 +23318,11 @@ export namespace Prisma {
     AND?: MembroFamiliarWhereInput | MembroFamiliarWhereInput[]
     OR?: MembroFamiliarWhereInput[]
     NOT?: MembroFamiliarWhereInput | MembroFamiliarWhereInput[]
-    id?: IntFilter<"MembroFamiliar"> | number
+    id?: StringFilter<"MembroFamiliar"> | string
     nomeCompleto?: StringFilter<"MembroFamiliar"> | string
     cpf?: StringFilter<"MembroFamiliar"> | string
     rendaMensal?: FloatFilter<"MembroFamiliar"> | number
-    atendimentoId?: IntFilter<"MembroFamiliar"> | number
+    atendimentoId?: StringFilter<"MembroFamiliar"> | string
     atendimento?: XOR<AtendimentoScalarRelationFilter, AtendimentoWhereInput>
   }
 
@@ -23536,14 +23336,14 @@ export namespace Prisma {
   }
 
   export type MembroFamiliarWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
+    id?: string
     AND?: MembroFamiliarWhereInput | MembroFamiliarWhereInput[]
     OR?: MembroFamiliarWhereInput[]
     NOT?: MembroFamiliarWhereInput | MembroFamiliarWhereInput[]
     nomeCompleto?: StringFilter<"MembroFamiliar"> | string
     cpf?: StringFilter<"MembroFamiliar"> | string
     rendaMensal?: FloatFilter<"MembroFamiliar"> | number
-    atendimentoId?: IntFilter<"MembroFamiliar"> | number
+    atendimentoId?: StringFilter<"MembroFamiliar"> | string
     atendimento?: XOR<AtendimentoScalarRelationFilter, AtendimentoWhereInput>
   }, "id">
 
@@ -23564,11 +23364,11 @@ export namespace Prisma {
     AND?: MembroFamiliarScalarWhereWithAggregatesInput | MembroFamiliarScalarWhereWithAggregatesInput[]
     OR?: MembroFamiliarScalarWhereWithAggregatesInput[]
     NOT?: MembroFamiliarScalarWhereWithAggregatesInput | MembroFamiliarScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"MembroFamiliar"> | number
+    id?: StringWithAggregatesFilter<"MembroFamiliar"> | string
     nomeCompleto?: StringWithAggregatesFilter<"MembroFamiliar"> | string
     cpf?: StringWithAggregatesFilter<"MembroFamiliar"> | string
     rendaMensal?: FloatWithAggregatesFilter<"MembroFamiliar"> | number
-    atendimentoId?: IntWithAggregatesFilter<"MembroFamiliar"> | number
+    atendimentoId?: StringWithAggregatesFilter<"MembroFamiliar"> | string
   }
 
   export type TipoVulnerabilidadeWhereInput = {
@@ -23695,6 +23495,7 @@ export namespace Prisma {
   }
 
   export type UserCreateInput = {
+    id?: string
     email: string
     nome: string
     senha: string
@@ -23708,7 +23509,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateInput = {
-    id?: number
+    id?: string
     email: string
     nome: string
     senha: string
@@ -23722,6 +23523,7 @@ export namespace Prisma {
   }
 
   export type UserUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     nome?: StringFieldUpdateOperationsInput | string
     senha?: StringFieldUpdateOperationsInput | string
@@ -23735,7 +23537,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     nome?: StringFieldUpdateOperationsInput | string
     senha?: StringFieldUpdateOperationsInput | string
@@ -23749,7 +23551,7 @@ export namespace Prisma {
   }
 
   export type UserCreateManyInput = {
-    id?: number
+    id?: string
     email: string
     nome: string
     senha: string
@@ -23759,6 +23561,7 @@ export namespace Prisma {
   }
 
   export type UserUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     nome?: StringFieldUpdateOperationsInput | string
     senha?: StringFieldUpdateOperationsInput | string
@@ -23768,7 +23571,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     nome?: StringFieldUpdateOperationsInput | string
     senha?: StringFieldUpdateOperationsInput | string
@@ -23778,6 +23581,7 @@ export namespace Prisma {
   }
 
   export type FilaAtendimentoCreateInput = {
+    id?: string
     nomeCompleto: string
     nomeSocial?: string | null
     cpf: string
@@ -23793,7 +23597,7 @@ export namespace Prisma {
   }
 
   export type FilaAtendimentoUncheckedCreateInput = {
-    id?: number
+    id?: string
     nomeCompleto: string
     nomeSocial?: string | null
     cpf: string
@@ -23803,12 +23607,13 @@ export namespace Prisma {
     dataEntrada?: Date | string
     dataInicio?: Date | string | null
     dataFim?: Date | string | null
-    operadorTriagemId: number
-    operadorAtendimentoId?: number | null
+    operadorTriagemId: string
+    operadorAtendimentoId?: string | null
     atendimento?: AtendimentoUncheckedCreateNestedOneWithoutFilaInput
   }
 
   export type FilaAtendimentoUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
     nomeCompleto?: StringFieldUpdateOperationsInput | string
     nomeSocial?: NullableStringFieldUpdateOperationsInput | string | null
     cpf?: StringFieldUpdateOperationsInput | string
@@ -23824,7 +23629,7 @@ export namespace Prisma {
   }
 
   export type FilaAtendimentoUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     nomeCompleto?: StringFieldUpdateOperationsInput | string
     nomeSocial?: NullableStringFieldUpdateOperationsInput | string | null
     cpf?: StringFieldUpdateOperationsInput | string
@@ -23834,13 +23639,13 @@ export namespace Prisma {
     dataEntrada?: DateTimeFieldUpdateOperationsInput | Date | string
     dataInicio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     dataFim?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    operadorTriagemId?: IntFieldUpdateOperationsInput | number
-    operadorAtendimentoId?: NullableIntFieldUpdateOperationsInput | number | null
+    operadorTriagemId?: StringFieldUpdateOperationsInput | string
+    operadorAtendimentoId?: NullableStringFieldUpdateOperationsInput | string | null
     atendimento?: AtendimentoUncheckedUpdateOneWithoutFilaNestedInput
   }
 
   export type FilaAtendimentoCreateManyInput = {
-    id?: number
+    id?: string
     nomeCompleto: string
     nomeSocial?: string | null
     cpf: string
@@ -23850,11 +23655,12 @@ export namespace Prisma {
     dataEntrada?: Date | string
     dataInicio?: Date | string | null
     dataFim?: Date | string | null
-    operadorTriagemId: number
-    operadorAtendimentoId?: number | null
+    operadorTriagemId: string
+    operadorAtendimentoId?: string | null
   }
 
   export type FilaAtendimentoUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
     nomeCompleto?: StringFieldUpdateOperationsInput | string
     nomeSocial?: NullableStringFieldUpdateOperationsInput | string | null
     cpf?: StringFieldUpdateOperationsInput | string
@@ -23867,7 +23673,7 @@ export namespace Prisma {
   }
 
   export type FilaAtendimentoUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     nomeCompleto?: StringFieldUpdateOperationsInput | string
     nomeSocial?: NullableStringFieldUpdateOperationsInput | string | null
     cpf?: StringFieldUpdateOperationsInput | string
@@ -23877,11 +23683,12 @@ export namespace Prisma {
     dataEntrada?: DateTimeFieldUpdateOperationsInput | Date | string
     dataInicio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     dataFim?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    operadorTriagemId?: IntFieldUpdateOperationsInput | number
-    operadorAtendimentoId?: NullableIntFieldUpdateOperationsInput | number | null
+    operadorTriagemId?: StringFieldUpdateOperationsInput | string
+    operadorAtendimentoId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type AtendimentoCreateInput = {
+    id?: string
     capacidadeCivil: boolean
     cep: string
     endereco: string
@@ -23909,7 +23716,7 @@ export namespace Prisma {
   }
 
   export type AtendimentoUncheckedCreateInput = {
-    id?: number
+    id?: string
     capacidadeCivil: boolean
     cep: string
     endereco: string
@@ -23924,12 +23731,12 @@ export namespace Prisma {
     processosAndamento: $Enums.ProcessosAndamento
     tipoAtendimentoId: number
     estadoCivilId: number
-    profissaoId: number
+    profissaoId: string
     tipoDomicilioId: number
     tipoDemandaPrevidenciariaId: number
     competenciaJudicialId: number
-    operadorId: number
-    filaId?: number | null
+    operadorId: string
+    filaId?: string | null
     membrosFamiliares?: MembroFamiliarUncheckedCreateNestedManyWithoutAtendimentoInput
     processo?: ProcessoUncheckedCreateNestedOneWithoutAtendimentoInput
     formularios?: FormularioPreenchidoUncheckedCreateNestedManyWithoutAtendimentoInput
@@ -23937,6 +23744,7 @@ export namespace Prisma {
   }
 
   export type AtendimentoUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
     capacidadeCivil?: BoolFieldUpdateOperationsInput | boolean
     cep?: StringFieldUpdateOperationsInput | string
     endereco?: StringFieldUpdateOperationsInput | string
@@ -23964,7 +23772,7 @@ export namespace Prisma {
   }
 
   export type AtendimentoUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     capacidadeCivil?: BoolFieldUpdateOperationsInput | boolean
     cep?: StringFieldUpdateOperationsInput | string
     endereco?: StringFieldUpdateOperationsInput | string
@@ -23979,12 +23787,12 @@ export namespace Prisma {
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
     tipoAtendimentoId?: IntFieldUpdateOperationsInput | number
     estadoCivilId?: IntFieldUpdateOperationsInput | number
-    profissaoId?: IntFieldUpdateOperationsInput | number
+    profissaoId?: StringFieldUpdateOperationsInput | string
     tipoDomicilioId?: IntFieldUpdateOperationsInput | number
     tipoDemandaPrevidenciariaId?: IntFieldUpdateOperationsInput | number
     competenciaJudicialId?: IntFieldUpdateOperationsInput | number
-    operadorId?: IntFieldUpdateOperationsInput | number
-    filaId?: NullableIntFieldUpdateOperationsInput | number | null
+    operadorId?: StringFieldUpdateOperationsInput | string
+    filaId?: NullableStringFieldUpdateOperationsInput | string | null
     membrosFamiliares?: MembroFamiliarUncheckedUpdateManyWithoutAtendimentoNestedInput
     processo?: ProcessoUncheckedUpdateOneWithoutAtendimentoNestedInput
     formularios?: FormularioPreenchidoUncheckedUpdateManyWithoutAtendimentoNestedInput
@@ -23992,7 +23800,7 @@ export namespace Prisma {
   }
 
   export type AtendimentoCreateManyInput = {
-    id?: number
+    id?: string
     capacidadeCivil: boolean
     cep: string
     endereco: string
@@ -24007,15 +23815,16 @@ export namespace Prisma {
     processosAndamento: $Enums.ProcessosAndamento
     tipoAtendimentoId: number
     estadoCivilId: number
-    profissaoId: number
+    profissaoId: string
     tipoDomicilioId: number
     tipoDemandaPrevidenciariaId: number
     competenciaJudicialId: number
-    operadorId: number
-    filaId?: number | null
+    operadorId: string
+    filaId?: string | null
   }
 
   export type AtendimentoUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
     capacidadeCivil?: BoolFieldUpdateOperationsInput | boolean
     cep?: StringFieldUpdateOperationsInput | string
     endereco?: StringFieldUpdateOperationsInput | string
@@ -24031,7 +23840,7 @@ export namespace Prisma {
   }
 
   export type AtendimentoUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     capacidadeCivil?: BoolFieldUpdateOperationsInput | boolean
     cep?: StringFieldUpdateOperationsInput | string
     endereco?: StringFieldUpdateOperationsInput | string
@@ -24046,15 +23855,16 @@ export namespace Prisma {
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
     tipoAtendimentoId?: IntFieldUpdateOperationsInput | number
     estadoCivilId?: IntFieldUpdateOperationsInput | number
-    profissaoId?: IntFieldUpdateOperationsInput | number
+    profissaoId?: StringFieldUpdateOperationsInput | string
     tipoDomicilioId?: IntFieldUpdateOperationsInput | number
     tipoDemandaPrevidenciariaId?: IntFieldUpdateOperationsInput | number
     competenciaJudicialId?: IntFieldUpdateOperationsInput | number
-    operadorId?: IntFieldUpdateOperationsInput | number
-    filaId?: NullableIntFieldUpdateOperationsInput | number | null
+    operadorId?: StringFieldUpdateOperationsInput | string
+    filaId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ProcessoCreateInput = {
+    id?: string
     numeroProcesso: string
     resultado: string
     resultadoDetalhado?: string | null
@@ -24065,17 +23875,18 @@ export namespace Prisma {
   }
 
   export type ProcessoUncheckedCreateInput = {
-    id?: number
+    id?: string
     numeroProcesso: string
     resultado: string
     resultadoDetalhado?: string | null
     valoresAtrasados?: string | null
     beneficios?: string | null
     dataAtualizacao?: Date | string
-    atendimentoId: number
+    atendimentoId: string
   }
 
   export type ProcessoUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
     numeroProcesso?: StringFieldUpdateOperationsInput | string
     resultado?: StringFieldUpdateOperationsInput | string
     resultadoDetalhado?: NullableStringFieldUpdateOperationsInput | string | null
@@ -24086,28 +23897,29 @@ export namespace Prisma {
   }
 
   export type ProcessoUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     numeroProcesso?: StringFieldUpdateOperationsInput | string
     resultado?: StringFieldUpdateOperationsInput | string
     resultadoDetalhado?: NullableStringFieldUpdateOperationsInput | string | null
     valoresAtrasados?: NullableStringFieldUpdateOperationsInput | string | null
     beneficios?: NullableStringFieldUpdateOperationsInput | string | null
     dataAtualizacao?: DateTimeFieldUpdateOperationsInput | Date | string
-    atendimentoId?: IntFieldUpdateOperationsInput | number
+    atendimentoId?: StringFieldUpdateOperationsInput | string
   }
 
   export type ProcessoCreateManyInput = {
-    id?: number
+    id?: string
     numeroProcesso: string
     resultado: string
     resultadoDetalhado?: string | null
     valoresAtrasados?: string | null
     beneficios?: string | null
     dataAtualizacao?: Date | string
-    atendimentoId: number
+    atendimentoId: string
   }
 
   export type ProcessoUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
     numeroProcesso?: StringFieldUpdateOperationsInput | string
     resultado?: StringFieldUpdateOperationsInput | string
     resultadoDetalhado?: NullableStringFieldUpdateOperationsInput | string | null
@@ -24117,14 +23929,14 @@ export namespace Prisma {
   }
 
   export type ProcessoUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     numeroProcesso?: StringFieldUpdateOperationsInput | string
     resultado?: StringFieldUpdateOperationsInput | string
     resultadoDetalhado?: NullableStringFieldUpdateOperationsInput | string | null
     valoresAtrasados?: NullableStringFieldUpdateOperationsInput | string | null
     beneficios?: NullableStringFieldUpdateOperationsInput | string | null
     dataAtualizacao?: DateTimeFieldUpdateOperationsInput | Date | string
-    atendimentoId?: IntFieldUpdateOperationsInput | number
+    atendimentoId?: StringFieldUpdateOperationsInput | string
   }
 
   export type FormularioPreenchidoCreateInput = {
@@ -24139,7 +23951,7 @@ export namespace Prisma {
     tipoFormulario: $Enums.TipoFormulario
     dadosFormulario: JsonNullValueInput | InputJsonValue
     dataCriacao?: Date | string
-    atendimentoId: number
+    atendimentoId: string
   }
 
   export type FormularioPreenchidoUpdateInput = {
@@ -24154,7 +23966,7 @@ export namespace Prisma {
     tipoFormulario?: EnumTipoFormularioFieldUpdateOperationsInput | $Enums.TipoFormulario
     dadosFormulario?: JsonNullValueInput | InputJsonValue
     dataCriacao?: DateTimeFieldUpdateOperationsInput | Date | string
-    atendimentoId?: IntFieldUpdateOperationsInput | number
+    atendimentoId?: StringFieldUpdateOperationsInput | string
   }
 
   export type FormularioPreenchidoCreateManyInput = {
@@ -24162,7 +23974,7 @@ export namespace Prisma {
     tipoFormulario: $Enums.TipoFormulario
     dadosFormulario: JsonNullValueInput | InputJsonValue
     dataCriacao?: Date | string
-    atendimentoId: number
+    atendimentoId: string
   }
 
   export type FormularioPreenchidoUpdateManyMutationInput = {
@@ -24176,10 +23988,11 @@ export namespace Prisma {
     tipoFormulario?: EnumTipoFormularioFieldUpdateOperationsInput | $Enums.TipoFormulario
     dadosFormulario?: JsonNullValueInput | InputJsonValue
     dataCriacao?: DateTimeFieldUpdateOperationsInput | Date | string
-    atendimentoId?: IntFieldUpdateOperationsInput | number
+    atendimentoId?: StringFieldUpdateOperationsInput | string
   }
 
   export type DocumentoCreateInput = {
+    id?: string
     nomeOriginal: string
     nomeArmazenamento: string
     tipo: string
@@ -24192,7 +24005,7 @@ export namespace Prisma {
   }
 
   export type DocumentoUncheckedCreateInput = {
-    id?: number
+    id?: string
     nomeOriginal: string
     nomeArmazenamento: string
     tipo: string
@@ -24200,11 +24013,12 @@ export namespace Prisma {
     caminho: string
     tipoDocumento: $Enums.TipoDocumento
     dataCriacao?: Date | string
-    atendimentoId: number
-    operadorUploadId: number
+    atendimentoId: string
+    operadorUploadId: string
   }
 
   export type DocumentoUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
     nomeOriginal?: StringFieldUpdateOperationsInput | string
     nomeArmazenamento?: StringFieldUpdateOperationsInput | string
     tipo?: StringFieldUpdateOperationsInput | string
@@ -24217,7 +24031,7 @@ export namespace Prisma {
   }
 
   export type DocumentoUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     nomeOriginal?: StringFieldUpdateOperationsInput | string
     nomeArmazenamento?: StringFieldUpdateOperationsInput | string
     tipo?: StringFieldUpdateOperationsInput | string
@@ -24225,12 +24039,12 @@ export namespace Prisma {
     caminho?: StringFieldUpdateOperationsInput | string
     tipoDocumento?: EnumTipoDocumentoFieldUpdateOperationsInput | $Enums.TipoDocumento
     dataCriacao?: DateTimeFieldUpdateOperationsInput | Date | string
-    atendimentoId?: IntFieldUpdateOperationsInput | number
-    operadorUploadId?: IntFieldUpdateOperationsInput | number
+    atendimentoId?: StringFieldUpdateOperationsInput | string
+    operadorUploadId?: StringFieldUpdateOperationsInput | string
   }
 
   export type DocumentoCreateManyInput = {
-    id?: number
+    id?: string
     nomeOriginal: string
     nomeArmazenamento: string
     tipo: string
@@ -24238,11 +24052,12 @@ export namespace Prisma {
     caminho: string
     tipoDocumento: $Enums.TipoDocumento
     dataCriacao?: Date | string
-    atendimentoId: number
-    operadorUploadId: number
+    atendimentoId: string
+    operadorUploadId: string
   }
 
   export type DocumentoUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
     nomeOriginal?: StringFieldUpdateOperationsInput | string
     nomeArmazenamento?: StringFieldUpdateOperationsInput | string
     tipo?: StringFieldUpdateOperationsInput | string
@@ -24253,7 +24068,7 @@ export namespace Prisma {
   }
 
   export type DocumentoUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     nomeOriginal?: StringFieldUpdateOperationsInput | string
     nomeArmazenamento?: StringFieldUpdateOperationsInput | string
     tipo?: StringFieldUpdateOperationsInput | string
@@ -24261,8 +24076,8 @@ export namespace Prisma {
     caminho?: StringFieldUpdateOperationsInput | string
     tipoDocumento?: EnumTipoDocumentoFieldUpdateOperationsInput | $Enums.TipoDocumento
     dataCriacao?: DateTimeFieldUpdateOperationsInput | Date | string
-    atendimentoId?: IntFieldUpdateOperationsInput | number
-    operadorUploadId?: IntFieldUpdateOperationsInput | number
+    atendimentoId?: StringFieldUpdateOperationsInput | string
+    operadorUploadId?: StringFieldUpdateOperationsInput | string
   }
 
   export type TipoAtendimentoCreateInput = {
@@ -24363,6 +24178,7 @@ export namespace Prisma {
   }
 
   export type AssistidoCreateInput = {
+    id?: string
     nomeCompleto: string
     nomeSocial?: string | null
     cpf: string
@@ -24375,7 +24191,7 @@ export namespace Prisma {
   }
 
   export type AssistidoUncheckedCreateInput = {
-    id?: number
+    id?: string
     nomeCompleto: string
     nomeSocial?: string | null
     cpf: string
@@ -24388,6 +24204,7 @@ export namespace Prisma {
   }
 
   export type AssistidoUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
     nomeCompleto?: StringFieldUpdateOperationsInput | string
     nomeSocial?: NullableStringFieldUpdateOperationsInput | string | null
     cpf?: StringFieldUpdateOperationsInput | string
@@ -24400,7 +24217,7 @@ export namespace Prisma {
   }
 
   export type AssistidoUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     nomeCompleto?: StringFieldUpdateOperationsInput | string
     nomeSocial?: NullableStringFieldUpdateOperationsInput | string | null
     cpf?: StringFieldUpdateOperationsInput | string
@@ -24413,7 +24230,7 @@ export namespace Prisma {
   }
 
   export type AssistidoCreateManyInput = {
-    id?: number
+    id?: string
     nomeCompleto: string
     nomeSocial?: string | null
     cpf: string
@@ -24426,6 +24243,7 @@ export namespace Prisma {
   }
 
   export type AssistidoUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
     nomeCompleto?: StringFieldUpdateOperationsInput | string
     nomeSocial?: NullableStringFieldUpdateOperationsInput | string | null
     cpf?: StringFieldUpdateOperationsInput | string
@@ -24435,7 +24253,7 @@ export namespace Prisma {
   }
 
   export type AssistidoUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     nomeCompleto?: StringFieldUpdateOperationsInput | string
     nomeSocial?: NullableStringFieldUpdateOperationsInput | string | null
     cpf?: StringFieldUpdateOperationsInput | string
@@ -24526,38 +24344,41 @@ export namespace Prisma {
   }
 
   export type ProfissaoCreateInput = {
+    id?: string
     descricao: string
     atendimentos?: AtendimentoCreateNestedManyWithoutProfissaoInput
   }
 
   export type ProfissaoUncheckedCreateInput = {
-    id?: number
+    id?: string
     descricao: string
     atendimentos?: AtendimentoUncheckedCreateNestedManyWithoutProfissaoInput
   }
 
   export type ProfissaoUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
     descricao?: StringFieldUpdateOperationsInput | string
     atendimentos?: AtendimentoUpdateManyWithoutProfissaoNestedInput
   }
 
   export type ProfissaoUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     descricao?: StringFieldUpdateOperationsInput | string
     atendimentos?: AtendimentoUncheckedUpdateManyWithoutProfissaoNestedInput
   }
 
   export type ProfissaoCreateManyInput = {
-    id?: number
+    id?: string
     descricao: string
   }
 
   export type ProfissaoUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
     descricao?: StringFieldUpdateOperationsInput | string
   }
 
   export type ProfissaoUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     descricao?: StringFieldUpdateOperationsInput | string
   }
 
@@ -24598,6 +24419,7 @@ export namespace Prisma {
   }
 
   export type MembroFamiliarCreateInput = {
+    id?: string
     nomeCompleto: string
     cpf: string
     rendaMensal: number
@@ -24605,14 +24427,15 @@ export namespace Prisma {
   }
 
   export type MembroFamiliarUncheckedCreateInput = {
-    id?: number
+    id?: string
     nomeCompleto: string
     cpf: string
     rendaMensal: number
-    atendimentoId: number
+    atendimentoId: string
   }
 
   export type MembroFamiliarUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
     nomeCompleto?: StringFieldUpdateOperationsInput | string
     cpf?: StringFieldUpdateOperationsInput | string
     rendaMensal?: FloatFieldUpdateOperationsInput | number
@@ -24620,33 +24443,34 @@ export namespace Prisma {
   }
 
   export type MembroFamiliarUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     nomeCompleto?: StringFieldUpdateOperationsInput | string
     cpf?: StringFieldUpdateOperationsInput | string
     rendaMensal?: FloatFieldUpdateOperationsInput | number
-    atendimentoId?: IntFieldUpdateOperationsInput | number
+    atendimentoId?: StringFieldUpdateOperationsInput | string
   }
 
   export type MembroFamiliarCreateManyInput = {
-    id?: number
+    id?: string
     nomeCompleto: string
     cpf: string
     rendaMensal: number
-    atendimentoId: number
+    atendimentoId: string
   }
 
   export type MembroFamiliarUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
     nomeCompleto?: StringFieldUpdateOperationsInput | string
     cpf?: StringFieldUpdateOperationsInput | string
     rendaMensal?: FloatFieldUpdateOperationsInput | number
   }
 
   export type MembroFamiliarUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     nomeCompleto?: StringFieldUpdateOperationsInput | string
     cpf?: StringFieldUpdateOperationsInput | string
     rendaMensal?: FloatFieldUpdateOperationsInput | number
-    atendimentoId?: IntFieldUpdateOperationsInput | number
+    atendimentoId?: StringFieldUpdateOperationsInput | string
   }
 
   export type TipoVulnerabilidadeCreateInput = {
@@ -24753,17 +24577,6 @@ export namespace Prisma {
     descricao?: StringFieldUpdateOperationsInput | string
   }
 
-  export type IntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
-  }
-
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -24842,10 +24655,6 @@ export namespace Prisma {
     dataCadastro?: SortOrder
   }
 
-  export type UserAvgOrderByAggregateInput = {
-    id?: SortOrder
-  }
-
   export type UserMaxOrderByAggregateInput = {
     id?: SortOrder
     email?: SortOrder
@@ -24864,26 +24673,6 @@ export namespace Prisma {
     role?: SortOrder
     aprovado?: SortOrder
     dataCadastro?: SortOrder
-  }
-
-  export type UserSumOrderByAggregateInput = {
-    id?: SortOrder
-  }
-
-  export type IntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -24969,17 +24758,6 @@ export namespace Prisma {
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
-  export type IntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
   export type UserScalarRelationFilter = {
     is?: UserWhereInput
     isNot?: UserWhereInput
@@ -25015,12 +24793,6 @@ export namespace Prisma {
     operadorAtendimentoId?: SortOrder
   }
 
-  export type FilaAtendimentoAvgOrderByAggregateInput = {
-    id?: SortOrder
-    operadorTriagemId?: SortOrder
-    operadorAtendimentoId?: SortOrder
-  }
-
   export type FilaAtendimentoMaxOrderByAggregateInput = {
     id?: SortOrder
     nomeCompleto?: SortOrder
@@ -25047,12 +24819,6 @@ export namespace Prisma {
     dataEntrada?: SortOrder
     dataInicio?: SortOrder
     dataFim?: SortOrder
-    operadorTriagemId?: SortOrder
-    operadorAtendimentoId?: SortOrder
-  }
-
-  export type FilaAtendimentoSumOrderByAggregateInput = {
-    id?: SortOrder
     operadorTriagemId?: SortOrder
     operadorAtendimentoId?: SortOrder
   }
@@ -25099,7 +24865,18 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
-  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
+  export type IntNullableFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
     in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
     notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
@@ -25107,12 +24884,7 @@ export namespace Prisma {
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedIntNullableFilter<$PrismaModel>
-    _max?: NestedIntNullableFilter<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type FloatNullableFilter<$PrismaModel = never> = {
@@ -25218,18 +24990,14 @@ export namespace Prisma {
   }
 
   export type AtendimentoAvgOrderByAggregateInput = {
-    id?: SortOrder
     numero?: SortOrder
     parcelasVencidas?: SortOrder
     valorCausa?: SortOrder
     tipoAtendimentoId?: SortOrder
     estadoCivilId?: SortOrder
-    profissaoId?: SortOrder
     tipoDomicilioId?: SortOrder
     tipoDemandaPrevidenciariaId?: SortOrder
     competenciaJudicialId?: SortOrder
-    operadorId?: SortOrder
-    filaId?: SortOrder
   }
 
   export type AtendimentoMaxOrderByAggregateInput = {
@@ -25281,18 +25049,46 @@ export namespace Prisma {
   }
 
   export type AtendimentoSumOrderByAggregateInput = {
-    id?: SortOrder
     numero?: SortOrder
     parcelasVencidas?: SortOrder
     valorCausa?: SortOrder
     tipoAtendimentoId?: SortOrder
     estadoCivilId?: SortOrder
-    profissaoId?: SortOrder
     tipoDomicilioId?: SortOrder
     tipoDemandaPrevidenciariaId?: SortOrder
     competenciaJudicialId?: SortOrder
-    operadorId?: SortOrder
-    filaId?: SortOrder
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -25337,11 +25133,6 @@ export namespace Prisma {
     atendimentoId?: SortOrder
   }
 
-  export type ProcessoAvgOrderByAggregateInput = {
-    id?: SortOrder
-    atendimentoId?: SortOrder
-  }
-
   export type ProcessoMaxOrderByAggregateInput = {
     id?: SortOrder
     numeroProcesso?: SortOrder
@@ -25361,11 +25152,6 @@ export namespace Prisma {
     valoresAtrasados?: SortOrder
     beneficios?: SortOrder
     dataAtualizacao?: SortOrder
-    atendimentoId?: SortOrder
-  }
-
-  export type ProcessoSumOrderByAggregateInput = {
-    id?: SortOrder
     atendimentoId?: SortOrder
   }
 
@@ -25409,7 +25195,6 @@ export namespace Prisma {
 
   export type FormularioPreenchidoAvgOrderByAggregateInput = {
     id?: SortOrder
-    atendimentoId?: SortOrder
   }
 
   export type FormularioPreenchidoMaxOrderByAggregateInput = {
@@ -25428,7 +25213,6 @@ export namespace Prisma {
 
   export type FormularioPreenchidoSumOrderByAggregateInput = {
     id?: SortOrder
-    atendimentoId?: SortOrder
   }
 
   export type EnumTipoFormularioWithAggregatesFilter<$PrismaModel = never> = {
@@ -25488,10 +25272,7 @@ export namespace Prisma {
   }
 
   export type DocumentoAvgOrderByAggregateInput = {
-    id?: SortOrder
     tamanho?: SortOrder
-    atendimentoId?: SortOrder
-    operadorUploadId?: SortOrder
   }
 
   export type DocumentoMaxOrderByAggregateInput = {
@@ -25521,10 +25302,7 @@ export namespace Prisma {
   }
 
   export type DocumentoSumOrderByAggregateInput = {
-    id?: SortOrder
     tamanho?: SortOrder
-    atendimentoId?: SortOrder
-    operadorUploadId?: SortOrder
   }
 
   export type EnumTipoDocumentoWithAggregatesFilter<$PrismaModel = never> = {
@@ -25652,7 +25430,6 @@ export namespace Prisma {
   }
 
   export type AssistidoAvgOrderByAggregateInput = {
-    id?: SortOrder
     tipoAtendimentoId?: SortOrder
     tipoServicoAtendimentoId?: SortOrder
     tipoPrioridadeId?: SortOrder
@@ -25685,7 +25462,6 @@ export namespace Prisma {
   }
 
   export type AssistidoSumOrderByAggregateInput = {
-    id?: SortOrder
     tipoAtendimentoId?: SortOrder
     tipoServicoAtendimentoId?: SortOrder
     tipoPrioridadeId?: SortOrder
@@ -25747,10 +25523,6 @@ export namespace Prisma {
     descricao?: SortOrder
   }
 
-  export type ProfissaoAvgOrderByAggregateInput = {
-    id?: SortOrder
-  }
-
   export type ProfissaoMaxOrderByAggregateInput = {
     id?: SortOrder
     descricao?: SortOrder
@@ -25759,10 +25531,6 @@ export namespace Prisma {
   export type ProfissaoMinOrderByAggregateInput = {
     id?: SortOrder
     descricao?: SortOrder
-  }
-
-  export type ProfissaoSumOrderByAggregateInput = {
-    id?: SortOrder
   }
 
   export type TipoDomicilioCountOrderByAggregateInput = {
@@ -25808,9 +25576,7 @@ export namespace Prisma {
   }
 
   export type MembroFamiliarAvgOrderByAggregateInput = {
-    id?: SortOrder
     rendaMensal?: SortOrder
-    atendimentoId?: SortOrder
   }
 
   export type MembroFamiliarMaxOrderByAggregateInput = {
@@ -25830,9 +25596,7 @@ export namespace Prisma {
   }
 
   export type MembroFamiliarSumOrderByAggregateInput = {
-    id?: SortOrder
     rendaMensal?: SortOrder
-    atendimentoId?: SortOrder
   }
 
   export type FloatWithAggregatesFilter<$PrismaModel = never> = {
@@ -26048,14 +25812,6 @@ export namespace Prisma {
     deleteMany?: DocumentoScalarWhereInput | DocumentoScalarWhereInput[]
   }
 
-  export type IntFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
-  }
-
   export type AtendimentoUncheckedUpdateManyWithoutOperadorNestedInput = {
     create?: XOR<AtendimentoCreateWithoutOperadorInput, AtendimentoUncheckedCreateWithoutOperadorInput> | AtendimentoCreateWithoutOperadorInput[] | AtendimentoUncheckedCreateWithoutOperadorInput[]
     connectOrCreate?: AtendimentoCreateOrConnectWithoutOperadorInput | AtendimentoCreateOrConnectWithoutOperadorInput[]
@@ -26176,14 +25932,6 @@ export namespace Prisma {
     update?: XOR<XOR<AtendimentoUpdateToOneWithWhereWithoutFilaInput, AtendimentoUpdateWithoutFilaInput>, AtendimentoUncheckedUpdateWithoutFilaInput>
   }
 
-  export type NullableIntFieldUpdateOperationsInput = {
-    set?: number | null
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
-  }
-
   export type AtendimentoUncheckedUpdateOneWithoutFilaNestedInput = {
     create?: XOR<AtendimentoCreateWithoutFilaInput, AtendimentoUncheckedCreateWithoutFilaInput>
     connectOrCreate?: AtendimentoCreateOrConnectWithoutFilaInput
@@ -26294,6 +26042,22 @@ export namespace Prisma {
     connectOrCreate?: DocumentoCreateOrConnectWithoutAtendimentoInput | DocumentoCreateOrConnectWithoutAtendimentoInput[]
     createMany?: DocumentoCreateManyAtendimentoInputEnvelope
     connect?: DocumentoWhereUniqueInput | DocumentoWhereUniqueInput[]
+  }
+
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type NullableFloatFieldUpdateOperationsInput = {
@@ -27098,17 +26862,6 @@ export namespace Prisma {
     deleteMany?: AtendimentoScalarWhereInput | AtendimentoScalarWhereInput[]
   }
 
-  export type NestedIntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
-  }
-
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -27146,33 +26899,6 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
-  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
-  }
-
-  export type NestedFloatFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatFilter<$PrismaModel> | number
-  }
-
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -27188,6 +26914,17 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type NestedIntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
   }
 
   export type NestedEnumRoleWithAggregatesFilter<$PrismaModel = never> = {
@@ -27254,17 +26991,6 @@ export namespace Prisma {
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
-  export type NestedIntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -27280,6 +27006,17 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type NestedEnumStatusFilaAtendimentoWithAggregatesFilter<$PrismaModel = never> = {
@@ -27306,22 +27043,6 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
-  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedIntNullableFilter<$PrismaModel>
-    _max?: NestedIntNullableFilter<$PrismaModel>
-  }
-
   export type NestedFloatNullableFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel> | null
     in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
@@ -27338,6 +27059,49 @@ export namespace Prisma {
     in?: $Enums.ProcessosAndamento[] | ListEnumProcessosAndamentoFieldRefInput<$PrismaModel>
     notIn?: $Enums.ProcessosAndamento[] | ListEnumProcessosAndamentoFieldRefInput<$PrismaModel>
     not?: NestedEnumProcessosAndamentoFilter<$PrismaModel> | $Enums.ProcessosAndamento
+  }
+
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -27440,6 +27204,7 @@ export namespace Prisma {
   }
 
   export type AtendimentoCreateWithoutOperadorInput = {
+    id?: string
     capacidadeCivil: boolean
     cep: string
     endereco: string
@@ -27466,7 +27231,7 @@ export namespace Prisma {
   }
 
   export type AtendimentoUncheckedCreateWithoutOperadorInput = {
-    id?: number
+    id?: string
     capacidadeCivil: boolean
     cep: string
     endereco: string
@@ -27481,11 +27246,11 @@ export namespace Prisma {
     processosAndamento: $Enums.ProcessosAndamento
     tipoAtendimentoId: number
     estadoCivilId: number
-    profissaoId: number
+    profissaoId: string
     tipoDomicilioId: number
     tipoDemandaPrevidenciariaId: number
     competenciaJudicialId: number
-    filaId?: number | null
+    filaId?: string | null
     membrosFamiliares?: MembroFamiliarUncheckedCreateNestedManyWithoutAtendimentoInput
     processo?: ProcessoUncheckedCreateNestedOneWithoutAtendimentoInput
     formularios?: FormularioPreenchidoUncheckedCreateNestedManyWithoutAtendimentoInput
@@ -27503,6 +27268,7 @@ export namespace Prisma {
   }
 
   export type FilaAtendimentoCreateWithoutOperadorTriagemInput = {
+    id?: string
     nomeCompleto: string
     nomeSocial?: string | null
     cpf: string
@@ -27517,7 +27283,7 @@ export namespace Prisma {
   }
 
   export type FilaAtendimentoUncheckedCreateWithoutOperadorTriagemInput = {
-    id?: number
+    id?: string
     nomeCompleto: string
     nomeSocial?: string | null
     cpf: string
@@ -27527,7 +27293,7 @@ export namespace Prisma {
     dataEntrada?: Date | string
     dataInicio?: Date | string | null
     dataFim?: Date | string | null
-    operadorAtendimentoId?: number | null
+    operadorAtendimentoId?: string | null
     atendimento?: AtendimentoUncheckedCreateNestedOneWithoutFilaInput
   }
 
@@ -27542,6 +27308,7 @@ export namespace Prisma {
   }
 
   export type FilaAtendimentoCreateWithoutOperadorAtendimentoInput = {
+    id?: string
     nomeCompleto: string
     nomeSocial?: string | null
     cpf: string
@@ -27556,7 +27323,7 @@ export namespace Prisma {
   }
 
   export type FilaAtendimentoUncheckedCreateWithoutOperadorAtendimentoInput = {
-    id?: number
+    id?: string
     nomeCompleto: string
     nomeSocial?: string | null
     cpf: string
@@ -27566,7 +27333,7 @@ export namespace Prisma {
     dataEntrada?: Date | string
     dataInicio?: Date | string | null
     dataFim?: Date | string | null
-    operadorTriagemId: number
+    operadorTriagemId: string
     atendimento?: AtendimentoUncheckedCreateNestedOneWithoutFilaInput
   }
 
@@ -27581,6 +27348,7 @@ export namespace Prisma {
   }
 
   export type DocumentoCreateWithoutOperadorUploadInput = {
+    id?: string
     nomeOriginal: string
     nomeArmazenamento: string
     tipo: string
@@ -27592,7 +27360,7 @@ export namespace Prisma {
   }
 
   export type DocumentoUncheckedCreateWithoutOperadorUploadInput = {
-    id?: number
+    id?: string
     nomeOriginal: string
     nomeArmazenamento: string
     tipo: string
@@ -27600,7 +27368,7 @@ export namespace Prisma {
     caminho: string
     tipoDocumento: $Enums.TipoDocumento
     dataCriacao?: Date | string
-    atendimentoId: number
+    atendimentoId: string
   }
 
   export type DocumentoCreateOrConnectWithoutOperadorUploadInput = {
@@ -27633,7 +27401,7 @@ export namespace Prisma {
     AND?: AtendimentoScalarWhereInput | AtendimentoScalarWhereInput[]
     OR?: AtendimentoScalarWhereInput[]
     NOT?: AtendimentoScalarWhereInput | AtendimentoScalarWhereInput[]
-    id?: IntFilter<"Atendimento"> | number
+    id?: StringFilter<"Atendimento"> | string
     capacidadeCivil?: BoolFilter<"Atendimento"> | boolean
     cep?: StringFilter<"Atendimento"> | string
     endereco?: StringFilter<"Atendimento"> | string
@@ -27648,12 +27416,12 @@ export namespace Prisma {
     processosAndamento?: EnumProcessosAndamentoFilter<"Atendimento"> | $Enums.ProcessosAndamento
     tipoAtendimentoId?: IntFilter<"Atendimento"> | number
     estadoCivilId?: IntFilter<"Atendimento"> | number
-    profissaoId?: IntFilter<"Atendimento"> | number
+    profissaoId?: StringFilter<"Atendimento"> | string
     tipoDomicilioId?: IntFilter<"Atendimento"> | number
     tipoDemandaPrevidenciariaId?: IntFilter<"Atendimento"> | number
     competenciaJudicialId?: IntFilter<"Atendimento"> | number
-    operadorId?: IntFilter<"Atendimento"> | number
-    filaId?: IntNullableFilter<"Atendimento"> | number | null
+    operadorId?: StringFilter<"Atendimento"> | string
+    filaId?: StringNullableFilter<"Atendimento"> | string | null
   }
 
   export type FilaAtendimentoUpsertWithWhereUniqueWithoutOperadorTriagemInput = {
@@ -27676,7 +27444,7 @@ export namespace Prisma {
     AND?: FilaAtendimentoScalarWhereInput | FilaAtendimentoScalarWhereInput[]
     OR?: FilaAtendimentoScalarWhereInput[]
     NOT?: FilaAtendimentoScalarWhereInput | FilaAtendimentoScalarWhereInput[]
-    id?: IntFilter<"FilaAtendimento"> | number
+    id?: StringFilter<"FilaAtendimento"> | string
     nomeCompleto?: StringFilter<"FilaAtendimento"> | string
     nomeSocial?: StringNullableFilter<"FilaAtendimento"> | string | null
     cpf?: StringFilter<"FilaAtendimento"> | string
@@ -27686,8 +27454,8 @@ export namespace Prisma {
     dataEntrada?: DateTimeFilter<"FilaAtendimento"> | Date | string
     dataInicio?: DateTimeNullableFilter<"FilaAtendimento"> | Date | string | null
     dataFim?: DateTimeNullableFilter<"FilaAtendimento"> | Date | string | null
-    operadorTriagemId?: IntFilter<"FilaAtendimento"> | number
-    operadorAtendimentoId?: IntNullableFilter<"FilaAtendimento"> | number | null
+    operadorTriagemId?: StringFilter<"FilaAtendimento"> | string
+    operadorAtendimentoId?: StringNullableFilter<"FilaAtendimento"> | string | null
   }
 
   export type FilaAtendimentoUpsertWithWhereUniqueWithoutOperadorAtendimentoInput = {
@@ -27726,7 +27494,7 @@ export namespace Prisma {
     AND?: DocumentoScalarWhereInput | DocumentoScalarWhereInput[]
     OR?: DocumentoScalarWhereInput[]
     NOT?: DocumentoScalarWhereInput | DocumentoScalarWhereInput[]
-    id?: IntFilter<"Documento"> | number
+    id?: StringFilter<"Documento"> | string
     nomeOriginal?: StringFilter<"Documento"> | string
     nomeArmazenamento?: StringFilter<"Documento"> | string
     tipo?: StringFilter<"Documento"> | string
@@ -27734,11 +27502,12 @@ export namespace Prisma {
     caminho?: StringFilter<"Documento"> | string
     tipoDocumento?: EnumTipoDocumentoFilter<"Documento"> | $Enums.TipoDocumento
     dataCriacao?: DateTimeFilter<"Documento"> | Date | string
-    atendimentoId?: IntFilter<"Documento"> | number
-    operadorUploadId?: IntFilter<"Documento"> | number
+    atendimentoId?: StringFilter<"Documento"> | string
+    operadorUploadId?: StringFilter<"Documento"> | string
   }
 
   export type UserCreateWithoutAtendimentosTriagemInput = {
+    id?: string
     email: string
     nome: string
     senha: string
@@ -27751,7 +27520,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateWithoutAtendimentosTriagemInput = {
-    id?: number
+    id?: string
     email: string
     nome: string
     senha: string
@@ -27769,6 +27538,7 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutAtendimentosEmAndamentoInput = {
+    id?: string
     email: string
     nome: string
     senha: string
@@ -27781,7 +27551,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateWithoutAtendimentosEmAndamentoInput = {
-    id?: number
+    id?: string
     email: string
     nome: string
     senha: string
@@ -27799,6 +27569,7 @@ export namespace Prisma {
   }
 
   export type AtendimentoCreateWithoutFilaInput = {
+    id?: string
     capacidadeCivil: boolean
     cep: string
     endereco: string
@@ -27825,7 +27596,7 @@ export namespace Prisma {
   }
 
   export type AtendimentoUncheckedCreateWithoutFilaInput = {
-    id?: number
+    id?: string
     capacidadeCivil: boolean
     cep: string
     endereco: string
@@ -27840,11 +27611,11 @@ export namespace Prisma {
     processosAndamento: $Enums.ProcessosAndamento
     tipoAtendimentoId: number
     estadoCivilId: number
-    profissaoId: number
+    profissaoId: string
     tipoDomicilioId: number
     tipoDemandaPrevidenciariaId: number
     competenciaJudicialId: number
-    operadorId: number
+    operadorId: string
     membrosFamiliares?: MembroFamiliarUncheckedCreateNestedManyWithoutAtendimentoInput
     processo?: ProcessoUncheckedCreateNestedOneWithoutAtendimentoInput
     formularios?: FormularioPreenchidoUncheckedCreateNestedManyWithoutAtendimentoInput
@@ -27868,6 +27639,7 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutAtendimentosTriagemInput = {
+    id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     nome?: StringFieldUpdateOperationsInput | string
     senha?: StringFieldUpdateOperationsInput | string
@@ -27880,7 +27652,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedUpdateWithoutAtendimentosTriagemInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     nome?: StringFieldUpdateOperationsInput | string
     senha?: StringFieldUpdateOperationsInput | string
@@ -27904,6 +27676,7 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutAtendimentosEmAndamentoInput = {
+    id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     nome?: StringFieldUpdateOperationsInput | string
     senha?: StringFieldUpdateOperationsInput | string
@@ -27916,7 +27689,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedUpdateWithoutAtendimentosEmAndamentoInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     nome?: StringFieldUpdateOperationsInput | string
     senha?: StringFieldUpdateOperationsInput | string
@@ -27940,6 +27713,7 @@ export namespace Prisma {
   }
 
   export type AtendimentoUpdateWithoutFilaInput = {
+    id?: StringFieldUpdateOperationsInput | string
     capacidadeCivil?: BoolFieldUpdateOperationsInput | boolean
     cep?: StringFieldUpdateOperationsInput | string
     endereco?: StringFieldUpdateOperationsInput | string
@@ -27966,7 +27740,7 @@ export namespace Prisma {
   }
 
   export type AtendimentoUncheckedUpdateWithoutFilaInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     capacidadeCivil?: BoolFieldUpdateOperationsInput | boolean
     cep?: StringFieldUpdateOperationsInput | string
     endereco?: StringFieldUpdateOperationsInput | string
@@ -27981,11 +27755,11 @@ export namespace Prisma {
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
     tipoAtendimentoId?: IntFieldUpdateOperationsInput | number
     estadoCivilId?: IntFieldUpdateOperationsInput | number
-    profissaoId?: IntFieldUpdateOperationsInput | number
+    profissaoId?: StringFieldUpdateOperationsInput | string
     tipoDomicilioId?: IntFieldUpdateOperationsInput | number
     tipoDemandaPrevidenciariaId?: IntFieldUpdateOperationsInput | number
     competenciaJudicialId?: IntFieldUpdateOperationsInput | number
-    operadorId?: IntFieldUpdateOperationsInput | number
+    operadorId?: StringFieldUpdateOperationsInput | string
     membrosFamiliares?: MembroFamiliarUncheckedUpdateManyWithoutAtendimentoNestedInput
     processo?: ProcessoUncheckedUpdateOneWithoutAtendimentoNestedInput
     formularios?: FormularioPreenchidoUncheckedUpdateManyWithoutAtendimentoNestedInput
@@ -28027,11 +27801,12 @@ export namespace Prisma {
   }
 
   export type ProfissaoCreateWithoutAtendimentosInput = {
+    id?: string
     descricao: string
   }
 
   export type ProfissaoUncheckedCreateWithoutAtendimentosInput = {
-    id?: number
+    id?: string
     descricao: string
   }
 
@@ -28083,6 +27858,7 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutAtendimentosRealizadosInput = {
+    id?: string
     email: string
     nome: string
     senha: string
@@ -28095,7 +27871,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateWithoutAtendimentosRealizadosInput = {
-    id?: number
+    id?: string
     email: string
     nome: string
     senha: string
@@ -28113,6 +27889,7 @@ export namespace Prisma {
   }
 
   export type FilaAtendimentoCreateWithoutAtendimentoInput = {
+    id?: string
     nomeCompleto: string
     nomeSocial?: string | null
     cpf: string
@@ -28127,7 +27904,7 @@ export namespace Prisma {
   }
 
   export type FilaAtendimentoUncheckedCreateWithoutAtendimentoInput = {
-    id?: number
+    id?: string
     nomeCompleto: string
     nomeSocial?: string | null
     cpf: string
@@ -28137,8 +27914,8 @@ export namespace Prisma {
     dataEntrada?: Date | string
     dataInicio?: Date | string | null
     dataFim?: Date | string | null
-    operadorTriagemId: number
-    operadorAtendimentoId?: number | null
+    operadorTriagemId: string
+    operadorAtendimentoId?: string | null
   }
 
   export type FilaAtendimentoCreateOrConnectWithoutAtendimentoInput = {
@@ -28147,13 +27924,14 @@ export namespace Prisma {
   }
 
   export type MembroFamiliarCreateWithoutAtendimentoInput = {
+    id?: string
     nomeCompleto: string
     cpf: string
     rendaMensal: number
   }
 
   export type MembroFamiliarUncheckedCreateWithoutAtendimentoInput = {
-    id?: number
+    id?: string
     nomeCompleto: string
     cpf: string
     rendaMensal: number
@@ -28170,6 +27948,7 @@ export namespace Prisma {
   }
 
   export type ProcessoCreateWithoutAtendimentoInput = {
+    id?: string
     numeroProcesso: string
     resultado: string
     resultadoDetalhado?: string | null
@@ -28179,7 +27958,7 @@ export namespace Prisma {
   }
 
   export type ProcessoUncheckedCreateWithoutAtendimentoInput = {
-    id?: number
+    id?: string
     numeroProcesso: string
     resultado: string
     resultadoDetalhado?: string | null
@@ -28217,6 +27996,7 @@ export namespace Prisma {
   }
 
   export type DocumentoCreateWithoutAtendimentoInput = {
+    id?: string
     nomeOriginal: string
     nomeArmazenamento: string
     tipo: string
@@ -28228,7 +28008,7 @@ export namespace Prisma {
   }
 
   export type DocumentoUncheckedCreateWithoutAtendimentoInput = {
-    id?: number
+    id?: string
     nomeOriginal: string
     nomeArmazenamento: string
     tipo: string
@@ -28236,7 +28016,7 @@ export namespace Prisma {
     caminho: string
     tipoDocumento: $Enums.TipoDocumento
     dataCriacao?: Date | string
-    operadorUploadId: number
+    operadorUploadId: string
   }
 
   export type DocumentoCreateOrConnectWithoutAtendimentoInput = {
@@ -28307,11 +28087,12 @@ export namespace Prisma {
   }
 
   export type ProfissaoUpdateWithoutAtendimentosInput = {
+    id?: StringFieldUpdateOperationsInput | string
     descricao?: StringFieldUpdateOperationsInput | string
   }
 
   export type ProfissaoUncheckedUpdateWithoutAtendimentosInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     descricao?: StringFieldUpdateOperationsInput | string
   }
 
@@ -28387,6 +28168,7 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutAtendimentosRealizadosInput = {
+    id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     nome?: StringFieldUpdateOperationsInput | string
     senha?: StringFieldUpdateOperationsInput | string
@@ -28399,7 +28181,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedUpdateWithoutAtendimentosRealizadosInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     nome?: StringFieldUpdateOperationsInput | string
     senha?: StringFieldUpdateOperationsInput | string
@@ -28423,6 +28205,7 @@ export namespace Prisma {
   }
 
   export type FilaAtendimentoUpdateWithoutAtendimentoInput = {
+    id?: StringFieldUpdateOperationsInput | string
     nomeCompleto?: StringFieldUpdateOperationsInput | string
     nomeSocial?: NullableStringFieldUpdateOperationsInput | string | null
     cpf?: StringFieldUpdateOperationsInput | string
@@ -28437,7 +28220,7 @@ export namespace Prisma {
   }
 
   export type FilaAtendimentoUncheckedUpdateWithoutAtendimentoInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     nomeCompleto?: StringFieldUpdateOperationsInput | string
     nomeSocial?: NullableStringFieldUpdateOperationsInput | string | null
     cpf?: StringFieldUpdateOperationsInput | string
@@ -28447,8 +28230,8 @@ export namespace Prisma {
     dataEntrada?: DateTimeFieldUpdateOperationsInput | Date | string
     dataInicio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     dataFim?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    operadorTriagemId?: IntFieldUpdateOperationsInput | number
-    operadorAtendimentoId?: NullableIntFieldUpdateOperationsInput | number | null
+    operadorTriagemId?: StringFieldUpdateOperationsInput | string
+    operadorAtendimentoId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type MembroFamiliarUpsertWithWhereUniqueWithoutAtendimentoInput = {
@@ -28471,11 +28254,11 @@ export namespace Prisma {
     AND?: MembroFamiliarScalarWhereInput | MembroFamiliarScalarWhereInput[]
     OR?: MembroFamiliarScalarWhereInput[]
     NOT?: MembroFamiliarScalarWhereInput | MembroFamiliarScalarWhereInput[]
-    id?: IntFilter<"MembroFamiliar"> | number
+    id?: StringFilter<"MembroFamiliar"> | string
     nomeCompleto?: StringFilter<"MembroFamiliar"> | string
     cpf?: StringFilter<"MembroFamiliar"> | string
     rendaMensal?: FloatFilter<"MembroFamiliar"> | number
-    atendimentoId?: IntFilter<"MembroFamiliar"> | number
+    atendimentoId?: StringFilter<"MembroFamiliar"> | string
   }
 
   export type ProcessoUpsertWithoutAtendimentoInput = {
@@ -28490,6 +28273,7 @@ export namespace Prisma {
   }
 
   export type ProcessoUpdateWithoutAtendimentoInput = {
+    id?: StringFieldUpdateOperationsInput | string
     numeroProcesso?: StringFieldUpdateOperationsInput | string
     resultado?: StringFieldUpdateOperationsInput | string
     resultadoDetalhado?: NullableStringFieldUpdateOperationsInput | string | null
@@ -28499,7 +28283,7 @@ export namespace Prisma {
   }
 
   export type ProcessoUncheckedUpdateWithoutAtendimentoInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     numeroProcesso?: StringFieldUpdateOperationsInput | string
     resultado?: StringFieldUpdateOperationsInput | string
     resultadoDetalhado?: NullableStringFieldUpdateOperationsInput | string | null
@@ -28532,7 +28316,7 @@ export namespace Prisma {
     tipoFormulario?: EnumTipoFormularioFilter<"FormularioPreenchido"> | $Enums.TipoFormulario
     dadosFormulario?: JsonFilter<"FormularioPreenchido">
     dataCriacao?: DateTimeFilter<"FormularioPreenchido"> | Date | string
-    atendimentoId?: IntFilter<"FormularioPreenchido"> | number
+    atendimentoId?: StringFilter<"FormularioPreenchido"> | string
   }
 
   export type DocumentoUpsertWithWhereUniqueWithoutAtendimentoInput = {
@@ -28552,6 +28336,7 @@ export namespace Prisma {
   }
 
   export type AtendimentoCreateWithoutProcessoInput = {
+    id?: string
     capacidadeCivil: boolean
     cep: string
     endereco: string
@@ -28578,7 +28363,7 @@ export namespace Prisma {
   }
 
   export type AtendimentoUncheckedCreateWithoutProcessoInput = {
-    id?: number
+    id?: string
     capacidadeCivil: boolean
     cep: string
     endereco: string
@@ -28593,12 +28378,12 @@ export namespace Prisma {
     processosAndamento: $Enums.ProcessosAndamento
     tipoAtendimentoId: number
     estadoCivilId: number
-    profissaoId: number
+    profissaoId: string
     tipoDomicilioId: number
     tipoDemandaPrevidenciariaId: number
     competenciaJudicialId: number
-    operadorId: number
-    filaId?: number | null
+    operadorId: string
+    filaId?: string | null
     membrosFamiliares?: MembroFamiliarUncheckedCreateNestedManyWithoutAtendimentoInput
     formularios?: FormularioPreenchidoUncheckedCreateNestedManyWithoutAtendimentoInput
     documentos?: DocumentoUncheckedCreateNestedManyWithoutAtendimentoInput
@@ -28621,6 +28406,7 @@ export namespace Prisma {
   }
 
   export type AtendimentoUpdateWithoutProcessoInput = {
+    id?: StringFieldUpdateOperationsInput | string
     capacidadeCivil?: BoolFieldUpdateOperationsInput | boolean
     cep?: StringFieldUpdateOperationsInput | string
     endereco?: StringFieldUpdateOperationsInput | string
@@ -28647,7 +28433,7 @@ export namespace Prisma {
   }
 
   export type AtendimentoUncheckedUpdateWithoutProcessoInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     capacidadeCivil?: BoolFieldUpdateOperationsInput | boolean
     cep?: StringFieldUpdateOperationsInput | string
     endereco?: StringFieldUpdateOperationsInput | string
@@ -28662,18 +28448,19 @@ export namespace Prisma {
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
     tipoAtendimentoId?: IntFieldUpdateOperationsInput | number
     estadoCivilId?: IntFieldUpdateOperationsInput | number
-    profissaoId?: IntFieldUpdateOperationsInput | number
+    profissaoId?: StringFieldUpdateOperationsInput | string
     tipoDomicilioId?: IntFieldUpdateOperationsInput | number
     tipoDemandaPrevidenciariaId?: IntFieldUpdateOperationsInput | number
     competenciaJudicialId?: IntFieldUpdateOperationsInput | number
-    operadorId?: IntFieldUpdateOperationsInput | number
-    filaId?: NullableIntFieldUpdateOperationsInput | number | null
+    operadorId?: StringFieldUpdateOperationsInput | string
+    filaId?: NullableStringFieldUpdateOperationsInput | string | null
     membrosFamiliares?: MembroFamiliarUncheckedUpdateManyWithoutAtendimentoNestedInput
     formularios?: FormularioPreenchidoUncheckedUpdateManyWithoutAtendimentoNestedInput
     documentos?: DocumentoUncheckedUpdateManyWithoutAtendimentoNestedInput
   }
 
   export type AtendimentoCreateWithoutFormulariosInput = {
+    id?: string
     capacidadeCivil: boolean
     cep: string
     endereco: string
@@ -28700,7 +28487,7 @@ export namespace Prisma {
   }
 
   export type AtendimentoUncheckedCreateWithoutFormulariosInput = {
-    id?: number
+    id?: string
     capacidadeCivil: boolean
     cep: string
     endereco: string
@@ -28715,12 +28502,12 @@ export namespace Prisma {
     processosAndamento: $Enums.ProcessosAndamento
     tipoAtendimentoId: number
     estadoCivilId: number
-    profissaoId: number
+    profissaoId: string
     tipoDomicilioId: number
     tipoDemandaPrevidenciariaId: number
     competenciaJudicialId: number
-    operadorId: number
-    filaId?: number | null
+    operadorId: string
+    filaId?: string | null
     membrosFamiliares?: MembroFamiliarUncheckedCreateNestedManyWithoutAtendimentoInput
     processo?: ProcessoUncheckedCreateNestedOneWithoutAtendimentoInput
     documentos?: DocumentoUncheckedCreateNestedManyWithoutAtendimentoInput
@@ -28743,6 +28530,7 @@ export namespace Prisma {
   }
 
   export type AtendimentoUpdateWithoutFormulariosInput = {
+    id?: StringFieldUpdateOperationsInput | string
     capacidadeCivil?: BoolFieldUpdateOperationsInput | boolean
     cep?: StringFieldUpdateOperationsInput | string
     endereco?: StringFieldUpdateOperationsInput | string
@@ -28769,7 +28557,7 @@ export namespace Prisma {
   }
 
   export type AtendimentoUncheckedUpdateWithoutFormulariosInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     capacidadeCivil?: BoolFieldUpdateOperationsInput | boolean
     cep?: StringFieldUpdateOperationsInput | string
     endereco?: StringFieldUpdateOperationsInput | string
@@ -28784,18 +28572,19 @@ export namespace Prisma {
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
     tipoAtendimentoId?: IntFieldUpdateOperationsInput | number
     estadoCivilId?: IntFieldUpdateOperationsInput | number
-    profissaoId?: IntFieldUpdateOperationsInput | number
+    profissaoId?: StringFieldUpdateOperationsInput | string
     tipoDomicilioId?: IntFieldUpdateOperationsInput | number
     tipoDemandaPrevidenciariaId?: IntFieldUpdateOperationsInput | number
     competenciaJudicialId?: IntFieldUpdateOperationsInput | number
-    operadorId?: IntFieldUpdateOperationsInput | number
-    filaId?: NullableIntFieldUpdateOperationsInput | number | null
+    operadorId?: StringFieldUpdateOperationsInput | string
+    filaId?: NullableStringFieldUpdateOperationsInput | string | null
     membrosFamiliares?: MembroFamiliarUncheckedUpdateManyWithoutAtendimentoNestedInput
     processo?: ProcessoUncheckedUpdateOneWithoutAtendimentoNestedInput
     documentos?: DocumentoUncheckedUpdateManyWithoutAtendimentoNestedInput
   }
 
   export type AtendimentoCreateWithoutDocumentosInput = {
+    id?: string
     capacidadeCivil: boolean
     cep: string
     endereco: string
@@ -28822,7 +28611,7 @@ export namespace Prisma {
   }
 
   export type AtendimentoUncheckedCreateWithoutDocumentosInput = {
-    id?: number
+    id?: string
     capacidadeCivil: boolean
     cep: string
     endereco: string
@@ -28837,12 +28626,12 @@ export namespace Prisma {
     processosAndamento: $Enums.ProcessosAndamento
     tipoAtendimentoId: number
     estadoCivilId: number
-    profissaoId: number
+    profissaoId: string
     tipoDomicilioId: number
     tipoDemandaPrevidenciariaId: number
     competenciaJudicialId: number
-    operadorId: number
-    filaId?: number | null
+    operadorId: string
+    filaId?: string | null
     membrosFamiliares?: MembroFamiliarUncheckedCreateNestedManyWithoutAtendimentoInput
     processo?: ProcessoUncheckedCreateNestedOneWithoutAtendimentoInput
     formularios?: FormularioPreenchidoUncheckedCreateNestedManyWithoutAtendimentoInput
@@ -28854,6 +28643,7 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutDocumentosUploadOperadorInput = {
+    id?: string
     email: string
     nome: string
     senha: string
@@ -28866,7 +28656,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateWithoutDocumentosUploadOperadorInput = {
-    id?: number
+    id?: string
     email: string
     nome: string
     senha: string
@@ -28895,6 +28685,7 @@ export namespace Prisma {
   }
 
   export type AtendimentoUpdateWithoutDocumentosInput = {
+    id?: StringFieldUpdateOperationsInput | string
     capacidadeCivil?: BoolFieldUpdateOperationsInput | boolean
     cep?: StringFieldUpdateOperationsInput | string
     endereco?: StringFieldUpdateOperationsInput | string
@@ -28921,7 +28712,7 @@ export namespace Prisma {
   }
 
   export type AtendimentoUncheckedUpdateWithoutDocumentosInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     capacidadeCivil?: BoolFieldUpdateOperationsInput | boolean
     cep?: StringFieldUpdateOperationsInput | string
     endereco?: StringFieldUpdateOperationsInput | string
@@ -28936,12 +28727,12 @@ export namespace Prisma {
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
     tipoAtendimentoId?: IntFieldUpdateOperationsInput | number
     estadoCivilId?: IntFieldUpdateOperationsInput | number
-    profissaoId?: IntFieldUpdateOperationsInput | number
+    profissaoId?: StringFieldUpdateOperationsInput | string
     tipoDomicilioId?: IntFieldUpdateOperationsInput | number
     tipoDemandaPrevidenciariaId?: IntFieldUpdateOperationsInput | number
     competenciaJudicialId?: IntFieldUpdateOperationsInput | number
-    operadorId?: IntFieldUpdateOperationsInput | number
-    filaId?: NullableIntFieldUpdateOperationsInput | number | null
+    operadorId?: StringFieldUpdateOperationsInput | string
+    filaId?: NullableStringFieldUpdateOperationsInput | string | null
     membrosFamiliares?: MembroFamiliarUncheckedUpdateManyWithoutAtendimentoNestedInput
     processo?: ProcessoUncheckedUpdateOneWithoutAtendimentoNestedInput
     formularios?: FormularioPreenchidoUncheckedUpdateManyWithoutAtendimentoNestedInput
@@ -28959,6 +28750,7 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutDocumentosUploadOperadorInput = {
+    id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     nome?: StringFieldUpdateOperationsInput | string
     senha?: StringFieldUpdateOperationsInput | string
@@ -28971,7 +28763,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedUpdateWithoutDocumentosUploadOperadorInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     nome?: StringFieldUpdateOperationsInput | string
     senha?: StringFieldUpdateOperationsInput | string
@@ -28984,6 +28776,7 @@ export namespace Prisma {
   }
 
   export type AssistidoCreateWithoutTipoAtendimentoInput = {
+    id?: string
     nomeCompleto: string
     nomeSocial?: string | null
     cpf: string
@@ -28995,7 +28788,7 @@ export namespace Prisma {
   }
 
   export type AssistidoUncheckedCreateWithoutTipoAtendimentoInput = {
-    id?: number
+    id?: string
     nomeCompleto: string
     nomeSocial?: string | null
     cpf: string
@@ -29061,6 +28854,7 @@ export namespace Prisma {
   }
 
   export type AtendimentoCreateWithoutTipoAtendimentoInput = {
+    id?: string
     capacidadeCivil: boolean
     cep: string
     endereco: string
@@ -29087,7 +28881,7 @@ export namespace Prisma {
   }
 
   export type AtendimentoUncheckedCreateWithoutTipoAtendimentoInput = {
-    id?: number
+    id?: string
     capacidadeCivil: boolean
     cep: string
     endereco: string
@@ -29101,12 +28895,12 @@ export namespace Prisma {
     valorCausa?: number | null
     processosAndamento: $Enums.ProcessosAndamento
     estadoCivilId: number
-    profissaoId: number
+    profissaoId: string
     tipoDomicilioId: number
     tipoDemandaPrevidenciariaId: number
     competenciaJudicialId: number
-    operadorId: number
-    filaId?: number | null
+    operadorId: string
+    filaId?: string | null
     membrosFamiliares?: MembroFamiliarUncheckedCreateNestedManyWithoutAtendimentoInput
     processo?: ProcessoUncheckedCreateNestedOneWithoutAtendimentoInput
     formularios?: FormularioPreenchidoUncheckedCreateNestedManyWithoutAtendimentoInput
@@ -29143,7 +28937,7 @@ export namespace Prisma {
     AND?: AssistidoScalarWhereInput | AssistidoScalarWhereInput[]
     OR?: AssistidoScalarWhereInput[]
     NOT?: AssistidoScalarWhereInput | AssistidoScalarWhereInput[]
-    id?: IntFilter<"Assistido"> | number
+    id?: StringFilter<"Assistido"> | string
     nomeCompleto?: StringFilter<"Assistido"> | string
     nomeSocial?: StringNullableFilter<"Assistido"> | string | null
     cpf?: StringFilter<"Assistido"> | string
@@ -29223,6 +29017,7 @@ export namespace Prisma {
   }
 
   export type AssistidoCreateWithoutTipoPrioridadeInput = {
+    id?: string
     nomeCompleto: string
     nomeSocial?: string | null
     cpf: string
@@ -29234,7 +29029,7 @@ export namespace Prisma {
   }
 
   export type AssistidoUncheckedCreateWithoutTipoPrioridadeInput = {
-    id?: number
+    id?: string
     nomeCompleto: string
     nomeSocial?: string | null
     cpf: string
@@ -29464,6 +29259,7 @@ export namespace Prisma {
   }
 
   export type AssistidoCreateWithoutTipoServicoAtendimentoInput = {
+    id?: string
     nomeCompleto: string
     nomeSocial?: string | null
     cpf: string
@@ -29475,7 +29271,7 @@ export namespace Prisma {
   }
 
   export type AssistidoUncheckedCreateWithoutTipoServicoAtendimentoInput = {
-    id?: number
+    id?: string
     nomeCompleto: string
     nomeSocial?: string | null
     cpf: string
@@ -29539,6 +29335,7 @@ export namespace Prisma {
   }
 
   export type AtendimentoCreateWithoutEstadoCivilInput = {
+    id?: string
     capacidadeCivil: boolean
     cep: string
     endereco: string
@@ -29565,7 +29362,7 @@ export namespace Prisma {
   }
 
   export type AtendimentoUncheckedCreateWithoutEstadoCivilInput = {
-    id?: number
+    id?: string
     capacidadeCivil: boolean
     cep: string
     endereco: string
@@ -29579,12 +29376,12 @@ export namespace Prisma {
     valorCausa?: number | null
     processosAndamento: $Enums.ProcessosAndamento
     tipoAtendimentoId: number
-    profissaoId: number
+    profissaoId: string
     tipoDomicilioId: number
     tipoDemandaPrevidenciariaId: number
     competenciaJudicialId: number
-    operadorId: number
-    filaId?: number | null
+    operadorId: string
+    filaId?: string | null
     membrosFamiliares?: MembroFamiliarUncheckedCreateNestedManyWithoutAtendimentoInput
     processo?: ProcessoUncheckedCreateNestedOneWithoutAtendimentoInput
     formularios?: FormularioPreenchidoUncheckedCreateNestedManyWithoutAtendimentoInput
@@ -29618,6 +29415,7 @@ export namespace Prisma {
   }
 
   export type AtendimentoCreateWithoutProfissaoInput = {
+    id?: string
     capacidadeCivil: boolean
     cep: string
     endereco: string
@@ -29644,7 +29442,7 @@ export namespace Prisma {
   }
 
   export type AtendimentoUncheckedCreateWithoutProfissaoInput = {
-    id?: number
+    id?: string
     capacidadeCivil: boolean
     cep: string
     endereco: string
@@ -29662,8 +29460,8 @@ export namespace Prisma {
     tipoDomicilioId: number
     tipoDemandaPrevidenciariaId: number
     competenciaJudicialId: number
-    operadorId: number
-    filaId?: number | null
+    operadorId: string
+    filaId?: string | null
     membrosFamiliares?: MembroFamiliarUncheckedCreateNestedManyWithoutAtendimentoInput
     processo?: ProcessoUncheckedCreateNestedOneWithoutAtendimentoInput
     formularios?: FormularioPreenchidoUncheckedCreateNestedManyWithoutAtendimentoInput
@@ -29697,6 +29495,7 @@ export namespace Prisma {
   }
 
   export type AtendimentoCreateWithoutTipoDomicilioInput = {
+    id?: string
     capacidadeCivil: boolean
     cep: string
     endereco: string
@@ -29723,7 +29522,7 @@ export namespace Prisma {
   }
 
   export type AtendimentoUncheckedCreateWithoutTipoDomicilioInput = {
-    id?: number
+    id?: string
     capacidadeCivil: boolean
     cep: string
     endereco: string
@@ -29738,11 +29537,11 @@ export namespace Prisma {
     processosAndamento: $Enums.ProcessosAndamento
     tipoAtendimentoId: number
     estadoCivilId: number
-    profissaoId: number
+    profissaoId: string
     tipoDemandaPrevidenciariaId: number
     competenciaJudicialId: number
-    operadorId: number
-    filaId?: number | null
+    operadorId: string
+    filaId?: string | null
     membrosFamiliares?: MembroFamiliarUncheckedCreateNestedManyWithoutAtendimentoInput
     processo?: ProcessoUncheckedCreateNestedOneWithoutAtendimentoInput
     formularios?: FormularioPreenchidoUncheckedCreateNestedManyWithoutAtendimentoInput
@@ -29776,6 +29575,7 @@ export namespace Prisma {
   }
 
   export type AtendimentoCreateWithoutMembrosFamiliaresInput = {
+    id?: string
     capacidadeCivil: boolean
     cep: string
     endereco: string
@@ -29802,7 +29602,7 @@ export namespace Prisma {
   }
 
   export type AtendimentoUncheckedCreateWithoutMembrosFamiliaresInput = {
-    id?: number
+    id?: string
     capacidadeCivil: boolean
     cep: string
     endereco: string
@@ -29817,12 +29617,12 @@ export namespace Prisma {
     processosAndamento: $Enums.ProcessosAndamento
     tipoAtendimentoId: number
     estadoCivilId: number
-    profissaoId: number
+    profissaoId: string
     tipoDomicilioId: number
     tipoDemandaPrevidenciariaId: number
     competenciaJudicialId: number
-    operadorId: number
-    filaId?: number | null
+    operadorId: string
+    filaId?: string | null
     processo?: ProcessoUncheckedCreateNestedOneWithoutAtendimentoInput
     formularios?: FormularioPreenchidoUncheckedCreateNestedManyWithoutAtendimentoInput
     documentos?: DocumentoUncheckedCreateNestedManyWithoutAtendimentoInput
@@ -29845,6 +29645,7 @@ export namespace Prisma {
   }
 
   export type AtendimentoUpdateWithoutMembrosFamiliaresInput = {
+    id?: StringFieldUpdateOperationsInput | string
     capacidadeCivil?: BoolFieldUpdateOperationsInput | boolean
     cep?: StringFieldUpdateOperationsInput | string
     endereco?: StringFieldUpdateOperationsInput | string
@@ -29871,7 +29672,7 @@ export namespace Prisma {
   }
 
   export type AtendimentoUncheckedUpdateWithoutMembrosFamiliaresInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     capacidadeCivil?: BoolFieldUpdateOperationsInput | boolean
     cep?: StringFieldUpdateOperationsInput | string
     endereco?: StringFieldUpdateOperationsInput | string
@@ -29886,18 +29687,19 @@ export namespace Prisma {
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
     tipoAtendimentoId?: IntFieldUpdateOperationsInput | number
     estadoCivilId?: IntFieldUpdateOperationsInput | number
-    profissaoId?: IntFieldUpdateOperationsInput | number
+    profissaoId?: StringFieldUpdateOperationsInput | string
     tipoDomicilioId?: IntFieldUpdateOperationsInput | number
     tipoDemandaPrevidenciariaId?: IntFieldUpdateOperationsInput | number
     competenciaJudicialId?: IntFieldUpdateOperationsInput | number
-    operadorId?: IntFieldUpdateOperationsInput | number
-    filaId?: NullableIntFieldUpdateOperationsInput | number | null
+    operadorId?: StringFieldUpdateOperationsInput | string
+    filaId?: NullableStringFieldUpdateOperationsInput | string | null
     processo?: ProcessoUncheckedUpdateOneWithoutAtendimentoNestedInput
     formularios?: FormularioPreenchidoUncheckedUpdateManyWithoutAtendimentoNestedInput
     documentos?: DocumentoUncheckedUpdateManyWithoutAtendimentoNestedInput
   }
 
   export type AtendimentoCreateWithoutTipoDemandaPrevidenciariaInput = {
+    id?: string
     capacidadeCivil: boolean
     cep: string
     endereco: string
@@ -29924,7 +29726,7 @@ export namespace Prisma {
   }
 
   export type AtendimentoUncheckedCreateWithoutTipoDemandaPrevidenciariaInput = {
-    id?: number
+    id?: string
     capacidadeCivil: boolean
     cep: string
     endereco: string
@@ -29939,11 +29741,11 @@ export namespace Prisma {
     processosAndamento: $Enums.ProcessosAndamento
     tipoAtendimentoId: number
     estadoCivilId: number
-    profissaoId: number
+    profissaoId: string
     tipoDomicilioId: number
     competenciaJudicialId: number
-    operadorId: number
-    filaId?: number | null
+    operadorId: string
+    filaId?: string | null
     membrosFamiliares?: MembroFamiliarUncheckedCreateNestedManyWithoutAtendimentoInput
     processo?: ProcessoUncheckedCreateNestedOneWithoutAtendimentoInput
     formularios?: FormularioPreenchidoUncheckedCreateNestedManyWithoutAtendimentoInput
@@ -29977,6 +29779,7 @@ export namespace Prisma {
   }
 
   export type AtendimentoCreateWithoutCompetenciaJudicialInput = {
+    id?: string
     capacidadeCivil: boolean
     cep: string
     endereco: string
@@ -30003,7 +29806,7 @@ export namespace Prisma {
   }
 
   export type AtendimentoUncheckedCreateWithoutCompetenciaJudicialInput = {
-    id?: number
+    id?: string
     capacidadeCivil: boolean
     cep: string
     endereco: string
@@ -30018,11 +29821,11 @@ export namespace Prisma {
     processosAndamento: $Enums.ProcessosAndamento
     tipoAtendimentoId: number
     estadoCivilId: number
-    profissaoId: number
+    profissaoId: string
     tipoDomicilioId: number
     tipoDemandaPrevidenciariaId: number
-    operadorId: number
-    filaId?: number | null
+    operadorId: string
+    filaId?: string | null
     membrosFamiliares?: MembroFamiliarUncheckedCreateNestedManyWithoutAtendimentoInput
     processo?: ProcessoUncheckedCreateNestedOneWithoutAtendimentoInput
     formularios?: FormularioPreenchidoUncheckedCreateNestedManyWithoutAtendimentoInput
@@ -30056,7 +29859,7 @@ export namespace Prisma {
   }
 
   export type AtendimentoCreateManyOperadorInput = {
-    id?: number
+    id?: string
     capacidadeCivil: boolean
     cep: string
     endereco: string
@@ -30071,15 +29874,15 @@ export namespace Prisma {
     processosAndamento: $Enums.ProcessosAndamento
     tipoAtendimentoId: number
     estadoCivilId: number
-    profissaoId: number
+    profissaoId: string
     tipoDomicilioId: number
     tipoDemandaPrevidenciariaId: number
     competenciaJudicialId: number
-    filaId?: number | null
+    filaId?: string | null
   }
 
   export type FilaAtendimentoCreateManyOperadorTriagemInput = {
-    id?: number
+    id?: string
     nomeCompleto: string
     nomeSocial?: string | null
     cpf: string
@@ -30089,11 +29892,11 @@ export namespace Prisma {
     dataEntrada?: Date | string
     dataInicio?: Date | string | null
     dataFim?: Date | string | null
-    operadorAtendimentoId?: number | null
+    operadorAtendimentoId?: string | null
   }
 
   export type FilaAtendimentoCreateManyOperadorAtendimentoInput = {
-    id?: number
+    id?: string
     nomeCompleto: string
     nomeSocial?: string | null
     cpf: string
@@ -30103,11 +29906,11 @@ export namespace Prisma {
     dataEntrada?: Date | string
     dataInicio?: Date | string | null
     dataFim?: Date | string | null
-    operadorTriagemId: number
+    operadorTriagemId: string
   }
 
   export type DocumentoCreateManyOperadorUploadInput = {
-    id?: number
+    id?: string
     nomeOriginal: string
     nomeArmazenamento: string
     tipo: string
@@ -30115,10 +29918,11 @@ export namespace Prisma {
     caminho: string
     tipoDocumento: $Enums.TipoDocumento
     dataCriacao?: Date | string
-    atendimentoId: number
+    atendimentoId: string
   }
 
   export type AtendimentoUpdateWithoutOperadorInput = {
+    id?: StringFieldUpdateOperationsInput | string
     capacidadeCivil?: BoolFieldUpdateOperationsInput | boolean
     cep?: StringFieldUpdateOperationsInput | string
     endereco?: StringFieldUpdateOperationsInput | string
@@ -30145,7 +29949,7 @@ export namespace Prisma {
   }
 
   export type AtendimentoUncheckedUpdateWithoutOperadorInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     capacidadeCivil?: BoolFieldUpdateOperationsInput | boolean
     cep?: StringFieldUpdateOperationsInput | string
     endereco?: StringFieldUpdateOperationsInput | string
@@ -30160,11 +29964,11 @@ export namespace Prisma {
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
     tipoAtendimentoId?: IntFieldUpdateOperationsInput | number
     estadoCivilId?: IntFieldUpdateOperationsInput | number
-    profissaoId?: IntFieldUpdateOperationsInput | number
+    profissaoId?: StringFieldUpdateOperationsInput | string
     tipoDomicilioId?: IntFieldUpdateOperationsInput | number
     tipoDemandaPrevidenciariaId?: IntFieldUpdateOperationsInput | number
     competenciaJudicialId?: IntFieldUpdateOperationsInput | number
-    filaId?: NullableIntFieldUpdateOperationsInput | number | null
+    filaId?: NullableStringFieldUpdateOperationsInput | string | null
     membrosFamiliares?: MembroFamiliarUncheckedUpdateManyWithoutAtendimentoNestedInput
     processo?: ProcessoUncheckedUpdateOneWithoutAtendimentoNestedInput
     formularios?: FormularioPreenchidoUncheckedUpdateManyWithoutAtendimentoNestedInput
@@ -30172,7 +29976,7 @@ export namespace Prisma {
   }
 
   export type AtendimentoUncheckedUpdateManyWithoutOperadorInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     capacidadeCivil?: BoolFieldUpdateOperationsInput | boolean
     cep?: StringFieldUpdateOperationsInput | string
     endereco?: StringFieldUpdateOperationsInput | string
@@ -30187,14 +29991,15 @@ export namespace Prisma {
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
     tipoAtendimentoId?: IntFieldUpdateOperationsInput | number
     estadoCivilId?: IntFieldUpdateOperationsInput | number
-    profissaoId?: IntFieldUpdateOperationsInput | number
+    profissaoId?: StringFieldUpdateOperationsInput | string
     tipoDomicilioId?: IntFieldUpdateOperationsInput | number
     tipoDemandaPrevidenciariaId?: IntFieldUpdateOperationsInput | number
     competenciaJudicialId?: IntFieldUpdateOperationsInput | number
-    filaId?: NullableIntFieldUpdateOperationsInput | number | null
+    filaId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type FilaAtendimentoUpdateWithoutOperadorTriagemInput = {
+    id?: StringFieldUpdateOperationsInput | string
     nomeCompleto?: StringFieldUpdateOperationsInput | string
     nomeSocial?: NullableStringFieldUpdateOperationsInput | string | null
     cpf?: StringFieldUpdateOperationsInput | string
@@ -30209,7 +30014,7 @@ export namespace Prisma {
   }
 
   export type FilaAtendimentoUncheckedUpdateWithoutOperadorTriagemInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     nomeCompleto?: StringFieldUpdateOperationsInput | string
     nomeSocial?: NullableStringFieldUpdateOperationsInput | string | null
     cpf?: StringFieldUpdateOperationsInput | string
@@ -30219,12 +30024,12 @@ export namespace Prisma {
     dataEntrada?: DateTimeFieldUpdateOperationsInput | Date | string
     dataInicio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     dataFim?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    operadorAtendimentoId?: NullableIntFieldUpdateOperationsInput | number | null
+    operadorAtendimentoId?: NullableStringFieldUpdateOperationsInput | string | null
     atendimento?: AtendimentoUncheckedUpdateOneWithoutFilaNestedInput
   }
 
   export type FilaAtendimentoUncheckedUpdateManyWithoutOperadorTriagemInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     nomeCompleto?: StringFieldUpdateOperationsInput | string
     nomeSocial?: NullableStringFieldUpdateOperationsInput | string | null
     cpf?: StringFieldUpdateOperationsInput | string
@@ -30234,10 +30039,11 @@ export namespace Prisma {
     dataEntrada?: DateTimeFieldUpdateOperationsInput | Date | string
     dataInicio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     dataFim?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    operadorAtendimentoId?: NullableIntFieldUpdateOperationsInput | number | null
+    operadorAtendimentoId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type FilaAtendimentoUpdateWithoutOperadorAtendimentoInput = {
+    id?: StringFieldUpdateOperationsInput | string
     nomeCompleto?: StringFieldUpdateOperationsInput | string
     nomeSocial?: NullableStringFieldUpdateOperationsInput | string | null
     cpf?: StringFieldUpdateOperationsInput | string
@@ -30252,7 +30058,7 @@ export namespace Prisma {
   }
 
   export type FilaAtendimentoUncheckedUpdateWithoutOperadorAtendimentoInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     nomeCompleto?: StringFieldUpdateOperationsInput | string
     nomeSocial?: NullableStringFieldUpdateOperationsInput | string | null
     cpf?: StringFieldUpdateOperationsInput | string
@@ -30262,12 +30068,12 @@ export namespace Prisma {
     dataEntrada?: DateTimeFieldUpdateOperationsInput | Date | string
     dataInicio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     dataFim?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    operadorTriagemId?: IntFieldUpdateOperationsInput | number
+    operadorTriagemId?: StringFieldUpdateOperationsInput | string
     atendimento?: AtendimentoUncheckedUpdateOneWithoutFilaNestedInput
   }
 
   export type FilaAtendimentoUncheckedUpdateManyWithoutOperadorAtendimentoInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     nomeCompleto?: StringFieldUpdateOperationsInput | string
     nomeSocial?: NullableStringFieldUpdateOperationsInput | string | null
     cpf?: StringFieldUpdateOperationsInput | string
@@ -30277,10 +30083,11 @@ export namespace Prisma {
     dataEntrada?: DateTimeFieldUpdateOperationsInput | Date | string
     dataInicio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     dataFim?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    operadorTriagemId?: IntFieldUpdateOperationsInput | number
+    operadorTriagemId?: StringFieldUpdateOperationsInput | string
   }
 
   export type DocumentoUpdateWithoutOperadorUploadInput = {
+    id?: StringFieldUpdateOperationsInput | string
     nomeOriginal?: StringFieldUpdateOperationsInput | string
     nomeArmazenamento?: StringFieldUpdateOperationsInput | string
     tipo?: StringFieldUpdateOperationsInput | string
@@ -30292,7 +30099,7 @@ export namespace Prisma {
   }
 
   export type DocumentoUncheckedUpdateWithoutOperadorUploadInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     nomeOriginal?: StringFieldUpdateOperationsInput | string
     nomeArmazenamento?: StringFieldUpdateOperationsInput | string
     tipo?: StringFieldUpdateOperationsInput | string
@@ -30300,11 +30107,11 @@ export namespace Prisma {
     caminho?: StringFieldUpdateOperationsInput | string
     tipoDocumento?: EnumTipoDocumentoFieldUpdateOperationsInput | $Enums.TipoDocumento
     dataCriacao?: DateTimeFieldUpdateOperationsInput | Date | string
-    atendimentoId?: IntFieldUpdateOperationsInput | number
+    atendimentoId?: StringFieldUpdateOperationsInput | string
   }
 
   export type DocumentoUncheckedUpdateManyWithoutOperadorUploadInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     nomeOriginal?: StringFieldUpdateOperationsInput | string
     nomeArmazenamento?: StringFieldUpdateOperationsInput | string
     tipo?: StringFieldUpdateOperationsInput | string
@@ -30312,11 +30119,11 @@ export namespace Prisma {
     caminho?: StringFieldUpdateOperationsInput | string
     tipoDocumento?: EnumTipoDocumentoFieldUpdateOperationsInput | $Enums.TipoDocumento
     dataCriacao?: DateTimeFieldUpdateOperationsInput | Date | string
-    atendimentoId?: IntFieldUpdateOperationsInput | number
+    atendimentoId?: StringFieldUpdateOperationsInput | string
   }
 
   export type MembroFamiliarCreateManyAtendimentoInput = {
-    id?: number
+    id?: string
     nomeCompleto: string
     cpf: string
     rendaMensal: number
@@ -30330,7 +30137,7 @@ export namespace Prisma {
   }
 
   export type DocumentoCreateManyAtendimentoInput = {
-    id?: number
+    id?: string
     nomeOriginal: string
     nomeArmazenamento: string
     tipo: string
@@ -30338,24 +30145,25 @@ export namespace Prisma {
     caminho: string
     tipoDocumento: $Enums.TipoDocumento
     dataCriacao?: Date | string
-    operadorUploadId: number
+    operadorUploadId: string
   }
 
   export type MembroFamiliarUpdateWithoutAtendimentoInput = {
+    id?: StringFieldUpdateOperationsInput | string
     nomeCompleto?: StringFieldUpdateOperationsInput | string
     cpf?: StringFieldUpdateOperationsInput | string
     rendaMensal?: FloatFieldUpdateOperationsInput | number
   }
 
   export type MembroFamiliarUncheckedUpdateWithoutAtendimentoInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     nomeCompleto?: StringFieldUpdateOperationsInput | string
     cpf?: StringFieldUpdateOperationsInput | string
     rendaMensal?: FloatFieldUpdateOperationsInput | number
   }
 
   export type MembroFamiliarUncheckedUpdateManyWithoutAtendimentoInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     nomeCompleto?: StringFieldUpdateOperationsInput | string
     cpf?: StringFieldUpdateOperationsInput | string
     rendaMensal?: FloatFieldUpdateOperationsInput | number
@@ -30382,6 +30190,7 @@ export namespace Prisma {
   }
 
   export type DocumentoUpdateWithoutAtendimentoInput = {
+    id?: StringFieldUpdateOperationsInput | string
     nomeOriginal?: StringFieldUpdateOperationsInput | string
     nomeArmazenamento?: StringFieldUpdateOperationsInput | string
     tipo?: StringFieldUpdateOperationsInput | string
@@ -30393,7 +30202,7 @@ export namespace Prisma {
   }
 
   export type DocumentoUncheckedUpdateWithoutAtendimentoInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     nomeOriginal?: StringFieldUpdateOperationsInput | string
     nomeArmazenamento?: StringFieldUpdateOperationsInput | string
     tipo?: StringFieldUpdateOperationsInput | string
@@ -30401,11 +30210,11 @@ export namespace Prisma {
     caminho?: StringFieldUpdateOperationsInput | string
     tipoDocumento?: EnumTipoDocumentoFieldUpdateOperationsInput | $Enums.TipoDocumento
     dataCriacao?: DateTimeFieldUpdateOperationsInput | Date | string
-    operadorUploadId?: IntFieldUpdateOperationsInput | number
+    operadorUploadId?: StringFieldUpdateOperationsInput | string
   }
 
   export type DocumentoUncheckedUpdateManyWithoutAtendimentoInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     nomeOriginal?: StringFieldUpdateOperationsInput | string
     nomeArmazenamento?: StringFieldUpdateOperationsInput | string
     tipo?: StringFieldUpdateOperationsInput | string
@@ -30413,11 +30222,11 @@ export namespace Prisma {
     caminho?: StringFieldUpdateOperationsInput | string
     tipoDocumento?: EnumTipoDocumentoFieldUpdateOperationsInput | $Enums.TipoDocumento
     dataCriacao?: DateTimeFieldUpdateOperationsInput | Date | string
-    operadorUploadId?: IntFieldUpdateOperationsInput | number
+    operadorUploadId?: StringFieldUpdateOperationsInput | string
   }
 
   export type AssistidoCreateManyTipoAtendimentoInput = {
-    id?: number
+    id?: string
     nomeCompleto: string
     nomeSocial?: string | null
     cpf: string
@@ -30440,7 +30249,7 @@ export namespace Prisma {
   }
 
   export type AtendimentoCreateManyTipoAtendimentoInput = {
-    id?: number
+    id?: string
     capacidadeCivil: boolean
     cep: string
     endereco: string
@@ -30454,15 +30263,16 @@ export namespace Prisma {
     valorCausa?: number | null
     processosAndamento: $Enums.ProcessosAndamento
     estadoCivilId: number
-    profissaoId: number
+    profissaoId: string
     tipoDomicilioId: number
     tipoDemandaPrevidenciariaId: number
     competenciaJudicialId: number
-    operadorId: number
-    filaId?: number | null
+    operadorId: string
+    filaId?: string | null
   }
 
   export type AssistidoUpdateWithoutTipoAtendimentoInput = {
+    id?: StringFieldUpdateOperationsInput | string
     nomeCompleto?: StringFieldUpdateOperationsInput | string
     nomeSocial?: NullableStringFieldUpdateOperationsInput | string | null
     cpf?: StringFieldUpdateOperationsInput | string
@@ -30474,7 +30284,7 @@ export namespace Prisma {
   }
 
   export type AssistidoUncheckedUpdateWithoutTipoAtendimentoInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     nomeCompleto?: StringFieldUpdateOperationsInput | string
     nomeSocial?: NullableStringFieldUpdateOperationsInput | string | null
     cpf?: StringFieldUpdateOperationsInput | string
@@ -30486,7 +30296,7 @@ export namespace Prisma {
   }
 
   export type AssistidoUncheckedUpdateManyWithoutTipoAtendimentoInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     nomeCompleto?: StringFieldUpdateOperationsInput | string
     nomeSocial?: NullableStringFieldUpdateOperationsInput | string | null
     cpf?: StringFieldUpdateOperationsInput | string
@@ -30533,6 +30343,7 @@ export namespace Prisma {
   }
 
   export type AtendimentoUpdateWithoutTipoAtendimentoInput = {
+    id?: StringFieldUpdateOperationsInput | string
     capacidadeCivil?: BoolFieldUpdateOperationsInput | boolean
     cep?: StringFieldUpdateOperationsInput | string
     endereco?: StringFieldUpdateOperationsInput | string
@@ -30559,7 +30370,7 @@ export namespace Prisma {
   }
 
   export type AtendimentoUncheckedUpdateWithoutTipoAtendimentoInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     capacidadeCivil?: BoolFieldUpdateOperationsInput | boolean
     cep?: StringFieldUpdateOperationsInput | string
     endereco?: StringFieldUpdateOperationsInput | string
@@ -30573,12 +30384,12 @@ export namespace Prisma {
     valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
     estadoCivilId?: IntFieldUpdateOperationsInput | number
-    profissaoId?: IntFieldUpdateOperationsInput | number
+    profissaoId?: StringFieldUpdateOperationsInput | string
     tipoDomicilioId?: IntFieldUpdateOperationsInput | number
     tipoDemandaPrevidenciariaId?: IntFieldUpdateOperationsInput | number
     competenciaJudicialId?: IntFieldUpdateOperationsInput | number
-    operadorId?: IntFieldUpdateOperationsInput | number
-    filaId?: NullableIntFieldUpdateOperationsInput | number | null
+    operadorId?: StringFieldUpdateOperationsInput | string
+    filaId?: NullableStringFieldUpdateOperationsInput | string | null
     membrosFamiliares?: MembroFamiliarUncheckedUpdateManyWithoutAtendimentoNestedInput
     processo?: ProcessoUncheckedUpdateOneWithoutAtendimentoNestedInput
     formularios?: FormularioPreenchidoUncheckedUpdateManyWithoutAtendimentoNestedInput
@@ -30586,7 +30397,7 @@ export namespace Prisma {
   }
 
   export type AtendimentoUncheckedUpdateManyWithoutTipoAtendimentoInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     capacidadeCivil?: BoolFieldUpdateOperationsInput | boolean
     cep?: StringFieldUpdateOperationsInput | string
     endereco?: StringFieldUpdateOperationsInput | string
@@ -30600,16 +30411,16 @@ export namespace Prisma {
     valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
     estadoCivilId?: IntFieldUpdateOperationsInput | number
-    profissaoId?: IntFieldUpdateOperationsInput | number
+    profissaoId?: StringFieldUpdateOperationsInput | string
     tipoDomicilioId?: IntFieldUpdateOperationsInput | number
     tipoDemandaPrevidenciariaId?: IntFieldUpdateOperationsInput | number
     competenciaJudicialId?: IntFieldUpdateOperationsInput | number
-    operadorId?: IntFieldUpdateOperationsInput | number
-    filaId?: NullableIntFieldUpdateOperationsInput | number | null
+    operadorId?: StringFieldUpdateOperationsInput | string
+    filaId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type AssistidoCreateManyTipoPrioridadeInput = {
-    id?: number
+    id?: string
     nomeCompleto: string
     nomeSocial?: string | null
     cpf: string
@@ -30621,6 +30432,7 @@ export namespace Prisma {
   }
 
   export type AssistidoUpdateWithoutTipoPrioridadeInput = {
+    id?: StringFieldUpdateOperationsInput | string
     nomeCompleto?: StringFieldUpdateOperationsInput | string
     nomeSocial?: NullableStringFieldUpdateOperationsInput | string | null
     cpf?: StringFieldUpdateOperationsInput | string
@@ -30632,7 +30444,7 @@ export namespace Prisma {
   }
 
   export type AssistidoUncheckedUpdateWithoutTipoPrioridadeInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     nomeCompleto?: StringFieldUpdateOperationsInput | string
     nomeSocial?: NullableStringFieldUpdateOperationsInput | string | null
     cpf?: StringFieldUpdateOperationsInput | string
@@ -30644,7 +30456,7 @@ export namespace Prisma {
   }
 
   export type AssistidoUncheckedUpdateManyWithoutTipoPrioridadeInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     nomeCompleto?: StringFieldUpdateOperationsInput | string
     nomeSocial?: NullableStringFieldUpdateOperationsInput | string | null
     cpf?: StringFieldUpdateOperationsInput | string
@@ -30656,7 +30468,7 @@ export namespace Prisma {
   }
 
   export type AssistidoCreateManyTipoServicoAtendimentoInput = {
-    id?: number
+    id?: string
     nomeCompleto: string
     nomeSocial?: string | null
     cpf: string
@@ -30668,6 +30480,7 @@ export namespace Prisma {
   }
 
   export type AssistidoUpdateWithoutTipoServicoAtendimentoInput = {
+    id?: StringFieldUpdateOperationsInput | string
     nomeCompleto?: StringFieldUpdateOperationsInput | string
     nomeSocial?: NullableStringFieldUpdateOperationsInput | string | null
     cpf?: StringFieldUpdateOperationsInput | string
@@ -30679,7 +30492,7 @@ export namespace Prisma {
   }
 
   export type AssistidoUncheckedUpdateWithoutTipoServicoAtendimentoInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     nomeCompleto?: StringFieldUpdateOperationsInput | string
     nomeSocial?: NullableStringFieldUpdateOperationsInput | string | null
     cpf?: StringFieldUpdateOperationsInput | string
@@ -30691,7 +30504,7 @@ export namespace Prisma {
   }
 
   export type AssistidoUncheckedUpdateManyWithoutTipoServicoAtendimentoInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     nomeCompleto?: StringFieldUpdateOperationsInput | string
     nomeSocial?: NullableStringFieldUpdateOperationsInput | string | null
     cpf?: StringFieldUpdateOperationsInput | string
@@ -30703,7 +30516,7 @@ export namespace Prisma {
   }
 
   export type AtendimentoCreateManyEstadoCivilInput = {
-    id?: number
+    id?: string
     capacidadeCivil: boolean
     cep: string
     endereco: string
@@ -30717,15 +30530,16 @@ export namespace Prisma {
     valorCausa?: number | null
     processosAndamento: $Enums.ProcessosAndamento
     tipoAtendimentoId: number
-    profissaoId: number
+    profissaoId: string
     tipoDomicilioId: number
     tipoDemandaPrevidenciariaId: number
     competenciaJudicialId: number
-    operadorId: number
-    filaId?: number | null
+    operadorId: string
+    filaId?: string | null
   }
 
   export type AtendimentoUpdateWithoutEstadoCivilInput = {
+    id?: StringFieldUpdateOperationsInput | string
     capacidadeCivil?: BoolFieldUpdateOperationsInput | boolean
     cep?: StringFieldUpdateOperationsInput | string
     endereco?: StringFieldUpdateOperationsInput | string
@@ -30752,7 +30566,7 @@ export namespace Prisma {
   }
 
   export type AtendimentoUncheckedUpdateWithoutEstadoCivilInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     capacidadeCivil?: BoolFieldUpdateOperationsInput | boolean
     cep?: StringFieldUpdateOperationsInput | string
     endereco?: StringFieldUpdateOperationsInput | string
@@ -30766,12 +30580,12 @@ export namespace Prisma {
     valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
     tipoAtendimentoId?: IntFieldUpdateOperationsInput | number
-    profissaoId?: IntFieldUpdateOperationsInput | number
+    profissaoId?: StringFieldUpdateOperationsInput | string
     tipoDomicilioId?: IntFieldUpdateOperationsInput | number
     tipoDemandaPrevidenciariaId?: IntFieldUpdateOperationsInput | number
     competenciaJudicialId?: IntFieldUpdateOperationsInput | number
-    operadorId?: IntFieldUpdateOperationsInput | number
-    filaId?: NullableIntFieldUpdateOperationsInput | number | null
+    operadorId?: StringFieldUpdateOperationsInput | string
+    filaId?: NullableStringFieldUpdateOperationsInput | string | null
     membrosFamiliares?: MembroFamiliarUncheckedUpdateManyWithoutAtendimentoNestedInput
     processo?: ProcessoUncheckedUpdateOneWithoutAtendimentoNestedInput
     formularios?: FormularioPreenchidoUncheckedUpdateManyWithoutAtendimentoNestedInput
@@ -30779,7 +30593,7 @@ export namespace Prisma {
   }
 
   export type AtendimentoUncheckedUpdateManyWithoutEstadoCivilInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     capacidadeCivil?: BoolFieldUpdateOperationsInput | boolean
     cep?: StringFieldUpdateOperationsInput | string
     endereco?: StringFieldUpdateOperationsInput | string
@@ -30793,16 +30607,16 @@ export namespace Prisma {
     valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
     tipoAtendimentoId?: IntFieldUpdateOperationsInput | number
-    profissaoId?: IntFieldUpdateOperationsInput | number
+    profissaoId?: StringFieldUpdateOperationsInput | string
     tipoDomicilioId?: IntFieldUpdateOperationsInput | number
     tipoDemandaPrevidenciariaId?: IntFieldUpdateOperationsInput | number
     competenciaJudicialId?: IntFieldUpdateOperationsInput | number
-    operadorId?: IntFieldUpdateOperationsInput | number
-    filaId?: NullableIntFieldUpdateOperationsInput | number | null
+    operadorId?: StringFieldUpdateOperationsInput | string
+    filaId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type AtendimentoCreateManyProfissaoInput = {
-    id?: number
+    id?: string
     capacidadeCivil: boolean
     cep: string
     endereco: string
@@ -30820,11 +30634,12 @@ export namespace Prisma {
     tipoDomicilioId: number
     tipoDemandaPrevidenciariaId: number
     competenciaJudicialId: number
-    operadorId: number
-    filaId?: number | null
+    operadorId: string
+    filaId?: string | null
   }
 
   export type AtendimentoUpdateWithoutProfissaoInput = {
+    id?: StringFieldUpdateOperationsInput | string
     capacidadeCivil?: BoolFieldUpdateOperationsInput | boolean
     cep?: StringFieldUpdateOperationsInput | string
     endereco?: StringFieldUpdateOperationsInput | string
@@ -30851,7 +30666,7 @@ export namespace Prisma {
   }
 
   export type AtendimentoUncheckedUpdateWithoutProfissaoInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     capacidadeCivil?: BoolFieldUpdateOperationsInput | boolean
     cep?: StringFieldUpdateOperationsInput | string
     endereco?: StringFieldUpdateOperationsInput | string
@@ -30869,8 +30684,8 @@ export namespace Prisma {
     tipoDomicilioId?: IntFieldUpdateOperationsInput | number
     tipoDemandaPrevidenciariaId?: IntFieldUpdateOperationsInput | number
     competenciaJudicialId?: IntFieldUpdateOperationsInput | number
-    operadorId?: IntFieldUpdateOperationsInput | number
-    filaId?: NullableIntFieldUpdateOperationsInput | number | null
+    operadorId?: StringFieldUpdateOperationsInput | string
+    filaId?: NullableStringFieldUpdateOperationsInput | string | null
     membrosFamiliares?: MembroFamiliarUncheckedUpdateManyWithoutAtendimentoNestedInput
     processo?: ProcessoUncheckedUpdateOneWithoutAtendimentoNestedInput
     formularios?: FormularioPreenchidoUncheckedUpdateManyWithoutAtendimentoNestedInput
@@ -30878,7 +30693,7 @@ export namespace Prisma {
   }
 
   export type AtendimentoUncheckedUpdateManyWithoutProfissaoInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     capacidadeCivil?: BoolFieldUpdateOperationsInput | boolean
     cep?: StringFieldUpdateOperationsInput | string
     endereco?: StringFieldUpdateOperationsInput | string
@@ -30896,12 +30711,12 @@ export namespace Prisma {
     tipoDomicilioId?: IntFieldUpdateOperationsInput | number
     tipoDemandaPrevidenciariaId?: IntFieldUpdateOperationsInput | number
     competenciaJudicialId?: IntFieldUpdateOperationsInput | number
-    operadorId?: IntFieldUpdateOperationsInput | number
-    filaId?: NullableIntFieldUpdateOperationsInput | number | null
+    operadorId?: StringFieldUpdateOperationsInput | string
+    filaId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type AtendimentoCreateManyTipoDomicilioInput = {
-    id?: number
+    id?: string
     capacidadeCivil: boolean
     cep: string
     endereco: string
@@ -30916,14 +30731,15 @@ export namespace Prisma {
     processosAndamento: $Enums.ProcessosAndamento
     tipoAtendimentoId: number
     estadoCivilId: number
-    profissaoId: number
+    profissaoId: string
     tipoDemandaPrevidenciariaId: number
     competenciaJudicialId: number
-    operadorId: number
-    filaId?: number | null
+    operadorId: string
+    filaId?: string | null
   }
 
   export type AtendimentoUpdateWithoutTipoDomicilioInput = {
+    id?: StringFieldUpdateOperationsInput | string
     capacidadeCivil?: BoolFieldUpdateOperationsInput | boolean
     cep?: StringFieldUpdateOperationsInput | string
     endereco?: StringFieldUpdateOperationsInput | string
@@ -30950,7 +30766,7 @@ export namespace Prisma {
   }
 
   export type AtendimentoUncheckedUpdateWithoutTipoDomicilioInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     capacidadeCivil?: BoolFieldUpdateOperationsInput | boolean
     cep?: StringFieldUpdateOperationsInput | string
     endereco?: StringFieldUpdateOperationsInput | string
@@ -30965,11 +30781,11 @@ export namespace Prisma {
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
     tipoAtendimentoId?: IntFieldUpdateOperationsInput | number
     estadoCivilId?: IntFieldUpdateOperationsInput | number
-    profissaoId?: IntFieldUpdateOperationsInput | number
+    profissaoId?: StringFieldUpdateOperationsInput | string
     tipoDemandaPrevidenciariaId?: IntFieldUpdateOperationsInput | number
     competenciaJudicialId?: IntFieldUpdateOperationsInput | number
-    operadorId?: IntFieldUpdateOperationsInput | number
-    filaId?: NullableIntFieldUpdateOperationsInput | number | null
+    operadorId?: StringFieldUpdateOperationsInput | string
+    filaId?: NullableStringFieldUpdateOperationsInput | string | null
     membrosFamiliares?: MembroFamiliarUncheckedUpdateManyWithoutAtendimentoNestedInput
     processo?: ProcessoUncheckedUpdateOneWithoutAtendimentoNestedInput
     formularios?: FormularioPreenchidoUncheckedUpdateManyWithoutAtendimentoNestedInput
@@ -30977,7 +30793,7 @@ export namespace Prisma {
   }
 
   export type AtendimentoUncheckedUpdateManyWithoutTipoDomicilioInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     capacidadeCivil?: BoolFieldUpdateOperationsInput | boolean
     cep?: StringFieldUpdateOperationsInput | string
     endereco?: StringFieldUpdateOperationsInput | string
@@ -30992,15 +30808,15 @@ export namespace Prisma {
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
     tipoAtendimentoId?: IntFieldUpdateOperationsInput | number
     estadoCivilId?: IntFieldUpdateOperationsInput | number
-    profissaoId?: IntFieldUpdateOperationsInput | number
+    profissaoId?: StringFieldUpdateOperationsInput | string
     tipoDemandaPrevidenciariaId?: IntFieldUpdateOperationsInput | number
     competenciaJudicialId?: IntFieldUpdateOperationsInput | number
-    operadorId?: IntFieldUpdateOperationsInput | number
-    filaId?: NullableIntFieldUpdateOperationsInput | number | null
+    operadorId?: StringFieldUpdateOperationsInput | string
+    filaId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type AtendimentoCreateManyTipoDemandaPrevidenciariaInput = {
-    id?: number
+    id?: string
     capacidadeCivil: boolean
     cep: string
     endereco: string
@@ -31015,14 +30831,15 @@ export namespace Prisma {
     processosAndamento: $Enums.ProcessosAndamento
     tipoAtendimentoId: number
     estadoCivilId: number
-    profissaoId: number
+    profissaoId: string
     tipoDomicilioId: number
     competenciaJudicialId: number
-    operadorId: number
-    filaId?: number | null
+    operadorId: string
+    filaId?: string | null
   }
 
   export type AtendimentoUpdateWithoutTipoDemandaPrevidenciariaInput = {
+    id?: StringFieldUpdateOperationsInput | string
     capacidadeCivil?: BoolFieldUpdateOperationsInput | boolean
     cep?: StringFieldUpdateOperationsInput | string
     endereco?: StringFieldUpdateOperationsInput | string
@@ -31049,7 +30866,7 @@ export namespace Prisma {
   }
 
   export type AtendimentoUncheckedUpdateWithoutTipoDemandaPrevidenciariaInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     capacidadeCivil?: BoolFieldUpdateOperationsInput | boolean
     cep?: StringFieldUpdateOperationsInput | string
     endereco?: StringFieldUpdateOperationsInput | string
@@ -31064,11 +30881,11 @@ export namespace Prisma {
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
     tipoAtendimentoId?: IntFieldUpdateOperationsInput | number
     estadoCivilId?: IntFieldUpdateOperationsInput | number
-    profissaoId?: IntFieldUpdateOperationsInput | number
+    profissaoId?: StringFieldUpdateOperationsInput | string
     tipoDomicilioId?: IntFieldUpdateOperationsInput | number
     competenciaJudicialId?: IntFieldUpdateOperationsInput | number
-    operadorId?: IntFieldUpdateOperationsInput | number
-    filaId?: NullableIntFieldUpdateOperationsInput | number | null
+    operadorId?: StringFieldUpdateOperationsInput | string
+    filaId?: NullableStringFieldUpdateOperationsInput | string | null
     membrosFamiliares?: MembroFamiliarUncheckedUpdateManyWithoutAtendimentoNestedInput
     processo?: ProcessoUncheckedUpdateOneWithoutAtendimentoNestedInput
     formularios?: FormularioPreenchidoUncheckedUpdateManyWithoutAtendimentoNestedInput
@@ -31076,7 +30893,7 @@ export namespace Prisma {
   }
 
   export type AtendimentoUncheckedUpdateManyWithoutTipoDemandaPrevidenciariaInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     capacidadeCivil?: BoolFieldUpdateOperationsInput | boolean
     cep?: StringFieldUpdateOperationsInput | string
     endereco?: StringFieldUpdateOperationsInput | string
@@ -31091,15 +30908,15 @@ export namespace Prisma {
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
     tipoAtendimentoId?: IntFieldUpdateOperationsInput | number
     estadoCivilId?: IntFieldUpdateOperationsInput | number
-    profissaoId?: IntFieldUpdateOperationsInput | number
+    profissaoId?: StringFieldUpdateOperationsInput | string
     tipoDomicilioId?: IntFieldUpdateOperationsInput | number
     competenciaJudicialId?: IntFieldUpdateOperationsInput | number
-    operadorId?: IntFieldUpdateOperationsInput | number
-    filaId?: NullableIntFieldUpdateOperationsInput | number | null
+    operadorId?: StringFieldUpdateOperationsInput | string
+    filaId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type AtendimentoCreateManyCompetenciaJudicialInput = {
-    id?: number
+    id?: string
     capacidadeCivil: boolean
     cep: string
     endereco: string
@@ -31114,14 +30931,15 @@ export namespace Prisma {
     processosAndamento: $Enums.ProcessosAndamento
     tipoAtendimentoId: number
     estadoCivilId: number
-    profissaoId: number
+    profissaoId: string
     tipoDomicilioId: number
     tipoDemandaPrevidenciariaId: number
-    operadorId: number
-    filaId?: number | null
+    operadorId: string
+    filaId?: string | null
   }
 
   export type AtendimentoUpdateWithoutCompetenciaJudicialInput = {
+    id?: StringFieldUpdateOperationsInput | string
     capacidadeCivil?: BoolFieldUpdateOperationsInput | boolean
     cep?: StringFieldUpdateOperationsInput | string
     endereco?: StringFieldUpdateOperationsInput | string
@@ -31148,7 +30966,7 @@ export namespace Prisma {
   }
 
   export type AtendimentoUncheckedUpdateWithoutCompetenciaJudicialInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     capacidadeCivil?: BoolFieldUpdateOperationsInput | boolean
     cep?: StringFieldUpdateOperationsInput | string
     endereco?: StringFieldUpdateOperationsInput | string
@@ -31163,11 +30981,11 @@ export namespace Prisma {
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
     tipoAtendimentoId?: IntFieldUpdateOperationsInput | number
     estadoCivilId?: IntFieldUpdateOperationsInput | number
-    profissaoId?: IntFieldUpdateOperationsInput | number
+    profissaoId?: StringFieldUpdateOperationsInput | string
     tipoDomicilioId?: IntFieldUpdateOperationsInput | number
     tipoDemandaPrevidenciariaId?: IntFieldUpdateOperationsInput | number
-    operadorId?: IntFieldUpdateOperationsInput | number
-    filaId?: NullableIntFieldUpdateOperationsInput | number | null
+    operadorId?: StringFieldUpdateOperationsInput | string
+    filaId?: NullableStringFieldUpdateOperationsInput | string | null
     membrosFamiliares?: MembroFamiliarUncheckedUpdateManyWithoutAtendimentoNestedInput
     processo?: ProcessoUncheckedUpdateOneWithoutAtendimentoNestedInput
     formularios?: FormularioPreenchidoUncheckedUpdateManyWithoutAtendimentoNestedInput
@@ -31175,7 +30993,7 @@ export namespace Prisma {
   }
 
   export type AtendimentoUncheckedUpdateManyWithoutCompetenciaJudicialInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     capacidadeCivil?: BoolFieldUpdateOperationsInput | boolean
     cep?: StringFieldUpdateOperationsInput | string
     endereco?: StringFieldUpdateOperationsInput | string
@@ -31190,11 +31008,11 @@ export namespace Prisma {
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
     tipoAtendimentoId?: IntFieldUpdateOperationsInput | number
     estadoCivilId?: IntFieldUpdateOperationsInput | number
-    profissaoId?: IntFieldUpdateOperationsInput | number
+    profissaoId?: StringFieldUpdateOperationsInput | string
     tipoDomicilioId?: IntFieldUpdateOperationsInput | number
     tipoDemandaPrevidenciariaId?: IntFieldUpdateOperationsInput | number
-    operadorId?: IntFieldUpdateOperationsInput | number
-    filaId?: NullableIntFieldUpdateOperationsInput | number | null
+    operadorId?: StringFieldUpdateOperationsInput | string
+    filaId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
 
