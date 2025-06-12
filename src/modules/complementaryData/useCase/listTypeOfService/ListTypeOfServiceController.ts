@@ -8,7 +8,7 @@ import { ComplementaryDataServices } from "../../services/ComplementaryDataServi
 
 export class ListTypeOfServiceController extends BaseController {
   constructor(private complementaryDataServices: ComplementaryDataServices) {
-    super("Sucesso ao listar tipos de serviço");
+    super("Ocorreu um erro ao listar tipos de serviço");
   }
 
   protected validateRequest(
@@ -22,6 +22,6 @@ export class ListTypeOfServiceController extends BaseController {
   ): Promise<HttpResponse> {
     const result = await this.complementaryDataServices.listTypeofService();
 
-    return HandleResponse.success(result, "Conta criada com sucesso.");
+    return HandleResponse.success(result, "Sucesso ao listar tipos de serviço");
   }
 }
