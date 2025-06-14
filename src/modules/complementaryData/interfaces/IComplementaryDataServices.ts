@@ -2,6 +2,7 @@ import { ListMaritalStatusResponse } from "../useCase/listMaritalStatus/ListMari
 import { ListPriorityTypeResponse } from "../useCase/listPriorityType/ListPriorityTypeDtos";
 import { ListProfessionsResponse } from "../useCase/listProfessions/ListProfessionsDtos";
 import { ListTypeofAttendanceServiceInput } from "../useCase/listTypeOfAttendanceService/ListTypeOfAttendanceServiceDtos";
+import { ListTypeOfResidenceResponse } from "../useCase/listTypeOfResidence/ListTypeOfResidenceDtos";
 import { ListTypeofServiceResponse } from "../useCase/listTypeOfService/ListTypeOfServiceDtos";
 
 export interface IComplementaryDataServices {
@@ -12,4 +13,5 @@ export interface IComplementaryDataServices {
   listTypeofPriority(): Promise<ListPriorityTypeResponse[] | null>;
   listMaritalStatus(): Promise<ListMaritalStatusResponse[] | null>;
   listProfessions(): Promise<ListProfessionsResponse[] | null>;
+  listTypeOfResidence(): Promise<ListTypeOfResidenceResponse[] | null>;
 }

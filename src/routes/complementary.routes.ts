@@ -6,6 +6,7 @@ import { ListTypeOfAttendanceServiceController } from "../modules/complementaryD
 import { ListPriorityTypeController } from "../modules/complementaryData/useCase/listPriorityType/ListPriorityTypeController";
 import { ListMaritalStatusController } from "../modules/complementaryData/useCase/listMaritalStatus/ListMaritalStatusController";
 import { ListProfessionsController } from "../modules/complementaryData/useCase/listProfessions/ListProfessionsController";
+import { ListTypeOfResidenceController } from "../modules/complementaryData/useCase/listTypeOfResidence/ListTypeOfResidenceController";
 
 export class ComplementaryRoutes implements Route {
   private router: Router;
@@ -15,7 +16,8 @@ export class ComplementaryRoutes implements Route {
     private listTypeOfAttendanceController: ListTypeOfAttendanceServiceController,
     private listTypeOfPriorityController: ListPriorityTypeController,
     private listMaritalStatusController: ListMaritalStatusController,
-    private listProfessionsController: ListProfessionsController
+    private listProfessionsController: ListProfessionsController,
+    private listTypeOfResidenceController: ListTypeOfResidenceController
   ) {
     this.router = Router();
   }
@@ -39,6 +41,10 @@ export class ComplementaryRoutes implements Route {
     this.router.get(
       "/professions",
       adaptRoute(this.listProfessionsController)
+    );
+    this.router.get(
+      "/type-of-residence",
+      adaptRoute(this.listTypeOfResidenceController)
     );
     return this.router;
   }
