@@ -1,5 +1,7 @@
 import { IAuthService } from "../interfaces/IAuthService";
 import { hash, compare } from "bcryptjs";
+import { sign } from "jsonwebtoken";
+import { LoginOutput } from "../../auth/useCases/login/LoginDtos";
 
 export class AuthService implements IAuthService {
   async encodePassword(password: string): Promise<string> {
@@ -17,11 +19,30 @@ export class AuthService implements IAuthService {
   }
 
   validatePassword(password: string): boolean {
-    if(!password) {
+    if (!password) {
       return false;
     }
-    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    const regex =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
     const isValid = regex.test(password);
     return isValid;
+  }
+
+  generateToken(userId: string): LoginOutput {
+    const jwtSecret = process.env.JWT_SECRET;
+    if (!jwtSecret) {
+      throw new Error("JWT_SECRET não está definido nas variáveis de ambiente");
+    }
+    const token = sign(
+      {
+        userId: userId,
+      },
+      jwtSecret,
+      {
+        subject: String(userId),
+        expiresIn: "1d",
+      }
+    );
+    return { token: token };
   }
 }
