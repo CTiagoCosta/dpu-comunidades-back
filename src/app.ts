@@ -4,6 +4,7 @@ import dotenvConfig from "./configs/dotenvConfig";
 import { configureCors } from "./configs/corsConfig";
 import configs from "./configs";
 import { PrismaClient } from "./generated/prisma";
+import { makeUserDataRoutes } from "./factories/routes/userDataRouterFactory";
 
 dotenvConfig();
 
@@ -30,6 +31,7 @@ export class App {
 
   private configureRoutes(): void {
     this.app.use(makeComplementaryDataRoutes().getRouter());
+    this.app.use("/user", makeUserDataRoutes().getRouter());
   }
 
   public static async connectToDatabase() {

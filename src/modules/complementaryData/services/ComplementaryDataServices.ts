@@ -1,4 +1,4 @@
-import { IComplementaryDataServices } from "../interface/IComplementaryDataServices";
+import { IComplementaryDataServices } from "../interfaces/IComplementaryDataServices";
 import { TypeOfAttendanceServicesRepository } from "../respositories/TypeOfAttendanceServicesRepository";
 import { TypeOfServiceRepository } from "../respositories/TypeOfServicesRepository";
 import { ListTypeofAttendanceServiceInput } from "../useCase/listTypeOfAttendanceService/ListTypeOfAttendanceServiceDtos";
