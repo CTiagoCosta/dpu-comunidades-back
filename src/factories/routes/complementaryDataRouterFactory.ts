@@ -5,6 +5,7 @@ import { makeListTypeOfPrioritaryController } from "../controllers/listPrioritar
 import { makeListProfessionsController } from "../controllers/listProfessionsControllerFactory";
 import { makeListTypeOfAttendanceController } from "../controllers/listTypeOfAttendanceControllerFactory";
 import { makeListTypeOfResidenceController } from "../controllers/listTypeOfResidenceControllerFactory";
+import { makeListVulnerabilityController } from "../controllers/listVulnerabilityControllerFactory";
 
 export const makeComplementaryDataRoutes = (): ComplementaryRoutes => {
   return new ComplementaryRoutes(
@@ -13,6 +14,7 @@ export const makeComplementaryDataRoutes = (): ComplementaryRoutes => {
     makeListTypeOfPrioritaryController(),
     makeListMaritalStatusController(),
     makeListProfessionsController(),
-    makeListTypeOfResidenceController()
+    makeListTypeOfResidenceController(),
+    makeListVulnerabilityController()
   );
 };

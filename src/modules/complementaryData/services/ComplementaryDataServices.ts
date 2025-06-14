@@ -7,6 +7,7 @@ import { ListTypeofServiceResponse } from "../useCase/listTypeOfService/ListType
 import { MaritalStatusRepository } from "../respositories/MaritalStatusRepository";
 import { ProfessionsRepository } from "../respositories/ProfessionsRepository";
 import { TypeOfResidenceRepository } from "../respositories/TypeOfResidenceRepository";
+import { TypeOfVulnerabilityRepository } from "../respositories/TypeOfVulnerabilityRepository";
 
 export class ComplementaryDataServices implements IComplementaryDataServices {
   private typeOfServiceRepository: TypeOfServiceRepository;
@@ -15,6 +16,7 @@ export class ComplementaryDataServices implements IComplementaryDataServices {
   private maritalStatusRepositoty: MaritalStatusRepository;
   private professionsRepository: ProfessionsRepository;
   private typeOfResidenceRepository: TypeOfResidenceRepository;
+  private typeOfVulnerabilityRepository: TypeOfVulnerabilityRepository;
   constructor() {
     this.typeOfServiceRepository = new TypeOfServiceRepository();
     this.typeOfAttendanceServiceRepository =
@@ -23,6 +25,7 @@ export class ComplementaryDataServices implements IComplementaryDataServices {
     this.maritalStatusRepositoty = new MaritalStatusRepository();
     this.professionsRepository = new ProfessionsRepository();
     this.typeOfResidenceRepository = new TypeOfResidenceRepository();
+    this.typeOfVulnerabilityRepository = new TypeOfVulnerabilityRepository();
   }
   async listTypeofService(): Promise<ListTypeofServiceResponse[] | null> {
     return await this.typeOfServiceRepository.listTypeofService();
@@ -50,5 +53,9 @@ export class ComplementaryDataServices implements IComplementaryDataServices {
 
   async listTypeOfResidence(): Promise<ListTypeofServiceResponse[] | null> {
     return await this.typeOfResidenceRepository.listAll();
+  }
+
+  async listVulnerabilityType(): Promise<ListTypeofServiceResponse[] | null> {
+    return await this.typeOfVulnerabilityRepository.listAll();
   }
 }

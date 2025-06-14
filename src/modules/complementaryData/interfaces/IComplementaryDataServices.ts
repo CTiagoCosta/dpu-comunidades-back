@@ -4,6 +4,7 @@ import { ListProfessionsResponse } from "../useCase/listProfessions/ListProfessi
 import { ListTypeofAttendanceServiceInput } from "../useCase/listTypeOfAttendanceService/ListTypeOfAttendanceServiceDtos";
 import { ListTypeOfResidenceResponse } from "../useCase/listTypeOfResidence/ListTypeOfResidenceDtos";
 import { ListTypeofServiceResponse } from "../useCase/listTypeOfService/ListTypeOfServiceDtos";
+import { ListVulnerabilityTypeResponse } from "../useCase/listVulnerabilityType/ListVulnerabilityTypeDtos";
 
 export interface IComplementaryDataServices {
   listTypeofService(): Promise<ListTypeofServiceResponse[] | null>;
@@ -14,4 +15,5 @@ export interface IComplementaryDataServices {
   listMaritalStatus(): Promise<ListMaritalStatusResponse[] | null>;
   listProfessions(): Promise<ListProfessionsResponse[] | null>;
   listTypeOfResidence(): Promise<ListTypeOfResidenceResponse[] | null>;
+  listVulnerabilityType(): Promise<ListVulnerabilityTypeResponse[] | null>;
 }
