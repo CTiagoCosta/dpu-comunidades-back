@@ -1,7 +1,9 @@
 import { IAuthService } from "../interfaces/IAuthService";
 import { hash, compare } from "bcryptjs";
 import { sign } from "jsonwebtoken";
+import jwt, { JwtPayload } from "jsonwebtoken";
 import { LoginOutput } from "../../auth/useCases/login/LoginDtos";
+import configs from "../../../configs";
 
 export class AuthService implements IAuthService {
   async encodePassword(password: string): Promise<string> {
@@ -29,20 +31,25 @@ export class AuthService implements IAuthService {
   }
 
   generateToken(userId: string): LoginOutput {
-    const jwtSecret = process.env.JWT_SECRET;
+    const jwtSecret = configs.JWT_SECRET;
     if (!jwtSecret) {
       throw new Error("JWT_SECRET não está definido nas variáveis de ambiente");
     }
     const token = sign(
       {
-        userId: userId,
+      userId: userId,
       },
       jwtSecret,
       {
-        subject: String(userId),
-        expiresIn: "1d",
+      subject: String(userId),
+      expiresIn: "1m",
       }
     );
     return { token: token };
+  }
+
+  async verifyToken(token: string, secret: string): Promise<JwtPayload> {
+    const decoded = jwt.verify(token, secret) as JwtPayload;
+    return decoded;
   }
 }

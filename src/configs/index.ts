@@ -5,6 +5,7 @@ dotenvConfig();
 export default {
   PORT: process.env.PORT || 3003,
   SECRET: process.env.API_SECRET_KEY || 'secret',
+  JWT_SECRET: process.env.JWT_SECRET,
   REFRESH_SECRET: process.env.API_REFRESH_SECRET || 'refresh-secret',
   API_SERVICES_URL: process.env.API_SERVICES_URL || 'http://localhost:3003',
   ALLOWED_ORIGINS: process.env.ALLOWED_ORIGINS || 'http://localhost:5173',
