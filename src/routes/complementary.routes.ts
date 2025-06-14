@@ -5,6 +5,7 @@ import { Router } from "express";
 import { ListTypeOfAttendanceServiceController } from "../modules/complementaryData/useCase/listTypeOfAttendanceService/ListTypeOfAttendanceServiceController";
 import { ListPriorityTypeController } from "../modules/complementaryData/useCase/listPriorityType/ListPriorityTypeController";
 import { ListMaritalStatusController } from "../modules/complementaryData/useCase/listMaritalStatus/ListMaritalStatusController";
+import { ListProfessionsController } from "../modules/complementaryData/useCase/listProfessions/ListProfessionsController";
 
 export class ComplementaryRoutes implements Route {
   private router: Router;
@@ -13,7 +14,8 @@ export class ComplementaryRoutes implements Route {
     private complementaryDataController: ListTypeOfServiceController,
     private listTypeOfAttendanceController: ListTypeOfAttendanceServiceController,
     private listTypeOfPriorityController: ListPriorityTypeController,
-    private listMaritalStatusController: ListMaritalStatusController
+    private listMaritalStatusController: ListMaritalStatusController,
+    private listProfessionsController: ListProfessionsController
   ) {
     this.router = Router();
   }
@@ -33,6 +35,10 @@ export class ComplementaryRoutes implements Route {
     this.router.get(
       "/marital-status",
       adaptRoute(this.listMaritalStatusController)
+    );
+    this.router.get(
+      "/professions",
+      adaptRoute(this.listProfessionsController)
     );
     return this.router;
   }

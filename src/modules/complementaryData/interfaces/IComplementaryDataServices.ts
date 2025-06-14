@@ -1,5 +1,6 @@
 import { ListMaritalStatusResponse } from "../useCase/listMaritalStatus/ListMaritalStatusDtos";
 import { ListPriorityTypeResponse } from "../useCase/listPriorityType/ListPriorityTypeDtos";
+import { ListProfessionsResponse } from "../useCase/listProfessions/ListProfessionsDtos";
 import { ListTypeofAttendanceServiceInput } from "../useCase/listTypeOfAttendanceService/ListTypeOfAttendanceServiceDtos";
 import { ListTypeofServiceResponse } from "../useCase/listTypeOfService/ListTypeOfServiceDtos";
 
@@ -10,4 +11,5 @@ export interface IComplementaryDataServices {
   ): Promise<ListTypeofServiceResponse[] | null>;
   listTypeofPriority(): Promise<ListPriorityTypeResponse[] | null>;
   listMaritalStatus(): Promise<ListMaritalStatusResponse[] | null>;
+  listProfessions(): Promise<ListProfessionsResponse[] | null>;
 }

@@ -5,18 +5,21 @@ import { TypeOfServiceRepository } from "../respositories/TypeOfServicesReposito
 import { ListTypeofAttendanceServiceInput } from "../useCase/listTypeOfAttendanceService/ListTypeOfAttendanceServiceDtos";
 import { ListTypeofServiceResponse } from "../useCase/listTypeOfService/ListTypeOfServiceDtos";
 import { MaritalStatusRepository } from "../respositories/MaritalStatusRepository";
+import { ProfessionsRepository } from "../respositories/ProfessionsRepository";
 
 export class ComplementaryDataServices implements IComplementaryDataServices {
   private typeOfServiceRepository: TypeOfServiceRepository;
   private typeOfAttendanceServiceRepository: TypeOfAttendanceServicesRepository;
   private typeOfPriorityRepository: PriorityTypeRepository;
   private maritalStatusRepositoty: MaritalStatusRepository;
+  private professionsRepository: ProfessionsRepository;
   constructor() {
     this.typeOfServiceRepository = new TypeOfServiceRepository();
     this.typeOfAttendanceServiceRepository =
       new TypeOfAttendanceServicesRepository();
     this.typeOfPriorityRepository = new PriorityTypeRepository();
     this.maritalStatusRepositoty = new MaritalStatusRepository();
+    this.professionsRepository = new ProfessionsRepository();
   }
   async listTypeofService(): Promise<ListTypeofServiceResponse[] | null> {
     return await this.typeOfServiceRepository.listTypeofService();
@@ -36,5 +39,9 @@ export class ComplementaryDataServices implements IComplementaryDataServices {
 
   async listMaritalStatus(): Promise<ListTypeofServiceResponse[] | null> {
     return await this.maritalStatusRepositoty.listAll();
+  }
+
+  async listProfessions(): Promise<ListTypeofServiceResponse[] | null> {
+    return await this.professionsRepository.listAll();
   }
 }
