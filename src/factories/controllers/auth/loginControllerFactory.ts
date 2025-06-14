@@ -2,7 +2,7 @@ import { LoginContract } from "../../../modules/auth/useCases/login/LoginContrac
 import { LoginController } from "../../../modules/auth/useCases/login/LoginController";
 import { LoginUseCase } from "../../../modules/auth/useCases/login/LoginUseCase";
 import { UserRepository } from "../../../modules/user/repositories/UserRepository";
-import { AuthService } from "../../../modules/user/service/AuthService";
+import { AuthService } from "../../../modules/auth/services/AuthService";
 
 export const makeLoginController = (): LoginController => {
   const contract = new LoginContract();

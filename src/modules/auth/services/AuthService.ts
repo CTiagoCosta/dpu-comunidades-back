@@ -1,9 +1,9 @@
-import { IAuthService } from "../interfaces/IAuthService";
 import { hash, compare } from "bcryptjs";
 import { sign } from "jsonwebtoken";
 import jwt, { JwtPayload } from "jsonwebtoken";
-import { LoginOutput } from "../../auth/useCases/login/LoginDtos";
+import { LoginOutput } from "../useCases/login/LoginDtos";
 import configs from "../../../configs";
+import { IAuthService } from "../interfaces/IAuthService";
 
 export class AuthService implements IAuthService {
   async encodePassword(password: string): Promise<string> {
@@ -42,7 +42,7 @@ export class AuthService implements IAuthService {
       jwtSecret,
       {
       subject: String(userId),
-      expiresIn: "1m",
+      expiresIn: "1d",
       }
     );
     return { token: token };

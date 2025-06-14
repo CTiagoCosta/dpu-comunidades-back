@@ -1,7 +1,6 @@
 import { InvalidValueError } from "../../../../infra/errors/InvalidValueError";
-import { IAuthService } from "../../../user/interfaces/IAuthService";
 import { IUserRepository } from "../../../user/interfaces/IUserRepository";
-import { UserOutput } from "../../../user/useCases/createUser/CreateUserDtos";
+import { IAuthService } from "../../interfaces/IAuthService";
 import { LoginInput, LoginOutput } from "./LoginDtos";
 
 export class LoginUseCase {

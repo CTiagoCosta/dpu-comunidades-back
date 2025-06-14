@@ -1,6 +1,6 @@
 import { ConflictError } from "../../../../infra/errors/ConflictError";
 import { InvalidValueError } from "../../../../infra/errors/InvalidValueError";
-import { IAuthService } from "../../interfaces/IAuthService";
+import { IAuthService } from "../../../auth/interfaces/IAuthService";
 import { IUserRepository } from "../../interfaces/IUserRepository";
 import { UserMapper } from "../../mappers/UserMapper";
 import { CreateUserInput, UserOutput } from "./CreateUserDtos";

@@ -4,7 +4,7 @@ import configs from "../../../configs";
 import { HttpStatus } from "../../../infra/HttpStatus";
 import { Result } from "../../../infra/Result";
 import { UserRepository } from "../../user/repositories/UserRepository";
-import { AuthService } from "../../user/service/AuthService";
+import { AuthService } from "../services/AuthService";
 
 export const authenticate = async (
   req: Request,
