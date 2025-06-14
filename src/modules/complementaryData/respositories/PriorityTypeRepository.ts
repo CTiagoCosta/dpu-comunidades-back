@@ -15,4 +15,14 @@ export class PriorityTypeRepository {
     const result = await this.prisma.tipoPrioridade.findMany();
     return this.mapper.toListTypeofServiceResponse(result) ?? null;
   }
+
+  async findById(id: number): Promise<ListPriorityTypeResponse | null> {
+    const result = await this.prisma.tipoPrioridade.findFirst({
+      where: {
+        id: id,
+      },
+    });
+    const mapper = this.mapper.toListTypeofServiceResponse([result]);
+    return mapper[0] ?? null;
+  }
 }

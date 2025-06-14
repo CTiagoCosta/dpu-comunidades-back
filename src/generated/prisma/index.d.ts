@@ -2533,14 +2533,14 @@ export namespace Prisma {
     assistidos: number
     tipoPrioridades: number
     servicos: number
-    antendimentos: number
+    filaAtendimento: number
   }
 
   export type TipoAtendimentoCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     assistidos?: boolean | TipoAtendimentoCountOutputTypeCountAssistidosArgs
     tipoPrioridades?: boolean | TipoAtendimentoCountOutputTypeCountTipoPrioridadesArgs
     servicos?: boolean | TipoAtendimentoCountOutputTypeCountServicosArgs
-    antendimentos?: boolean | TipoAtendimentoCountOutputTypeCountAntendimentosArgs
+    filaAtendimento?: boolean | TipoAtendimentoCountOutputTypeCountFilaAtendimentoArgs
   }
 
   // Custom InputTypes
@@ -2578,8 +2578,8 @@ export namespace Prisma {
   /**
    * TipoAtendimentoCountOutputType without action
    */
-  export type TipoAtendimentoCountOutputTypeCountAntendimentosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: AtendimentoWhereInput
+  export type TipoAtendimentoCountOutputTypeCountFilaAtendimentoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FilaAtendimentoWhereInput
   }
 
 
@@ -2589,10 +2589,12 @@ export namespace Prisma {
 
   export type TipoPrioridadeCountOutputType = {
     assistidos: number
+    filaAtendimento: number
   }
 
   export type TipoPrioridadeCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     assistidos?: boolean | TipoPrioridadeCountOutputTypeCountAssistidosArgs
+    filaAtendimento?: boolean | TipoPrioridadeCountOutputTypeCountFilaAtendimentoArgs
   }
 
   // Custom InputTypes
@@ -2611,6 +2613,13 @@ export namespace Prisma {
    */
   export type TipoPrioridadeCountOutputTypeCountAssistidosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: AssistidoWhereInput
+  }
+
+  /**
+   * TipoPrioridadeCountOutputType without action
+   */
+  export type TipoPrioridadeCountOutputTypeCountFilaAtendimentoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FilaAtendimentoWhereInput
   }
 
 
@@ -3990,8 +3999,20 @@ export namespace Prisma {
 
   export type AggregateFilaAtendimento = {
     _count: FilaAtendimentoCountAggregateOutputType | null
+    _avg: FilaAtendimentoAvgAggregateOutputType | null
+    _sum: FilaAtendimentoSumAggregateOutputType | null
     _min: FilaAtendimentoMinAggregateOutputType | null
     _max: FilaAtendimentoMaxAggregateOutputType | null
+  }
+
+  export type FilaAtendimentoAvgAggregateOutputType = {
+    tipoPrioridadeId: number | null
+    tipoAtendimentoId: number | null
+  }
+
+  export type FilaAtendimentoSumAggregateOutputType = {
+    tipoPrioridadeId: number | null
+    tipoAtendimentoId: number | null
   }
 
   export type FilaAtendimentoMinAggregateOutputType = {
@@ -4005,8 +4026,11 @@ export namespace Prisma {
     dataEntrada: Date | null
     dataInicio: Date | null
     dataFim: Date | null
+    migrante: boolean | null
     operadorTriagemId: string | null
     operadorAtendimentoId: string | null
+    tipoPrioridadeId: number | null
+    tipoAtendimentoId: number | null
   }
 
   export type FilaAtendimentoMaxAggregateOutputType = {
@@ -4020,8 +4044,11 @@ export namespace Prisma {
     dataEntrada: Date | null
     dataInicio: Date | null
     dataFim: Date | null
+    migrante: boolean | null
     operadorTriagemId: string | null
     operadorAtendimentoId: string | null
+    tipoPrioridadeId: number | null
+    tipoAtendimentoId: number | null
   }
 
   export type FilaAtendimentoCountAggregateOutputType = {
@@ -4035,11 +4062,24 @@ export namespace Prisma {
     dataEntrada: number
     dataInicio: number
     dataFim: number
+    migrante: number
     operadorTriagemId: number
     operadorAtendimentoId: number
+    tipoPrioridadeId: number
+    tipoAtendimentoId: number
     _all: number
   }
 
+
+  export type FilaAtendimentoAvgAggregateInputType = {
+    tipoPrioridadeId?: true
+    tipoAtendimentoId?: true
+  }
+
+  export type FilaAtendimentoSumAggregateInputType = {
+    tipoPrioridadeId?: true
+    tipoAtendimentoId?: true
+  }
 
   export type FilaAtendimentoMinAggregateInputType = {
     id?: true
@@ -4052,8 +4092,11 @@ export namespace Prisma {
     dataEntrada?: true
     dataInicio?: true
     dataFim?: true
+    migrante?: true
     operadorTriagemId?: true
     operadorAtendimentoId?: true
+    tipoPrioridadeId?: true
+    tipoAtendimentoId?: true
   }
 
   export type FilaAtendimentoMaxAggregateInputType = {
@@ -4067,8 +4110,11 @@ export namespace Prisma {
     dataEntrada?: true
     dataInicio?: true
     dataFim?: true
+    migrante?: true
     operadorTriagemId?: true
     operadorAtendimentoId?: true
+    tipoPrioridadeId?: true
+    tipoAtendimentoId?: true
   }
 
   export type FilaAtendimentoCountAggregateInputType = {
@@ -4082,8 +4128,11 @@ export namespace Prisma {
     dataEntrada?: true
     dataInicio?: true
     dataFim?: true
+    migrante?: true
     operadorTriagemId?: true
     operadorAtendimentoId?: true
+    tipoPrioridadeId?: true
+    tipoAtendimentoId?: true
     _all?: true
   }
 
@@ -4125,6 +4174,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: FilaAtendimentoAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: FilaAtendimentoSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: FilaAtendimentoMinAggregateInputType
@@ -4155,6 +4216,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: FilaAtendimentoCountAggregateInputType | true
+    _avg?: FilaAtendimentoAvgAggregateInputType
+    _sum?: FilaAtendimentoSumAggregateInputType
     _min?: FilaAtendimentoMinAggregateInputType
     _max?: FilaAtendimentoMaxAggregateInputType
   }
@@ -4170,9 +4233,14 @@ export namespace Prisma {
     dataEntrada: Date
     dataInicio: Date | null
     dataFim: Date | null
+    migrante: boolean
     operadorTriagemId: string
     operadorAtendimentoId: string | null
+    tipoPrioridadeId: number | null
+    tipoAtendimentoId: number
     _count: FilaAtendimentoCountAggregateOutputType | null
+    _avg: FilaAtendimentoAvgAggregateOutputType | null
+    _sum: FilaAtendimentoSumAggregateOutputType | null
     _min: FilaAtendimentoMinAggregateOutputType | null
     _max: FilaAtendimentoMaxAggregateOutputType | null
   }
@@ -4202,11 +4270,16 @@ export namespace Prisma {
     dataEntrada?: boolean
     dataInicio?: boolean
     dataFim?: boolean
+    migrante?: boolean
     operadorTriagemId?: boolean
     operadorAtendimentoId?: boolean
+    tipoPrioridadeId?: boolean
+    tipoAtendimentoId?: boolean
     operadorTriagem?: boolean | UserDefaultArgs<ExtArgs>
     operadorAtendimento?: boolean | FilaAtendimento$operadorAtendimentoArgs<ExtArgs>
     atendimento?: boolean | FilaAtendimento$atendimentoArgs<ExtArgs>
+    tipoPrioridade?: boolean | FilaAtendimento$tipoPrioridadeArgs<ExtArgs>
+    tipoAtendimento?: boolean | TipoAtendimentoDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["filaAtendimento"]>
 
   export type FilaAtendimentoSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -4220,10 +4293,15 @@ export namespace Prisma {
     dataEntrada?: boolean
     dataInicio?: boolean
     dataFim?: boolean
+    migrante?: boolean
     operadorTriagemId?: boolean
     operadorAtendimentoId?: boolean
+    tipoPrioridadeId?: boolean
+    tipoAtendimentoId?: boolean
     operadorTriagem?: boolean | UserDefaultArgs<ExtArgs>
     operadorAtendimento?: boolean | FilaAtendimento$operadorAtendimentoArgs<ExtArgs>
+    tipoPrioridade?: boolean | FilaAtendimento$tipoPrioridadeArgs<ExtArgs>
+    tipoAtendimento?: boolean | TipoAtendimentoDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["filaAtendimento"]>
 
   export type FilaAtendimentoSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -4237,10 +4315,15 @@ export namespace Prisma {
     dataEntrada?: boolean
     dataInicio?: boolean
     dataFim?: boolean
+    migrante?: boolean
     operadorTriagemId?: boolean
     operadorAtendimentoId?: boolean
+    tipoPrioridadeId?: boolean
+    tipoAtendimentoId?: boolean
     operadorTriagem?: boolean | UserDefaultArgs<ExtArgs>
     operadorAtendimento?: boolean | FilaAtendimento$operadorAtendimentoArgs<ExtArgs>
+    tipoPrioridade?: boolean | FilaAtendimento$tipoPrioridadeArgs<ExtArgs>
+    tipoAtendimento?: boolean | TipoAtendimentoDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["filaAtendimento"]>
 
   export type FilaAtendimentoSelectScalar = {
@@ -4254,23 +4337,32 @@ export namespace Prisma {
     dataEntrada?: boolean
     dataInicio?: boolean
     dataFim?: boolean
+    migrante?: boolean
     operadorTriagemId?: boolean
     operadorAtendimentoId?: boolean
+    tipoPrioridadeId?: boolean
+    tipoAtendimentoId?: boolean
   }
 
-  export type FilaAtendimentoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nomeCompleto" | "nomeSocial" | "cpf" | "telefone" | "isPrioridade" | "status" | "dataEntrada" | "dataInicio" | "dataFim" | "operadorTriagemId" | "operadorAtendimentoId", ExtArgs["result"]["filaAtendimento"]>
+  export type FilaAtendimentoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nomeCompleto" | "nomeSocial" | "cpf" | "telefone" | "isPrioridade" | "status" | "dataEntrada" | "dataInicio" | "dataFim" | "migrante" | "operadorTriagemId" | "operadorAtendimentoId" | "tipoPrioridadeId" | "tipoAtendimentoId", ExtArgs["result"]["filaAtendimento"]>
   export type FilaAtendimentoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     operadorTriagem?: boolean | UserDefaultArgs<ExtArgs>
     operadorAtendimento?: boolean | FilaAtendimento$operadorAtendimentoArgs<ExtArgs>
     atendimento?: boolean | FilaAtendimento$atendimentoArgs<ExtArgs>
+    tipoPrioridade?: boolean | FilaAtendimento$tipoPrioridadeArgs<ExtArgs>
+    tipoAtendimento?: boolean | TipoAtendimentoDefaultArgs<ExtArgs>
   }
   export type FilaAtendimentoIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     operadorTriagem?: boolean | UserDefaultArgs<ExtArgs>
     operadorAtendimento?: boolean | FilaAtendimento$operadorAtendimentoArgs<ExtArgs>
+    tipoPrioridade?: boolean | FilaAtendimento$tipoPrioridadeArgs<ExtArgs>
+    tipoAtendimento?: boolean | TipoAtendimentoDefaultArgs<ExtArgs>
   }
   export type FilaAtendimentoIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     operadorTriagem?: boolean | UserDefaultArgs<ExtArgs>
     operadorAtendimento?: boolean | FilaAtendimento$operadorAtendimentoArgs<ExtArgs>
+    tipoPrioridade?: boolean | FilaAtendimento$tipoPrioridadeArgs<ExtArgs>
+    tipoAtendimento?: boolean | TipoAtendimentoDefaultArgs<ExtArgs>
   }
 
   export type $FilaAtendimentoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4279,6 +4371,8 @@ export namespace Prisma {
       operadorTriagem: Prisma.$UserPayload<ExtArgs>
       operadorAtendimento: Prisma.$UserPayload<ExtArgs> | null
       atendimento: Prisma.$AtendimentoPayload<ExtArgs> | null
+      tipoPrioridade: Prisma.$TipoPrioridadePayload<ExtArgs> | null
+      tipoAtendimento: Prisma.$TipoAtendimentoPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -4291,8 +4385,11 @@ export namespace Prisma {
       dataEntrada: Date
       dataInicio: Date | null
       dataFim: Date | null
+      migrante: boolean
       operadorTriagemId: string
       operadorAtendimentoId: string | null
+      tipoPrioridadeId: number | null
+      tipoAtendimentoId: number
     }, ExtArgs["result"]["filaAtendimento"]>
     composites: {}
   }
@@ -4690,6 +4787,8 @@ export namespace Prisma {
     operadorTriagem<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     operadorAtendimento<T extends FilaAtendimento$operadorAtendimentoArgs<ExtArgs> = {}>(args?: Subset<T, FilaAtendimento$operadorAtendimentoArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     atendimento<T extends FilaAtendimento$atendimentoArgs<ExtArgs> = {}>(args?: Subset<T, FilaAtendimento$atendimentoArgs<ExtArgs>>): Prisma__AtendimentoClient<$Result.GetResult<Prisma.$AtendimentoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    tipoPrioridade<T extends FilaAtendimento$tipoPrioridadeArgs<ExtArgs> = {}>(args?: Subset<T, FilaAtendimento$tipoPrioridadeArgs<ExtArgs>>): Prisma__TipoPrioridadeClient<$Result.GetResult<Prisma.$TipoPrioridadePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    tipoAtendimento<T extends TipoAtendimentoDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TipoAtendimentoDefaultArgs<ExtArgs>>): Prisma__TipoAtendimentoClient<$Result.GetResult<Prisma.$TipoAtendimentoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4729,8 +4828,11 @@ export namespace Prisma {
     readonly dataEntrada: FieldRef<"FilaAtendimento", 'DateTime'>
     readonly dataInicio: FieldRef<"FilaAtendimento", 'DateTime'>
     readonly dataFim: FieldRef<"FilaAtendimento", 'DateTime'>
+    readonly migrante: FieldRef<"FilaAtendimento", 'Boolean'>
     readonly operadorTriagemId: FieldRef<"FilaAtendimento", 'String'>
     readonly operadorAtendimentoId: FieldRef<"FilaAtendimento", 'String'>
+    readonly tipoPrioridadeId: FieldRef<"FilaAtendimento", 'Int'>
+    readonly tipoAtendimentoId: FieldRef<"FilaAtendimento", 'Int'>
   }
     
 
@@ -5165,6 +5267,25 @@ export namespace Prisma {
   }
 
   /**
+   * FilaAtendimento.tipoPrioridade
+   */
+  export type FilaAtendimento$tipoPrioridadeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TipoPrioridade
+     */
+    select?: TipoPrioridadeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TipoPrioridade
+     */
+    omit?: TipoPrioridadeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TipoPrioridadeInclude<ExtArgs> | null
+    where?: TipoPrioridadeWhereInput
+  }
+
+  /**
    * FilaAtendimento without action
    */
   export type FilaAtendimentoDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5199,7 +5320,6 @@ export namespace Prisma {
     numero: number | null
     parcelasVencidas: number | null
     valorCausa: number | null
-    tipoAtendimentoId: number | null
     estadoCivilId: number | null
     tipoDomicilioId: number | null
     tipoDemandaPrevidenciariaId: number | null
@@ -5210,7 +5330,6 @@ export namespace Prisma {
     numero: number | null
     parcelasVencidas: number | null
     valorCausa: number | null
-    tipoAtendimentoId: number | null
     estadoCivilId: number | null
     tipoDomicilioId: number | null
     tipoDemandaPrevidenciariaId: number | null
@@ -5231,7 +5350,6 @@ export namespace Prisma {
     parcelasVencidas: number | null
     valorCausa: number | null
     processosAndamento: $Enums.ProcessosAndamento | null
-    tipoAtendimentoId: number | null
     estadoCivilId: number | null
     profissaoId: string | null
     tipoDomicilioId: number | null
@@ -5255,7 +5373,6 @@ export namespace Prisma {
     parcelasVencidas: number | null
     valorCausa: number | null
     processosAndamento: $Enums.ProcessosAndamento | null
-    tipoAtendimentoId: number | null
     estadoCivilId: number | null
     profissaoId: string | null
     tipoDomicilioId: number | null
@@ -5279,7 +5396,6 @@ export namespace Prisma {
     parcelasVencidas: number
     valorCausa: number
     processosAndamento: number
-    tipoAtendimentoId: number
     estadoCivilId: number
     profissaoId: number
     tipoDomicilioId: number
@@ -5295,7 +5411,6 @@ export namespace Prisma {
     numero?: true
     parcelasVencidas?: true
     valorCausa?: true
-    tipoAtendimentoId?: true
     estadoCivilId?: true
     tipoDomicilioId?: true
     tipoDemandaPrevidenciariaId?: true
@@ -5306,7 +5421,6 @@ export namespace Prisma {
     numero?: true
     parcelasVencidas?: true
     valorCausa?: true
-    tipoAtendimentoId?: true
     estadoCivilId?: true
     tipoDomicilioId?: true
     tipoDemandaPrevidenciariaId?: true
@@ -5327,7 +5441,6 @@ export namespace Prisma {
     parcelasVencidas?: true
     valorCausa?: true
     processosAndamento?: true
-    tipoAtendimentoId?: true
     estadoCivilId?: true
     profissaoId?: true
     tipoDomicilioId?: true
@@ -5351,7 +5464,6 @@ export namespace Prisma {
     parcelasVencidas?: true
     valorCausa?: true
     processosAndamento?: true
-    tipoAtendimentoId?: true
     estadoCivilId?: true
     profissaoId?: true
     tipoDomicilioId?: true
@@ -5375,7 +5487,6 @@ export namespace Prisma {
     parcelasVencidas?: true
     valorCausa?: true
     processosAndamento?: true
-    tipoAtendimentoId?: true
     estadoCivilId?: true
     profissaoId?: true
     tipoDomicilioId?: true
@@ -5486,7 +5597,6 @@ export namespace Prisma {
     parcelasVencidas: number | null
     valorCausa: number | null
     processosAndamento: $Enums.ProcessosAndamento
-    tipoAtendimentoId: number
     estadoCivilId: number
     profissaoId: string
     tipoDomicilioId: number
@@ -5529,7 +5639,6 @@ export namespace Prisma {
     parcelasVencidas?: boolean
     valorCausa?: boolean
     processosAndamento?: boolean
-    tipoAtendimentoId?: boolean
     estadoCivilId?: boolean
     profissaoId?: boolean
     tipoDomicilioId?: boolean
@@ -5537,7 +5646,6 @@ export namespace Prisma {
     competenciaJudicialId?: boolean
     operadorId?: boolean
     filaId?: boolean
-    tipoAtendimento?: boolean | TipoAtendimentoDefaultArgs<ExtArgs>
     estadoCivil?: boolean | EstadoCivilDefaultArgs<ExtArgs>
     profissao?: boolean | ProfissaoDefaultArgs<ExtArgs>
     tipoDomicilio?: boolean | TipoDomicilioDefaultArgs<ExtArgs>
@@ -5566,7 +5674,6 @@ export namespace Prisma {
     parcelasVencidas?: boolean
     valorCausa?: boolean
     processosAndamento?: boolean
-    tipoAtendimentoId?: boolean
     estadoCivilId?: boolean
     profissaoId?: boolean
     tipoDomicilioId?: boolean
@@ -5574,7 +5681,6 @@ export namespace Prisma {
     competenciaJudicialId?: boolean
     operadorId?: boolean
     filaId?: boolean
-    tipoAtendimento?: boolean | TipoAtendimentoDefaultArgs<ExtArgs>
     estadoCivil?: boolean | EstadoCivilDefaultArgs<ExtArgs>
     profissao?: boolean | ProfissaoDefaultArgs<ExtArgs>
     tipoDomicilio?: boolean | TipoDomicilioDefaultArgs<ExtArgs>
@@ -5598,7 +5704,6 @@ export namespace Prisma {
     parcelasVencidas?: boolean
     valorCausa?: boolean
     processosAndamento?: boolean
-    tipoAtendimentoId?: boolean
     estadoCivilId?: boolean
     profissaoId?: boolean
     tipoDomicilioId?: boolean
@@ -5606,7 +5711,6 @@ export namespace Prisma {
     competenciaJudicialId?: boolean
     operadorId?: boolean
     filaId?: boolean
-    tipoAtendimento?: boolean | TipoAtendimentoDefaultArgs<ExtArgs>
     estadoCivil?: boolean | EstadoCivilDefaultArgs<ExtArgs>
     profissao?: boolean | ProfissaoDefaultArgs<ExtArgs>
     tipoDomicilio?: boolean | TipoDomicilioDefaultArgs<ExtArgs>
@@ -5630,7 +5734,6 @@ export namespace Prisma {
     parcelasVencidas?: boolean
     valorCausa?: boolean
     processosAndamento?: boolean
-    tipoAtendimentoId?: boolean
     estadoCivilId?: boolean
     profissaoId?: boolean
     tipoDomicilioId?: boolean
@@ -5640,9 +5743,8 @@ export namespace Prisma {
     filaId?: boolean
   }
 
-  export type AtendimentoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "capacidadeCivil" | "cep" | "endereco" | "numero" | "complemento" | "bairro" | "cidade" | "uf" | "dataInicioBeneficio" | "parcelasVencidas" | "valorCausa" | "processosAndamento" | "tipoAtendimentoId" | "estadoCivilId" | "profissaoId" | "tipoDomicilioId" | "tipoDemandaPrevidenciariaId" | "competenciaJudicialId" | "operadorId" | "filaId", ExtArgs["result"]["atendimento"]>
+  export type AtendimentoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "capacidadeCivil" | "cep" | "endereco" | "numero" | "complemento" | "bairro" | "cidade" | "uf" | "dataInicioBeneficio" | "parcelasVencidas" | "valorCausa" | "processosAndamento" | "estadoCivilId" | "profissaoId" | "tipoDomicilioId" | "tipoDemandaPrevidenciariaId" | "competenciaJudicialId" | "operadorId" | "filaId", ExtArgs["result"]["atendimento"]>
   export type AtendimentoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    tipoAtendimento?: boolean | TipoAtendimentoDefaultArgs<ExtArgs>
     estadoCivil?: boolean | EstadoCivilDefaultArgs<ExtArgs>
     profissao?: boolean | ProfissaoDefaultArgs<ExtArgs>
     tipoDomicilio?: boolean | TipoDomicilioDefaultArgs<ExtArgs>
@@ -5657,7 +5759,6 @@ export namespace Prisma {
     _count?: boolean | AtendimentoCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type AtendimentoIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    tipoAtendimento?: boolean | TipoAtendimentoDefaultArgs<ExtArgs>
     estadoCivil?: boolean | EstadoCivilDefaultArgs<ExtArgs>
     profissao?: boolean | ProfissaoDefaultArgs<ExtArgs>
     tipoDomicilio?: boolean | TipoDomicilioDefaultArgs<ExtArgs>
@@ -5667,7 +5768,6 @@ export namespace Prisma {
     fila?: boolean | Atendimento$filaArgs<ExtArgs>
   }
   export type AtendimentoIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    tipoAtendimento?: boolean | TipoAtendimentoDefaultArgs<ExtArgs>
     estadoCivil?: boolean | EstadoCivilDefaultArgs<ExtArgs>
     profissao?: boolean | ProfissaoDefaultArgs<ExtArgs>
     tipoDomicilio?: boolean | TipoDomicilioDefaultArgs<ExtArgs>
@@ -5680,7 +5780,6 @@ export namespace Prisma {
   export type $AtendimentoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Atendimento"
     objects: {
-      tipoAtendimento: Prisma.$TipoAtendimentoPayload<ExtArgs>
       estadoCivil: Prisma.$EstadoCivilPayload<ExtArgs>
       profissao: Prisma.$ProfissaoPayload<ExtArgs>
       tipoDomicilio: Prisma.$TipoDomicilioPayload<ExtArgs>
@@ -5707,7 +5806,6 @@ export namespace Prisma {
       parcelasVencidas: number | null
       valorCausa: number | null
       processosAndamento: $Enums.ProcessosAndamento
-      tipoAtendimentoId: number
       estadoCivilId: number
       profissaoId: string
       tipoDomicilioId: number
@@ -6109,7 +6207,6 @@ export namespace Prisma {
    */
   export interface Prisma__AtendimentoClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    tipoAtendimento<T extends TipoAtendimentoDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TipoAtendimentoDefaultArgs<ExtArgs>>): Prisma__TipoAtendimentoClient<$Result.GetResult<Prisma.$TipoAtendimentoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     estadoCivil<T extends EstadoCivilDefaultArgs<ExtArgs> = {}>(args?: Subset<T, EstadoCivilDefaultArgs<ExtArgs>>): Prisma__EstadoCivilClient<$Result.GetResult<Prisma.$EstadoCivilPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     profissao<T extends ProfissaoDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProfissaoDefaultArgs<ExtArgs>>): Prisma__ProfissaoClient<$Result.GetResult<Prisma.$ProfissaoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     tipoDomicilio<T extends TipoDomicilioDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TipoDomicilioDefaultArgs<ExtArgs>>): Prisma__TipoDomicilioClient<$Result.GetResult<Prisma.$TipoDomicilioPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
@@ -6163,7 +6260,6 @@ export namespace Prisma {
     readonly parcelasVencidas: FieldRef<"Atendimento", 'Int'>
     readonly valorCausa: FieldRef<"Atendimento", 'Float'>
     readonly processosAndamento: FieldRef<"Atendimento", 'ProcessosAndamento'>
-    readonly tipoAtendimentoId: FieldRef<"Atendimento", 'Int'>
     readonly estadoCivilId: FieldRef<"Atendimento", 'Int'>
     readonly profissaoId: FieldRef<"Atendimento", 'String'>
     readonly tipoDomicilioId: FieldRef<"Atendimento", 'Int'>
@@ -10222,7 +10318,7 @@ export namespace Prisma {
     assistidos?: boolean | TipoAtendimento$assistidosArgs<ExtArgs>
     tipoPrioridades?: boolean | TipoAtendimento$tipoPrioridadesArgs<ExtArgs>
     servicos?: boolean | TipoAtendimento$servicosArgs<ExtArgs>
-    antendimentos?: boolean | TipoAtendimento$antendimentosArgs<ExtArgs>
+    filaAtendimento?: boolean | TipoAtendimento$filaAtendimentoArgs<ExtArgs>
     _count?: boolean | TipoAtendimentoCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["tipoAtendimento"]>
 
@@ -10246,7 +10342,7 @@ export namespace Prisma {
     assistidos?: boolean | TipoAtendimento$assistidosArgs<ExtArgs>
     tipoPrioridades?: boolean | TipoAtendimento$tipoPrioridadesArgs<ExtArgs>
     servicos?: boolean | TipoAtendimento$servicosArgs<ExtArgs>
-    antendimentos?: boolean | TipoAtendimento$antendimentosArgs<ExtArgs>
+    filaAtendimento?: boolean | TipoAtendimento$filaAtendimentoArgs<ExtArgs>
     _count?: boolean | TipoAtendimentoCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type TipoAtendimentoIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -10258,7 +10354,7 @@ export namespace Prisma {
       assistidos: Prisma.$AssistidoPayload<ExtArgs>[]
       tipoPrioridades: Prisma.$TipoPrioridadePayload<ExtArgs>[]
       servicos: Prisma.$TipoServicoAtendimentoPayload<ExtArgs>[]
-      antendimentos: Prisma.$AtendimentoPayload<ExtArgs>[]
+      filaAtendimento: Prisma.$FilaAtendimentoPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -10660,7 +10756,7 @@ export namespace Prisma {
     assistidos<T extends TipoAtendimento$assistidosArgs<ExtArgs> = {}>(args?: Subset<T, TipoAtendimento$assistidosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AssistidoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     tipoPrioridades<T extends TipoAtendimento$tipoPrioridadesArgs<ExtArgs> = {}>(args?: Subset<T, TipoAtendimento$tipoPrioridadesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TipoPrioridadePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     servicos<T extends TipoAtendimento$servicosArgs<ExtArgs> = {}>(args?: Subset<T, TipoAtendimento$servicosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TipoServicoAtendimentoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    antendimentos<T extends TipoAtendimento$antendimentosArgs<ExtArgs> = {}>(args?: Subset<T, TipoAtendimento$antendimentosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AtendimentoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    filaAtendimento<T extends TipoAtendimento$filaAtendimentoArgs<ExtArgs> = {}>(args?: Subset<T, TipoAtendimento$filaAtendimentoArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FilaAtendimentoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -11152,27 +11248,27 @@ export namespace Prisma {
   }
 
   /**
-   * TipoAtendimento.antendimentos
+   * TipoAtendimento.filaAtendimento
    */
-  export type TipoAtendimento$antendimentosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TipoAtendimento$filaAtendimentoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Atendimento
+     * Select specific fields to fetch from the FilaAtendimento
      */
-    select?: AtendimentoSelect<ExtArgs> | null
+    select?: FilaAtendimentoSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Atendimento
+     * Omit specific fields from the FilaAtendimento
      */
-    omit?: AtendimentoOmit<ExtArgs> | null
+    omit?: FilaAtendimentoOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AtendimentoInclude<ExtArgs> | null
-    where?: AtendimentoWhereInput
-    orderBy?: AtendimentoOrderByWithRelationInput | AtendimentoOrderByWithRelationInput[]
-    cursor?: AtendimentoWhereUniqueInput
+    include?: FilaAtendimentoInclude<ExtArgs> | null
+    where?: FilaAtendimentoWhereInput
+    orderBy?: FilaAtendimentoOrderByWithRelationInput | FilaAtendimentoOrderByWithRelationInput[]
+    cursor?: FilaAtendimentoWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: AtendimentoScalarFieldEnum | AtendimentoScalarFieldEnum[]
+    distinct?: FilaAtendimentoScalarFieldEnum | FilaAtendimentoScalarFieldEnum[]
   }
 
   /**
@@ -11394,6 +11490,7 @@ export namespace Prisma {
     tipoAtendimentoId?: boolean
     assistidos?: boolean | TipoPrioridade$assistidosArgs<ExtArgs>
     tipoAtendimento?: boolean | TipoPrioridade$tipoAtendimentoArgs<ExtArgs>
+    filaAtendimento?: boolean | TipoPrioridade$filaAtendimentoArgs<ExtArgs>
     _count?: boolean | TipoPrioridadeCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["tipoPrioridade"]>
 
@@ -11424,6 +11521,7 @@ export namespace Prisma {
   export type TipoPrioridadeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     assistidos?: boolean | TipoPrioridade$assistidosArgs<ExtArgs>
     tipoAtendimento?: boolean | TipoPrioridade$tipoAtendimentoArgs<ExtArgs>
+    filaAtendimento?: boolean | TipoPrioridade$filaAtendimentoArgs<ExtArgs>
     _count?: boolean | TipoPrioridadeCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type TipoPrioridadeIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -11438,6 +11536,7 @@ export namespace Prisma {
     objects: {
       assistidos: Prisma.$AssistidoPayload<ExtArgs>[]
       tipoAtendimento: Prisma.$TipoAtendimentoPayload<ExtArgs> | null
+      filaAtendimento: Prisma.$FilaAtendimentoPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -11840,6 +11939,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     assistidos<T extends TipoPrioridade$assistidosArgs<ExtArgs> = {}>(args?: Subset<T, TipoPrioridade$assistidosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AssistidoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     tipoAtendimento<T extends TipoPrioridade$tipoAtendimentoArgs<ExtArgs> = {}>(args?: Subset<T, TipoPrioridade$tipoAtendimentoArgs<ExtArgs>>): Prisma__TipoAtendimentoClient<$Result.GetResult<Prisma.$TipoAtendimentoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    filaAtendimento<T extends TipoPrioridade$filaAtendimentoArgs<ExtArgs> = {}>(args?: Subset<T, TipoPrioridade$filaAtendimentoArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FilaAtendimentoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -12309,6 +12409,30 @@ export namespace Prisma {
      */
     include?: TipoAtendimentoInclude<ExtArgs> | null
     where?: TipoAtendimentoWhereInput
+  }
+
+  /**
+   * TipoPrioridade.filaAtendimento
+   */
+  export type TipoPrioridade$filaAtendimentoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FilaAtendimento
+     */
+    select?: FilaAtendimentoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FilaAtendimento
+     */
+    omit?: FilaAtendimentoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FilaAtendimentoInclude<ExtArgs> | null
+    where?: FilaAtendimentoWhereInput
+    orderBy?: FilaAtendimentoOrderByWithRelationInput | FilaAtendimentoOrderByWithRelationInput[]
+    cursor?: FilaAtendimentoWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: FilaAtendimentoScalarFieldEnum | FilaAtendimentoScalarFieldEnum[]
   }
 
   /**
@@ -22022,8 +22146,11 @@ export namespace Prisma {
     dataEntrada: 'dataEntrada',
     dataInicio: 'dataInicio',
     dataFim: 'dataFim',
+    migrante: 'migrante',
     operadorTriagemId: 'operadorTriagemId',
-    operadorAtendimentoId: 'operadorAtendimentoId'
+    operadorAtendimentoId: 'operadorAtendimentoId',
+    tipoPrioridadeId: 'tipoPrioridadeId',
+    tipoAtendimentoId: 'tipoAtendimentoId'
   };
 
   export type FilaAtendimentoScalarFieldEnum = (typeof FilaAtendimentoScalarFieldEnum)[keyof typeof FilaAtendimentoScalarFieldEnum]
@@ -22043,7 +22170,6 @@ export namespace Prisma {
     parcelasVencidas: 'parcelasVencidas',
     valorCausa: 'valorCausa',
     processosAndamento: 'processosAndamento',
-    tipoAtendimentoId: 'tipoAtendimentoId',
     estadoCivilId: 'estadoCivilId',
     profissaoId: 'profissaoId',
     tipoDomicilioId: 'tipoDomicilioId',
@@ -22482,11 +22608,16 @@ export namespace Prisma {
     dataEntrada?: DateTimeFilter<"FilaAtendimento"> | Date | string
     dataInicio?: DateTimeNullableFilter<"FilaAtendimento"> | Date | string | null
     dataFim?: DateTimeNullableFilter<"FilaAtendimento"> | Date | string | null
+    migrante?: BoolFilter<"FilaAtendimento"> | boolean
     operadorTriagemId?: StringFilter<"FilaAtendimento"> | string
     operadorAtendimentoId?: StringNullableFilter<"FilaAtendimento"> | string | null
+    tipoPrioridadeId?: IntNullableFilter<"FilaAtendimento"> | number | null
+    tipoAtendimentoId?: IntFilter<"FilaAtendimento"> | number
     operadorTriagem?: XOR<UserScalarRelationFilter, UserWhereInput>
     operadorAtendimento?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     atendimento?: XOR<AtendimentoNullableScalarRelationFilter, AtendimentoWhereInput> | null
+    tipoPrioridade?: XOR<TipoPrioridadeNullableScalarRelationFilter, TipoPrioridadeWhereInput> | null
+    tipoAtendimento?: XOR<TipoAtendimentoScalarRelationFilter, TipoAtendimentoWhereInput>
   }
 
   export type FilaAtendimentoOrderByWithRelationInput = {
@@ -22500,11 +22631,16 @@ export namespace Prisma {
     dataEntrada?: SortOrder
     dataInicio?: SortOrderInput | SortOrder
     dataFim?: SortOrderInput | SortOrder
+    migrante?: SortOrder
     operadorTriagemId?: SortOrder
     operadorAtendimentoId?: SortOrderInput | SortOrder
+    tipoPrioridadeId?: SortOrderInput | SortOrder
+    tipoAtendimentoId?: SortOrder
     operadorTriagem?: UserOrderByWithRelationInput
     operadorAtendimento?: UserOrderByWithRelationInput
     atendimento?: AtendimentoOrderByWithRelationInput
+    tipoPrioridade?: TipoPrioridadeOrderByWithRelationInput
+    tipoAtendimento?: TipoAtendimentoOrderByWithRelationInput
   }
 
   export type FilaAtendimentoWhereUniqueInput = Prisma.AtLeast<{
@@ -22521,11 +22657,16 @@ export namespace Prisma {
     dataEntrada?: DateTimeFilter<"FilaAtendimento"> | Date | string
     dataInicio?: DateTimeNullableFilter<"FilaAtendimento"> | Date | string | null
     dataFim?: DateTimeNullableFilter<"FilaAtendimento"> | Date | string | null
+    migrante?: BoolFilter<"FilaAtendimento"> | boolean
     operadorTriagemId?: StringFilter<"FilaAtendimento"> | string
     operadorAtendimentoId?: StringNullableFilter<"FilaAtendimento"> | string | null
+    tipoPrioridadeId?: IntNullableFilter<"FilaAtendimento"> | number | null
+    tipoAtendimentoId?: IntFilter<"FilaAtendimento"> | number
     operadorTriagem?: XOR<UserScalarRelationFilter, UserWhereInput>
     operadorAtendimento?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     atendimento?: XOR<AtendimentoNullableScalarRelationFilter, AtendimentoWhereInput> | null
+    tipoPrioridade?: XOR<TipoPrioridadeNullableScalarRelationFilter, TipoPrioridadeWhereInput> | null
+    tipoAtendimento?: XOR<TipoAtendimentoScalarRelationFilter, TipoAtendimentoWhereInput>
   }, "id">
 
   export type FilaAtendimentoOrderByWithAggregationInput = {
@@ -22539,11 +22680,16 @@ export namespace Prisma {
     dataEntrada?: SortOrder
     dataInicio?: SortOrderInput | SortOrder
     dataFim?: SortOrderInput | SortOrder
+    migrante?: SortOrder
     operadorTriagemId?: SortOrder
     operadorAtendimentoId?: SortOrderInput | SortOrder
+    tipoPrioridadeId?: SortOrderInput | SortOrder
+    tipoAtendimentoId?: SortOrder
     _count?: FilaAtendimentoCountOrderByAggregateInput
+    _avg?: FilaAtendimentoAvgOrderByAggregateInput
     _max?: FilaAtendimentoMaxOrderByAggregateInput
     _min?: FilaAtendimentoMinOrderByAggregateInput
+    _sum?: FilaAtendimentoSumOrderByAggregateInput
   }
 
   export type FilaAtendimentoScalarWhereWithAggregatesInput = {
@@ -22560,8 +22706,11 @@ export namespace Prisma {
     dataEntrada?: DateTimeWithAggregatesFilter<"FilaAtendimento"> | Date | string
     dataInicio?: DateTimeNullableWithAggregatesFilter<"FilaAtendimento"> | Date | string | null
     dataFim?: DateTimeNullableWithAggregatesFilter<"FilaAtendimento"> | Date | string | null
+    migrante?: BoolWithAggregatesFilter<"FilaAtendimento"> | boolean
     operadorTriagemId?: StringWithAggregatesFilter<"FilaAtendimento"> | string
     operadorAtendimentoId?: StringNullableWithAggregatesFilter<"FilaAtendimento"> | string | null
+    tipoPrioridadeId?: IntNullableWithAggregatesFilter<"FilaAtendimento"> | number | null
+    tipoAtendimentoId?: IntWithAggregatesFilter<"FilaAtendimento"> | number
   }
 
   export type AtendimentoWhereInput = {
@@ -22581,7 +22730,6 @@ export namespace Prisma {
     parcelasVencidas?: IntNullableFilter<"Atendimento"> | number | null
     valorCausa?: FloatNullableFilter<"Atendimento"> | number | null
     processosAndamento?: EnumProcessosAndamentoFilter<"Atendimento"> | $Enums.ProcessosAndamento
-    tipoAtendimentoId?: IntFilter<"Atendimento"> | number
     estadoCivilId?: IntFilter<"Atendimento"> | number
     profissaoId?: StringFilter<"Atendimento"> | string
     tipoDomicilioId?: IntFilter<"Atendimento"> | number
@@ -22589,7 +22737,6 @@ export namespace Prisma {
     competenciaJudicialId?: IntFilter<"Atendimento"> | number
     operadorId?: StringFilter<"Atendimento"> | string
     filaId?: StringNullableFilter<"Atendimento"> | string | null
-    tipoAtendimento?: XOR<TipoAtendimentoScalarRelationFilter, TipoAtendimentoWhereInput>
     estadoCivil?: XOR<EstadoCivilScalarRelationFilter, EstadoCivilWhereInput>
     profissao?: XOR<ProfissaoScalarRelationFilter, ProfissaoWhereInput>
     tipoDomicilio?: XOR<TipoDomicilioScalarRelationFilter, TipoDomicilioWhereInput>
@@ -22617,7 +22764,6 @@ export namespace Prisma {
     parcelasVencidas?: SortOrderInput | SortOrder
     valorCausa?: SortOrderInput | SortOrder
     processosAndamento?: SortOrder
-    tipoAtendimentoId?: SortOrder
     estadoCivilId?: SortOrder
     profissaoId?: SortOrder
     tipoDomicilioId?: SortOrder
@@ -22625,7 +22771,6 @@ export namespace Prisma {
     competenciaJudicialId?: SortOrder
     operadorId?: SortOrder
     filaId?: SortOrderInput | SortOrder
-    tipoAtendimento?: TipoAtendimentoOrderByWithRelationInput
     estadoCivil?: EstadoCivilOrderByWithRelationInput
     profissao?: ProfissaoOrderByWithRelationInput
     tipoDomicilio?: TipoDomicilioOrderByWithRelationInput
@@ -22657,14 +22802,12 @@ export namespace Prisma {
     parcelasVencidas?: IntNullableFilter<"Atendimento"> | number | null
     valorCausa?: FloatNullableFilter<"Atendimento"> | number | null
     processosAndamento?: EnumProcessosAndamentoFilter<"Atendimento"> | $Enums.ProcessosAndamento
-    tipoAtendimentoId?: IntFilter<"Atendimento"> | number
     estadoCivilId?: IntFilter<"Atendimento"> | number
     profissaoId?: StringFilter<"Atendimento"> | string
     tipoDomicilioId?: IntFilter<"Atendimento"> | number
     tipoDemandaPrevidenciariaId?: IntFilter<"Atendimento"> | number
     competenciaJudicialId?: IntFilter<"Atendimento"> | number
     operadorId?: StringFilter<"Atendimento"> | string
-    tipoAtendimento?: XOR<TipoAtendimentoScalarRelationFilter, TipoAtendimentoWhereInput>
     estadoCivil?: XOR<EstadoCivilScalarRelationFilter, EstadoCivilWhereInput>
     profissao?: XOR<ProfissaoScalarRelationFilter, ProfissaoWhereInput>
     tipoDomicilio?: XOR<TipoDomicilioScalarRelationFilter, TipoDomicilioWhereInput>
@@ -22692,7 +22835,6 @@ export namespace Prisma {
     parcelasVencidas?: SortOrderInput | SortOrder
     valorCausa?: SortOrderInput | SortOrder
     processosAndamento?: SortOrder
-    tipoAtendimentoId?: SortOrder
     estadoCivilId?: SortOrder
     profissaoId?: SortOrder
     tipoDomicilioId?: SortOrder
@@ -22724,7 +22866,6 @@ export namespace Prisma {
     parcelasVencidas?: IntNullableWithAggregatesFilter<"Atendimento"> | number | null
     valorCausa?: FloatNullableWithAggregatesFilter<"Atendimento"> | number | null
     processosAndamento?: EnumProcessosAndamentoWithAggregatesFilter<"Atendimento"> | $Enums.ProcessosAndamento
-    tipoAtendimentoId?: IntWithAggregatesFilter<"Atendimento"> | number
     estadoCivilId?: IntWithAggregatesFilter<"Atendimento"> | number
     profissaoId?: StringWithAggregatesFilter<"Atendimento"> | string
     tipoDomicilioId?: IntWithAggregatesFilter<"Atendimento"> | number
@@ -22955,7 +23096,7 @@ export namespace Prisma {
     assistidos?: AssistidoListRelationFilter
     tipoPrioridades?: TipoPrioridadeListRelationFilter
     servicos?: TipoServicoAtendimentoListRelationFilter
-    antendimentos?: AtendimentoListRelationFilter
+    filaAtendimento?: FilaAtendimentoListRelationFilter
   }
 
   export type TipoAtendimentoOrderByWithRelationInput = {
@@ -22964,7 +23105,7 @@ export namespace Prisma {
     assistidos?: AssistidoOrderByRelationAggregateInput
     tipoPrioridades?: TipoPrioridadeOrderByRelationAggregateInput
     servicos?: TipoServicoAtendimentoOrderByRelationAggregateInput
-    antendimentos?: AtendimentoOrderByRelationAggregateInput
+    filaAtendimento?: FilaAtendimentoOrderByRelationAggregateInput
   }
 
   export type TipoAtendimentoWhereUniqueInput = Prisma.AtLeast<{
@@ -22976,7 +23117,7 @@ export namespace Prisma {
     assistidos?: AssistidoListRelationFilter
     tipoPrioridades?: TipoPrioridadeListRelationFilter
     servicos?: TipoServicoAtendimentoListRelationFilter
-    antendimentos?: AtendimentoListRelationFilter
+    filaAtendimento?: FilaAtendimentoListRelationFilter
   }, "id">
 
   export type TipoAtendimentoOrderByWithAggregationInput = {
@@ -23007,6 +23148,7 @@ export namespace Prisma {
     tipoAtendimentoId?: IntNullableFilter<"TipoPrioridade"> | number | null
     assistidos?: AssistidoListRelationFilter
     tipoAtendimento?: XOR<TipoAtendimentoNullableScalarRelationFilter, TipoAtendimentoWhereInput> | null
+    filaAtendimento?: FilaAtendimentoListRelationFilter
   }
 
   export type TipoPrioridadeOrderByWithRelationInput = {
@@ -23016,6 +23158,7 @@ export namespace Prisma {
     tipoAtendimentoId?: SortOrderInput | SortOrder
     assistidos?: AssistidoOrderByRelationAggregateInput
     tipoAtendimento?: TipoAtendimentoOrderByWithRelationInput
+    filaAtendimento?: FilaAtendimentoOrderByRelationAggregateInput
   }
 
   export type TipoPrioridadeWhereUniqueInput = Prisma.AtLeast<{
@@ -23028,6 +23171,7 @@ export namespace Prisma {
     tipoAtendimentoId?: IntNullableFilter<"TipoPrioridade"> | number | null
     assistidos?: AssistidoListRelationFilter
     tipoAtendimento?: XOR<TipoAtendimentoNullableScalarRelationFilter, TipoAtendimentoWhereInput> | null
+    filaAtendimento?: FilaAtendimentoListRelationFilter
   }, "id">
 
   export type TipoPrioridadeOrderByWithAggregationInput = {
@@ -23591,9 +23735,12 @@ export namespace Prisma {
     dataEntrada?: Date | string
     dataInicio?: Date | string | null
     dataFim?: Date | string | null
+    migrante?: boolean
     operadorTriagem: UserCreateNestedOneWithoutAtendimentosTriagemInput
     operadorAtendimento?: UserCreateNestedOneWithoutAtendimentosEmAndamentoInput
     atendimento?: AtendimentoCreateNestedOneWithoutFilaInput
+    tipoPrioridade?: TipoPrioridadeCreateNestedOneWithoutFilaAtendimentoInput
+    tipoAtendimento: TipoAtendimentoCreateNestedOneWithoutFilaAtendimentoInput
   }
 
   export type FilaAtendimentoUncheckedCreateInput = {
@@ -23607,8 +23754,11 @@ export namespace Prisma {
     dataEntrada?: Date | string
     dataInicio?: Date | string | null
     dataFim?: Date | string | null
+    migrante?: boolean
     operadorTriagemId: string
     operadorAtendimentoId?: string | null
+    tipoPrioridadeId?: number | null
+    tipoAtendimentoId: number
     atendimento?: AtendimentoUncheckedCreateNestedOneWithoutFilaInput
   }
 
@@ -23623,9 +23773,12 @@ export namespace Prisma {
     dataEntrada?: DateTimeFieldUpdateOperationsInput | Date | string
     dataInicio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     dataFim?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    migrante?: BoolFieldUpdateOperationsInput | boolean
     operadorTriagem?: UserUpdateOneRequiredWithoutAtendimentosTriagemNestedInput
     operadorAtendimento?: UserUpdateOneWithoutAtendimentosEmAndamentoNestedInput
     atendimento?: AtendimentoUpdateOneWithoutFilaNestedInput
+    tipoPrioridade?: TipoPrioridadeUpdateOneWithoutFilaAtendimentoNestedInput
+    tipoAtendimento?: TipoAtendimentoUpdateOneRequiredWithoutFilaAtendimentoNestedInput
   }
 
   export type FilaAtendimentoUncheckedUpdateInput = {
@@ -23639,8 +23792,11 @@ export namespace Prisma {
     dataEntrada?: DateTimeFieldUpdateOperationsInput | Date | string
     dataInicio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     dataFim?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    migrante?: BoolFieldUpdateOperationsInput | boolean
     operadorTriagemId?: StringFieldUpdateOperationsInput | string
     operadorAtendimentoId?: NullableStringFieldUpdateOperationsInput | string | null
+    tipoPrioridadeId?: NullableIntFieldUpdateOperationsInput | number | null
+    tipoAtendimentoId?: IntFieldUpdateOperationsInput | number
     atendimento?: AtendimentoUncheckedUpdateOneWithoutFilaNestedInput
   }
 
@@ -23655,8 +23811,11 @@ export namespace Prisma {
     dataEntrada?: Date | string
     dataInicio?: Date | string | null
     dataFim?: Date | string | null
+    migrante?: boolean
     operadorTriagemId: string
     operadorAtendimentoId?: string | null
+    tipoPrioridadeId?: number | null
+    tipoAtendimentoId: number
   }
 
   export type FilaAtendimentoUpdateManyMutationInput = {
@@ -23670,6 +23829,7 @@ export namespace Prisma {
     dataEntrada?: DateTimeFieldUpdateOperationsInput | Date | string
     dataInicio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     dataFim?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    migrante?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type FilaAtendimentoUncheckedUpdateManyInput = {
@@ -23683,8 +23843,11 @@ export namespace Prisma {
     dataEntrada?: DateTimeFieldUpdateOperationsInput | Date | string
     dataInicio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     dataFim?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    migrante?: BoolFieldUpdateOperationsInput | boolean
     operadorTriagemId?: StringFieldUpdateOperationsInput | string
     operadorAtendimentoId?: NullableStringFieldUpdateOperationsInput | string | null
+    tipoPrioridadeId?: NullableIntFieldUpdateOperationsInput | number | null
+    tipoAtendimentoId?: IntFieldUpdateOperationsInput | number
   }
 
   export type AtendimentoCreateInput = {
@@ -23701,7 +23864,6 @@ export namespace Prisma {
     parcelasVencidas?: number | null
     valorCausa?: number | null
     processosAndamento: $Enums.ProcessosAndamento
-    tipoAtendimento: TipoAtendimentoCreateNestedOneWithoutAntendimentosInput
     estadoCivil: EstadoCivilCreateNestedOneWithoutAtendimentosInput
     profissao: ProfissaoCreateNestedOneWithoutAtendimentosInput
     tipoDomicilio: TipoDomicilioCreateNestedOneWithoutAtendimentosInput
@@ -23729,7 +23891,6 @@ export namespace Prisma {
     parcelasVencidas?: number | null
     valorCausa?: number | null
     processosAndamento: $Enums.ProcessosAndamento
-    tipoAtendimentoId: number
     estadoCivilId: number
     profissaoId: string
     tipoDomicilioId: number
@@ -23757,7 +23918,6 @@ export namespace Prisma {
     parcelasVencidas?: NullableIntFieldUpdateOperationsInput | number | null
     valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
-    tipoAtendimento?: TipoAtendimentoUpdateOneRequiredWithoutAntendimentosNestedInput
     estadoCivil?: EstadoCivilUpdateOneRequiredWithoutAtendimentosNestedInput
     profissao?: ProfissaoUpdateOneRequiredWithoutAtendimentosNestedInput
     tipoDomicilio?: TipoDomicilioUpdateOneRequiredWithoutAtendimentosNestedInput
@@ -23785,7 +23945,6 @@ export namespace Prisma {
     parcelasVencidas?: NullableIntFieldUpdateOperationsInput | number | null
     valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
-    tipoAtendimentoId?: IntFieldUpdateOperationsInput | number
     estadoCivilId?: IntFieldUpdateOperationsInput | number
     profissaoId?: StringFieldUpdateOperationsInput | string
     tipoDomicilioId?: IntFieldUpdateOperationsInput | number
@@ -23813,7 +23972,6 @@ export namespace Prisma {
     parcelasVencidas?: number | null
     valorCausa?: number | null
     processosAndamento: $Enums.ProcessosAndamento
-    tipoAtendimentoId: number
     estadoCivilId: number
     profissaoId: string
     tipoDomicilioId: number
@@ -23853,7 +24011,6 @@ export namespace Prisma {
     parcelasVencidas?: NullableIntFieldUpdateOperationsInput | number | null
     valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
-    tipoAtendimentoId?: IntFieldUpdateOperationsInput | number
     estadoCivilId?: IntFieldUpdateOperationsInput | number
     profissaoId?: StringFieldUpdateOperationsInput | string
     tipoDomicilioId?: IntFieldUpdateOperationsInput | number
@@ -24085,7 +24242,7 @@ export namespace Prisma {
     assistidos?: AssistidoCreateNestedManyWithoutTipoAtendimentoInput
     tipoPrioridades?: TipoPrioridadeCreateNestedManyWithoutTipoAtendimentoInput
     servicos?: TipoServicoAtendimentoCreateNestedManyWithoutAtendimentoInput
-    antendimentos?: AtendimentoCreateNestedManyWithoutTipoAtendimentoInput
+    filaAtendimento?: FilaAtendimentoCreateNestedManyWithoutTipoAtendimentoInput
   }
 
   export type TipoAtendimentoUncheckedCreateInput = {
@@ -24094,7 +24251,7 @@ export namespace Prisma {
     assistidos?: AssistidoUncheckedCreateNestedManyWithoutTipoAtendimentoInput
     tipoPrioridades?: TipoPrioridadeUncheckedCreateNestedManyWithoutTipoAtendimentoInput
     servicos?: TipoServicoAtendimentoUncheckedCreateNestedManyWithoutAtendimentoInput
-    antendimentos?: AtendimentoUncheckedCreateNestedManyWithoutTipoAtendimentoInput
+    filaAtendimento?: FilaAtendimentoUncheckedCreateNestedManyWithoutTipoAtendimentoInput
   }
 
   export type TipoAtendimentoUpdateInput = {
@@ -24102,7 +24259,7 @@ export namespace Prisma {
     assistidos?: AssistidoUpdateManyWithoutTipoAtendimentoNestedInput
     tipoPrioridades?: TipoPrioridadeUpdateManyWithoutTipoAtendimentoNestedInput
     servicos?: TipoServicoAtendimentoUpdateManyWithoutAtendimentoNestedInput
-    antendimentos?: AtendimentoUpdateManyWithoutTipoAtendimentoNestedInput
+    filaAtendimento?: FilaAtendimentoUpdateManyWithoutTipoAtendimentoNestedInput
   }
 
   export type TipoAtendimentoUncheckedUpdateInput = {
@@ -24111,7 +24268,7 @@ export namespace Prisma {
     assistidos?: AssistidoUncheckedUpdateManyWithoutTipoAtendimentoNestedInput
     tipoPrioridades?: TipoPrioridadeUncheckedUpdateManyWithoutTipoAtendimentoNestedInput
     servicos?: TipoServicoAtendimentoUncheckedUpdateManyWithoutAtendimentoNestedInput
-    antendimentos?: AtendimentoUncheckedUpdateManyWithoutTipoAtendimentoNestedInput
+    filaAtendimento?: FilaAtendimentoUncheckedUpdateManyWithoutTipoAtendimentoNestedInput
   }
 
   export type TipoAtendimentoCreateManyInput = {
@@ -24133,6 +24290,7 @@ export namespace Prisma {
     valorPrioridade: number
     assistidos?: AssistidoCreateNestedManyWithoutTipoPrioridadeInput
     tipoAtendimento?: TipoAtendimentoCreateNestedOneWithoutTipoPrioridadesInput
+    filaAtendimento?: FilaAtendimentoCreateNestedManyWithoutTipoPrioridadeInput
   }
 
   export type TipoPrioridadeUncheckedCreateInput = {
@@ -24141,6 +24299,7 @@ export namespace Prisma {
     valorPrioridade: number
     tipoAtendimentoId?: number | null
     assistidos?: AssistidoUncheckedCreateNestedManyWithoutTipoPrioridadeInput
+    filaAtendimento?: FilaAtendimentoUncheckedCreateNestedManyWithoutTipoPrioridadeInput
   }
 
   export type TipoPrioridadeUpdateInput = {
@@ -24148,6 +24307,7 @@ export namespace Prisma {
     valorPrioridade?: IntFieldUpdateOperationsInput | number
     assistidos?: AssistidoUpdateManyWithoutTipoPrioridadeNestedInput
     tipoAtendimento?: TipoAtendimentoUpdateOneWithoutTipoPrioridadesNestedInput
+    filaAtendimento?: FilaAtendimentoUpdateManyWithoutTipoPrioridadeNestedInput
   }
 
   export type TipoPrioridadeUncheckedUpdateInput = {
@@ -24156,6 +24316,7 @@ export namespace Prisma {
     valorPrioridade?: IntFieldUpdateOperationsInput | number
     tipoAtendimentoId?: NullableIntFieldUpdateOperationsInput | number | null
     assistidos?: AssistidoUncheckedUpdateManyWithoutTipoPrioridadeNestedInput
+    filaAtendimento?: FilaAtendimentoUncheckedUpdateManyWithoutTipoPrioridadeNestedInput
   }
 
   export type TipoPrioridadeCreateManyInput = {
@@ -24758,6 +24919,28 @@ export namespace Prisma {
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
   export type UserScalarRelationFilter = {
     is?: UserWhereInput
     isNot?: UserWhereInput
@@ -24771,6 +24954,16 @@ export namespace Prisma {
   export type AtendimentoNullableScalarRelationFilter = {
     is?: AtendimentoWhereInput | null
     isNot?: AtendimentoWhereInput | null
+  }
+
+  export type TipoPrioridadeNullableScalarRelationFilter = {
+    is?: TipoPrioridadeWhereInput | null
+    isNot?: TipoPrioridadeWhereInput | null
+  }
+
+  export type TipoAtendimentoScalarRelationFilter = {
+    is?: TipoAtendimentoWhereInput
+    isNot?: TipoAtendimentoWhereInput
   }
 
   export type SortOrderInput = {
@@ -24789,8 +24982,16 @@ export namespace Prisma {
     dataEntrada?: SortOrder
     dataInicio?: SortOrder
     dataFim?: SortOrder
+    migrante?: SortOrder
     operadorTriagemId?: SortOrder
     operadorAtendimentoId?: SortOrder
+    tipoPrioridadeId?: SortOrder
+    tipoAtendimentoId?: SortOrder
+  }
+
+  export type FilaAtendimentoAvgOrderByAggregateInput = {
+    tipoPrioridadeId?: SortOrder
+    tipoAtendimentoId?: SortOrder
   }
 
   export type FilaAtendimentoMaxOrderByAggregateInput = {
@@ -24804,8 +25005,11 @@ export namespace Prisma {
     dataEntrada?: SortOrder
     dataInicio?: SortOrder
     dataFim?: SortOrder
+    migrante?: SortOrder
     operadorTriagemId?: SortOrder
     operadorAtendimentoId?: SortOrder
+    tipoPrioridadeId?: SortOrder
+    tipoAtendimentoId?: SortOrder
   }
 
   export type FilaAtendimentoMinOrderByAggregateInput = {
@@ -24819,8 +25023,16 @@ export namespace Prisma {
     dataEntrada?: SortOrder
     dataInicio?: SortOrder
     dataFim?: SortOrder
+    migrante?: SortOrder
     operadorTriagemId?: SortOrder
     operadorAtendimentoId?: SortOrder
+    tipoPrioridadeId?: SortOrder
+    tipoAtendimentoId?: SortOrder
+  }
+
+  export type FilaAtendimentoSumOrderByAggregateInput = {
+    tipoPrioridadeId?: SortOrder
+    tipoAtendimentoId?: SortOrder
   }
 
   export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -24865,18 +25077,7 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
-  export type IntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
-  }
-
-  export type IntNullableFilter<$PrismaModel = never> = {
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
     in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
     notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
@@ -24884,7 +25085,28 @@ export namespace Prisma {
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type FloatNullableFilter<$PrismaModel = never> = {
@@ -24903,11 +25125,6 @@ export namespace Prisma {
     in?: $Enums.ProcessosAndamento[] | ListEnumProcessosAndamentoFieldRefInput<$PrismaModel>
     notIn?: $Enums.ProcessosAndamento[] | ListEnumProcessosAndamentoFieldRefInput<$PrismaModel>
     not?: NestedEnumProcessosAndamentoFilter<$PrismaModel> | $Enums.ProcessosAndamento
-  }
-
-  export type TipoAtendimentoScalarRelationFilter = {
-    is?: TipoAtendimentoWhereInput
-    isNot?: TipoAtendimentoWhereInput
   }
 
   export type EstadoCivilScalarRelationFilter = {
@@ -24979,7 +25196,6 @@ export namespace Prisma {
     parcelasVencidas?: SortOrder
     valorCausa?: SortOrder
     processosAndamento?: SortOrder
-    tipoAtendimentoId?: SortOrder
     estadoCivilId?: SortOrder
     profissaoId?: SortOrder
     tipoDomicilioId?: SortOrder
@@ -24993,7 +25209,6 @@ export namespace Prisma {
     numero?: SortOrder
     parcelasVencidas?: SortOrder
     valorCausa?: SortOrder
-    tipoAtendimentoId?: SortOrder
     estadoCivilId?: SortOrder
     tipoDomicilioId?: SortOrder
     tipoDemandaPrevidenciariaId?: SortOrder
@@ -25014,7 +25229,6 @@ export namespace Prisma {
     parcelasVencidas?: SortOrder
     valorCausa?: SortOrder
     processosAndamento?: SortOrder
-    tipoAtendimentoId?: SortOrder
     estadoCivilId?: SortOrder
     profissaoId?: SortOrder
     tipoDomicilioId?: SortOrder
@@ -25038,7 +25252,6 @@ export namespace Prisma {
     parcelasVencidas?: SortOrder
     valorCausa?: SortOrder
     processosAndamento?: SortOrder
-    tipoAtendimentoId?: SortOrder
     estadoCivilId?: SortOrder
     profissaoId?: SortOrder
     tipoDomicilioId?: SortOrder
@@ -25052,43 +25265,10 @@ export namespace Prisma {
     numero?: SortOrder
     parcelasVencidas?: SortOrder
     valorCausa?: SortOrder
-    tipoAtendimentoId?: SortOrder
     estadoCivilId?: SortOrder
     tipoDomicilioId?: SortOrder
     tipoDemandaPrevidenciariaId?: SortOrder
     competenciaJudicialId?: SortOrder
-  }
-
-  export type IntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
-  }
-
-  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedIntNullableFilter<$PrismaModel>
-    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -25886,6 +26066,18 @@ export namespace Prisma {
     connect?: AtendimentoWhereUniqueInput
   }
 
+  export type TipoPrioridadeCreateNestedOneWithoutFilaAtendimentoInput = {
+    create?: XOR<TipoPrioridadeCreateWithoutFilaAtendimentoInput, TipoPrioridadeUncheckedCreateWithoutFilaAtendimentoInput>
+    connectOrCreate?: TipoPrioridadeCreateOrConnectWithoutFilaAtendimentoInput
+    connect?: TipoPrioridadeWhereUniqueInput
+  }
+
+  export type TipoAtendimentoCreateNestedOneWithoutFilaAtendimentoInput = {
+    create?: XOR<TipoAtendimentoCreateWithoutFilaAtendimentoInput, TipoAtendimentoUncheckedCreateWithoutFilaAtendimentoInput>
+    connectOrCreate?: TipoAtendimentoCreateOrConnectWithoutFilaAtendimentoInput
+    connect?: TipoAtendimentoWhereUniqueInput
+  }
+
   export type AtendimentoUncheckedCreateNestedOneWithoutFilaInput = {
     create?: XOR<AtendimentoCreateWithoutFilaInput, AtendimentoUncheckedCreateWithoutFilaInput>
     connectOrCreate?: AtendimentoCreateOrConnectWithoutFilaInput
@@ -25932,6 +26124,40 @@ export namespace Prisma {
     update?: XOR<XOR<AtendimentoUpdateToOneWithWhereWithoutFilaInput, AtendimentoUpdateWithoutFilaInput>, AtendimentoUncheckedUpdateWithoutFilaInput>
   }
 
+  export type TipoPrioridadeUpdateOneWithoutFilaAtendimentoNestedInput = {
+    create?: XOR<TipoPrioridadeCreateWithoutFilaAtendimentoInput, TipoPrioridadeUncheckedCreateWithoutFilaAtendimentoInput>
+    connectOrCreate?: TipoPrioridadeCreateOrConnectWithoutFilaAtendimentoInput
+    upsert?: TipoPrioridadeUpsertWithoutFilaAtendimentoInput
+    disconnect?: TipoPrioridadeWhereInput | boolean
+    delete?: TipoPrioridadeWhereInput | boolean
+    connect?: TipoPrioridadeWhereUniqueInput
+    update?: XOR<XOR<TipoPrioridadeUpdateToOneWithWhereWithoutFilaAtendimentoInput, TipoPrioridadeUpdateWithoutFilaAtendimentoInput>, TipoPrioridadeUncheckedUpdateWithoutFilaAtendimentoInput>
+  }
+
+  export type TipoAtendimentoUpdateOneRequiredWithoutFilaAtendimentoNestedInput = {
+    create?: XOR<TipoAtendimentoCreateWithoutFilaAtendimentoInput, TipoAtendimentoUncheckedCreateWithoutFilaAtendimentoInput>
+    connectOrCreate?: TipoAtendimentoCreateOrConnectWithoutFilaAtendimentoInput
+    upsert?: TipoAtendimentoUpsertWithoutFilaAtendimentoInput
+    connect?: TipoAtendimentoWhereUniqueInput
+    update?: XOR<XOR<TipoAtendimentoUpdateToOneWithWhereWithoutFilaAtendimentoInput, TipoAtendimentoUpdateWithoutFilaAtendimentoInput>, TipoAtendimentoUncheckedUpdateWithoutFilaAtendimentoInput>
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
   export type AtendimentoUncheckedUpdateOneWithoutFilaNestedInput = {
     create?: XOR<AtendimentoCreateWithoutFilaInput, AtendimentoUncheckedCreateWithoutFilaInput>
     connectOrCreate?: AtendimentoCreateOrConnectWithoutFilaInput
@@ -25940,12 +26166,6 @@ export namespace Prisma {
     delete?: AtendimentoWhereInput | boolean
     connect?: AtendimentoWhereUniqueInput
     update?: XOR<XOR<AtendimentoUpdateToOneWithWhereWithoutFilaInput, AtendimentoUpdateWithoutFilaInput>, AtendimentoUncheckedUpdateWithoutFilaInput>
-  }
-
-  export type TipoAtendimentoCreateNestedOneWithoutAntendimentosInput = {
-    create?: XOR<TipoAtendimentoCreateWithoutAntendimentosInput, TipoAtendimentoUncheckedCreateWithoutAntendimentosInput>
-    connectOrCreate?: TipoAtendimentoCreateOrConnectWithoutAntendimentosInput
-    connect?: TipoAtendimentoWhereUniqueInput
   }
 
   export type EstadoCivilCreateNestedOneWithoutAtendimentosInput = {
@@ -26044,22 +26264,6 @@ export namespace Prisma {
     connect?: DocumentoWhereUniqueInput | DocumentoWhereUniqueInput[]
   }
 
-  export type IntFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
-  }
-
-  export type NullableIntFieldUpdateOperationsInput = {
-    set?: number | null
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
-  }
-
   export type NullableFloatFieldUpdateOperationsInput = {
     set?: number | null
     increment?: number
@@ -26070,14 +26274,6 @@ export namespace Prisma {
 
   export type EnumProcessosAndamentoFieldUpdateOperationsInput = {
     set?: $Enums.ProcessosAndamento
-  }
-
-  export type TipoAtendimentoUpdateOneRequiredWithoutAntendimentosNestedInput = {
-    create?: XOR<TipoAtendimentoCreateWithoutAntendimentosInput, TipoAtendimentoUncheckedCreateWithoutAntendimentosInput>
-    connectOrCreate?: TipoAtendimentoCreateOrConnectWithoutAntendimentosInput
-    upsert?: TipoAtendimentoUpsertWithoutAntendimentosInput
-    connect?: TipoAtendimentoWhereUniqueInput
-    update?: XOR<XOR<TipoAtendimentoUpdateToOneWithWhereWithoutAntendimentosInput, TipoAtendimentoUpdateWithoutAntendimentosInput>, TipoAtendimentoUncheckedUpdateWithoutAntendimentosInput>
   }
 
   export type EstadoCivilUpdateOneRequiredWithoutAtendimentosNestedInput = {
@@ -26327,11 +26523,11 @@ export namespace Prisma {
     connect?: TipoServicoAtendimentoWhereUniqueInput | TipoServicoAtendimentoWhereUniqueInput[]
   }
 
-  export type AtendimentoCreateNestedManyWithoutTipoAtendimentoInput = {
-    create?: XOR<AtendimentoCreateWithoutTipoAtendimentoInput, AtendimentoUncheckedCreateWithoutTipoAtendimentoInput> | AtendimentoCreateWithoutTipoAtendimentoInput[] | AtendimentoUncheckedCreateWithoutTipoAtendimentoInput[]
-    connectOrCreate?: AtendimentoCreateOrConnectWithoutTipoAtendimentoInput | AtendimentoCreateOrConnectWithoutTipoAtendimentoInput[]
-    createMany?: AtendimentoCreateManyTipoAtendimentoInputEnvelope
-    connect?: AtendimentoWhereUniqueInput | AtendimentoWhereUniqueInput[]
+  export type FilaAtendimentoCreateNestedManyWithoutTipoAtendimentoInput = {
+    create?: XOR<FilaAtendimentoCreateWithoutTipoAtendimentoInput, FilaAtendimentoUncheckedCreateWithoutTipoAtendimentoInput> | FilaAtendimentoCreateWithoutTipoAtendimentoInput[] | FilaAtendimentoUncheckedCreateWithoutTipoAtendimentoInput[]
+    connectOrCreate?: FilaAtendimentoCreateOrConnectWithoutTipoAtendimentoInput | FilaAtendimentoCreateOrConnectWithoutTipoAtendimentoInput[]
+    createMany?: FilaAtendimentoCreateManyTipoAtendimentoInputEnvelope
+    connect?: FilaAtendimentoWhereUniqueInput | FilaAtendimentoWhereUniqueInput[]
   }
 
   export type AssistidoUncheckedCreateNestedManyWithoutTipoAtendimentoInput = {
@@ -26355,11 +26551,11 @@ export namespace Prisma {
     connect?: TipoServicoAtendimentoWhereUniqueInput | TipoServicoAtendimentoWhereUniqueInput[]
   }
 
-  export type AtendimentoUncheckedCreateNestedManyWithoutTipoAtendimentoInput = {
-    create?: XOR<AtendimentoCreateWithoutTipoAtendimentoInput, AtendimentoUncheckedCreateWithoutTipoAtendimentoInput> | AtendimentoCreateWithoutTipoAtendimentoInput[] | AtendimentoUncheckedCreateWithoutTipoAtendimentoInput[]
-    connectOrCreate?: AtendimentoCreateOrConnectWithoutTipoAtendimentoInput | AtendimentoCreateOrConnectWithoutTipoAtendimentoInput[]
-    createMany?: AtendimentoCreateManyTipoAtendimentoInputEnvelope
-    connect?: AtendimentoWhereUniqueInput | AtendimentoWhereUniqueInput[]
+  export type FilaAtendimentoUncheckedCreateNestedManyWithoutTipoAtendimentoInput = {
+    create?: XOR<FilaAtendimentoCreateWithoutTipoAtendimentoInput, FilaAtendimentoUncheckedCreateWithoutTipoAtendimentoInput> | FilaAtendimentoCreateWithoutTipoAtendimentoInput[] | FilaAtendimentoUncheckedCreateWithoutTipoAtendimentoInput[]
+    connectOrCreate?: FilaAtendimentoCreateOrConnectWithoutTipoAtendimentoInput | FilaAtendimentoCreateOrConnectWithoutTipoAtendimentoInput[]
+    createMany?: FilaAtendimentoCreateManyTipoAtendimentoInputEnvelope
+    connect?: FilaAtendimentoWhereUniqueInput | FilaAtendimentoWhereUniqueInput[]
   }
 
   export type AssistidoUpdateManyWithoutTipoAtendimentoNestedInput = {
@@ -26404,18 +26600,18 @@ export namespace Prisma {
     deleteMany?: TipoServicoAtendimentoScalarWhereInput | TipoServicoAtendimentoScalarWhereInput[]
   }
 
-  export type AtendimentoUpdateManyWithoutTipoAtendimentoNestedInput = {
-    create?: XOR<AtendimentoCreateWithoutTipoAtendimentoInput, AtendimentoUncheckedCreateWithoutTipoAtendimentoInput> | AtendimentoCreateWithoutTipoAtendimentoInput[] | AtendimentoUncheckedCreateWithoutTipoAtendimentoInput[]
-    connectOrCreate?: AtendimentoCreateOrConnectWithoutTipoAtendimentoInput | AtendimentoCreateOrConnectWithoutTipoAtendimentoInput[]
-    upsert?: AtendimentoUpsertWithWhereUniqueWithoutTipoAtendimentoInput | AtendimentoUpsertWithWhereUniqueWithoutTipoAtendimentoInput[]
-    createMany?: AtendimentoCreateManyTipoAtendimentoInputEnvelope
-    set?: AtendimentoWhereUniqueInput | AtendimentoWhereUniqueInput[]
-    disconnect?: AtendimentoWhereUniqueInput | AtendimentoWhereUniqueInput[]
-    delete?: AtendimentoWhereUniqueInput | AtendimentoWhereUniqueInput[]
-    connect?: AtendimentoWhereUniqueInput | AtendimentoWhereUniqueInput[]
-    update?: AtendimentoUpdateWithWhereUniqueWithoutTipoAtendimentoInput | AtendimentoUpdateWithWhereUniqueWithoutTipoAtendimentoInput[]
-    updateMany?: AtendimentoUpdateManyWithWhereWithoutTipoAtendimentoInput | AtendimentoUpdateManyWithWhereWithoutTipoAtendimentoInput[]
-    deleteMany?: AtendimentoScalarWhereInput | AtendimentoScalarWhereInput[]
+  export type FilaAtendimentoUpdateManyWithoutTipoAtendimentoNestedInput = {
+    create?: XOR<FilaAtendimentoCreateWithoutTipoAtendimentoInput, FilaAtendimentoUncheckedCreateWithoutTipoAtendimentoInput> | FilaAtendimentoCreateWithoutTipoAtendimentoInput[] | FilaAtendimentoUncheckedCreateWithoutTipoAtendimentoInput[]
+    connectOrCreate?: FilaAtendimentoCreateOrConnectWithoutTipoAtendimentoInput | FilaAtendimentoCreateOrConnectWithoutTipoAtendimentoInput[]
+    upsert?: FilaAtendimentoUpsertWithWhereUniqueWithoutTipoAtendimentoInput | FilaAtendimentoUpsertWithWhereUniqueWithoutTipoAtendimentoInput[]
+    createMany?: FilaAtendimentoCreateManyTipoAtendimentoInputEnvelope
+    set?: FilaAtendimentoWhereUniqueInput | FilaAtendimentoWhereUniqueInput[]
+    disconnect?: FilaAtendimentoWhereUniqueInput | FilaAtendimentoWhereUniqueInput[]
+    delete?: FilaAtendimentoWhereUniqueInput | FilaAtendimentoWhereUniqueInput[]
+    connect?: FilaAtendimentoWhereUniqueInput | FilaAtendimentoWhereUniqueInput[]
+    update?: FilaAtendimentoUpdateWithWhereUniqueWithoutTipoAtendimentoInput | FilaAtendimentoUpdateWithWhereUniqueWithoutTipoAtendimentoInput[]
+    updateMany?: FilaAtendimentoUpdateManyWithWhereWithoutTipoAtendimentoInput | FilaAtendimentoUpdateManyWithWhereWithoutTipoAtendimentoInput[]
+    deleteMany?: FilaAtendimentoScalarWhereInput | FilaAtendimentoScalarWhereInput[]
   }
 
   export type AssistidoUncheckedUpdateManyWithoutTipoAtendimentoNestedInput = {
@@ -26460,18 +26656,18 @@ export namespace Prisma {
     deleteMany?: TipoServicoAtendimentoScalarWhereInput | TipoServicoAtendimentoScalarWhereInput[]
   }
 
-  export type AtendimentoUncheckedUpdateManyWithoutTipoAtendimentoNestedInput = {
-    create?: XOR<AtendimentoCreateWithoutTipoAtendimentoInput, AtendimentoUncheckedCreateWithoutTipoAtendimentoInput> | AtendimentoCreateWithoutTipoAtendimentoInput[] | AtendimentoUncheckedCreateWithoutTipoAtendimentoInput[]
-    connectOrCreate?: AtendimentoCreateOrConnectWithoutTipoAtendimentoInput | AtendimentoCreateOrConnectWithoutTipoAtendimentoInput[]
-    upsert?: AtendimentoUpsertWithWhereUniqueWithoutTipoAtendimentoInput | AtendimentoUpsertWithWhereUniqueWithoutTipoAtendimentoInput[]
-    createMany?: AtendimentoCreateManyTipoAtendimentoInputEnvelope
-    set?: AtendimentoWhereUniqueInput | AtendimentoWhereUniqueInput[]
-    disconnect?: AtendimentoWhereUniqueInput | AtendimentoWhereUniqueInput[]
-    delete?: AtendimentoWhereUniqueInput | AtendimentoWhereUniqueInput[]
-    connect?: AtendimentoWhereUniqueInput | AtendimentoWhereUniqueInput[]
-    update?: AtendimentoUpdateWithWhereUniqueWithoutTipoAtendimentoInput | AtendimentoUpdateWithWhereUniqueWithoutTipoAtendimentoInput[]
-    updateMany?: AtendimentoUpdateManyWithWhereWithoutTipoAtendimentoInput | AtendimentoUpdateManyWithWhereWithoutTipoAtendimentoInput[]
-    deleteMany?: AtendimentoScalarWhereInput | AtendimentoScalarWhereInput[]
+  export type FilaAtendimentoUncheckedUpdateManyWithoutTipoAtendimentoNestedInput = {
+    create?: XOR<FilaAtendimentoCreateWithoutTipoAtendimentoInput, FilaAtendimentoUncheckedCreateWithoutTipoAtendimentoInput> | FilaAtendimentoCreateWithoutTipoAtendimentoInput[] | FilaAtendimentoUncheckedCreateWithoutTipoAtendimentoInput[]
+    connectOrCreate?: FilaAtendimentoCreateOrConnectWithoutTipoAtendimentoInput | FilaAtendimentoCreateOrConnectWithoutTipoAtendimentoInput[]
+    upsert?: FilaAtendimentoUpsertWithWhereUniqueWithoutTipoAtendimentoInput | FilaAtendimentoUpsertWithWhereUniqueWithoutTipoAtendimentoInput[]
+    createMany?: FilaAtendimentoCreateManyTipoAtendimentoInputEnvelope
+    set?: FilaAtendimentoWhereUniqueInput | FilaAtendimentoWhereUniqueInput[]
+    disconnect?: FilaAtendimentoWhereUniqueInput | FilaAtendimentoWhereUniqueInput[]
+    delete?: FilaAtendimentoWhereUniqueInput | FilaAtendimentoWhereUniqueInput[]
+    connect?: FilaAtendimentoWhereUniqueInput | FilaAtendimentoWhereUniqueInput[]
+    update?: FilaAtendimentoUpdateWithWhereUniqueWithoutTipoAtendimentoInput | FilaAtendimentoUpdateWithWhereUniqueWithoutTipoAtendimentoInput[]
+    updateMany?: FilaAtendimentoUpdateManyWithWhereWithoutTipoAtendimentoInput | FilaAtendimentoUpdateManyWithWhereWithoutTipoAtendimentoInput[]
+    deleteMany?: FilaAtendimentoScalarWhereInput | FilaAtendimentoScalarWhereInput[]
   }
 
   export type AssistidoCreateNestedManyWithoutTipoPrioridadeInput = {
@@ -26487,11 +26683,25 @@ export namespace Prisma {
     connect?: TipoAtendimentoWhereUniqueInput
   }
 
+  export type FilaAtendimentoCreateNestedManyWithoutTipoPrioridadeInput = {
+    create?: XOR<FilaAtendimentoCreateWithoutTipoPrioridadeInput, FilaAtendimentoUncheckedCreateWithoutTipoPrioridadeInput> | FilaAtendimentoCreateWithoutTipoPrioridadeInput[] | FilaAtendimentoUncheckedCreateWithoutTipoPrioridadeInput[]
+    connectOrCreate?: FilaAtendimentoCreateOrConnectWithoutTipoPrioridadeInput | FilaAtendimentoCreateOrConnectWithoutTipoPrioridadeInput[]
+    createMany?: FilaAtendimentoCreateManyTipoPrioridadeInputEnvelope
+    connect?: FilaAtendimentoWhereUniqueInput | FilaAtendimentoWhereUniqueInput[]
+  }
+
   export type AssistidoUncheckedCreateNestedManyWithoutTipoPrioridadeInput = {
     create?: XOR<AssistidoCreateWithoutTipoPrioridadeInput, AssistidoUncheckedCreateWithoutTipoPrioridadeInput> | AssistidoCreateWithoutTipoPrioridadeInput[] | AssistidoUncheckedCreateWithoutTipoPrioridadeInput[]
     connectOrCreate?: AssistidoCreateOrConnectWithoutTipoPrioridadeInput | AssistidoCreateOrConnectWithoutTipoPrioridadeInput[]
     createMany?: AssistidoCreateManyTipoPrioridadeInputEnvelope
     connect?: AssistidoWhereUniqueInput | AssistidoWhereUniqueInput[]
+  }
+
+  export type FilaAtendimentoUncheckedCreateNestedManyWithoutTipoPrioridadeInput = {
+    create?: XOR<FilaAtendimentoCreateWithoutTipoPrioridadeInput, FilaAtendimentoUncheckedCreateWithoutTipoPrioridadeInput> | FilaAtendimentoCreateWithoutTipoPrioridadeInput[] | FilaAtendimentoUncheckedCreateWithoutTipoPrioridadeInput[]
+    connectOrCreate?: FilaAtendimentoCreateOrConnectWithoutTipoPrioridadeInput | FilaAtendimentoCreateOrConnectWithoutTipoPrioridadeInput[]
+    createMany?: FilaAtendimentoCreateManyTipoPrioridadeInputEnvelope
+    connect?: FilaAtendimentoWhereUniqueInput | FilaAtendimentoWhereUniqueInput[]
   }
 
   export type AssistidoUpdateManyWithoutTipoPrioridadeNestedInput = {
@@ -26518,6 +26728,20 @@ export namespace Prisma {
     update?: XOR<XOR<TipoAtendimentoUpdateToOneWithWhereWithoutTipoPrioridadesInput, TipoAtendimentoUpdateWithoutTipoPrioridadesInput>, TipoAtendimentoUncheckedUpdateWithoutTipoPrioridadesInput>
   }
 
+  export type FilaAtendimentoUpdateManyWithoutTipoPrioridadeNestedInput = {
+    create?: XOR<FilaAtendimentoCreateWithoutTipoPrioridadeInput, FilaAtendimentoUncheckedCreateWithoutTipoPrioridadeInput> | FilaAtendimentoCreateWithoutTipoPrioridadeInput[] | FilaAtendimentoUncheckedCreateWithoutTipoPrioridadeInput[]
+    connectOrCreate?: FilaAtendimentoCreateOrConnectWithoutTipoPrioridadeInput | FilaAtendimentoCreateOrConnectWithoutTipoPrioridadeInput[]
+    upsert?: FilaAtendimentoUpsertWithWhereUniqueWithoutTipoPrioridadeInput | FilaAtendimentoUpsertWithWhereUniqueWithoutTipoPrioridadeInput[]
+    createMany?: FilaAtendimentoCreateManyTipoPrioridadeInputEnvelope
+    set?: FilaAtendimentoWhereUniqueInput | FilaAtendimentoWhereUniqueInput[]
+    disconnect?: FilaAtendimentoWhereUniqueInput | FilaAtendimentoWhereUniqueInput[]
+    delete?: FilaAtendimentoWhereUniqueInput | FilaAtendimentoWhereUniqueInput[]
+    connect?: FilaAtendimentoWhereUniqueInput | FilaAtendimentoWhereUniqueInput[]
+    update?: FilaAtendimentoUpdateWithWhereUniqueWithoutTipoPrioridadeInput | FilaAtendimentoUpdateWithWhereUniqueWithoutTipoPrioridadeInput[]
+    updateMany?: FilaAtendimentoUpdateManyWithWhereWithoutTipoPrioridadeInput | FilaAtendimentoUpdateManyWithWhereWithoutTipoPrioridadeInput[]
+    deleteMany?: FilaAtendimentoScalarWhereInput | FilaAtendimentoScalarWhereInput[]
+  }
+
   export type AssistidoUncheckedUpdateManyWithoutTipoPrioridadeNestedInput = {
     create?: XOR<AssistidoCreateWithoutTipoPrioridadeInput, AssistidoUncheckedCreateWithoutTipoPrioridadeInput> | AssistidoCreateWithoutTipoPrioridadeInput[] | AssistidoUncheckedCreateWithoutTipoPrioridadeInput[]
     connectOrCreate?: AssistidoCreateOrConnectWithoutTipoPrioridadeInput | AssistidoCreateOrConnectWithoutTipoPrioridadeInput[]
@@ -26530,6 +26754,20 @@ export namespace Prisma {
     update?: AssistidoUpdateWithWhereUniqueWithoutTipoPrioridadeInput | AssistidoUpdateWithWhereUniqueWithoutTipoPrioridadeInput[]
     updateMany?: AssistidoUpdateManyWithWhereWithoutTipoPrioridadeInput | AssistidoUpdateManyWithWhereWithoutTipoPrioridadeInput[]
     deleteMany?: AssistidoScalarWhereInput | AssistidoScalarWhereInput[]
+  }
+
+  export type FilaAtendimentoUncheckedUpdateManyWithoutTipoPrioridadeNestedInput = {
+    create?: XOR<FilaAtendimentoCreateWithoutTipoPrioridadeInput, FilaAtendimentoUncheckedCreateWithoutTipoPrioridadeInput> | FilaAtendimentoCreateWithoutTipoPrioridadeInput[] | FilaAtendimentoUncheckedCreateWithoutTipoPrioridadeInput[]
+    connectOrCreate?: FilaAtendimentoCreateOrConnectWithoutTipoPrioridadeInput | FilaAtendimentoCreateOrConnectWithoutTipoPrioridadeInput[]
+    upsert?: FilaAtendimentoUpsertWithWhereUniqueWithoutTipoPrioridadeInput | FilaAtendimentoUpsertWithWhereUniqueWithoutTipoPrioridadeInput[]
+    createMany?: FilaAtendimentoCreateManyTipoPrioridadeInputEnvelope
+    set?: FilaAtendimentoWhereUniqueInput | FilaAtendimentoWhereUniqueInput[]
+    disconnect?: FilaAtendimentoWhereUniqueInput | FilaAtendimentoWhereUniqueInput[]
+    delete?: FilaAtendimentoWhereUniqueInput | FilaAtendimentoWhereUniqueInput[]
+    connect?: FilaAtendimentoWhereUniqueInput | FilaAtendimentoWhereUniqueInput[]
+    update?: FilaAtendimentoUpdateWithWhereUniqueWithoutTipoPrioridadeInput | FilaAtendimentoUpdateWithWhereUniqueWithoutTipoPrioridadeInput[]
+    updateMany?: FilaAtendimentoUpdateManyWithWhereWithoutTipoPrioridadeInput | FilaAtendimentoUpdateManyWithWhereWithoutTipoPrioridadeInput[]
+    deleteMany?: FilaAtendimentoScalarWhereInput | FilaAtendimentoScalarWhereInput[]
   }
 
   export type TipoServicoAtendimentoCreateNestedOneWithoutAssistidosInput = {
@@ -26991,6 +27229,17 @@ export namespace Prisma {
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -27006,17 +27255,6 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
-  }
-
-  export type NestedIntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type NestedEnumStatusFilaAtendimentoWithAggregatesFilter<$PrismaModel = never> = {
@@ -27043,6 +27281,22 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
   export type NestedFloatNullableFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel> | null
     in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
@@ -27052,13 +27306,6 @@ export namespace Prisma {
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
-  }
-
-  export type NestedEnumProcessosAndamentoFilter<$PrismaModel = never> = {
-    equals?: $Enums.ProcessosAndamento | EnumProcessosAndamentoFieldRefInput<$PrismaModel>
-    in?: $Enums.ProcessosAndamento[] | ListEnumProcessosAndamentoFieldRefInput<$PrismaModel>
-    notIn?: $Enums.ProcessosAndamento[] | ListEnumProcessosAndamentoFieldRefInput<$PrismaModel>
-    not?: NestedEnumProcessosAndamentoFilter<$PrismaModel> | $Enums.ProcessosAndamento
   }
 
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -27088,20 +27335,11 @@ export namespace Prisma {
     not?: NestedFloatFilter<$PrismaModel> | number
   }
 
-  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedIntNullableFilter<$PrismaModel>
-    _max?: NestedIntNullableFilter<$PrismaModel>
+  export type NestedEnumProcessosAndamentoFilter<$PrismaModel = never> = {
+    equals?: $Enums.ProcessosAndamento | EnumProcessosAndamentoFieldRefInput<$PrismaModel>
+    in?: $Enums.ProcessosAndamento[] | ListEnumProcessosAndamentoFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ProcessosAndamento[] | ListEnumProcessosAndamentoFieldRefInput<$PrismaModel>
+    not?: NestedEnumProcessosAndamentoFilter<$PrismaModel> | $Enums.ProcessosAndamento
   }
 
   export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -27217,7 +27455,6 @@ export namespace Prisma {
     parcelasVencidas?: number | null
     valorCausa?: number | null
     processosAndamento: $Enums.ProcessosAndamento
-    tipoAtendimento: TipoAtendimentoCreateNestedOneWithoutAntendimentosInput
     estadoCivil: EstadoCivilCreateNestedOneWithoutAtendimentosInput
     profissao: ProfissaoCreateNestedOneWithoutAtendimentosInput
     tipoDomicilio: TipoDomicilioCreateNestedOneWithoutAtendimentosInput
@@ -27244,7 +27481,6 @@ export namespace Prisma {
     parcelasVencidas?: number | null
     valorCausa?: number | null
     processosAndamento: $Enums.ProcessosAndamento
-    tipoAtendimentoId: number
     estadoCivilId: number
     profissaoId: string
     tipoDomicilioId: number
@@ -27278,8 +27514,11 @@ export namespace Prisma {
     dataEntrada?: Date | string
     dataInicio?: Date | string | null
     dataFim?: Date | string | null
+    migrante?: boolean
     operadorAtendimento?: UserCreateNestedOneWithoutAtendimentosEmAndamentoInput
     atendimento?: AtendimentoCreateNestedOneWithoutFilaInput
+    tipoPrioridade?: TipoPrioridadeCreateNestedOneWithoutFilaAtendimentoInput
+    tipoAtendimento: TipoAtendimentoCreateNestedOneWithoutFilaAtendimentoInput
   }
 
   export type FilaAtendimentoUncheckedCreateWithoutOperadorTriagemInput = {
@@ -27293,7 +27532,10 @@ export namespace Prisma {
     dataEntrada?: Date | string
     dataInicio?: Date | string | null
     dataFim?: Date | string | null
+    migrante?: boolean
     operadorAtendimentoId?: string | null
+    tipoPrioridadeId?: number | null
+    tipoAtendimentoId: number
     atendimento?: AtendimentoUncheckedCreateNestedOneWithoutFilaInput
   }
 
@@ -27318,8 +27560,11 @@ export namespace Prisma {
     dataEntrada?: Date | string
     dataInicio?: Date | string | null
     dataFim?: Date | string | null
+    migrante?: boolean
     operadorTriagem: UserCreateNestedOneWithoutAtendimentosTriagemInput
     atendimento?: AtendimentoCreateNestedOneWithoutFilaInput
+    tipoPrioridade?: TipoPrioridadeCreateNestedOneWithoutFilaAtendimentoInput
+    tipoAtendimento: TipoAtendimentoCreateNestedOneWithoutFilaAtendimentoInput
   }
 
   export type FilaAtendimentoUncheckedCreateWithoutOperadorAtendimentoInput = {
@@ -27333,7 +27578,10 @@ export namespace Prisma {
     dataEntrada?: Date | string
     dataInicio?: Date | string | null
     dataFim?: Date | string | null
+    migrante?: boolean
     operadorTriagemId: string
+    tipoPrioridadeId?: number | null
+    tipoAtendimentoId: number
     atendimento?: AtendimentoUncheckedCreateNestedOneWithoutFilaInput
   }
 
@@ -27414,7 +27662,6 @@ export namespace Prisma {
     parcelasVencidas?: IntNullableFilter<"Atendimento"> | number | null
     valorCausa?: FloatNullableFilter<"Atendimento"> | number | null
     processosAndamento?: EnumProcessosAndamentoFilter<"Atendimento"> | $Enums.ProcessosAndamento
-    tipoAtendimentoId?: IntFilter<"Atendimento"> | number
     estadoCivilId?: IntFilter<"Atendimento"> | number
     profissaoId?: StringFilter<"Atendimento"> | string
     tipoDomicilioId?: IntFilter<"Atendimento"> | number
@@ -27454,8 +27701,11 @@ export namespace Prisma {
     dataEntrada?: DateTimeFilter<"FilaAtendimento"> | Date | string
     dataInicio?: DateTimeNullableFilter<"FilaAtendimento"> | Date | string | null
     dataFim?: DateTimeNullableFilter<"FilaAtendimento"> | Date | string | null
+    migrante?: BoolFilter<"FilaAtendimento"> | boolean
     operadorTriagemId?: StringFilter<"FilaAtendimento"> | string
     operadorAtendimentoId?: StringNullableFilter<"FilaAtendimento"> | string | null
+    tipoPrioridadeId?: IntNullableFilter<"FilaAtendimento"> | number | null
+    tipoAtendimentoId?: IntFilter<"FilaAtendimento"> | number
   }
 
   export type FilaAtendimentoUpsertWithWhereUniqueWithoutOperadorAtendimentoInput = {
@@ -27582,7 +27832,6 @@ export namespace Prisma {
     parcelasVencidas?: number | null
     valorCausa?: number | null
     processosAndamento: $Enums.ProcessosAndamento
-    tipoAtendimento: TipoAtendimentoCreateNestedOneWithoutAntendimentosInput
     estadoCivil: EstadoCivilCreateNestedOneWithoutAtendimentosInput
     profissao: ProfissaoCreateNestedOneWithoutAtendimentosInput
     tipoDomicilio: TipoDomicilioCreateNestedOneWithoutAtendimentosInput
@@ -27609,7 +27858,6 @@ export namespace Prisma {
     parcelasVencidas?: number | null
     valorCausa?: number | null
     processosAndamento: $Enums.ProcessosAndamento
-    tipoAtendimentoId: number
     estadoCivilId: number
     profissaoId: string
     tipoDomicilioId: number
@@ -27625,6 +27873,46 @@ export namespace Prisma {
   export type AtendimentoCreateOrConnectWithoutFilaInput = {
     where: AtendimentoWhereUniqueInput
     create: XOR<AtendimentoCreateWithoutFilaInput, AtendimentoUncheckedCreateWithoutFilaInput>
+  }
+
+  export type TipoPrioridadeCreateWithoutFilaAtendimentoInput = {
+    descricao: string
+    valorPrioridade: number
+    assistidos?: AssistidoCreateNestedManyWithoutTipoPrioridadeInput
+    tipoAtendimento?: TipoAtendimentoCreateNestedOneWithoutTipoPrioridadesInput
+  }
+
+  export type TipoPrioridadeUncheckedCreateWithoutFilaAtendimentoInput = {
+    id?: number
+    descricao: string
+    valorPrioridade: number
+    tipoAtendimentoId?: number | null
+    assistidos?: AssistidoUncheckedCreateNestedManyWithoutTipoPrioridadeInput
+  }
+
+  export type TipoPrioridadeCreateOrConnectWithoutFilaAtendimentoInput = {
+    where: TipoPrioridadeWhereUniqueInput
+    create: XOR<TipoPrioridadeCreateWithoutFilaAtendimentoInput, TipoPrioridadeUncheckedCreateWithoutFilaAtendimentoInput>
+  }
+
+  export type TipoAtendimentoCreateWithoutFilaAtendimentoInput = {
+    descricao: string
+    assistidos?: AssistidoCreateNestedManyWithoutTipoAtendimentoInput
+    tipoPrioridades?: TipoPrioridadeCreateNestedManyWithoutTipoAtendimentoInput
+    servicos?: TipoServicoAtendimentoCreateNestedManyWithoutAtendimentoInput
+  }
+
+  export type TipoAtendimentoUncheckedCreateWithoutFilaAtendimentoInput = {
+    id?: number
+    descricao: string
+    assistidos?: AssistidoUncheckedCreateNestedManyWithoutTipoAtendimentoInput
+    tipoPrioridades?: TipoPrioridadeUncheckedCreateNestedManyWithoutTipoAtendimentoInput
+    servicos?: TipoServicoAtendimentoUncheckedCreateNestedManyWithoutAtendimentoInput
+  }
+
+  export type TipoAtendimentoCreateOrConnectWithoutFilaAtendimentoInput = {
+    where: TipoAtendimentoWhereUniqueInput
+    create: XOR<TipoAtendimentoCreateWithoutFilaAtendimentoInput, TipoAtendimentoUncheckedCreateWithoutFilaAtendimentoInput>
   }
 
   export type UserUpsertWithoutAtendimentosTriagemInput = {
@@ -27726,7 +28014,6 @@ export namespace Prisma {
     parcelasVencidas?: NullableIntFieldUpdateOperationsInput | number | null
     valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
-    tipoAtendimento?: TipoAtendimentoUpdateOneRequiredWithoutAntendimentosNestedInput
     estadoCivil?: EstadoCivilUpdateOneRequiredWithoutAtendimentosNestedInput
     profissao?: ProfissaoUpdateOneRequiredWithoutAtendimentosNestedInput
     tipoDomicilio?: TipoDomicilioUpdateOneRequiredWithoutAtendimentosNestedInput
@@ -27753,7 +28040,6 @@ export namespace Prisma {
     parcelasVencidas?: NullableIntFieldUpdateOperationsInput | number | null
     valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
-    tipoAtendimentoId?: IntFieldUpdateOperationsInput | number
     estadoCivilId?: IntFieldUpdateOperationsInput | number
     profissaoId?: StringFieldUpdateOperationsInput | string
     tipoDomicilioId?: IntFieldUpdateOperationsInput | number
@@ -27766,24 +28052,56 @@ export namespace Prisma {
     documentos?: DocumentoUncheckedUpdateManyWithoutAtendimentoNestedInput
   }
 
-  export type TipoAtendimentoCreateWithoutAntendimentosInput = {
-    descricao: string
-    assistidos?: AssistidoCreateNestedManyWithoutTipoAtendimentoInput
-    tipoPrioridades?: TipoPrioridadeCreateNestedManyWithoutTipoAtendimentoInput
-    servicos?: TipoServicoAtendimentoCreateNestedManyWithoutAtendimentoInput
+  export type TipoPrioridadeUpsertWithoutFilaAtendimentoInput = {
+    update: XOR<TipoPrioridadeUpdateWithoutFilaAtendimentoInput, TipoPrioridadeUncheckedUpdateWithoutFilaAtendimentoInput>
+    create: XOR<TipoPrioridadeCreateWithoutFilaAtendimentoInput, TipoPrioridadeUncheckedCreateWithoutFilaAtendimentoInput>
+    where?: TipoPrioridadeWhereInput
   }
 
-  export type TipoAtendimentoUncheckedCreateWithoutAntendimentosInput = {
-    id?: number
-    descricao: string
-    assistidos?: AssistidoUncheckedCreateNestedManyWithoutTipoAtendimentoInput
-    tipoPrioridades?: TipoPrioridadeUncheckedCreateNestedManyWithoutTipoAtendimentoInput
-    servicos?: TipoServicoAtendimentoUncheckedCreateNestedManyWithoutAtendimentoInput
+  export type TipoPrioridadeUpdateToOneWithWhereWithoutFilaAtendimentoInput = {
+    where?: TipoPrioridadeWhereInput
+    data: XOR<TipoPrioridadeUpdateWithoutFilaAtendimentoInput, TipoPrioridadeUncheckedUpdateWithoutFilaAtendimentoInput>
   }
 
-  export type TipoAtendimentoCreateOrConnectWithoutAntendimentosInput = {
-    where: TipoAtendimentoWhereUniqueInput
-    create: XOR<TipoAtendimentoCreateWithoutAntendimentosInput, TipoAtendimentoUncheckedCreateWithoutAntendimentosInput>
+  export type TipoPrioridadeUpdateWithoutFilaAtendimentoInput = {
+    descricao?: StringFieldUpdateOperationsInput | string
+    valorPrioridade?: IntFieldUpdateOperationsInput | number
+    assistidos?: AssistidoUpdateManyWithoutTipoPrioridadeNestedInput
+    tipoAtendimento?: TipoAtendimentoUpdateOneWithoutTipoPrioridadesNestedInput
+  }
+
+  export type TipoPrioridadeUncheckedUpdateWithoutFilaAtendimentoInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    descricao?: StringFieldUpdateOperationsInput | string
+    valorPrioridade?: IntFieldUpdateOperationsInput | number
+    tipoAtendimentoId?: NullableIntFieldUpdateOperationsInput | number | null
+    assistidos?: AssistidoUncheckedUpdateManyWithoutTipoPrioridadeNestedInput
+  }
+
+  export type TipoAtendimentoUpsertWithoutFilaAtendimentoInput = {
+    update: XOR<TipoAtendimentoUpdateWithoutFilaAtendimentoInput, TipoAtendimentoUncheckedUpdateWithoutFilaAtendimentoInput>
+    create: XOR<TipoAtendimentoCreateWithoutFilaAtendimentoInput, TipoAtendimentoUncheckedCreateWithoutFilaAtendimentoInput>
+    where?: TipoAtendimentoWhereInput
+  }
+
+  export type TipoAtendimentoUpdateToOneWithWhereWithoutFilaAtendimentoInput = {
+    where?: TipoAtendimentoWhereInput
+    data: XOR<TipoAtendimentoUpdateWithoutFilaAtendimentoInput, TipoAtendimentoUncheckedUpdateWithoutFilaAtendimentoInput>
+  }
+
+  export type TipoAtendimentoUpdateWithoutFilaAtendimentoInput = {
+    descricao?: StringFieldUpdateOperationsInput | string
+    assistidos?: AssistidoUpdateManyWithoutTipoAtendimentoNestedInput
+    tipoPrioridades?: TipoPrioridadeUpdateManyWithoutTipoAtendimentoNestedInput
+    servicos?: TipoServicoAtendimentoUpdateManyWithoutAtendimentoNestedInput
+  }
+
+  export type TipoAtendimentoUncheckedUpdateWithoutFilaAtendimentoInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    descricao?: StringFieldUpdateOperationsInput | string
+    assistidos?: AssistidoUncheckedUpdateManyWithoutTipoAtendimentoNestedInput
+    tipoPrioridades?: TipoPrioridadeUncheckedUpdateManyWithoutTipoAtendimentoNestedInput
+    servicos?: TipoServicoAtendimentoUncheckedUpdateManyWithoutAtendimentoNestedInput
   }
 
   export type EstadoCivilCreateWithoutAtendimentosInput = {
@@ -27899,8 +28217,11 @@ export namespace Prisma {
     dataEntrada?: Date | string
     dataInicio?: Date | string | null
     dataFim?: Date | string | null
+    migrante?: boolean
     operadorTriagem: UserCreateNestedOneWithoutAtendimentosTriagemInput
     operadorAtendimento?: UserCreateNestedOneWithoutAtendimentosEmAndamentoInput
+    tipoPrioridade?: TipoPrioridadeCreateNestedOneWithoutFilaAtendimentoInput
+    tipoAtendimento: TipoAtendimentoCreateNestedOneWithoutFilaAtendimentoInput
   }
 
   export type FilaAtendimentoUncheckedCreateWithoutAtendimentoInput = {
@@ -27914,8 +28235,11 @@ export namespace Prisma {
     dataEntrada?: Date | string
     dataInicio?: Date | string | null
     dataFim?: Date | string | null
+    migrante?: boolean
     operadorTriagemId: string
     operadorAtendimentoId?: string | null
+    tipoPrioridadeId?: number | null
+    tipoAtendimentoId: number
   }
 
   export type FilaAtendimentoCreateOrConnectWithoutAtendimentoInput = {
@@ -28027,32 +28351,6 @@ export namespace Prisma {
   export type DocumentoCreateManyAtendimentoInputEnvelope = {
     data: DocumentoCreateManyAtendimentoInput | DocumentoCreateManyAtendimentoInput[]
     skipDuplicates?: boolean
-  }
-
-  export type TipoAtendimentoUpsertWithoutAntendimentosInput = {
-    update: XOR<TipoAtendimentoUpdateWithoutAntendimentosInput, TipoAtendimentoUncheckedUpdateWithoutAntendimentosInput>
-    create: XOR<TipoAtendimentoCreateWithoutAntendimentosInput, TipoAtendimentoUncheckedCreateWithoutAntendimentosInput>
-    where?: TipoAtendimentoWhereInput
-  }
-
-  export type TipoAtendimentoUpdateToOneWithWhereWithoutAntendimentosInput = {
-    where?: TipoAtendimentoWhereInput
-    data: XOR<TipoAtendimentoUpdateWithoutAntendimentosInput, TipoAtendimentoUncheckedUpdateWithoutAntendimentosInput>
-  }
-
-  export type TipoAtendimentoUpdateWithoutAntendimentosInput = {
-    descricao?: StringFieldUpdateOperationsInput | string
-    assistidos?: AssistidoUpdateManyWithoutTipoAtendimentoNestedInput
-    tipoPrioridades?: TipoPrioridadeUpdateManyWithoutTipoAtendimentoNestedInput
-    servicos?: TipoServicoAtendimentoUpdateManyWithoutAtendimentoNestedInput
-  }
-
-  export type TipoAtendimentoUncheckedUpdateWithoutAntendimentosInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    descricao?: StringFieldUpdateOperationsInput | string
-    assistidos?: AssistidoUncheckedUpdateManyWithoutTipoAtendimentoNestedInput
-    tipoPrioridades?: TipoPrioridadeUncheckedUpdateManyWithoutTipoAtendimentoNestedInput
-    servicos?: TipoServicoAtendimentoUncheckedUpdateManyWithoutAtendimentoNestedInput
   }
 
   export type EstadoCivilUpsertWithoutAtendimentosInput = {
@@ -28215,8 +28513,11 @@ export namespace Prisma {
     dataEntrada?: DateTimeFieldUpdateOperationsInput | Date | string
     dataInicio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     dataFim?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    migrante?: BoolFieldUpdateOperationsInput | boolean
     operadorTriagem?: UserUpdateOneRequiredWithoutAtendimentosTriagemNestedInput
     operadorAtendimento?: UserUpdateOneWithoutAtendimentosEmAndamentoNestedInput
+    tipoPrioridade?: TipoPrioridadeUpdateOneWithoutFilaAtendimentoNestedInput
+    tipoAtendimento?: TipoAtendimentoUpdateOneRequiredWithoutFilaAtendimentoNestedInput
   }
 
   export type FilaAtendimentoUncheckedUpdateWithoutAtendimentoInput = {
@@ -28230,8 +28531,11 @@ export namespace Prisma {
     dataEntrada?: DateTimeFieldUpdateOperationsInput | Date | string
     dataInicio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     dataFim?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    migrante?: BoolFieldUpdateOperationsInput | boolean
     operadorTriagemId?: StringFieldUpdateOperationsInput | string
     operadorAtendimentoId?: NullableStringFieldUpdateOperationsInput | string | null
+    tipoPrioridadeId?: NullableIntFieldUpdateOperationsInput | number | null
+    tipoAtendimentoId?: IntFieldUpdateOperationsInput | number
   }
 
   export type MembroFamiliarUpsertWithWhereUniqueWithoutAtendimentoInput = {
@@ -28349,7 +28653,6 @@ export namespace Prisma {
     parcelasVencidas?: number | null
     valorCausa?: number | null
     processosAndamento: $Enums.ProcessosAndamento
-    tipoAtendimento: TipoAtendimentoCreateNestedOneWithoutAntendimentosInput
     estadoCivil: EstadoCivilCreateNestedOneWithoutAtendimentosInput
     profissao: ProfissaoCreateNestedOneWithoutAtendimentosInput
     tipoDomicilio: TipoDomicilioCreateNestedOneWithoutAtendimentosInput
@@ -28376,7 +28679,6 @@ export namespace Prisma {
     parcelasVencidas?: number | null
     valorCausa?: number | null
     processosAndamento: $Enums.ProcessosAndamento
-    tipoAtendimentoId: number
     estadoCivilId: number
     profissaoId: string
     tipoDomicilioId: number
@@ -28419,7 +28721,6 @@ export namespace Prisma {
     parcelasVencidas?: NullableIntFieldUpdateOperationsInput | number | null
     valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
-    tipoAtendimento?: TipoAtendimentoUpdateOneRequiredWithoutAntendimentosNestedInput
     estadoCivil?: EstadoCivilUpdateOneRequiredWithoutAtendimentosNestedInput
     profissao?: ProfissaoUpdateOneRequiredWithoutAtendimentosNestedInput
     tipoDomicilio?: TipoDomicilioUpdateOneRequiredWithoutAtendimentosNestedInput
@@ -28446,7 +28747,6 @@ export namespace Prisma {
     parcelasVencidas?: NullableIntFieldUpdateOperationsInput | number | null
     valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
-    tipoAtendimentoId?: IntFieldUpdateOperationsInput | number
     estadoCivilId?: IntFieldUpdateOperationsInput | number
     profissaoId?: StringFieldUpdateOperationsInput | string
     tipoDomicilioId?: IntFieldUpdateOperationsInput | number
@@ -28473,7 +28773,6 @@ export namespace Prisma {
     parcelasVencidas?: number | null
     valorCausa?: number | null
     processosAndamento: $Enums.ProcessosAndamento
-    tipoAtendimento: TipoAtendimentoCreateNestedOneWithoutAntendimentosInput
     estadoCivil: EstadoCivilCreateNestedOneWithoutAtendimentosInput
     profissao: ProfissaoCreateNestedOneWithoutAtendimentosInput
     tipoDomicilio: TipoDomicilioCreateNestedOneWithoutAtendimentosInput
@@ -28500,7 +28799,6 @@ export namespace Prisma {
     parcelasVencidas?: number | null
     valorCausa?: number | null
     processosAndamento: $Enums.ProcessosAndamento
-    tipoAtendimentoId: number
     estadoCivilId: number
     profissaoId: string
     tipoDomicilioId: number
@@ -28543,7 +28841,6 @@ export namespace Prisma {
     parcelasVencidas?: NullableIntFieldUpdateOperationsInput | number | null
     valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
-    tipoAtendimento?: TipoAtendimentoUpdateOneRequiredWithoutAntendimentosNestedInput
     estadoCivil?: EstadoCivilUpdateOneRequiredWithoutAtendimentosNestedInput
     profissao?: ProfissaoUpdateOneRequiredWithoutAtendimentosNestedInput
     tipoDomicilio?: TipoDomicilioUpdateOneRequiredWithoutAtendimentosNestedInput
@@ -28570,7 +28867,6 @@ export namespace Prisma {
     parcelasVencidas?: NullableIntFieldUpdateOperationsInput | number | null
     valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
-    tipoAtendimentoId?: IntFieldUpdateOperationsInput | number
     estadoCivilId?: IntFieldUpdateOperationsInput | number
     profissaoId?: StringFieldUpdateOperationsInput | string
     tipoDomicilioId?: IntFieldUpdateOperationsInput | number
@@ -28597,7 +28893,6 @@ export namespace Prisma {
     parcelasVencidas?: number | null
     valorCausa?: number | null
     processosAndamento: $Enums.ProcessosAndamento
-    tipoAtendimento: TipoAtendimentoCreateNestedOneWithoutAntendimentosInput
     estadoCivil: EstadoCivilCreateNestedOneWithoutAtendimentosInput
     profissao: ProfissaoCreateNestedOneWithoutAtendimentosInput
     tipoDomicilio: TipoDomicilioCreateNestedOneWithoutAtendimentosInput
@@ -28624,7 +28919,6 @@ export namespace Prisma {
     parcelasVencidas?: number | null
     valorCausa?: number | null
     processosAndamento: $Enums.ProcessosAndamento
-    tipoAtendimentoId: number
     estadoCivilId: number
     profissaoId: string
     tipoDomicilioId: number
@@ -28698,7 +28992,6 @@ export namespace Prisma {
     parcelasVencidas?: NullableIntFieldUpdateOperationsInput | number | null
     valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
-    tipoAtendimento?: TipoAtendimentoUpdateOneRequiredWithoutAntendimentosNestedInput
     estadoCivil?: EstadoCivilUpdateOneRequiredWithoutAtendimentosNestedInput
     profissao?: ProfissaoUpdateOneRequiredWithoutAtendimentosNestedInput
     tipoDomicilio?: TipoDomicilioUpdateOneRequiredWithoutAtendimentosNestedInput
@@ -28725,7 +29018,6 @@ export namespace Prisma {
     parcelasVencidas?: NullableIntFieldUpdateOperationsInput | number | null
     valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
-    tipoAtendimentoId?: IntFieldUpdateOperationsInput | number
     estadoCivilId?: IntFieldUpdateOperationsInput | number
     profissaoId?: StringFieldUpdateOperationsInput | string
     tipoDomicilioId?: IntFieldUpdateOperationsInput | number
@@ -28813,6 +29105,7 @@ export namespace Prisma {
     descricao: string
     valorPrioridade: number
     assistidos?: AssistidoCreateNestedManyWithoutTipoPrioridadeInput
+    filaAtendimento?: FilaAtendimentoCreateNestedManyWithoutTipoPrioridadeInput
   }
 
   export type TipoPrioridadeUncheckedCreateWithoutTipoAtendimentoInput = {
@@ -28820,6 +29113,7 @@ export namespace Prisma {
     descricao: string
     valorPrioridade: number
     assistidos?: AssistidoUncheckedCreateNestedManyWithoutTipoPrioridadeInput
+    filaAtendimento?: FilaAtendimentoUncheckedCreateNestedManyWithoutTipoPrioridadeInput
   }
 
   export type TipoPrioridadeCreateOrConnectWithoutTipoAtendimentoInput = {
@@ -28853,67 +29147,49 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type AtendimentoCreateWithoutTipoAtendimentoInput = {
+  export type FilaAtendimentoCreateWithoutTipoAtendimentoInput = {
     id?: string
-    capacidadeCivil: boolean
-    cep: string
-    endereco: string
-    numero: number
-    complemento?: string | null
-    bairro: string
-    cidade: string
-    uf: string
-    dataInicioBeneficio?: Date | string | null
-    parcelasVencidas?: number | null
-    valorCausa?: number | null
-    processosAndamento: $Enums.ProcessosAndamento
-    estadoCivil: EstadoCivilCreateNestedOneWithoutAtendimentosInput
-    profissao: ProfissaoCreateNestedOneWithoutAtendimentosInput
-    tipoDomicilio: TipoDomicilioCreateNestedOneWithoutAtendimentosInput
-    tipoDemandaPrevidenciaria: TipoDemandaPrevidenciariaCreateNestedOneWithoutAtendimentosInput
-    competenciaJudicial: CompetenciaJudicialCreateNestedOneWithoutAtendimentosInput
-    operador: UserCreateNestedOneWithoutAtendimentosRealizadosInput
-    fila?: FilaAtendimentoCreateNestedOneWithoutAtendimentoInput
-    membrosFamiliares?: MembroFamiliarCreateNestedManyWithoutAtendimentoInput
-    processo?: ProcessoCreateNestedOneWithoutAtendimentoInput
-    formularios?: FormularioPreenchidoCreateNestedManyWithoutAtendimentoInput
-    documentos?: DocumentoCreateNestedManyWithoutAtendimentoInput
+    nomeCompleto: string
+    nomeSocial?: string | null
+    cpf: string
+    telefone: string
+    isPrioridade?: boolean
+    status: $Enums.StatusFilaAtendimento
+    dataEntrada?: Date | string
+    dataInicio?: Date | string | null
+    dataFim?: Date | string | null
+    migrante?: boolean
+    operadorTriagem: UserCreateNestedOneWithoutAtendimentosTriagemInput
+    operadorAtendimento?: UserCreateNestedOneWithoutAtendimentosEmAndamentoInput
+    atendimento?: AtendimentoCreateNestedOneWithoutFilaInput
+    tipoPrioridade?: TipoPrioridadeCreateNestedOneWithoutFilaAtendimentoInput
   }
 
-  export type AtendimentoUncheckedCreateWithoutTipoAtendimentoInput = {
+  export type FilaAtendimentoUncheckedCreateWithoutTipoAtendimentoInput = {
     id?: string
-    capacidadeCivil: boolean
-    cep: string
-    endereco: string
-    numero: number
-    complemento?: string | null
-    bairro: string
-    cidade: string
-    uf: string
-    dataInicioBeneficio?: Date | string | null
-    parcelasVencidas?: number | null
-    valorCausa?: number | null
-    processosAndamento: $Enums.ProcessosAndamento
-    estadoCivilId: number
-    profissaoId: string
-    tipoDomicilioId: number
-    tipoDemandaPrevidenciariaId: number
-    competenciaJudicialId: number
-    operadorId: string
-    filaId?: string | null
-    membrosFamiliares?: MembroFamiliarUncheckedCreateNestedManyWithoutAtendimentoInput
-    processo?: ProcessoUncheckedCreateNestedOneWithoutAtendimentoInput
-    formularios?: FormularioPreenchidoUncheckedCreateNestedManyWithoutAtendimentoInput
-    documentos?: DocumentoUncheckedCreateNestedManyWithoutAtendimentoInput
+    nomeCompleto: string
+    nomeSocial?: string | null
+    cpf: string
+    telefone: string
+    isPrioridade?: boolean
+    status: $Enums.StatusFilaAtendimento
+    dataEntrada?: Date | string
+    dataInicio?: Date | string | null
+    dataFim?: Date | string | null
+    migrante?: boolean
+    operadorTriagemId: string
+    operadorAtendimentoId?: string | null
+    tipoPrioridadeId?: number | null
+    atendimento?: AtendimentoUncheckedCreateNestedOneWithoutFilaInput
   }
 
-  export type AtendimentoCreateOrConnectWithoutTipoAtendimentoInput = {
-    where: AtendimentoWhereUniqueInput
-    create: XOR<AtendimentoCreateWithoutTipoAtendimentoInput, AtendimentoUncheckedCreateWithoutTipoAtendimentoInput>
+  export type FilaAtendimentoCreateOrConnectWithoutTipoAtendimentoInput = {
+    where: FilaAtendimentoWhereUniqueInput
+    create: XOR<FilaAtendimentoCreateWithoutTipoAtendimentoInput, FilaAtendimentoUncheckedCreateWithoutTipoAtendimentoInput>
   }
 
-  export type AtendimentoCreateManyTipoAtendimentoInputEnvelope = {
-    data: AtendimentoCreateManyTipoAtendimentoInput | AtendimentoCreateManyTipoAtendimentoInput[]
+  export type FilaAtendimentoCreateManyTipoAtendimentoInputEnvelope = {
+    data: FilaAtendimentoCreateManyTipoAtendimentoInput | FilaAtendimentoCreateManyTipoAtendimentoInput[]
     skipDuplicates?: boolean
   }
 
@@ -29000,20 +29276,20 @@ export namespace Prisma {
     atendimentoId?: IntFilter<"TipoServicoAtendimento"> | number
   }
 
-  export type AtendimentoUpsertWithWhereUniqueWithoutTipoAtendimentoInput = {
-    where: AtendimentoWhereUniqueInput
-    update: XOR<AtendimentoUpdateWithoutTipoAtendimentoInput, AtendimentoUncheckedUpdateWithoutTipoAtendimentoInput>
-    create: XOR<AtendimentoCreateWithoutTipoAtendimentoInput, AtendimentoUncheckedCreateWithoutTipoAtendimentoInput>
+  export type FilaAtendimentoUpsertWithWhereUniqueWithoutTipoAtendimentoInput = {
+    where: FilaAtendimentoWhereUniqueInput
+    update: XOR<FilaAtendimentoUpdateWithoutTipoAtendimentoInput, FilaAtendimentoUncheckedUpdateWithoutTipoAtendimentoInput>
+    create: XOR<FilaAtendimentoCreateWithoutTipoAtendimentoInput, FilaAtendimentoUncheckedCreateWithoutTipoAtendimentoInput>
   }
 
-  export type AtendimentoUpdateWithWhereUniqueWithoutTipoAtendimentoInput = {
-    where: AtendimentoWhereUniqueInput
-    data: XOR<AtendimentoUpdateWithoutTipoAtendimentoInput, AtendimentoUncheckedUpdateWithoutTipoAtendimentoInput>
+  export type FilaAtendimentoUpdateWithWhereUniqueWithoutTipoAtendimentoInput = {
+    where: FilaAtendimentoWhereUniqueInput
+    data: XOR<FilaAtendimentoUpdateWithoutTipoAtendimentoInput, FilaAtendimentoUncheckedUpdateWithoutTipoAtendimentoInput>
   }
 
-  export type AtendimentoUpdateManyWithWhereWithoutTipoAtendimentoInput = {
-    where: AtendimentoScalarWhereInput
-    data: XOR<AtendimentoUpdateManyMutationInput, AtendimentoUncheckedUpdateManyWithoutTipoAtendimentoInput>
+  export type FilaAtendimentoUpdateManyWithWhereWithoutTipoAtendimentoInput = {
+    where: FilaAtendimentoScalarWhereInput
+    data: XOR<FilaAtendimentoUpdateManyMutationInput, FilaAtendimentoUncheckedUpdateManyWithoutTipoAtendimentoInput>
   }
 
   export type AssistidoCreateWithoutTipoPrioridadeInput = {
@@ -29054,7 +29330,7 @@ export namespace Prisma {
     descricao: string
     assistidos?: AssistidoCreateNestedManyWithoutTipoAtendimentoInput
     servicos?: TipoServicoAtendimentoCreateNestedManyWithoutAtendimentoInput
-    antendimentos?: AtendimentoCreateNestedManyWithoutTipoAtendimentoInput
+    filaAtendimento?: FilaAtendimentoCreateNestedManyWithoutTipoAtendimentoInput
   }
 
   export type TipoAtendimentoUncheckedCreateWithoutTipoPrioridadesInput = {
@@ -29062,12 +29338,58 @@ export namespace Prisma {
     descricao: string
     assistidos?: AssistidoUncheckedCreateNestedManyWithoutTipoAtendimentoInput
     servicos?: TipoServicoAtendimentoUncheckedCreateNestedManyWithoutAtendimentoInput
-    antendimentos?: AtendimentoUncheckedCreateNestedManyWithoutTipoAtendimentoInput
+    filaAtendimento?: FilaAtendimentoUncheckedCreateNestedManyWithoutTipoAtendimentoInput
   }
 
   export type TipoAtendimentoCreateOrConnectWithoutTipoPrioridadesInput = {
     where: TipoAtendimentoWhereUniqueInput
     create: XOR<TipoAtendimentoCreateWithoutTipoPrioridadesInput, TipoAtendimentoUncheckedCreateWithoutTipoPrioridadesInput>
+  }
+
+  export type FilaAtendimentoCreateWithoutTipoPrioridadeInput = {
+    id?: string
+    nomeCompleto: string
+    nomeSocial?: string | null
+    cpf: string
+    telefone: string
+    isPrioridade?: boolean
+    status: $Enums.StatusFilaAtendimento
+    dataEntrada?: Date | string
+    dataInicio?: Date | string | null
+    dataFim?: Date | string | null
+    migrante?: boolean
+    operadorTriagem: UserCreateNestedOneWithoutAtendimentosTriagemInput
+    operadorAtendimento?: UserCreateNestedOneWithoutAtendimentosEmAndamentoInput
+    atendimento?: AtendimentoCreateNestedOneWithoutFilaInput
+    tipoAtendimento: TipoAtendimentoCreateNestedOneWithoutFilaAtendimentoInput
+  }
+
+  export type FilaAtendimentoUncheckedCreateWithoutTipoPrioridadeInput = {
+    id?: string
+    nomeCompleto: string
+    nomeSocial?: string | null
+    cpf: string
+    telefone: string
+    isPrioridade?: boolean
+    status: $Enums.StatusFilaAtendimento
+    dataEntrada?: Date | string
+    dataInicio?: Date | string | null
+    dataFim?: Date | string | null
+    migrante?: boolean
+    operadorTriagemId: string
+    operadorAtendimentoId?: string | null
+    tipoAtendimentoId: number
+    atendimento?: AtendimentoUncheckedCreateNestedOneWithoutFilaInput
+  }
+
+  export type FilaAtendimentoCreateOrConnectWithoutTipoPrioridadeInput = {
+    where: FilaAtendimentoWhereUniqueInput
+    create: XOR<FilaAtendimentoCreateWithoutTipoPrioridadeInput, FilaAtendimentoUncheckedCreateWithoutTipoPrioridadeInput>
+  }
+
+  export type FilaAtendimentoCreateManyTipoPrioridadeInputEnvelope = {
+    data: FilaAtendimentoCreateManyTipoPrioridadeInput | FilaAtendimentoCreateManyTipoPrioridadeInput[]
+    skipDuplicates?: boolean
   }
 
   export type AssistidoUpsertWithWhereUniqueWithoutTipoPrioridadeInput = {
@@ -29101,7 +29423,7 @@ export namespace Prisma {
     descricao?: StringFieldUpdateOperationsInput | string
     assistidos?: AssistidoUpdateManyWithoutTipoAtendimentoNestedInput
     servicos?: TipoServicoAtendimentoUpdateManyWithoutAtendimentoNestedInput
-    antendimentos?: AtendimentoUpdateManyWithoutTipoAtendimentoNestedInput
+    filaAtendimento?: FilaAtendimentoUpdateManyWithoutTipoAtendimentoNestedInput
   }
 
   export type TipoAtendimentoUncheckedUpdateWithoutTipoPrioridadesInput = {
@@ -29109,7 +29431,23 @@ export namespace Prisma {
     descricao?: StringFieldUpdateOperationsInput | string
     assistidos?: AssistidoUncheckedUpdateManyWithoutTipoAtendimentoNestedInput
     servicos?: TipoServicoAtendimentoUncheckedUpdateManyWithoutAtendimentoNestedInput
-    antendimentos?: AtendimentoUncheckedUpdateManyWithoutTipoAtendimentoNestedInput
+    filaAtendimento?: FilaAtendimentoUncheckedUpdateManyWithoutTipoAtendimentoNestedInput
+  }
+
+  export type FilaAtendimentoUpsertWithWhereUniqueWithoutTipoPrioridadeInput = {
+    where: FilaAtendimentoWhereUniqueInput
+    update: XOR<FilaAtendimentoUpdateWithoutTipoPrioridadeInput, FilaAtendimentoUncheckedUpdateWithoutTipoPrioridadeInput>
+    create: XOR<FilaAtendimentoCreateWithoutTipoPrioridadeInput, FilaAtendimentoUncheckedCreateWithoutTipoPrioridadeInput>
+  }
+
+  export type FilaAtendimentoUpdateWithWhereUniqueWithoutTipoPrioridadeInput = {
+    where: FilaAtendimentoWhereUniqueInput
+    data: XOR<FilaAtendimentoUpdateWithoutTipoPrioridadeInput, FilaAtendimentoUncheckedUpdateWithoutTipoPrioridadeInput>
+  }
+
+  export type FilaAtendimentoUpdateManyWithWhereWithoutTipoPrioridadeInput = {
+    where: FilaAtendimentoScalarWhereInput
+    data: XOR<FilaAtendimentoUpdateManyMutationInput, FilaAtendimentoUncheckedUpdateManyWithoutTipoPrioridadeInput>
   }
 
   export type TipoServicoAtendimentoCreateWithoutAssistidosInput = {
@@ -29132,7 +29470,7 @@ export namespace Prisma {
     descricao: string
     tipoPrioridades?: TipoPrioridadeCreateNestedManyWithoutTipoAtendimentoInput
     servicos?: TipoServicoAtendimentoCreateNestedManyWithoutAtendimentoInput
-    antendimentos?: AtendimentoCreateNestedManyWithoutTipoAtendimentoInput
+    filaAtendimento?: FilaAtendimentoCreateNestedManyWithoutTipoAtendimentoInput
   }
 
   export type TipoAtendimentoUncheckedCreateWithoutAssistidosInput = {
@@ -29140,7 +29478,7 @@ export namespace Prisma {
     descricao: string
     tipoPrioridades?: TipoPrioridadeUncheckedCreateNestedManyWithoutTipoAtendimentoInput
     servicos?: TipoServicoAtendimentoUncheckedCreateNestedManyWithoutAtendimentoInput
-    antendimentos?: AtendimentoUncheckedCreateNestedManyWithoutTipoAtendimentoInput
+    filaAtendimento?: FilaAtendimentoUncheckedCreateNestedManyWithoutTipoAtendimentoInput
   }
 
   export type TipoAtendimentoCreateOrConnectWithoutAssistidosInput = {
@@ -29152,6 +29490,7 @@ export namespace Prisma {
     descricao: string
     valorPrioridade: number
     tipoAtendimento?: TipoAtendimentoCreateNestedOneWithoutTipoPrioridadesInput
+    filaAtendimento?: FilaAtendimentoCreateNestedManyWithoutTipoPrioridadeInput
   }
 
   export type TipoPrioridadeUncheckedCreateWithoutAssistidosInput = {
@@ -29159,6 +29498,7 @@ export namespace Prisma {
     descricao: string
     valorPrioridade: number
     tipoAtendimentoId?: number | null
+    filaAtendimento?: FilaAtendimentoUncheckedCreateNestedManyWithoutTipoPrioridadeInput
   }
 
   export type TipoPrioridadeCreateOrConnectWithoutAssistidosInput = {
@@ -29203,7 +29543,7 @@ export namespace Prisma {
     descricao?: StringFieldUpdateOperationsInput | string
     tipoPrioridades?: TipoPrioridadeUpdateManyWithoutTipoAtendimentoNestedInput
     servicos?: TipoServicoAtendimentoUpdateManyWithoutAtendimentoNestedInput
-    antendimentos?: AtendimentoUpdateManyWithoutTipoAtendimentoNestedInput
+    filaAtendimento?: FilaAtendimentoUpdateManyWithoutTipoAtendimentoNestedInput
   }
 
   export type TipoAtendimentoUncheckedUpdateWithoutAssistidosInput = {
@@ -29211,7 +29551,7 @@ export namespace Prisma {
     descricao?: StringFieldUpdateOperationsInput | string
     tipoPrioridades?: TipoPrioridadeUncheckedUpdateManyWithoutTipoAtendimentoNestedInput
     servicos?: TipoServicoAtendimentoUncheckedUpdateManyWithoutAtendimentoNestedInput
-    antendimentos?: AtendimentoUncheckedUpdateManyWithoutTipoAtendimentoNestedInput
+    filaAtendimento?: FilaAtendimentoUncheckedUpdateManyWithoutTipoAtendimentoNestedInput
   }
 
   export type TipoPrioridadeUpsertWithoutAssistidosInput = {
@@ -29229,6 +29569,7 @@ export namespace Prisma {
     descricao?: StringFieldUpdateOperationsInput | string
     valorPrioridade?: IntFieldUpdateOperationsInput | number
     tipoAtendimento?: TipoAtendimentoUpdateOneWithoutTipoPrioridadesNestedInput
+    filaAtendimento?: FilaAtendimentoUpdateManyWithoutTipoPrioridadeNestedInput
   }
 
   export type TipoPrioridadeUncheckedUpdateWithoutAssistidosInput = {
@@ -29236,13 +29577,14 @@ export namespace Prisma {
     descricao?: StringFieldUpdateOperationsInput | string
     valorPrioridade?: IntFieldUpdateOperationsInput | number
     tipoAtendimentoId?: NullableIntFieldUpdateOperationsInput | number | null
+    filaAtendimento?: FilaAtendimentoUncheckedUpdateManyWithoutTipoPrioridadeNestedInput
   }
 
   export type TipoAtendimentoCreateWithoutServicosInput = {
     descricao: string
     assistidos?: AssistidoCreateNestedManyWithoutTipoAtendimentoInput
     tipoPrioridades?: TipoPrioridadeCreateNestedManyWithoutTipoAtendimentoInput
-    antendimentos?: AtendimentoCreateNestedManyWithoutTipoAtendimentoInput
+    filaAtendimento?: FilaAtendimentoCreateNestedManyWithoutTipoAtendimentoInput
   }
 
   export type TipoAtendimentoUncheckedCreateWithoutServicosInput = {
@@ -29250,7 +29592,7 @@ export namespace Prisma {
     descricao: string
     assistidos?: AssistidoUncheckedCreateNestedManyWithoutTipoAtendimentoInput
     tipoPrioridades?: TipoPrioridadeUncheckedCreateNestedManyWithoutTipoAtendimentoInput
-    antendimentos?: AtendimentoUncheckedCreateNestedManyWithoutTipoAtendimentoInput
+    filaAtendimento?: FilaAtendimentoUncheckedCreateNestedManyWithoutTipoAtendimentoInput
   }
 
   export type TipoAtendimentoCreateOrConnectWithoutServicosInput = {
@@ -29307,7 +29649,7 @@ export namespace Prisma {
     descricao?: StringFieldUpdateOperationsInput | string
     assistidos?: AssistidoUpdateManyWithoutTipoAtendimentoNestedInput
     tipoPrioridades?: TipoPrioridadeUpdateManyWithoutTipoAtendimentoNestedInput
-    antendimentos?: AtendimentoUpdateManyWithoutTipoAtendimentoNestedInput
+    filaAtendimento?: FilaAtendimentoUpdateManyWithoutTipoAtendimentoNestedInput
   }
 
   export type TipoAtendimentoUncheckedUpdateWithoutServicosInput = {
@@ -29315,7 +29657,7 @@ export namespace Prisma {
     descricao?: StringFieldUpdateOperationsInput | string
     assistidos?: AssistidoUncheckedUpdateManyWithoutTipoAtendimentoNestedInput
     tipoPrioridades?: TipoPrioridadeUncheckedUpdateManyWithoutTipoAtendimentoNestedInput
-    antendimentos?: AtendimentoUncheckedUpdateManyWithoutTipoAtendimentoNestedInput
+    filaAtendimento?: FilaAtendimentoUncheckedUpdateManyWithoutTipoAtendimentoNestedInput
   }
 
   export type AssistidoUpsertWithWhereUniqueWithoutTipoServicoAtendimentoInput = {
@@ -29348,7 +29690,6 @@ export namespace Prisma {
     parcelasVencidas?: number | null
     valorCausa?: number | null
     processosAndamento: $Enums.ProcessosAndamento
-    tipoAtendimento: TipoAtendimentoCreateNestedOneWithoutAntendimentosInput
     profissao: ProfissaoCreateNestedOneWithoutAtendimentosInput
     tipoDomicilio: TipoDomicilioCreateNestedOneWithoutAtendimentosInput
     tipoDemandaPrevidenciaria: TipoDemandaPrevidenciariaCreateNestedOneWithoutAtendimentosInput
@@ -29375,7 +29716,6 @@ export namespace Prisma {
     parcelasVencidas?: number | null
     valorCausa?: number | null
     processosAndamento: $Enums.ProcessosAndamento
-    tipoAtendimentoId: number
     profissaoId: string
     tipoDomicilioId: number
     tipoDemandaPrevidenciariaId: number
@@ -29428,7 +29768,6 @@ export namespace Prisma {
     parcelasVencidas?: number | null
     valorCausa?: number | null
     processosAndamento: $Enums.ProcessosAndamento
-    tipoAtendimento: TipoAtendimentoCreateNestedOneWithoutAntendimentosInput
     estadoCivil: EstadoCivilCreateNestedOneWithoutAtendimentosInput
     tipoDomicilio: TipoDomicilioCreateNestedOneWithoutAtendimentosInput
     tipoDemandaPrevidenciaria: TipoDemandaPrevidenciariaCreateNestedOneWithoutAtendimentosInput
@@ -29455,7 +29794,6 @@ export namespace Prisma {
     parcelasVencidas?: number | null
     valorCausa?: number | null
     processosAndamento: $Enums.ProcessosAndamento
-    tipoAtendimentoId: number
     estadoCivilId: number
     tipoDomicilioId: number
     tipoDemandaPrevidenciariaId: number
@@ -29508,7 +29846,6 @@ export namespace Prisma {
     parcelasVencidas?: number | null
     valorCausa?: number | null
     processosAndamento: $Enums.ProcessosAndamento
-    tipoAtendimento: TipoAtendimentoCreateNestedOneWithoutAntendimentosInput
     estadoCivil: EstadoCivilCreateNestedOneWithoutAtendimentosInput
     profissao: ProfissaoCreateNestedOneWithoutAtendimentosInput
     tipoDemandaPrevidenciaria: TipoDemandaPrevidenciariaCreateNestedOneWithoutAtendimentosInput
@@ -29535,7 +29872,6 @@ export namespace Prisma {
     parcelasVencidas?: number | null
     valorCausa?: number | null
     processosAndamento: $Enums.ProcessosAndamento
-    tipoAtendimentoId: number
     estadoCivilId: number
     profissaoId: string
     tipoDemandaPrevidenciariaId: number
@@ -29588,7 +29924,6 @@ export namespace Prisma {
     parcelasVencidas?: number | null
     valorCausa?: number | null
     processosAndamento: $Enums.ProcessosAndamento
-    tipoAtendimento: TipoAtendimentoCreateNestedOneWithoutAntendimentosInput
     estadoCivil: EstadoCivilCreateNestedOneWithoutAtendimentosInput
     profissao: ProfissaoCreateNestedOneWithoutAtendimentosInput
     tipoDomicilio: TipoDomicilioCreateNestedOneWithoutAtendimentosInput
@@ -29615,7 +29950,6 @@ export namespace Prisma {
     parcelasVencidas?: number | null
     valorCausa?: number | null
     processosAndamento: $Enums.ProcessosAndamento
-    tipoAtendimentoId: number
     estadoCivilId: number
     profissaoId: string
     tipoDomicilioId: number
@@ -29658,7 +29992,6 @@ export namespace Prisma {
     parcelasVencidas?: NullableIntFieldUpdateOperationsInput | number | null
     valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
-    tipoAtendimento?: TipoAtendimentoUpdateOneRequiredWithoutAntendimentosNestedInput
     estadoCivil?: EstadoCivilUpdateOneRequiredWithoutAtendimentosNestedInput
     profissao?: ProfissaoUpdateOneRequiredWithoutAtendimentosNestedInput
     tipoDomicilio?: TipoDomicilioUpdateOneRequiredWithoutAtendimentosNestedInput
@@ -29685,7 +30018,6 @@ export namespace Prisma {
     parcelasVencidas?: NullableIntFieldUpdateOperationsInput | number | null
     valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
-    tipoAtendimentoId?: IntFieldUpdateOperationsInput | number
     estadoCivilId?: IntFieldUpdateOperationsInput | number
     profissaoId?: StringFieldUpdateOperationsInput | string
     tipoDomicilioId?: IntFieldUpdateOperationsInput | number
@@ -29712,7 +30044,6 @@ export namespace Prisma {
     parcelasVencidas?: number | null
     valorCausa?: number | null
     processosAndamento: $Enums.ProcessosAndamento
-    tipoAtendimento: TipoAtendimentoCreateNestedOneWithoutAntendimentosInput
     estadoCivil: EstadoCivilCreateNestedOneWithoutAtendimentosInput
     profissao: ProfissaoCreateNestedOneWithoutAtendimentosInput
     tipoDomicilio: TipoDomicilioCreateNestedOneWithoutAtendimentosInput
@@ -29739,7 +30070,6 @@ export namespace Prisma {
     parcelasVencidas?: number | null
     valorCausa?: number | null
     processosAndamento: $Enums.ProcessosAndamento
-    tipoAtendimentoId: number
     estadoCivilId: number
     profissaoId: string
     tipoDomicilioId: number
@@ -29792,7 +30122,6 @@ export namespace Prisma {
     parcelasVencidas?: number | null
     valorCausa?: number | null
     processosAndamento: $Enums.ProcessosAndamento
-    tipoAtendimento: TipoAtendimentoCreateNestedOneWithoutAntendimentosInput
     estadoCivil: EstadoCivilCreateNestedOneWithoutAtendimentosInput
     profissao: ProfissaoCreateNestedOneWithoutAtendimentosInput
     tipoDomicilio: TipoDomicilioCreateNestedOneWithoutAtendimentosInput
@@ -29819,7 +30148,6 @@ export namespace Prisma {
     parcelasVencidas?: number | null
     valorCausa?: number | null
     processosAndamento: $Enums.ProcessosAndamento
-    tipoAtendimentoId: number
     estadoCivilId: number
     profissaoId: string
     tipoDomicilioId: number
@@ -29872,7 +30200,6 @@ export namespace Prisma {
     parcelasVencidas?: number | null
     valorCausa?: number | null
     processosAndamento: $Enums.ProcessosAndamento
-    tipoAtendimentoId: number
     estadoCivilId: number
     profissaoId: string
     tipoDomicilioId: number
@@ -29892,7 +30219,10 @@ export namespace Prisma {
     dataEntrada?: Date | string
     dataInicio?: Date | string | null
     dataFim?: Date | string | null
+    migrante?: boolean
     operadorAtendimentoId?: string | null
+    tipoPrioridadeId?: number | null
+    tipoAtendimentoId: number
   }
 
   export type FilaAtendimentoCreateManyOperadorAtendimentoInput = {
@@ -29906,7 +30236,10 @@ export namespace Prisma {
     dataEntrada?: Date | string
     dataInicio?: Date | string | null
     dataFim?: Date | string | null
+    migrante?: boolean
     operadorTriagemId: string
+    tipoPrioridadeId?: number | null
+    tipoAtendimentoId: number
   }
 
   export type DocumentoCreateManyOperadorUploadInput = {
@@ -29935,7 +30268,6 @@ export namespace Prisma {
     parcelasVencidas?: NullableIntFieldUpdateOperationsInput | number | null
     valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
-    tipoAtendimento?: TipoAtendimentoUpdateOneRequiredWithoutAntendimentosNestedInput
     estadoCivil?: EstadoCivilUpdateOneRequiredWithoutAtendimentosNestedInput
     profissao?: ProfissaoUpdateOneRequiredWithoutAtendimentosNestedInput
     tipoDomicilio?: TipoDomicilioUpdateOneRequiredWithoutAtendimentosNestedInput
@@ -29962,7 +30294,6 @@ export namespace Prisma {
     parcelasVencidas?: NullableIntFieldUpdateOperationsInput | number | null
     valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
-    tipoAtendimentoId?: IntFieldUpdateOperationsInput | number
     estadoCivilId?: IntFieldUpdateOperationsInput | number
     profissaoId?: StringFieldUpdateOperationsInput | string
     tipoDomicilioId?: IntFieldUpdateOperationsInput | number
@@ -29989,7 +30320,6 @@ export namespace Prisma {
     parcelasVencidas?: NullableIntFieldUpdateOperationsInput | number | null
     valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
-    tipoAtendimentoId?: IntFieldUpdateOperationsInput | number
     estadoCivilId?: IntFieldUpdateOperationsInput | number
     profissaoId?: StringFieldUpdateOperationsInput | string
     tipoDomicilioId?: IntFieldUpdateOperationsInput | number
@@ -30009,8 +30339,11 @@ export namespace Prisma {
     dataEntrada?: DateTimeFieldUpdateOperationsInput | Date | string
     dataInicio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     dataFim?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    migrante?: BoolFieldUpdateOperationsInput | boolean
     operadorAtendimento?: UserUpdateOneWithoutAtendimentosEmAndamentoNestedInput
     atendimento?: AtendimentoUpdateOneWithoutFilaNestedInput
+    tipoPrioridade?: TipoPrioridadeUpdateOneWithoutFilaAtendimentoNestedInput
+    tipoAtendimento?: TipoAtendimentoUpdateOneRequiredWithoutFilaAtendimentoNestedInput
   }
 
   export type FilaAtendimentoUncheckedUpdateWithoutOperadorTriagemInput = {
@@ -30024,7 +30357,10 @@ export namespace Prisma {
     dataEntrada?: DateTimeFieldUpdateOperationsInput | Date | string
     dataInicio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     dataFim?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    migrante?: BoolFieldUpdateOperationsInput | boolean
     operadorAtendimentoId?: NullableStringFieldUpdateOperationsInput | string | null
+    tipoPrioridadeId?: NullableIntFieldUpdateOperationsInput | number | null
+    tipoAtendimentoId?: IntFieldUpdateOperationsInput | number
     atendimento?: AtendimentoUncheckedUpdateOneWithoutFilaNestedInput
   }
 
@@ -30039,7 +30375,10 @@ export namespace Prisma {
     dataEntrada?: DateTimeFieldUpdateOperationsInput | Date | string
     dataInicio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     dataFim?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    migrante?: BoolFieldUpdateOperationsInput | boolean
     operadorAtendimentoId?: NullableStringFieldUpdateOperationsInput | string | null
+    tipoPrioridadeId?: NullableIntFieldUpdateOperationsInput | number | null
+    tipoAtendimentoId?: IntFieldUpdateOperationsInput | number
   }
 
   export type FilaAtendimentoUpdateWithoutOperadorAtendimentoInput = {
@@ -30053,8 +30392,11 @@ export namespace Prisma {
     dataEntrada?: DateTimeFieldUpdateOperationsInput | Date | string
     dataInicio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     dataFim?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    migrante?: BoolFieldUpdateOperationsInput | boolean
     operadorTriagem?: UserUpdateOneRequiredWithoutAtendimentosTriagemNestedInput
     atendimento?: AtendimentoUpdateOneWithoutFilaNestedInput
+    tipoPrioridade?: TipoPrioridadeUpdateOneWithoutFilaAtendimentoNestedInput
+    tipoAtendimento?: TipoAtendimentoUpdateOneRequiredWithoutFilaAtendimentoNestedInput
   }
 
   export type FilaAtendimentoUncheckedUpdateWithoutOperadorAtendimentoInput = {
@@ -30068,7 +30410,10 @@ export namespace Prisma {
     dataEntrada?: DateTimeFieldUpdateOperationsInput | Date | string
     dataInicio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     dataFim?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    migrante?: BoolFieldUpdateOperationsInput | boolean
     operadorTriagemId?: StringFieldUpdateOperationsInput | string
+    tipoPrioridadeId?: NullableIntFieldUpdateOperationsInput | number | null
+    tipoAtendimentoId?: IntFieldUpdateOperationsInput | number
     atendimento?: AtendimentoUncheckedUpdateOneWithoutFilaNestedInput
   }
 
@@ -30083,7 +30428,10 @@ export namespace Prisma {
     dataEntrada?: DateTimeFieldUpdateOperationsInput | Date | string
     dataInicio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     dataFim?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    migrante?: BoolFieldUpdateOperationsInput | boolean
     operadorTriagemId?: StringFieldUpdateOperationsInput | string
+    tipoPrioridadeId?: NullableIntFieldUpdateOperationsInput | number | null
+    tipoAtendimentoId?: IntFieldUpdateOperationsInput | number
   }
 
   export type DocumentoUpdateWithoutOperadorUploadInput = {
@@ -30248,27 +30596,21 @@ export namespace Prisma {
     descricao: string
   }
 
-  export type AtendimentoCreateManyTipoAtendimentoInput = {
+  export type FilaAtendimentoCreateManyTipoAtendimentoInput = {
     id?: string
-    capacidadeCivil: boolean
-    cep: string
-    endereco: string
-    numero: number
-    complemento?: string | null
-    bairro: string
-    cidade: string
-    uf: string
-    dataInicioBeneficio?: Date | string | null
-    parcelasVencidas?: number | null
-    valorCausa?: number | null
-    processosAndamento: $Enums.ProcessosAndamento
-    estadoCivilId: number
-    profissaoId: string
-    tipoDomicilioId: number
-    tipoDemandaPrevidenciariaId: number
-    competenciaJudicialId: number
-    operadorId: string
-    filaId?: string | null
+    nomeCompleto: string
+    nomeSocial?: string | null
+    cpf: string
+    telefone: string
+    isPrioridade?: boolean
+    status: $Enums.StatusFilaAtendimento
+    dataEntrada?: Date | string
+    dataInicio?: Date | string | null
+    dataFim?: Date | string | null
+    migrante?: boolean
+    operadorTriagemId: string
+    operadorAtendimentoId?: string | null
+    tipoPrioridadeId?: number | null
   }
 
   export type AssistidoUpdateWithoutTipoAtendimentoInput = {
@@ -30311,6 +30653,7 @@ export namespace Prisma {
     descricao?: StringFieldUpdateOperationsInput | string
     valorPrioridade?: IntFieldUpdateOperationsInput | number
     assistidos?: AssistidoUpdateManyWithoutTipoPrioridadeNestedInput
+    filaAtendimento?: FilaAtendimentoUpdateManyWithoutTipoPrioridadeNestedInput
   }
 
   export type TipoPrioridadeUncheckedUpdateWithoutTipoAtendimentoInput = {
@@ -30318,6 +30661,7 @@ export namespace Prisma {
     descricao?: StringFieldUpdateOperationsInput | string
     valorPrioridade?: IntFieldUpdateOperationsInput | number
     assistidos?: AssistidoUncheckedUpdateManyWithoutTipoPrioridadeNestedInput
+    filaAtendimento?: FilaAtendimentoUncheckedUpdateManyWithoutTipoPrioridadeNestedInput
   }
 
   export type TipoPrioridadeUncheckedUpdateManyWithoutTipoAtendimentoInput = {
@@ -30342,81 +30686,57 @@ export namespace Prisma {
     descricao?: StringFieldUpdateOperationsInput | string
   }
 
-  export type AtendimentoUpdateWithoutTipoAtendimentoInput = {
+  export type FilaAtendimentoUpdateWithoutTipoAtendimentoInput = {
     id?: StringFieldUpdateOperationsInput | string
-    capacidadeCivil?: BoolFieldUpdateOperationsInput | boolean
-    cep?: StringFieldUpdateOperationsInput | string
-    endereco?: StringFieldUpdateOperationsInput | string
-    numero?: IntFieldUpdateOperationsInput | number
-    complemento?: NullableStringFieldUpdateOperationsInput | string | null
-    bairro?: StringFieldUpdateOperationsInput | string
-    cidade?: StringFieldUpdateOperationsInput | string
-    uf?: StringFieldUpdateOperationsInput | string
-    dataInicioBeneficio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    parcelasVencidas?: NullableIntFieldUpdateOperationsInput | number | null
-    valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
-    processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
-    estadoCivil?: EstadoCivilUpdateOneRequiredWithoutAtendimentosNestedInput
-    profissao?: ProfissaoUpdateOneRequiredWithoutAtendimentosNestedInput
-    tipoDomicilio?: TipoDomicilioUpdateOneRequiredWithoutAtendimentosNestedInput
-    tipoDemandaPrevidenciaria?: TipoDemandaPrevidenciariaUpdateOneRequiredWithoutAtendimentosNestedInput
-    competenciaJudicial?: CompetenciaJudicialUpdateOneRequiredWithoutAtendimentosNestedInput
-    operador?: UserUpdateOneRequiredWithoutAtendimentosRealizadosNestedInput
-    fila?: FilaAtendimentoUpdateOneWithoutAtendimentoNestedInput
-    membrosFamiliares?: MembroFamiliarUpdateManyWithoutAtendimentoNestedInput
-    processo?: ProcessoUpdateOneWithoutAtendimentoNestedInput
-    formularios?: FormularioPreenchidoUpdateManyWithoutAtendimentoNestedInput
-    documentos?: DocumentoUpdateManyWithoutAtendimentoNestedInput
+    nomeCompleto?: StringFieldUpdateOperationsInput | string
+    nomeSocial?: NullableStringFieldUpdateOperationsInput | string | null
+    cpf?: StringFieldUpdateOperationsInput | string
+    telefone?: StringFieldUpdateOperationsInput | string
+    isPrioridade?: BoolFieldUpdateOperationsInput | boolean
+    status?: EnumStatusFilaAtendimentoFieldUpdateOperationsInput | $Enums.StatusFilaAtendimento
+    dataEntrada?: DateTimeFieldUpdateOperationsInput | Date | string
+    dataInicio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dataFim?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    migrante?: BoolFieldUpdateOperationsInput | boolean
+    operadorTriagem?: UserUpdateOneRequiredWithoutAtendimentosTriagemNestedInput
+    operadorAtendimento?: UserUpdateOneWithoutAtendimentosEmAndamentoNestedInput
+    atendimento?: AtendimentoUpdateOneWithoutFilaNestedInput
+    tipoPrioridade?: TipoPrioridadeUpdateOneWithoutFilaAtendimentoNestedInput
   }
 
-  export type AtendimentoUncheckedUpdateWithoutTipoAtendimentoInput = {
+  export type FilaAtendimentoUncheckedUpdateWithoutTipoAtendimentoInput = {
     id?: StringFieldUpdateOperationsInput | string
-    capacidadeCivil?: BoolFieldUpdateOperationsInput | boolean
-    cep?: StringFieldUpdateOperationsInput | string
-    endereco?: StringFieldUpdateOperationsInput | string
-    numero?: IntFieldUpdateOperationsInput | number
-    complemento?: NullableStringFieldUpdateOperationsInput | string | null
-    bairro?: StringFieldUpdateOperationsInput | string
-    cidade?: StringFieldUpdateOperationsInput | string
-    uf?: StringFieldUpdateOperationsInput | string
-    dataInicioBeneficio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    parcelasVencidas?: NullableIntFieldUpdateOperationsInput | number | null
-    valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
-    processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
-    estadoCivilId?: IntFieldUpdateOperationsInput | number
-    profissaoId?: StringFieldUpdateOperationsInput | string
-    tipoDomicilioId?: IntFieldUpdateOperationsInput | number
-    tipoDemandaPrevidenciariaId?: IntFieldUpdateOperationsInput | number
-    competenciaJudicialId?: IntFieldUpdateOperationsInput | number
-    operadorId?: StringFieldUpdateOperationsInput | string
-    filaId?: NullableStringFieldUpdateOperationsInput | string | null
-    membrosFamiliares?: MembroFamiliarUncheckedUpdateManyWithoutAtendimentoNestedInput
-    processo?: ProcessoUncheckedUpdateOneWithoutAtendimentoNestedInput
-    formularios?: FormularioPreenchidoUncheckedUpdateManyWithoutAtendimentoNestedInput
-    documentos?: DocumentoUncheckedUpdateManyWithoutAtendimentoNestedInput
+    nomeCompleto?: StringFieldUpdateOperationsInput | string
+    nomeSocial?: NullableStringFieldUpdateOperationsInput | string | null
+    cpf?: StringFieldUpdateOperationsInput | string
+    telefone?: StringFieldUpdateOperationsInput | string
+    isPrioridade?: BoolFieldUpdateOperationsInput | boolean
+    status?: EnumStatusFilaAtendimentoFieldUpdateOperationsInput | $Enums.StatusFilaAtendimento
+    dataEntrada?: DateTimeFieldUpdateOperationsInput | Date | string
+    dataInicio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dataFim?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    migrante?: BoolFieldUpdateOperationsInput | boolean
+    operadorTriagemId?: StringFieldUpdateOperationsInput | string
+    operadorAtendimentoId?: NullableStringFieldUpdateOperationsInput | string | null
+    tipoPrioridadeId?: NullableIntFieldUpdateOperationsInput | number | null
+    atendimento?: AtendimentoUncheckedUpdateOneWithoutFilaNestedInput
   }
 
-  export type AtendimentoUncheckedUpdateManyWithoutTipoAtendimentoInput = {
+  export type FilaAtendimentoUncheckedUpdateManyWithoutTipoAtendimentoInput = {
     id?: StringFieldUpdateOperationsInput | string
-    capacidadeCivil?: BoolFieldUpdateOperationsInput | boolean
-    cep?: StringFieldUpdateOperationsInput | string
-    endereco?: StringFieldUpdateOperationsInput | string
-    numero?: IntFieldUpdateOperationsInput | number
-    complemento?: NullableStringFieldUpdateOperationsInput | string | null
-    bairro?: StringFieldUpdateOperationsInput | string
-    cidade?: StringFieldUpdateOperationsInput | string
-    uf?: StringFieldUpdateOperationsInput | string
-    dataInicioBeneficio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    parcelasVencidas?: NullableIntFieldUpdateOperationsInput | number | null
-    valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
-    processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
-    estadoCivilId?: IntFieldUpdateOperationsInput | number
-    profissaoId?: StringFieldUpdateOperationsInput | string
-    tipoDomicilioId?: IntFieldUpdateOperationsInput | number
-    tipoDemandaPrevidenciariaId?: IntFieldUpdateOperationsInput | number
-    competenciaJudicialId?: IntFieldUpdateOperationsInput | number
-    operadorId?: StringFieldUpdateOperationsInput | string
-    filaId?: NullableStringFieldUpdateOperationsInput | string | null
+    nomeCompleto?: StringFieldUpdateOperationsInput | string
+    nomeSocial?: NullableStringFieldUpdateOperationsInput | string | null
+    cpf?: StringFieldUpdateOperationsInput | string
+    telefone?: StringFieldUpdateOperationsInput | string
+    isPrioridade?: BoolFieldUpdateOperationsInput | boolean
+    status?: EnumStatusFilaAtendimentoFieldUpdateOperationsInput | $Enums.StatusFilaAtendimento
+    dataEntrada?: DateTimeFieldUpdateOperationsInput | Date | string
+    dataInicio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dataFim?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    migrante?: BoolFieldUpdateOperationsInput | boolean
+    operadorTriagemId?: StringFieldUpdateOperationsInput | string
+    operadorAtendimentoId?: NullableStringFieldUpdateOperationsInput | string | null
+    tipoPrioridadeId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type AssistidoCreateManyTipoPrioridadeInput = {
@@ -30429,6 +30749,23 @@ export namespace Prisma {
     descricaoPrioridade?: string | null
     tipoAtendimentoId: number
     tipoServicoAtendimentoId: number
+  }
+
+  export type FilaAtendimentoCreateManyTipoPrioridadeInput = {
+    id?: string
+    nomeCompleto: string
+    nomeSocial?: string | null
+    cpf: string
+    telefone: string
+    isPrioridade?: boolean
+    status: $Enums.StatusFilaAtendimento
+    dataEntrada?: Date | string
+    dataInicio?: Date | string | null
+    dataFim?: Date | string | null
+    migrante?: boolean
+    operadorTriagemId: string
+    operadorAtendimentoId?: string | null
+    tipoAtendimentoId: number
   }
 
   export type AssistidoUpdateWithoutTipoPrioridadeInput = {
@@ -30465,6 +30802,59 @@ export namespace Prisma {
     descricaoPrioridade?: NullableStringFieldUpdateOperationsInput | string | null
     tipoAtendimentoId?: IntFieldUpdateOperationsInput | number
     tipoServicoAtendimentoId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type FilaAtendimentoUpdateWithoutTipoPrioridadeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    nomeCompleto?: StringFieldUpdateOperationsInput | string
+    nomeSocial?: NullableStringFieldUpdateOperationsInput | string | null
+    cpf?: StringFieldUpdateOperationsInput | string
+    telefone?: StringFieldUpdateOperationsInput | string
+    isPrioridade?: BoolFieldUpdateOperationsInput | boolean
+    status?: EnumStatusFilaAtendimentoFieldUpdateOperationsInput | $Enums.StatusFilaAtendimento
+    dataEntrada?: DateTimeFieldUpdateOperationsInput | Date | string
+    dataInicio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dataFim?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    migrante?: BoolFieldUpdateOperationsInput | boolean
+    operadorTriagem?: UserUpdateOneRequiredWithoutAtendimentosTriagemNestedInput
+    operadorAtendimento?: UserUpdateOneWithoutAtendimentosEmAndamentoNestedInput
+    atendimento?: AtendimentoUpdateOneWithoutFilaNestedInput
+    tipoAtendimento?: TipoAtendimentoUpdateOneRequiredWithoutFilaAtendimentoNestedInput
+  }
+
+  export type FilaAtendimentoUncheckedUpdateWithoutTipoPrioridadeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    nomeCompleto?: StringFieldUpdateOperationsInput | string
+    nomeSocial?: NullableStringFieldUpdateOperationsInput | string | null
+    cpf?: StringFieldUpdateOperationsInput | string
+    telefone?: StringFieldUpdateOperationsInput | string
+    isPrioridade?: BoolFieldUpdateOperationsInput | boolean
+    status?: EnumStatusFilaAtendimentoFieldUpdateOperationsInput | $Enums.StatusFilaAtendimento
+    dataEntrada?: DateTimeFieldUpdateOperationsInput | Date | string
+    dataInicio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dataFim?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    migrante?: BoolFieldUpdateOperationsInput | boolean
+    operadorTriagemId?: StringFieldUpdateOperationsInput | string
+    operadorAtendimentoId?: NullableStringFieldUpdateOperationsInput | string | null
+    tipoAtendimentoId?: IntFieldUpdateOperationsInput | number
+    atendimento?: AtendimentoUncheckedUpdateOneWithoutFilaNestedInput
+  }
+
+  export type FilaAtendimentoUncheckedUpdateManyWithoutTipoPrioridadeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    nomeCompleto?: StringFieldUpdateOperationsInput | string
+    nomeSocial?: NullableStringFieldUpdateOperationsInput | string | null
+    cpf?: StringFieldUpdateOperationsInput | string
+    telefone?: StringFieldUpdateOperationsInput | string
+    isPrioridade?: BoolFieldUpdateOperationsInput | boolean
+    status?: EnumStatusFilaAtendimentoFieldUpdateOperationsInput | $Enums.StatusFilaAtendimento
+    dataEntrada?: DateTimeFieldUpdateOperationsInput | Date | string
+    dataInicio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dataFim?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    migrante?: BoolFieldUpdateOperationsInput | boolean
+    operadorTriagemId?: StringFieldUpdateOperationsInput | string
+    operadorAtendimentoId?: NullableStringFieldUpdateOperationsInput | string | null
+    tipoAtendimentoId?: IntFieldUpdateOperationsInput | number
   }
 
   export type AssistidoCreateManyTipoServicoAtendimentoInput = {
@@ -30529,7 +30919,6 @@ export namespace Prisma {
     parcelasVencidas?: number | null
     valorCausa?: number | null
     processosAndamento: $Enums.ProcessosAndamento
-    tipoAtendimentoId: number
     profissaoId: string
     tipoDomicilioId: number
     tipoDemandaPrevidenciariaId: number
@@ -30552,7 +30941,6 @@ export namespace Prisma {
     parcelasVencidas?: NullableIntFieldUpdateOperationsInput | number | null
     valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
-    tipoAtendimento?: TipoAtendimentoUpdateOneRequiredWithoutAntendimentosNestedInput
     profissao?: ProfissaoUpdateOneRequiredWithoutAtendimentosNestedInput
     tipoDomicilio?: TipoDomicilioUpdateOneRequiredWithoutAtendimentosNestedInput
     tipoDemandaPrevidenciaria?: TipoDemandaPrevidenciariaUpdateOneRequiredWithoutAtendimentosNestedInput
@@ -30579,7 +30967,6 @@ export namespace Prisma {
     parcelasVencidas?: NullableIntFieldUpdateOperationsInput | number | null
     valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
-    tipoAtendimentoId?: IntFieldUpdateOperationsInput | number
     profissaoId?: StringFieldUpdateOperationsInput | string
     tipoDomicilioId?: IntFieldUpdateOperationsInput | number
     tipoDemandaPrevidenciariaId?: IntFieldUpdateOperationsInput | number
@@ -30606,7 +30993,6 @@ export namespace Prisma {
     parcelasVencidas?: NullableIntFieldUpdateOperationsInput | number | null
     valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
-    tipoAtendimentoId?: IntFieldUpdateOperationsInput | number
     profissaoId?: StringFieldUpdateOperationsInput | string
     tipoDomicilioId?: IntFieldUpdateOperationsInput | number
     tipoDemandaPrevidenciariaId?: IntFieldUpdateOperationsInput | number
@@ -30629,7 +31015,6 @@ export namespace Prisma {
     parcelasVencidas?: number | null
     valorCausa?: number | null
     processosAndamento: $Enums.ProcessosAndamento
-    tipoAtendimentoId: number
     estadoCivilId: number
     tipoDomicilioId: number
     tipoDemandaPrevidenciariaId: number
@@ -30652,7 +31037,6 @@ export namespace Prisma {
     parcelasVencidas?: NullableIntFieldUpdateOperationsInput | number | null
     valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
-    tipoAtendimento?: TipoAtendimentoUpdateOneRequiredWithoutAntendimentosNestedInput
     estadoCivil?: EstadoCivilUpdateOneRequiredWithoutAtendimentosNestedInput
     tipoDomicilio?: TipoDomicilioUpdateOneRequiredWithoutAtendimentosNestedInput
     tipoDemandaPrevidenciaria?: TipoDemandaPrevidenciariaUpdateOneRequiredWithoutAtendimentosNestedInput
@@ -30679,7 +31063,6 @@ export namespace Prisma {
     parcelasVencidas?: NullableIntFieldUpdateOperationsInput | number | null
     valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
-    tipoAtendimentoId?: IntFieldUpdateOperationsInput | number
     estadoCivilId?: IntFieldUpdateOperationsInput | number
     tipoDomicilioId?: IntFieldUpdateOperationsInput | number
     tipoDemandaPrevidenciariaId?: IntFieldUpdateOperationsInput | number
@@ -30706,7 +31089,6 @@ export namespace Prisma {
     parcelasVencidas?: NullableIntFieldUpdateOperationsInput | number | null
     valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
-    tipoAtendimentoId?: IntFieldUpdateOperationsInput | number
     estadoCivilId?: IntFieldUpdateOperationsInput | number
     tipoDomicilioId?: IntFieldUpdateOperationsInput | number
     tipoDemandaPrevidenciariaId?: IntFieldUpdateOperationsInput | number
@@ -30729,7 +31111,6 @@ export namespace Prisma {
     parcelasVencidas?: number | null
     valorCausa?: number | null
     processosAndamento: $Enums.ProcessosAndamento
-    tipoAtendimentoId: number
     estadoCivilId: number
     profissaoId: string
     tipoDemandaPrevidenciariaId: number
@@ -30752,7 +31133,6 @@ export namespace Prisma {
     parcelasVencidas?: NullableIntFieldUpdateOperationsInput | number | null
     valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
-    tipoAtendimento?: TipoAtendimentoUpdateOneRequiredWithoutAntendimentosNestedInput
     estadoCivil?: EstadoCivilUpdateOneRequiredWithoutAtendimentosNestedInput
     profissao?: ProfissaoUpdateOneRequiredWithoutAtendimentosNestedInput
     tipoDemandaPrevidenciaria?: TipoDemandaPrevidenciariaUpdateOneRequiredWithoutAtendimentosNestedInput
@@ -30779,7 +31159,6 @@ export namespace Prisma {
     parcelasVencidas?: NullableIntFieldUpdateOperationsInput | number | null
     valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
-    tipoAtendimentoId?: IntFieldUpdateOperationsInput | number
     estadoCivilId?: IntFieldUpdateOperationsInput | number
     profissaoId?: StringFieldUpdateOperationsInput | string
     tipoDemandaPrevidenciariaId?: IntFieldUpdateOperationsInput | number
@@ -30806,7 +31185,6 @@ export namespace Prisma {
     parcelasVencidas?: NullableIntFieldUpdateOperationsInput | number | null
     valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
-    tipoAtendimentoId?: IntFieldUpdateOperationsInput | number
     estadoCivilId?: IntFieldUpdateOperationsInput | number
     profissaoId?: StringFieldUpdateOperationsInput | string
     tipoDemandaPrevidenciariaId?: IntFieldUpdateOperationsInput | number
@@ -30829,7 +31207,6 @@ export namespace Prisma {
     parcelasVencidas?: number | null
     valorCausa?: number | null
     processosAndamento: $Enums.ProcessosAndamento
-    tipoAtendimentoId: number
     estadoCivilId: number
     profissaoId: string
     tipoDomicilioId: number
@@ -30852,7 +31229,6 @@ export namespace Prisma {
     parcelasVencidas?: NullableIntFieldUpdateOperationsInput | number | null
     valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
-    tipoAtendimento?: TipoAtendimentoUpdateOneRequiredWithoutAntendimentosNestedInput
     estadoCivil?: EstadoCivilUpdateOneRequiredWithoutAtendimentosNestedInput
     profissao?: ProfissaoUpdateOneRequiredWithoutAtendimentosNestedInput
     tipoDomicilio?: TipoDomicilioUpdateOneRequiredWithoutAtendimentosNestedInput
@@ -30879,7 +31255,6 @@ export namespace Prisma {
     parcelasVencidas?: NullableIntFieldUpdateOperationsInput | number | null
     valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
-    tipoAtendimentoId?: IntFieldUpdateOperationsInput | number
     estadoCivilId?: IntFieldUpdateOperationsInput | number
     profissaoId?: StringFieldUpdateOperationsInput | string
     tipoDomicilioId?: IntFieldUpdateOperationsInput | number
@@ -30906,7 +31281,6 @@ export namespace Prisma {
     parcelasVencidas?: NullableIntFieldUpdateOperationsInput | number | null
     valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
-    tipoAtendimentoId?: IntFieldUpdateOperationsInput | number
     estadoCivilId?: IntFieldUpdateOperationsInput | number
     profissaoId?: StringFieldUpdateOperationsInput | string
     tipoDomicilioId?: IntFieldUpdateOperationsInput | number
@@ -30929,7 +31303,6 @@ export namespace Prisma {
     parcelasVencidas?: number | null
     valorCausa?: number | null
     processosAndamento: $Enums.ProcessosAndamento
-    tipoAtendimentoId: number
     estadoCivilId: number
     profissaoId: string
     tipoDomicilioId: number
@@ -30952,7 +31325,6 @@ export namespace Prisma {
     parcelasVencidas?: NullableIntFieldUpdateOperationsInput | number | null
     valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
-    tipoAtendimento?: TipoAtendimentoUpdateOneRequiredWithoutAntendimentosNestedInput
     estadoCivil?: EstadoCivilUpdateOneRequiredWithoutAtendimentosNestedInput
     profissao?: ProfissaoUpdateOneRequiredWithoutAtendimentosNestedInput
     tipoDomicilio?: TipoDomicilioUpdateOneRequiredWithoutAtendimentosNestedInput
@@ -30979,7 +31351,6 @@ export namespace Prisma {
     parcelasVencidas?: NullableIntFieldUpdateOperationsInput | number | null
     valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
-    tipoAtendimentoId?: IntFieldUpdateOperationsInput | number
     estadoCivilId?: IntFieldUpdateOperationsInput | number
     profissaoId?: StringFieldUpdateOperationsInput | string
     tipoDomicilioId?: IntFieldUpdateOperationsInput | number
@@ -31006,7 +31377,6 @@ export namespace Prisma {
     parcelasVencidas?: NullableIntFieldUpdateOperationsInput | number | null
     valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
-    tipoAtendimentoId?: IntFieldUpdateOperationsInput | number
     estadoCivilId?: IntFieldUpdateOperationsInput | number
     profissaoId?: StringFieldUpdateOperationsInput | string
     tipoDomicilioId?: IntFieldUpdateOperationsInput | number

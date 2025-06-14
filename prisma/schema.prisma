@@ -35,7 +35,7 @@ enum Role {
   @@map("Role")
 }
 
-// Fila de atendimentos
+// Triagem
 model FilaAtendimento {
   id                   String                 @id @default(uuid())
   nomeCompleto         String
@@ -47,6 +47,7 @@ model FilaAtendimento {
   dataEntrada          DateTime               @default(now())
   dataInicio           DateTime?
   dataFim              DateTime?
+  migrante             Boolean                @default(false)
   
   // Relacionamentos
   operadorTriagemId    String
@@ -54,6 +55,10 @@ model FilaAtendimento {
   operadorAtendimentoId String?
   operadorAtendimento  User?                  @relation("OperadorAtendimento", fields: [operadorAtendimentoId], references: [id])
   atendimento          Atendimento?
+  tipoPrioridadeId     Int?
+  tipoPrioridade       TipoPrioridade?         @relation("AtendimentoTipoPrioridade", fields: [tipoPrioridadeId], references: [id])
+  tipoAtendimentoId    Int
+  tipoAtendimento      TipoAtendimento        @relation(fields: [tipoAtendimentoId], references: [id])
 
   @@map("fila_atendimentos")
 }
@@ -82,7 +87,6 @@ model Atendimento {
   parcelasVencidas          Int?
   valorCausa                Float?
   processosAndamento        ProcessosAndamento
-  tipoAtendimentoId         Int
   estadoCivilId             Int
   profissaoId               String
   tipoDomicilioId           Int
@@ -91,7 +95,6 @@ model Atendimento {
   operadorId                String
   filaId                    String?   @unique
   // Relacionamentos
-  tipoAtendimento           TipoAtendimento           @relation(fields: [tipoAtendimentoId], references: [id])
   estadoCivil               EstadoCivil               @relation(fields: [estadoCivilId], references: [id])
   profissao                 Profissao                 @relation(fields: [profissaoId], references: [id])
   tipoDomicilio             TipoDomicilio             @relation(fields: [tipoDomicilioId], references: [id])
@@ -208,7 +211,7 @@ model TipoAtendimento {
   assistidos      Assistido[]
   tipoPrioridades TipoPrioridade[]
   servicos        TipoServicoAtendimento[] 
-  antendimentos    Atendimento[]
+  filaAtendimento FilaAtendimento[]
 
   @@map("tipo_atendimento")
 }
@@ -220,6 +223,7 @@ model TipoPrioridade {
   assistidos                Assistido[]
   tipoAtendimentoId         Int?
   tipoAtendimento           TipoAtendimento? @relation(fields: [tipoAtendimentoId], references: [id])
+  filaAtendimento           FilaAtendimento[] @relation("AtendimentoTipoPrioridade")
 
   @@map("tipo_prioridade")
 }

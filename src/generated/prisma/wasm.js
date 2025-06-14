@@ -141,8 +141,11 @@ exports.Prisma.FilaAtendimentoScalarFieldEnum = {
   dataEntrada: 'dataEntrada',
   dataInicio: 'dataInicio',
   dataFim: 'dataFim',
+  migrante: 'migrante',
   operadorTriagemId: 'operadorTriagemId',
-  operadorAtendimentoId: 'operadorAtendimentoId'
+  operadorAtendimentoId: 'operadorAtendimentoId',
+  tipoPrioridadeId: 'tipoPrioridadeId',
+  tipoAtendimentoId: 'tipoAtendimentoId'
 };
 
 exports.Prisma.AtendimentoScalarFieldEnum = {
@@ -159,7 +162,6 @@ exports.Prisma.AtendimentoScalarFieldEnum = {
   parcelasVencidas: 'parcelasVencidas',
   valorCausa: 'valorCausa',
   processosAndamento: 'processosAndamento',
-  tipoAtendimentoId: 'tipoAtendimentoId',
   estadoCivilId: 'estadoCivilId',
   profissaoId: 'profissaoId',
   tipoDomicilioId: 'tipoDomicilioId',

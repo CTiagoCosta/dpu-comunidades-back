@@ -5,6 +5,7 @@ import { configureCors } from "./configs/corsConfig";
 import configs from "./configs";
 import { PrismaClient } from "./generated/prisma";
 import { makeUserDataRoutes } from "./factories/routes/userDataRouterFactory";
+import { makeServiceQueueRoutes } from "./factories/routes/serviceQueueRouterFactory";
 
 dotenvConfig();
 
@@ -32,6 +33,7 @@ export class App {
   private configureRoutes(): void {
     this.app.use(makeComplementaryDataRoutes().getRouter());
     this.app.use("/user", makeUserDataRoutes().getRouter());
+    this.app.use("/service-queue", makeServiceQueueRoutes().getRouter());
   }
 
   public static async connectToDatabase() {
