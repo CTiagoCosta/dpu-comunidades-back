@@ -1,3 +1,4 @@
+import { ListMaritalStatusResponse } from "../useCase/listMaritalStatus/ListMaritalStatusDtos";
 import { ListTypeofAttendanceServiceResponse } from "../useCase/listTypeOfAttendanceService/ListTypeOfAttendanceServiceDtos";
 import { ListTypeofServiceResponse } from "../useCase/listTypeOfService/ListTypeOfServiceDtos";
 
@@ -18,6 +19,15 @@ export abstract class ComplementaryDataMapper {
       id: item.id,
       description: item.descricao,
       attendanceId: item.atendimentoId,
+    }));
+  }
+
+  public static toListMaritalStatusResponse(
+    data: any[]
+  ): ListMaritalStatusResponse[] {
+    return data.map((item) => ({
+      id: item.id,
+      description: item.descricao,
     }));
   }
 }
