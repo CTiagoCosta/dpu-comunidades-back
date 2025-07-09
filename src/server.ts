@@ -1,29 +1,104 @@
-import express, { Request, Response, NextFunction } from 'express';
-import 'express-async-errors';
-import cors from 'cors'; 
-import path from "path";
+// server.ts
+import { App } from "./app";
+import http from "http";
+import { Server as SocketIOServer } from "socket.io";
+import { getQueue, addToQueue, startAttendance, finalizeAttendance } from "./utils/queueManager";
+import jwt from "jsonwebtoken";
 
-import { router } from './routes';
+const JWT_SECRET = process.env.JWT_SECRET;
 
-const app = express();
-app.use(express.json());
-app.use(cors());
+async function bootstrap() {
+  try {
+    const application = new App();
+    await application.create();
 
-app.use(router);
+    const expressApp = application.getApplication();
+    const server = http.createServer(expressApp);
 
-app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
-    if(err instanceof Error) {
-        res.status(400).json({
-            error: err.message,
-        });
-    }
-
-    res.status(500).json({
-        status: 'error',    
-        message: 'Internal server error',
+    // Socket.io setup
+    const io = new SocketIOServer(server, {
+      cors: {
+        origin: "*",
+        methods: ["GET", "POST"]
+      }
     });
-})
 
-app.use("/files", express.static(path.resolve(__dirname, "..", "uploads")));
+    io.use((socket, next) => {
+      const token = socket.handshake.auth.token;
+      if (!token) {
+        return next(new Error("Token ausente"));
+      }
+      try {
+        const payload = jwt.verify(token, JWT_SECRET);
+        // Adicione info do usuário ao socket para usar nos eventos
+        socket.data.user = payload;
+        next();
+      } catch (err) {
+        next(new Error("Token inválido"));
+      }
+    });
 
-app.listen(3333, () => console.log('Servidor online na porta 3333'));
+    // Evento de conexão
+    io.on("connection", (socket) => {
+      const user = socket.data.user;
+      
+      // Envia o estado atual da fila ao conectar
+      getQueue().then((queue) => {
+        socket.emit("queueUpdated", queue);
+      });
+
+      socket.on("joinQueue", async (userData, callback) => {
+        // Validação manual dos campos obrigatórios
+        if (!userData.nomeCompleto || !userData.cpf || !userData.telefone || !userData.operadorTriagemId || !userData.tipoAtendimentoId) {
+          return callback && callback({ success: false, message: "Campos obrigatórios faltando" });
+        }
+
+        try {
+          await addToQueue(userData);
+          const newQueue = await getQueue();
+          io.emit("queueUpdated", newQueue);
+          callback && callback({ success: true });
+        } catch (err) {
+          callback && callback({ success: false, message: err.message || "Erro ao adicionar à fila" });
+        }
+      });
+
+      socket.on("startAttendance", async ({ queueItemId, operadorAtendimentoId }, callback) => {
+        if (!queueItemId || !operadorAtendimentoId) {
+          return callback && callback({ success: false, message: "Campos obrigatórios faltando" });
+        }
+        try {
+          await startAttendance(queueItemId, operadorAtendimentoId);
+          const newQueue = await getQueue();
+          io.emit("queueUpdated", newQueue);
+          callback && callback({ success: true });
+        } catch (err) {
+          callback && callback({ success: false, message: err.message || "Erro ao iniciar atendimento" });
+        }
+      });
+
+      socket.on("finalizeAttendance", async ({ queueItemId }, callback) => {
+        if (!queueItemId) {
+          return callback && callback({ success: false, message: "Campos obrigatórios faltando" });
+        }
+        try {
+          await finalizeAttendance(queueItemId);
+          const newQueue = await getQueue();
+          io.emit("queueUpdated", newQueue);
+          callback && callback({ success: true });
+        } catch (err) {
+          callback && callback({ success: false, message: err.message || "Erro ao finalizar atendimento" });
+        }
+      });
+
+      socket.on("disconnect", () => {
+      });
+    });
+
+    await application.start(server);
+
+  } catch (error) {
+  }
+}
+
+bootstrap();

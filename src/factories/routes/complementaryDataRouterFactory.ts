@@ -1,0 +1,20 @@
+import { ComplementaryRoutes } from "../../routes/complementary.routes";
+import { makeListComplementaryDataController } from "../controllers/listComplementaryDataControllerFactory";
+import { makeListMaritalStatusController } from "../controllers/listMaritalStatusControllerFactory";
+import { makeListTypeOfPrioritaryController } from "../controllers/listPrioritaryTypeControllerFactory";
+import { makeListProfessionsController } from "../controllers/listProfessionsControllerFactory";
+import { makeListTypeOfAttendanceController } from "../controllers/listTypeOfAttendanceControllerFactory";
+import { makeListTypeOfResidenceController } from "../controllers/listTypeOfResidenceControllerFactory";
+import { makeListVulnerabilityController } from "../controllers/listVulnerabilityControllerFactory";
+
+export const makeComplementaryDataRoutes = (): ComplementaryRoutes => {
+  return new ComplementaryRoutes(
+    makeListComplementaryDataController(),
+    makeListTypeOfAttendanceController(),
+    makeListTypeOfPrioritaryController(),
+    makeListMaritalStatusController(),
+    makeListProfessionsController(),
+    makeListTypeOfResidenceController(),
+    makeListVulnerabilityController()
+  );
+};
