@@ -1,39 +1,45 @@
-import { FilaAtendimento, PrismaClient, User } from "../../../generated/prisma";
+import prismaClient from "../../../prisma";
 import { IServiceQueueRepository } from "../interfaces/IServiceQueueRepository";
 import { CreateServiceQueueInput } from "../useCases/createServiceQueue/CreateServiceQueueDtos";
+import { ListServiceQueueResponse } from "../useCases/listServiceQueue/ListServiceQueueDtos";
 
 export class ServiceQueueRepository implements IServiceQueueRepository {
-  private prisma: PrismaClient;
+  private prisma = prismaClient;
 
   constructor() {
-    this.prisma = new PrismaClient();
+    this.prisma = prismaClient;
   }
 
-  async create(dto: FilaAtendimento): Promise<any | null> {
+  async create(dto: CreateServiceQueueInput): Promise<any | null> {
     const data: any = {
-      nomeCompleto: "fulanis",
-      nomeSocial: undefined,
-      cpf: "06689869130",
-      telefone: "6792876543",
+      nomeCompleto: dto.fullName,
+      nomeSocial: dto.socialName,
+      cpf: dto.cpf,
+      telefone: dto.telephone,
       status: "AGUARDANDO",
-      isPrioridade: false,
-      dataEntrada: new Date("2025-06-14T20:56:55.442Z"),
+      isPrioridade: dto.isPriority,
+      dataEntrada: new Date(),
       dataInicio: null,
       dataFim: null,
-      migrante: false,
+      migrante: dto.migrante,
       operadorTriagem: {
-        connect: { id: "97beb152-b670-473b-a6ab-ae30ad1b5008" },
+        connect: { id: dto.screeningOperatorId },
       },
-      tipoAtendimento: { connect: { id: 1 } },
+      tipoAtendimento: { connect: { id: dto.serviceTypeId } },
     };
 
-    if (dto.tipoPrioridadeId) {
-      data.tipoPrioridade = { connect: { id: dto.tipoPrioridadeId } };
+    if (dto.prioritaryTypeId) {
+      data.tipoPrioridade = { connect: { id: dto.prioritaryTypeId } };
     }
-    const result = await this.prisma.filaAtendimento.create({
-      data,
-    });
 
+    const result = await this.prisma.filaAtendimento.create({ data });
     return result ?? null;
+  }
+
+  async listAll(): Promise<ListServiceQueueResponse[]> {
+    const filas = await this.prisma.filaAtendimento.findMany({
+      orderBy: { dataEntrada: "asc" } 
+    });
+    return filas as ListServiceQueueResponse[];
   }
 }

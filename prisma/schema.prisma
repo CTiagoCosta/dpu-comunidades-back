@@ -313,3 +313,12 @@ model CompetenciaJudicial {
 
   @@map("competencia_judicial")
 }
+
+model LogFilaAtendimento {
+  id         String    @id @default(uuid())
+  action     String    // Ex: "ADD", "START", "FINALIZE"
+  queueId    String    // ID do FilaAtendimento afetado
+  userId     String    // Quem realizou a ação
+  timestamp  DateTime  @default(now())
+  details    String?   // Informações extras (opcional)
+}

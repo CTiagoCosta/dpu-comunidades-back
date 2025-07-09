@@ -93,7 +93,7 @@ export class Validator {
   }
 
   public isValidPhoneNumber(value: string, name: string, message: string) {
-    const REGULAR_EXPRESSION = /^((1[1-9])|([2-9][0-9]))(([0-9]{8}))$/;
+    const REGULAR_EXPRESSION = /^((1[1-9])|([2-9][0-9]))(([0-9]{8,9}))$/;
     if (!REGULAR_EXPRESSION.test(value)) this.reports.push({ name, message });
   }
 

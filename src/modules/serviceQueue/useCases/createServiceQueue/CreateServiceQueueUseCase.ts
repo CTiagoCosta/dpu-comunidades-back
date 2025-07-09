@@ -25,9 +25,8 @@ export class CreateServiceQueueUseCase {
 
     const serviceQueueMapper = ServiceQueueMapper.toDatabase(createUserDto);
 
-    const serviceQueueCreated = await this.serviceQueueRepository.create(
-      serviceQueueMapper
-    );
+    const serviceQueueCreated = await this.serviceQueueRepository.create(createUserDto);
+
 
     return serviceQueueCreated;
   }

@@ -1,4 +1,4 @@
-import { PrismaClient } from "../../../generated/prisma";
+import prismaClient from "../../../prisma";
 import { ComplementaryDataMapper } from "../mappers/ComplementaryDataMapper";
 import {
   ListTypeofAttendanceServiceInput,
@@ -6,11 +6,11 @@ import {
 } from "../useCase/listTypeOfAttendanceService/ListTypeOfAttendanceServiceDtos";
 
 export class TypeOfAttendanceServicesRepository {
-  private prisma: PrismaClient;
+  private prisma = prismaClient;
   private mapper = ComplementaryDataMapper;
 
   constructor() {
-    this.prisma = new PrismaClient();
+    this.prisma = prismaClient;
     this.mapper = ComplementaryDataMapper;
   }
 
