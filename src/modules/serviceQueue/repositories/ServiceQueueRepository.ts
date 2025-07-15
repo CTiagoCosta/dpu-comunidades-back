@@ -2,6 +2,7 @@ import prismaClient from "../../../prisma";
 import { IServiceQueueRepository } from "../interfaces/IServiceQueueRepository";
 import { CreateServiceQueueInput } from "../useCases/createServiceQueue/CreateServiceQueueDtos";
 import { ListServiceQueueResponse } from "../useCases/listServiceQueue/ListServiceQueueDtos";
+import { App } from "../../../app";
 
 export class ServiceQueueRepository implements IServiceQueueRepository {
   private prisma = prismaClient;
@@ -42,4 +43,18 @@ export class ServiceQueueRepository implements IServiceQueueRepository {
     });
     return filas as ListServiceQueueResponse[];
   }
+
+async findByIdWithRelations(id: string) {
+  return App.prisma.filaAtendimento.findUnique({
+    where: { id },
+    include: {
+      operadorTriagem: true,
+      operadorAtendimento: true,
+      tipoAtendimento: true,
+      tipoPrioridade: true,
+      atendimento: true
+    }
+  });
+}
+
 }
