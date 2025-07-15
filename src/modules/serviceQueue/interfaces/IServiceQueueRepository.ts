@@ -4,6 +4,9 @@ import { ListServiceQueueResponse } from "../useCases/listServiceQueue/ListServi
 export interface IServiceQueueRepository {
   create(dto: CreateServiceQueueInput): Promise<any | null>;
 
-  listAll(): Promise<ListServiceQueueResponse[]>
+  listAll(): Promise<ListServiceQueueResponse[]>;
+
+  findByIdWithRelations(id: string): Promise<any>;
+
 }
  
