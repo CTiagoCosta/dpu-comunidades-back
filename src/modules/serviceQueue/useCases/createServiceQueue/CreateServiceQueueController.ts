@@ -30,7 +30,6 @@ export class CreateServiceQueueController extends BaseController {
   protected async specificImplementation(
     request: HttpRequest
   ): Promise<HttpResponse> {
-    //console.log(this.getDto(request))
     const result = await this.useCase.handler(this.getDto(request));
 
     return HandleResponse.success(result, "Sucesso ao criar triagem.");

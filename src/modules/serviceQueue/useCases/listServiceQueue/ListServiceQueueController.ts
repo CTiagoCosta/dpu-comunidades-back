@@ -1,30 +1,29 @@
 // src/modules/serviceQueue/useCases/listServiceQueue/ListServiceQueueController.ts
 
-import { Request, Response } from "express";
 import { ListServiceQueueUseCase } from "./ListServiceQueueUseCase";
-import { ServiceQueueRepository } from "../../repositories/ServiceQueueRepository";
+import {
+  BaseController,
+  ValidateResponse,
+} from "../../../../infra/BaseController";
+import { HttpRequest, HttpResponse } from "../../../../infra/HttpAdapter";
+import { HandleResponse } from "../../../../infra/HandleResponse";
 
-export class ListServiceQueueController {
-  async handle(req: Request, res: Response): Promise<Response> {
-    try {
-      const repository = new ServiceQueueRepository();
-      const useCase = new ListServiceQueueUseCase(repository);
+export class ListServiceQueueController extends BaseController {
+  constructor(private useCase: ListServiceQueueUseCase) {
+    super("Erro ao listar fila");
+  }
 
-      const filas = await useCase.handle();
+  protected validateRequest(
+    request: HttpRequest
+  ): ValidateResponse | undefined {
+    return undefined;
+  }
 
-      return res.status(200).json({
-        data: filas,
-        success: true,
-        message: "Assistidos encontrados com sucesso",
-        errors: []
-      });
-    } catch (err: any) {
-      return res.status(500).json({
-        data: null,
-        success: false,
-        message: "Erro ao buscar assistidos",
-        errors: [{ name: err.name, message: err.message }]
-      });
-    }
+  protected async specificImplementation(
+    request: HttpRequest
+  ): Promise<HttpResponse> {
+    const result = await this.useCase.handler();
+
+    return HandleResponse.success(result, "Sucesso ao listar fila.");
   }
 }

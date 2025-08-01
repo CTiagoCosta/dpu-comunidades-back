@@ -17,3 +17,7 @@ export interface GetServiceQueueByIdResponse {
   tipoPrioridade?: any
   atendimento?: any
 }
+
+export interface GetServiceQueueByIdInput {
+  queueId: string
+}

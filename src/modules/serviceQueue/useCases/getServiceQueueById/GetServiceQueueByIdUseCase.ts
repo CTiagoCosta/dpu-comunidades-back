@@ -1,11 +1,20 @@
+import { NotFoundError } from "../../../../infra/errors/NotFoundError";
 import { IServiceQueueRepository } from "../../interfaces/IServiceQueueRepository";
-import { GetServiceQueueByIdResponse } from "./GetServiceQueueByIdDtos";
+import {
+  GetServiceQueueByIdInput,
+  GetServiceQueueByIdResponse,
+} from "./GetServiceQueueByIdDtos";
 
 export class GetServiceQueueByIdUseCase {
   constructor(private repository: IServiceQueueRepository) {}
 
-  async handle(id: string): Promise<GetServiceQueueByIdResponse | null> {
-    const fila = await this.repository.findByIdWithRelations(id);
+  async handler(
+    dto: GetServiceQueueByIdInput
+  ): Promise<GetServiceQueueByIdResponse | null> {
+    const fila = await this.repository.findByIdWithRelations(dto.queueId);
+    if (!fila) {
+      throw new NotFoundError("Triagem não encontrada");
+    }
     return fila;
   }
 }

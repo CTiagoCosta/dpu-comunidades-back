@@ -1,46 +1,44 @@
-
-import { Request, Response } from "express";
 import { GetServiceQueueByIdUseCase } from "./GetServiceQueueByIdUseCase";
+import {
+  BaseController,
+  ValidateResponse,
+} from "../../../../infra/BaseController";
+import { HandleResponse } from "../../../../infra/HandleResponse";
+import { HttpRequest, HttpResponse } from "../../../../infra/HttpAdapter";
+import { GetServiceQueueByIdContract } from "./GetServiceQueueByIdContract";
+import { GetServiceQueueByIdInput } from "./GetServiceQueueByIdDtos";
 
-export class GetServiceQueueByIdController {
-  constructor(private useCase: GetServiceQueueByIdUseCase) {}
+export class GetServiceQueueByIdController extends BaseController {
+  constructor(
+    private contract: GetServiceQueueByIdContract,
+    private useCase: GetServiceQueueByIdUseCase
+  ) {
+    super("Erro ao buscar triagem");
+  }
 
-  async handle(req: Request, res: Response): Promise<Response> {
-    try {
-      const { id } = req.params;
-      if (!id) {
-        return res.status(400).json({
-          data: null,
-          success: false,
-          message: "ID obrigatório",
-          errors: []
-        });
-      }
-
-      const fila = await this.useCase.handle(id);
-
-      if (!fila) {
-        return res.status(404).json({
-          data: null,
-          success: false,
-          message: "Assistido não encontrado.",
-          errors: []
-        });
-      }
-
-      return res.status(200).json({
-        data: fila,
-        success: true,
-        message: "Assistido encontrado com sucesso",
-        errors: []
-      });
-    } catch (err: any) {
-      return res.status(500).json({
-        data: null,
-        success: false,
-        message: "Erro ao buscar assistido",
-        errors: [{ name: err.name, message: err.message }]
-      });
+  protected validateRequest(
+    request: HttpRequest
+  ): ValidateResponse | undefined {
+    if (!this.contract.validate(this.getDto(request))) {
+      return {
+        message: this.defaultErrorMessage,
+        reports: this.contract.reports,
+      };
     }
+  }
+
+  protected async specificImplementation(
+    request: HttpRequest
+  ): Promise<HttpResponse> {
+    const result = await this.useCase.handler(this.getDto(request));
+
+    return HandleResponse.success(result, "Sucesso ao criar triagem.");
+  }
+
+  private getDto(request: HttpRequest): GetServiceQueueByIdInput {
+    const { params } = request;
+    return {
+      queueId: params.id,
+    };
   }
 }
