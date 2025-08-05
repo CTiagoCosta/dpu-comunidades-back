@@ -3,6 +3,10 @@ import { PrismaClient } from "../src/generated/prisma";
 const prisma = new PrismaClient();
 
 async function main() {
+  await prisma.role.createMany({
+    data: [{ id: 1, name: "Operador" }],
+    skipDuplicates: true,
+  }),
   await prisma.tipoAtendimento.createMany({
     data: [{ id: 1, descricao: "Assistencia Jurídica DPU em Mutirão" }],
     skipDuplicates: true,
@@ -22,11 +26,11 @@ async function main() {
       data: [
         {
           descricao: "Primeiro Atendimento - Demanda Judicial",
-          atendimentoId: 1,
+          tipoAtendimentoId: 1,
         },
-        { descricao: "Retorno - Demanda Judicial", atendimentoId: 1 },
-        { descricao: "Orientação Jurídica", atendimentoId: 1 },
-        { descricao: "Encaminhamento a Outro Órgão", atendimentoId: 1 },
+        { descricao: "Retorno - Demanda Judicial", tipoAtendimentoId: 1 },
+        { descricao: "Orientação Jurídica", tipoAtendimentoId: 1 },
+        { descricao: "Encaminhamento a Outro Órgão", tipoAtendimentoId: 1 },
       ],
       skipDuplicates: true,
     }),

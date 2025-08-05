@@ -1,3 +1,6 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
 generator client {
   provider = "prisma-client-js"
   output   = "../src/generated/prisma"
@@ -8,317 +11,302 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// Usuários
+// ===== ROLE =====
+model Role {
+  id    Int    @id @default(autoincrement())
+  name  String
+
+  users User[]
+
+  @@map("role")
+}
+
+// ===== USUÁRIOS =====
 model User {
-  id           String   @id @default(uuid())
+  id           String   @id @default(uuid()) @db.Uuid
   email        String   @unique
   nome         String
   senha        String
-  role         Role     @default(OPERADOR)
+  roleId       Int
   aprovado     Boolean  @default(false)
   dataCadastro DateTime @default(now())
 
   // Relacionamentos
-  atendimentosRealizados   Atendimento[]         @relation("OperadorAtendimento")
-  atendimentosTriagem      FilaAtendimento[]     @relation("OperadorTriagem")
-  atendimentosEmAndamento  FilaAtendimento[]     @relation("OperadorAtendimento")
-  documentosUploadOperador Documento[]           @relation("OperadorUpload")
-  
+  role                     Role                   @relation(fields: [roleId], references: [id])
+  triagensOperador         Triagem[]              @relation("OperadorTriagem")
+  atendimentosOperador     Atendimento[]          @relation("OperadorAtendimento")
+  documentosUpload         Documento[]            @relation("OperadorUpload")
+  logsTriagem              LogTriagem[]
+
   @@map("usuarios")
 }
 
-enum Role {
-  ADMIN
-  OPERADOR
-  JURISTA
+// ===== ASSISTIDO =====
+model Assistido {
+  id           String  @id @default(uuid()) @db.Uuid
+  nomeCompleto String
+  nomeSocial   String?
+  cpf          String
+  telefone     String?
+  migrante     Boolean @default(false)
 
-  @@map("Role")
-}
-
-// Triagem
-model FilaAtendimento {
-  id                   String                 @id @default(uuid())
-  nomeCompleto         String
-  nomeSocial           String?
-  cpf                  String
-  telefone             String
-  isPrioridade         Boolean                @default(false)
-  status               StatusFilaAtendimento
-  dataEntrada          DateTime               @default(now())
-  dataInicio           DateTime?
-  dataFim              DateTime?
-  migrante             Boolean                @default(false)
-  
   // Relacionamentos
-  operadorTriagemId    String
-  operadorTriagem      User                   @relation("OperadorTriagem", fields: [operadorTriagemId], references: [id])
-  operadorAtendimentoId String?
-  operadorAtendimento  User?                  @relation("OperadorAtendimento", fields: [operadorAtendimentoId], references: [id])
-  atendimento          Atendimento?
-  tipoPrioridadeId     Int?
-  tipoPrioridade       TipoPrioridade?         @relation("AtendimentoTipoPrioridade", fields: [tipoPrioridadeId], references: [id])
-  tipoAtendimentoId    Int
-  tipoAtendimento      TipoAtendimento        @relation(fields: [tipoAtendimentoId], references: [id])
+  triagens         Triagem[]
+  membrosFamilia   MembroFamiliar[]
 
-  @@map("fila_atendimentos")
+  @@map("assistido")
 }
 
-enum StatusFilaAtendimento {
-  AGUARDANDO
-  EM_ATENDIMENTO
-  ATENDIDO
-  CANCELADO
+// ===== TRIAGEM =====
+model Triagem {
+  id                String   @id @default(uuid()) @db.Uuid
+  isPrioridade      Boolean  @default(false)
+  status            String
+  dataEntrada       DateTime @default(now())
+  operadorTriagemId String   @db.Uuid
+  tipoPrioridadeId  Int?
+  tipoAtendimentoId Int
+  assistidoId       String   @db.Uuid
 
-  @@map("status_fila_atendimento")
+  // Relacionamentos
+  operadorTriagem   User              @relation("OperadorTriagem", fields: [operadorTriagemId], references: [id])
+  tipoPrioridade    TipoPrioridade?   @relation(fields: [tipoPrioridadeId], references: [id])
+  tipoAtendimento   TipoAtendimento   @relation(fields: [tipoAtendimentoId], references: [id])
+  assistido         Assistido         @relation(fields: [assistidoId], references: [id])
+  atendimento       Atendimento?
+  logsTriagem       LogTriagem[]
+
+  @@map("triagem")
 }
 
-// Atendimentos
+// ===== PRIMEIRO ATENDIMENTO =====
 model Atendimento {
-  id                        String    @id @default(uuid())
-  capacidadeCivil           Boolean
-  cep                       String
-  endereco                  String
-  numero                    Int
-  complemento               String?
-  bairro                    String
-  cidade                    String
-  uf                        String
-  dataInicioBeneficio       DateTime?
-  parcelasVencidas          Int?
-  valorCausa                Float?
-  processosAndamento        ProcessosAndamento
-  estadoCivilId             Int
-  profissaoId               String
-  tipoDomicilioId           Int
-  tipoDemandaPrevidenciariaId Int
-  competenciaJudicialId     Int
-  operadorId                String
-  filaId                    String?   @unique
+  id                              String    @id @default(uuid()) @db.Uuid
+  capacidadeCivil                 Boolean?
+  cep                             String?
+  endereco                        String?
+  numero                          Int?
+  complemento                     String?
+  bairro                          String?
+  cidade                          String?
+  uf                              String?
+  dataInicioBeneficio             DateTime?
+  parcelasVencidas                Int?
+  valorCausa                      Float?
+  processosAndamento              String?
+  estadoCivilId                   Int?
+  profissaoId                     String?   @db.Uuid
+  tipoDomicilioId                 Int?
+  tipoDemandaPrevidenciariaId     Int?
+  competenciaJudicialId           Int?
+  descricaoPrioridade             String?
+  tipoAtendimentoId               Int?
+  tipoServicoAtendimentoId        Int?
+  tipoPrioridadeId                Int?
+  triagemId                       String    @unique @db.Uuid
+  operadorAtendimentoId           String    @db.Uuid
+
   // Relacionamentos
-  estadoCivil               EstadoCivil               @relation(fields: [estadoCivilId], references: [id])
-  profissao                 Profissao                 @relation(fields: [profissaoId], references: [id])
-  tipoDomicilio             TipoDomicilio             @relation(fields: [tipoDomicilioId], references: [id])
-  tipoDemandaPrevidenciaria TipoDemandaPrevidenciaria @relation(fields: [tipoDemandaPrevidenciariaId], references: [id])
-  competenciaJudicial       CompetenciaJudicial       @relation(fields: [competenciaJudicialId], references: [id])
-  operador                  User                      @relation("OperadorAtendimento", fields: [operadorId], references: [id])
-  fila                      FilaAtendimento?          @relation(fields: [filaId], references: [id])
-  membrosFamiliares         MembroFamiliar[]
-  processo                  Processo?
-  formularios               FormularioPreenchido[]
-  documentos                Documento[]
+  estadoCivil                     EstadoCivil?                    @relation(fields: [estadoCivilId], references: [id])
+  profissao                       Profissao?                      @relation(fields: [profissaoId], references: [id])
+  tipoDomicilio                   TipoDomicilio?                  @relation(fields: [tipoDomicilioId], references: [id])
+  tipoDemandaPrevidenciaria       TipoDemandaPrevidenciaria?      @relation(fields: [tipoDemandaPrevidenciariaId], references: [id])
+  competenciaJudicial             CompetenciaJudicial?            @relation(fields: [competenciaJudicialId], references: [id])
+  tipoAtendimento                 TipoAtendimento?                @relation(fields: [tipoAtendimentoId], references: [id])
+  tipoServicoAtendimento          TipoServicoAtendimento?         @relation(fields: [tipoServicoAtendimentoId], references: [id])
+  tipoPrioridade                  TipoPrioridade?                 @relation(fields: [tipoPrioridadeId], references: [id])
+  triagem                         Triagem                         @relation(fields: [triagemId], references: [id])
+  operadorAtendimento             User                            @relation("OperadorAtendimento", fields: [operadorAtendimentoId], references: [id])
+  processo                        Processo?
+  formulariosPreenchidos          FormularioPreenchido[]
+  documentos                      Documento[]
+  membrosFamilia                  MembroFamiliar[]
 
   @@map("atendimentos")
 }
 
-enum ProcessosAndamento {
-  SIM_MAS_DIFERENTE
-  NAO
-  SIM_MAS_IGUAL
-}
-
-// Processos judiciais
+// ===== PROCESSOS JUDICIAIS =====
 model Processo {
-  id            String      @id @default(uuid())
-  numeroProcesso      String
-  resultado           String
-  resultadoDetalhado  String?
-  valoresAtrasados    String?
-  beneficios          String?
-  dataAtualizacao     DateTime             @default(now())
-  atendimentoId       String               @unique
-  atendimento         Atendimento          @relation(fields: [atendimentoId], references: [id])
+  id                 String    @id @default(uuid()) @db.Uuid
+  numeroProcesso     String?
+  resultado          String?
+  resultadoDetalhado String?
+  valoresAtrasados   String?
+  beneficios         String?
+  dataAtualizacao    DateTime  @default(now())
+  atendimentoId      String    @unique @db.Uuid
+
+  // Relacionamentos
+  atendimento        Atendimento @relation(fields: [atendimentoId], references: [id])
 
   @@map("processos")
 }
 
-// Formulários preenchidos
+// ===== FORMULÁRIOS PREENCHIDOS =====
 model FormularioPreenchido {
-  id            Int         @id @default(autoincrement())
-  tipoFormulario      TipoFormulario
-  dadosFormulario     Json
-  dataCriacao         DateTime             @default(now())
-  atendimentoId       String
-  atendimento         Atendimento          @relation(fields: [atendimentoId], references: [id])
+  id              Int      @id @default(autoincrement())
+  tipoFormulario  String
+  dadosFormulario Json
+  dataCriacao     DateTime @default(now())
+  atendimentoId   String   @db.Uuid
+
+  // Relacionamentos
+  atendimento     Atendimento @relation(fields: [atendimentoId], references: [id])
 
   @@map("formularios_preenchidos")
 }
 
-enum TipoFormulario {
-  TRIAGEM
-  CAPACIDADE_CIVIL
-  COMPLEMENTO_DADOS
-  TIPO_DEMANDA
-  TIPO_DEMANDA_PREVIDENCIARIA
-  LOAS_IDOSO
-  LOAS_DEFICIENTE
-  APOSENTADORIA_RURAL
-  PENSAO_MORTE_RURAL
-  AUXILIO_RECLUSAO_RURAL
-  SALARIO_MATERNIDADE_URBANO
-  SALARIO_MATERNIDADE_RURAL
-  AUXILIO_DOENCA_INVALIDEZ
-  SEGURO_DEFESO
-  REPRESENTANTE_LEGAL
-  ANALISE_RENDA
-  VIABILIDADE_DEMANDA
-  DOCUMENTOS_OBRIGATORIOS
-  JUSTIFICATIVA_ARQUIVAMENTO
-
-  @@map("tipo_formulario")
-}
-
-// Documentos
+// ===== DOCUMENTOS =====
 model Documento {
-  id                  String               @id @default(uuid())
-  nomeOriginal        String
-  nomeArmazenamento   String
-  tipo                String
-  tamanho             Int
-  caminho             String
-  tipoDocumento       TipoDocumento
-  dataCriacao         DateTime             @default(now())
-  atendimentoId       String
-  atendimento         Atendimento          @relation(fields: [atendimentoId], references: [id])
-  operadorUploadId    String
-  operadorUpload      User                 @relation("OperadorUpload", fields: [operadorUploadId], references: [id])
+  id                String   @id @default(uuid()) @db.Uuid
+  nomeOriginal      String
+  nomeArmazenamento String
+  tipo              String
+  tamanho           Int
+  caminho           String
+  tipoDocumento     String
+  dataCriacao       DateTime @default(now())
+  atendimentoId     String   @db.Uuid
+  operadorUploadId  String   @db.Uuid
+
+  // Relacionamentos
+  atendimento       Atendimento @relation(fields: [atendimentoId], references: [id])
+  operadorUpload    User        @relation("OperadorUpload", fields: [operadorUploadId], references: [id])
 
   @@map("documentos")
 }
 
-enum TipoDocumento {
-  DOCUMENTO_PESSOAL
-  COMPROVANTE_RESIDENCIA
-  COMPROVANTE_RENDA
-  LAUDO_MEDICO
-  PRONTUARIO
-  EXAME_MEDICO
-  CARTEIRA_TRABALHO
-  COMPROVANTE_ATIVIDADE_RURAL
-  CERTIDAO_OBITO
-  CERTIDAO_CASAMENTO
-  CERTIDAO_NASCIMENTO
-  PROCURACAO
-  TERMO_REPRESENTACAO
-  OUTROS
-
-  @@map("tipo_documento")
-}
-
-// Tabelas auxiliares
+// ===== TABELAS AUXILIARES =====
 model TipoAtendimento {
-  id              Int                      @id @default(autoincrement())
-  descricao       String
-  assistidos      Assistido[]
-  tipoPrioridades TipoPrioridade[]
-  servicos        TipoServicoAtendimento[] 
-  filaAtendimento FilaAtendimento[]
+  id        Int    @id @default(autoincrement())
+  descricao String
+
+  // Relacionamentos
+  triagens                Triagem[]
+  atendimentos            Atendimento[]
+  tiposServicoAtendimento TipoServicoAtendimento[]
 
   @@map("tipo_atendimento")
 }
 
 model TipoPrioridade {
-  id                        Int                     @id @default(autoincrement())
-  descricao                 String
-  valorPrioridade           Int
-  assistidos                Assistido[]
-  tipoAtendimentoId         Int?
-  tipoAtendimento           TipoAtendimento? @relation(fields: [tipoAtendimentoId], references: [id])
-  filaAtendimento           FilaAtendimento[] @relation("AtendimentoTipoPrioridade")
+  id              Int @id @default(autoincrement())
+  descricao       String
+  valorPrioridade Int
+
+  // Relacionamentos
+  triagens        Triagem[]
+  atendimentos    Atendimento[]
 
   @@map("tipo_prioridade")
 }
 
-model Assistido {
-  id                         String    @id @default(uuid())
-  nomeCompleto               String
-  nomeSocial                 String?
-  cpf                        String
-  telefone                   String
-  dataEntrada                DateTime
-  descricaoPrioridade        String?
-  tipoAtendimentoId          Int
-  tipoServicoAtendimentoId   Int
-  tipoPrioridadeId           Int
-  tipoServicoAtendimento     TipoServicoAtendimento @relation(fields: [tipoServicoAtendimentoId], references: [id])
-  tipoAtendimento            TipoAtendimento @relation(fields: [tipoAtendimentoId], references: [id])
-  tipoPrioridade             TipoPrioridade         @relation(fields: [tipoPrioridadeId], references: [id])
-
-  @@map("assistido")
-}
-
 model TipoServicoAtendimento {
-  id                Int               @id @default(autoincrement())
+  id                Int    @id @default(autoincrement())
   descricao         String
-  atendimentoId     Int
-  atendimento       TipoAtendimento   @relation(fields: [atendimentoId], references: [id])
-  assistidos        Assistido[]       // <-- Add this line
+  tipoAtendimentoId Int
+
+  // Relacionamentos
+  tipoAtendimento   TipoAtendimento @relation(fields: [tipoAtendimentoId], references: [id])
+  atendimentos      Atendimento[]
 
   @@map("tipo_servico_atendimento")
 }
 
 model EstadoCivil {
-  id        Int       @id @default(autoincrement())
+  id        Int    @id @default(autoincrement())
   descricao String
+
+  // Relacionamentos
   atendimentos Atendimento[]
 
   @@map("estado_civil")
 }
 
 model Profissao {
-  id        String    @id @default(uuid())
+  id        String @id @default(uuid()) @db.Uuid
   descricao String
+
+  // Relacionamentos
   atendimentos Atendimento[]
 
   @@map("profissao")
 }
 
 model TipoDomicilio {
-  id        Int       @id @default(autoincrement())
+  id        Int    @id @default(autoincrement())
   descricao String
+
+  // Relacionamentos
   atendimentos Atendimento[]
 
   @@map("tipo_domicilio")
 }
 
 model MembroFamiliar {
-  id            String      @id @default(uuid())
+  id            String  @id @default(uuid()) @db.Uuid
   nomeCompleto  String
   cpf           String
-  rendaMensal   Float
-  atendimentoId String
+  rendaMensal   Float?
+  atendimentoId String  @db.Uuid
+  assistidoId   String  @db.Uuid
+
+  // Relacionamentos
   atendimento   Atendimento @relation(fields: [atendimentoId], references: [id])
+  assistido     Assistido   @relation(fields: [assistidoId], references: [id])
 
   @@map("membro_familiar")
 }
 
 model TipoVulnerabilidade {
-  id        Int       @id @default(autoincrement())
+  id        Int    @id @default(autoincrement())
   descricao String
 
-  @@map("tipo_vulnerabilidae")
+  @@map("tipo_vulnerabilidade")
 }
 
 model TipoDemandaPrevidenciaria {
-  id        Int       @id @default(autoincrement())
+  id        Int    @id @default(autoincrement())
   descricao String
+
+  // Relacionamentos
   atendimentos Atendimento[]
 
   @@map("tipo_demanda_previdenciaria")
 }
 
 model CompetenciaJudicial {
-  id        Int       @id @default(autoincrement())
+  id        Int    @id @default(autoincrement())
   descricao String
+
+  // Relacionamentos
   atendimentos Atendimento[]
 
   @@map("competencia_judicial")
 }
 
-model LogFilaAtendimento {
-  id         String    @id @default(uuid())
-  action     String    // Ex: "ADD", "START", "FINALIZE"
-  queueId    String    // ID do FilaAtendimento afetado
-  userId     String    // Quem realizou a ação
-  timestamp  DateTime  @default(now())
-  details    String?   // Informações extras (opcional)
+// ===== LOG TRIAGEM =====
+model LogTriagem {
+  id        String   @id @default(uuid()) @db.Uuid
+  action    String
+  queueId   String   @db.Uuid
+  userId    String   @db.Uuid
+  timestamp DateTime @default(now())
+  details   String?
+
+  // Relacionamentos
+  queue     Triagem @relation(fields: [queueId], references: [id])
+  user      User    @relation(fields: [userId], references: [id])
+
+  @@map("log_triagem")
+}
+
+model EncaminhamentoServico {
+  id                Int    @id @default(autoincrement())
+  categoria         String
+  nomeServico       String
+  endereco          String
+  descricaoViolacao String
+
+  @@map("encaminhamento_servico")
 }
