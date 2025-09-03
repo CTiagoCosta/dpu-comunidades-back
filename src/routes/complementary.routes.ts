@@ -8,6 +8,7 @@ import { ListMaritalStatusController } from "../modules/complementaryData/useCas
 import { ListProfessionsController } from "../modules/complementaryData/useCase/listProfessions/ListProfessionsController";
 import { ListTypeOfResidenceController } from "../modules/complementaryData/useCase/listTypeOfResidence/ListTypeOfResidenceController";
 import { ListVulnerabilityTypeController } from "../modules/complementaryData/useCase/listVulnerabilityType/ListVulnerabilityTypeController";
+import { ListRequestForLegalAssistanceController } from "../modules/complementaryData/useCase/listRequestForLegalAssistance/ListRequestForLegalAssistanceController";
 
 export class ComplementaryRoutes implements Route {
   private router: Router;
@@ -19,7 +20,8 @@ export class ComplementaryRoutes implements Route {
     private listMaritalStatusController: ListMaritalStatusController,
     private listProfessionsController: ListProfessionsController,
     private listTypeOfResidenceController: ListTypeOfResidenceController,
-    private listVulnerabilityTypeController: ListVulnerabilityTypeController
+    private listVulnerabilityTypeController: ListVulnerabilityTypeController,
+    private listRequestForLegalAssistanceController: ListRequestForLegalAssistanceController
   ) {
     this.router = Router();
   }
@@ -51,6 +53,10 @@ export class ComplementaryRoutes implements Route {
     this.router.get(
       "/vulnerability-type",
       adaptRoute(this.listVulnerabilityTypeController)
+    );
+    this.router.get(
+      "/request-for-legal-assistance",
+      adaptRoute(this.listRequestForLegalAssistanceController)
     );
     return this.router;
   }

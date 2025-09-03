@@ -8,6 +8,8 @@ import { MaritalStatusRepository } from "../respositories/MaritalStatusRepositor
 import { ProfessionsRepository } from "../respositories/ProfessionsRepository";
 import { TypeOfResidenceRepository } from "../respositories/TypeOfResidenceRepository";
 import { TypeOfVulnerabilityRepository } from "../respositories/TypeOfVulnerabilityRepository";
+import { ListRequestForLegalAssistanceResponse } from "../useCase/listRequestForLegalAssistance/ListRequestForLegalAssistanceDtos";
+import { TypeOfRequestForLegalAssistance } from "../respositories/TypeOfRequestForLegalAssistance";
 
 export class ComplementaryDataServices implements IComplementaryDataServices {
   private typeOfServiceRepository: TypeOfServiceRepository;
@@ -17,6 +19,7 @@ export class ComplementaryDataServices implements IComplementaryDataServices {
   private professionsRepository: ProfessionsRepository;
   private typeOfResidenceRepository: TypeOfResidenceRepository;
   private typeOfVulnerabilityRepository: TypeOfVulnerabilityRepository;
+  private typeOfRequestForLegalAssistance: TypeOfRequestForLegalAssistance;
   constructor() {
     this.typeOfServiceRepository = new TypeOfServiceRepository();
     this.typeOfAttendanceServiceRepository =
@@ -26,6 +29,7 @@ export class ComplementaryDataServices implements IComplementaryDataServices {
     this.professionsRepository = new ProfessionsRepository();
     this.typeOfResidenceRepository = new TypeOfResidenceRepository();
     this.typeOfVulnerabilityRepository = new TypeOfVulnerabilityRepository();
+    this.typeOfRequestForLegalAssistance = new TypeOfRequestForLegalAssistance();
   }
   async listTypeofService(): Promise<ListTypeofServiceResponse[] | null> {
     return await this.typeOfServiceRepository.listTypeofService();
@@ -58,4 +62,9 @@ export class ComplementaryDataServices implements IComplementaryDataServices {
   async listVulnerabilityType(): Promise<ListTypeofServiceResponse[] | null> {
     return await this.typeOfVulnerabilityRepository.listAll();
   }
+
+  async listRequestForLegalAssistance(): Promise<ListRequestForLegalAssistanceResponse[] | null> {
+    return await this.typeOfRequestForLegalAssistance.listAll();
+  }
+
 }

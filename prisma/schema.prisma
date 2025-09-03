@@ -298,6 +298,13 @@ model TipoVulnerabilidade {
   @@map("tipo_vulnerabilidae")
 }
 
+model TipoPedidoDePrevidenciaJudiciaria {
+  id        Int       @id @default(autoincrement())
+  descricao String
+
+  @@map("tipo_previcencia_judiciaria")
+}
+
 model TipoDemandaPrevidenciaria {
   id        Int       @id @default(autoincrement())
   descricao String

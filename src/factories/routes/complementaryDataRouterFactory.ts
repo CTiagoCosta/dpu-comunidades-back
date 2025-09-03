@@ -4,6 +4,7 @@ import { makeListMaritalStatusController } from "../controllers/listMaritalStatu
 import { makeListTypeOfPrioritaryController } from "../controllers/listPrioritaryTypeControllerFactory";
 import { makeListProfessionsController } from "../controllers/listProfessionsControllerFactory";
 import { makeListTypeOfAttendanceController } from "../controllers/listTypeOfAttendanceControllerFactory";
+import { makeListTypeOfRequestForLegalAssistanceController } from "../controllers/listTypeOfRequestForLegalAssistance";
 import { makeListTypeOfResidenceController } from "../controllers/listTypeOfResidenceControllerFactory";
 import { makeListVulnerabilityController } from "../controllers/listVulnerabilityControllerFactory";
 
@@ -15,6 +16,7 @@ export const makeComplementaryDataRoutes = (): ComplementaryRoutes => {
     makeListMaritalStatusController(),
     makeListProfessionsController(),
     makeListTypeOfResidenceController(),
-    makeListVulnerabilityController()
+    makeListVulnerabilityController(),
+    makeListTypeOfRequestForLegalAssistanceController()
   );
 };

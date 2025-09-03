@@ -91,6 +91,26 @@ async function main() {
         { descricao: "Outro" },
       ],
       skipDuplicates: true,
+    }),
+    await prisma.tipoPedidoDePrevidenciaJudiciaria.createMany({
+      data: [
+        { descricao: "Aposentadoria por idade rural" },
+        {
+          descricao:
+            "Conversão de loas em aposentadoria por idade segurado especial",
+        },
+        { descricao: "Seguro defeso" },
+        { descricao: "Pensão por morte rural" },
+        { descricao: "Auxílio reclusão rural" },
+        { descricao: "Salário maternidade rural" },
+        { descricao: "BPC loas idoso" },
+        { descricao: "BPC loas deficiente" },
+        { descricao: "Auxilio doença e aposentadoria por invalidez" },
+        { descricao: "Cancelamento de consignado/ilegal" },
+        { descricao: "Aposentadoria por idade urbana" },
+        { descricao: "Salário maternidade urbana" },
+      ],
+      skipDuplicates: true,
     });
 }
 
