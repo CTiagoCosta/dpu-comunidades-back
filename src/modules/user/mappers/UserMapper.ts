@@ -4,18 +4,20 @@ import {
   CreateUserInput,
   UserOutput,
 } from "../useCases/createUser/CreateUserDtos";
+import { RoleMapper } from "./RoleMapper";
+import { UserWithRole } from "../type/User";
 
 export abstract class UserMapper {
-  public static toDomain(dto: User): UserOutput {
+  public static toDomain(dto: UserWithRole): UserOutput {
     return {
       id: dto.id,
       name: dto.nome,
       email: dto.email,
-      role: dto.role,
+      role: RoleMapper.toDomain(dto.role),
       approved: dto.aprovado,
     };
   }
-
+  
   public static toDatabase(
     dto: CreateUserInput,
     encriptPassword: string
@@ -25,8 +27,8 @@ export abstract class UserMapper {
       nome: dto.name,
       email: dto.email,
       senha: encriptPassword,
-      role: dto.role || "OPERADOR",
-      aprovado: dto.approved || false,
+      roleId: dto.roleId,
+      aprovado: false,
       dataCadastro: new Date(),
     };
   }

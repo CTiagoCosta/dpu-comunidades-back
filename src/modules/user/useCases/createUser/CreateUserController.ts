@@ -32,7 +32,7 @@ export class CreateUserController extends BaseController {
   ): Promise<HttpResponse> {
     const result = await this.useCase.handler(this.getDto(request));
 
-    return HandleResponse.success(result, "Sucesso ao criar usuários..");
+    return HandleResponse.success(result, "Usuário criado com sucesso");
   }
 
   private getDto(request: HttpRequest): CreateUserInput {
@@ -40,8 +40,7 @@ export class CreateUserController extends BaseController {
       name: request.body.name,
       email: request.body.email,
       password: request.body.password,
-      role: request.body.role,
-      approved: request.body.approved,
+      roleId: request.body.roleId
     };
   }
 }

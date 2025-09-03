@@ -25,17 +25,13 @@ export class CreateUserContract extends Notifiable {
   }
 
   private validateStateId() {
-    const { name, approved, email, password, role } = this.dto;
+    const { name, email, password, roleId } = this.dto;
     
     this.validator.isRequired(name, "name", "O nome é obrigatório");
     this.validator.isRequired(email, "email", "O email é obrigatório");
     this.validator.isRequired(password, "password", "A senha é obrigatória");
-    this.validator.isRequired(role, "role", "O papel é obrigatório");
-    this.validator.isRequiredBoolean(
-      approved,
-      "approved",
-      "A aprovação deve ser um booleano"
-    );
+    this.validator.isRequired(roleId, "roleId", "O papel é obrigatório");
+    this.validator.isValidNumber(roleId, "roleId", "O papel deve ser um ID válido");
     email &&
       this.validator.isValidEmail(email, "email", "O email deve ser válido");
   }

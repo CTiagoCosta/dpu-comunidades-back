@@ -6,6 +6,7 @@ import { ListPriorityTypeResponse } from "../../../complementaryData/useCase/lis
 import { ListTypeofServiceResponse } from "../../../complementaryData/useCase/listTypeOfService/ListTypeOfServiceDtos";
 import { IUserRepository } from "../../../user/interfaces/IUserRepository";
 import { UserOutput } from "../../../user/useCases/createUser/CreateUserDtos";
+import { ServiceQueueMapper } from "../../mappers/ServiceQueueMapper";
 import { ServiceQueueRepository } from "../../repositories/ServiceQueueRepository";
 import { CreateServiceQueueInput } from "./CreateServiceQueueDtos";
 
@@ -22,7 +23,9 @@ export class CreateServiceQueueUseCase {
   ): Promise<UserOutput | null> {
     await this.validate(createQueue);
 
-    const serviceQueueCreated = await this.serviceQueueRepository.create(createQueue);
+    const dto = ServiceQueueMapper.toDatabase(createQueue);
+
+    const serviceQueueCreated = await this.serviceQueueRepository.create(dto);
 
     return serviceQueueCreated;
   }

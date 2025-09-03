@@ -46,6 +46,18 @@ export const authenticate = async (
       return;
     }
 
+    if (user.aprovado === false) {
+      res
+        .status(HttpStatus.UNAUTHORIZED)
+        .send(
+          new Result(
+            null,
+            "Seu cadastro está pendente de aprovação. Por favor, aguarde a aprovação para acessar o sistema."
+          )
+        );
+      return;
+    }
+
     req.body["accessUser"] = user;
     next();
     return;

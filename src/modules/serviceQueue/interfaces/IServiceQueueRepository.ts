@@ -1,12 +1,8 @@
+import { Triagem } from "../../../generated/prisma";
 import { CreateServiceQueueInput } from "../useCases/createServiceQueue/CreateServiceQueueDtos";
-import { ListServiceQueueResponse } from "../useCases/listServiceQueue/ListServiceQueueDtos";
 
 export interface IServiceQueueRepository {
-  create(dto: CreateServiceQueueInput): Promise<any | null>;
-
-  listAll(): Promise<ListServiceQueueResponse[]>;
-
-  findByIdWithRelations(id: string): Promise<any>;
-
+  create(dto: Triagem): Promise<any | null>;
+  listAll(): Promise<Triagem[] | null>;
+  findById(id: string): Promise<Triagem | null>;
 }
- 

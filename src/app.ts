@@ -7,8 +7,6 @@ import { PrismaClient } from "./generated/prisma";
 import { makeUserDataRoutes } from "./factories/routes/userDataRouterFactory";
 import { makeServiceQueueRoutes } from "./factories/routes/serviceQueueRouterFactory";
 
-
-
 dotenvConfig();
 
 export class App {
@@ -43,12 +41,13 @@ export class App {
       App.prisma = new PrismaClient();
       // Optionally test the connection
       await App.prisma.$connect();
-     }
+      console.log(`[app] > database connected using Prisma`);
+    }
   }
 
-  public async start(server: import("http").Server) {
+  public async start() {
     const port: number = Number(configs.PORT) || 3000;
-    server.listen(port, "0.0.0.0", () => {
+    this.app.listen(port, "0.0.0.0", () => {
       console.log(`[app] > listening on port ${port}`);
     });
   }

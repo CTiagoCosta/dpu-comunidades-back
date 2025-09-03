@@ -1,27 +1,27 @@
+import { TipoServicoAtendimento } from "@prisma/client";
 import prismaClient from "../../../prisma";
 import { ComplementaryDataMapper } from "../mappers/ComplementaryDataMapper";
 import {
   ListTypeofAttendanceServiceInput,
   ListTypeofAttendanceServiceResponse,
 } from "../useCase/listTypeOfAttendanceService/ListTypeOfAttendanceServiceDtos";
+import { BaseRepository } from "../../shared/repositories/BaseRepository";
 
-export class TypeOfAttendanceServicesRepository {
-  private prisma = prismaClient;
-  private mapper = ComplementaryDataMapper;
-
-  constructor() {
-    this.prisma = prismaClient;
-    this.mapper = ComplementaryDataMapper;
+export class TypeOfAttendanceServicesRepository extends BaseRepository<TipoServicoAtendimento> {
+  protected get model() {
+    return this.prisma.tipoServicoAtendimento;
   }
-
   async listTypeofAttendenceService(
     dto: ListTypeofAttendanceServiceInput
   ): Promise<ListTypeofAttendanceServiceResponse[] | null> {
-    const result = await this.prisma.tipoServicoAtendimento.findMany({
+    const result = await this.model.findMany({
       where: {
-        atendimentoId: dto.attendenceId,
+        tipoAtendimentoId: dto.attendenceId,
       },
     });
-    return this.mapper.toListTypeofAttendanceServiceResponse(result) ?? null;
+    return (
+      ComplementaryDataMapper.toListTypeofAttendanceServiceResponse(result) ??
+      null
+    );
   }
 }

@@ -1,6 +1,7 @@
 import { NotFoundError } from "../../../../infra/errors/NotFoundError";
 import { IUserRepository } from "../../interfaces/IUserRepository";
 import { UserMapper } from "../../mappers/UserMapper";
+import { UserWithRole } from "../../type/User";
 import { UserOutput } from "../createUser/CreateUserDtos";
 import { GetUserDto } from "./GetUserDto";
 

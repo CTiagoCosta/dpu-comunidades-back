@@ -1,18 +1,15 @@
-import prismaClient from "../../../prisma";
+import { EstadoCivil } from "@prisma/client";
 import { ComplementaryDataMapper } from "../mappers/ComplementaryDataMapper";
 import { ListPriorityTypeResponse } from "../useCase/listPriorityType/ListPriorityTypeDtos";
+import { BaseRepository } from "../../shared/repositories/BaseRepository";
 
-export class MaritalStatusRepository {
-  private prisma = prismaClient;
-  private mapper = ComplementaryDataMapper;
-
-  constructor() {
-    this.prisma = prismaClient;
-    this.mapper = ComplementaryDataMapper;
+export class MaritalStatusRepository extends BaseRepository<EstadoCivil> {
+  protected get model() {
+    return this.prisma.estadoCivil;
   }
 
   async listAll(): Promise<ListPriorityTypeResponse[] | null> {
-    const result = await this.prisma.estadoCivil.findMany();
-    return this.mapper.toListMaritalStatusResponse(result) ?? null;
+    const result = await this.model.findMany();
+    return ComplementaryDataMapper.toListMaritalStatusResponse(result) ?? null;
   }
 }

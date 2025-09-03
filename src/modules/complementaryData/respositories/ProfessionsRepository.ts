@@ -1,18 +1,15 @@
-import prismaClient from "../../../prisma";
+import { Profissao } from "@prisma/client";
 import { ComplementaryDataMapper } from "../mappers/ComplementaryDataMapper";
 import { ListProfessionsResponse } from "../useCase/listProfessions/ListProfessionsDtos";
+import { BaseRepository } from "../../shared/repositories/BaseRepository";
 
-export class ProfessionsRepository {
-  private prisma = prismaClient;
-  private mapper = ComplementaryDataMapper;
-
-  constructor() {
-    this.prisma = prismaClient;
-    this.mapper = ComplementaryDataMapper;
+export class ProfessionsRepository extends BaseRepository<Profissao> {
+  protected get model() {
+    return this.prisma.profissao;
   }
 
   async listAll(): Promise<ListProfessionsResponse[] | null> {
-    const result = await this.prisma.profissao.findMany();
-    return this.mapper.toListProfesionsResponse(result) ?? null;
+    const result = await this.model.findMany();
+    return ComplementaryDataMapper.toListProfesionsResponse(result) ?? null;
   }
 }

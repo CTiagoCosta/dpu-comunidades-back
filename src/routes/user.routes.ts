@@ -7,6 +7,7 @@ import { CreateUserController } from "../modules/user/useCases/createUser/Create
 import { LoginController } from "../modules/auth/useCases/login/LoginController";
 import { GetUserController } from "../modules/user/useCases/getUser/GetUserController";
 import { authenticate } from "../modules/auth/middleware/authMiddleware";
+import { GetRolesController } from "../modules/user/useCases/getRoles/GetRolesController";
 
 export class UserRoutes implements Route {
   private router: Router;
@@ -14,7 +15,8 @@ export class UserRoutes implements Route {
   constructor(
     private createUserController: CreateUserController,
     private loginController: LoginController,
-    private getUserController: GetUserController
+    private getUserController: GetUserController,
+    private getRolesController: GetRolesController
   ) {
     this.router = Router();
   }
@@ -23,6 +25,7 @@ export class UserRoutes implements Route {
     this.router.post("/create", adaptRoute(this.createUserController));
     this.router.post("/login", adaptRoute(this.loginController));
     this.router.get("/", authenticate, adaptRoute(this.getUserController));
+    this.router.get("/roles", adaptRoute(this.getRolesController));
     return this.router;
   }
 }

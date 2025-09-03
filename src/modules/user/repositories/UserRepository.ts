@@ -1,50 +1,53 @@
-import { PrismaClient, User } from "../../../generated/prisma";
+import { User } from "@prisma/client";
+import { BaseRepository } from "../../shared/repositories/BaseRepository";
 import { IUserRepository } from "../interfaces/IUserRepository";
-import { UserMapper } from "../mappers/UserMapper";
-import {
-  CreateUserInput,
-  UserOutput,
-} from "../useCases/createUser/CreateUserDtos";
+import { UserWithRole } from "../type/User";
 
-export class UserRepository implements IUserRepository {
-  private prisma: PrismaClient;
-
-  constructor() {
-    this.prisma = new PrismaClient();
+export class UserRepository
+  extends BaseRepository<User>
+  implements IUserRepository
+{
+  protected get model() {
+    return this.prisma.user;
   }
 
-  async createUser(dto: User): Promise<UserOutput | null> {
-    const result = await this.prisma.user.create({
+  async createUser(dto: User): Promise<UserWithRole | null> {
+    const result = await this.model.create({
       data: {
         nome: dto.nome,
         email: dto.email,
         senha: dto.senha,
-        role: dto.role,
+        roleId: dto.roleId,
         aprovado: dto.aprovado,
         dataCadastro: new Date(),
       },
+      include: {
+        role: true,
+      },
     });
 
-    return UserMapper.toDomain(result) ?? null;
+    return result ?? null;
   }
 
   async emailExists(email: string): Promise<boolean> {
-    const user = await this.prisma.user.findUnique({
+    const user = await this.model.findUnique({
       where: { email },
     });
     return !!user;
   }
 
-  async findByEmail(email: string): Promise<User | null> {
-    const user = await this.prisma.user.findUnique({
+  async findByEmail(email: string): Promise<UserWithRole | null> {
+    const user = await this.model.findUnique({
       where: { email },
+      include: { role: true },
     });
     return user ?? null;
   }
 
-  async findById(id: string): Promise<User | null> {
-    const user = await this.prisma.user.findUnique({
+  async findById(id: string): Promise<UserWithRole | null> {
+    const user = await this.model.findUnique({
       where: { id },
+      include: { role: true },
     });
     return user ?? null;
   }

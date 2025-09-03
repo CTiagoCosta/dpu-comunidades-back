@@ -1,18 +1,15 @@
-import prismaClient from "../../../prisma";
+import { TipoDomicilio } from "@prisma/client";
+import { BaseRepository } from "../../shared/repositories/BaseRepository";
 import { ComplementaryDataMapper } from "../mappers/ComplementaryDataMapper";
 import { ListTypeofServiceResponse } from "../useCase/listTypeOfService/ListTypeOfServiceDtos";
 
-export class TypeOfResidenceRepository {
-  private prisma = prismaClient;
-  private mapper = ComplementaryDataMapper;
-
-  constructor() {
-    this.prisma = prismaClient;
-    this.mapper = ComplementaryDataMapper;
+export class TypeOfResidenceRepository extends BaseRepository<TipoDomicilio> {
+  protected get model() {
+    return this.prisma.tipoDomicilio;
   }
 
   async listAll(): Promise<ListTypeofServiceResponse[] | null> {
-    const result = await this.prisma.tipoDomicilio.findMany();
-    return this.mapper.toListTypeofServiceResponse(result) ?? null;
+    const result = await this.model.findMany();
+    return ComplementaryDataMapper.toListTypeofServiceResponse(result) ?? null;
   }
 }

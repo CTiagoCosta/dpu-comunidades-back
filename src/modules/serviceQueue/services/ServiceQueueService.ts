@@ -6,6 +6,6 @@ export class ServiceQueueService {
         this.repository = new ServiceQueueRepository();
     }
   async getByIdWithRelations(id: string) {
-    return this.repository.findByIdWithRelations(id);
+    return this.repository.findById(id);
   }
 }

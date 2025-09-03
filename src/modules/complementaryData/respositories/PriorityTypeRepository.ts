@@ -1,28 +1,25 @@
-import prismaClient from "../../../prisma";
+import { TipoPrioridade } from "@prisma/client";
 import { ComplementaryDataMapper } from "../mappers/ComplementaryDataMapper";
 import { ListPriorityTypeResponse } from "../useCase/listPriorityType/ListPriorityTypeDtos";
+import { BaseRepository } from "../../shared/repositories/BaseRepository";
 
-export class PriorityTypeRepository {
-  private prisma = prismaClient;
-  private mapper = ComplementaryDataMapper;
-
-  constructor() {
-    this.prisma = prismaClient;
-    this.mapper = ComplementaryDataMapper;
+export class PriorityTypeRepository extends BaseRepository<TipoPrioridade> {
+  protected get model() {
+    return this.prisma.tipoPrioridade;
   }
 
   async listTypeofPriority(): Promise<ListPriorityTypeResponse[] | null> {
-    const result = await this.prisma.tipoPrioridade.findMany();
-    return this.mapper.toListTypeofServiceResponse(result) ?? null;
+    const result = await this.model.findMany();
+    return ComplementaryDataMapper.toListTypeofServiceResponse(result) ?? null;
   }
 
   async findById(id: number): Promise<ListPriorityTypeResponse | null> {
-    const result = await this.prisma.tipoPrioridade.findFirst({
+    const result = await this.model.findFirst({
       where: {
         id: id,
       },
     });
-    const mapper = this.mapper.toListTypeofServiceResponse([result]);
+    const mapper = ComplementaryDataMapper.toListTypeofServiceResponse([result]);
     return mapper[0] ?? null;
   }
 }

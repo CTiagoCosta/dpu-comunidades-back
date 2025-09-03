@@ -1,3 +1,4 @@
+import { Triagem } from "../../../../generated/prisma";
 import { NotFoundError } from "../../../../infra/errors/NotFoundError";
 import { IServiceQueueRepository } from "../../interfaces/IServiceQueueRepository";
 import {
@@ -8,10 +9,8 @@ import {
 export class GetServiceQueueByIdUseCase {
   constructor(private repository: IServiceQueueRepository) {}
 
-  async handler(
-    dto: GetServiceQueueByIdInput
-  ): Promise<GetServiceQueueByIdResponse | null> {
-    const fila = await this.repository.findByIdWithRelations(dto.queueId);
+  async handler(dto: GetServiceQueueByIdInput): Promise<Triagem | null> {
+    const fila = await this.repository.findById(dto.queueId);
     if (!fila) {
       throw new NotFoundError("Triagem não encontrada");
     }

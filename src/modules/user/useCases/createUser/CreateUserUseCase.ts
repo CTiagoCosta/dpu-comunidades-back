@@ -1,14 +1,17 @@
 import { ConflictError } from "../../../../infra/errors/ConflictError";
 import { InvalidValueError } from "../../../../infra/errors/InvalidValueError";
 import { IAuthService } from "../../../auth/interfaces/IAuthService";
+import { IRoleRepository } from "../../interfaces/IRoleRepository";
 import { IUserRepository } from "../../interfaces/IUserRepository";
 import { UserMapper } from "../../mappers/UserMapper";
+import { UserWithRole } from "../../type/User";
 import { CreateUserInput, UserOutput } from "./CreateUserDtos";
 
 export class CreateUserUseCase {
   constructor(
     private userRepository: IUserRepository,
-    private authService: IAuthService
+    private authService: IAuthService,
+    private roleRepository: IRoleRepository
   ) {}
 
   public async handler(
@@ -23,13 +26,13 @@ export class CreateUserUseCase {
 
     const userCreated = await this.userRepository.createUser(user);
 
-    return userCreated;
+    return UserMapper.toDomain(userCreated);
   }
 
   private async validate(createUserDto: CreateUserInput): Promise<void> {
-    await this.validatePasswords(createUserDto);
-
     await this.validateUserExists(createUserDto);
+    await this.validateRoleExists(createUserDto.roleId);
+    await this.validatePasswords(createUserDto);
   }
 
   private async validateUserExists(
@@ -43,7 +46,9 @@ export class CreateUserUseCase {
     }
   }
 
-  private async validatePasswords(createUserDto: CreateUserInput): Promise<void> {
+  private async validatePasswords(
+    createUserDto: CreateUserInput
+  ): Promise<void> {
     const isValidatePassword = this.authService.validatePassword(
       createUserDto.password
     );
@@ -53,6 +58,13 @@ export class CreateUserUseCase {
         "password",
         "Senha deve conter no mínimo uma letra maiúscula, um caracter especial, um numero e no mínimo 8 caracteres!"
       );
+    }
+  }
+
+  private async validateRoleExists(roleId: number): Promise<void> {
+    const role = await this.roleRepository.findById(roleId);
+    if (!role) {
+      throw new InvalidValueError("roleId", "O ID do papel não existe.");
     }
   }
 }

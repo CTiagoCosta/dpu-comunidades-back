@@ -1,3 +1,4 @@
+import { InvalidCredentials } from "../../../../infra/errors/InvalidCredentials";
 import { InvalidValueError } from "../../../../infra/errors/InvalidValueError";
 import { IUserRepository } from "../../../user/interfaces/IUserRepository";
 import { IAuthService } from "../../interfaces/IAuthService";
@@ -12,7 +13,7 @@ export class LoginUseCase {
   public async handler(dto: LoginInput): Promise<LoginOutput | null> {
     const userFound = await this.userRepository.findByEmail(dto.email);
     if (!userFound) {
-      throw new InvalidValueError("email", "Email não encontrado.");
+      throw new InvalidCredentials("email", "Email não encontrado.");
     }
 
     const hashedPassword = await this.authService.comparePassword(
@@ -21,7 +22,14 @@ export class LoginUseCase {
     );
 
     if (!hashedPassword) {
-      throw new InvalidValueError("password", "Senha inválida.");
+      throw new InvalidCredentials("password", "Senha inválida.");
+    }
+
+    if (userFound.aprovado === false) {
+      throw new InvalidCredentials(
+        "user",
+        "Seu cadastro está pendente de aprovação. Por favor, aguarde a aprovação para acessar o sistema."
+      );
     }
 
     return this.authService.generateToken(userFound.id);

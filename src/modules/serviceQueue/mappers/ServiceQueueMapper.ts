@@ -1,26 +1,16 @@
-import { FilaAtendimento } from "../../../generated/prisma";
-import {
-  QueueStatus,
-} from "../useCases/createServiceQueue/CreateServiceQueueDtos";
+import { Triagem } from "../../../generated/prisma";
 
 export abstract class ServiceQueueMapper {
-  public static toDatabase(dto: any): FilaAtendimento {
+  public static toDatabase(dto: any): Triagem {
     return {
       id: "",
-      nomeCompleto: dto.fullName,
-      nomeSocial: dto.socialName,
-      cpf: dto.cpf,
-      telefone: dto.telephone,
-      status: dto.status as QueueStatus,
+      assistidoId: dto.assistedId,
+      operadorTriagemId: dto.operatorId,
+      tipoAtendimentoId: dto.attendanceTypeId,
+      tipoPrioridadeId: dto.priorityTypeId,
+      dataEntrada: new Date(),
       isPrioridade: dto.isPriority,
-      dataEntrada: dto.createdAt,
-      dataInicio: null,
-      dataFim: null,
-      migrante: dto.migrante,
-      operadorTriagemId: dto.screeningOperatorId,
-      operadorAtendimentoId: null,
-      tipoAtendimentoId: dto.serviceTypeId,
-      tipoPrioridadeId: dto.prioritaryTypeId ?? null,
+      status: "AGUARDANDO",
     };
   }
 }

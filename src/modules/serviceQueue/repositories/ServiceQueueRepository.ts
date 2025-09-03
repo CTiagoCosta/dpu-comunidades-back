@@ -1,60 +1,50 @@
-import prismaClient from "../../../prisma";
 import { IServiceQueueRepository } from "../interfaces/IServiceQueueRepository";
-import { CreateServiceQueueInput } from "../useCases/createServiceQueue/CreateServiceQueueDtos";
-import { ListServiceQueueResponse } from "../useCases/listServiceQueue/ListServiceQueueDtos";
-import { App } from "../../../app";
+import { Triagem } from "../../../generated/prisma";
+import { BaseRepository } from "../../shared/repositories/BaseRepository";
 
-export class ServiceQueueRepository implements IServiceQueueRepository {
-  private prisma = prismaClient;
-
-  constructor() {
-    this.prisma = prismaClient;
+export class ServiceQueueRepository
+  extends BaseRepository<Triagem>
+  implements IServiceQueueRepository
+{
+  protected get model() {
+    return this.prisma.triagem;
   }
 
-  async create(dto: CreateServiceQueueInput): Promise<any | null> {
+  async create(dto: Triagem): Promise<any | null> {
     const data: any = {
-      nomeCompleto: dto.fullName,
-      nomeSocial: dto.socialName,
-      cpf: dto.cpf,
-      telefone: dto.telephone,
       status: "AGUARDANDO",
-      isPrioridade: dto.isPriority,
+      isPrioridade: dto.isPrioridade,
       dataEntrada: new Date(),
-      dataInicio: null,
-      dataFim: null,
-      migrante: dto.migrante,
       operadorTriagem: {
-        connect: { id: dto.screeningOperatorId },
+        connect: { id: dto.operadorTriagemId },
       },
-      tipoAtendimento: { connect: { id: dto.serviceTypeId } },
+      tipoAtendimento: { connect: { id: dto.tipoAtendimentoId } },
+      assistido: { connect: { id: dto.assistidoId } },
     };
 
-    if (dto.prioritaryTypeId) {
-      data.tipoPrioridade = { connect: { id: dto.prioritaryTypeId } };
+    if (dto.tipoPrioridadeId) {
+      data.tipoPrioridade = { connect: { id: dto.tipoPrioridadeId } };
     }
 
-    const result = await this.prisma.filaAtendimento.create({ data });
+    const result = await this.model.create({ data });
     return result ?? null;
   }
 
-  async listAll(): Promise<ListServiceQueueResponse[]> {
-    const filas = await this.prisma.filaAtendimento.findMany({
-      orderBy: { dataEntrada: "asc" } 
+  async listAll(): Promise<Triagem[] | null> {
+    const filas = await this.model.findMany({
+      orderBy: { dataEntrada: "asc" },
     });
-    return filas as ListServiceQueueResponse[];
+    return filas as Triagem[] | null;
   }
 
-async findByIdWithRelations(id: string) {
-  return App.prisma.filaAtendimento.findUnique({
-    where: { id },
-    include: {
-      operadorTriagem: true,
-      operadorAtendimento: true,
-      tipoAtendimento: true,
-      tipoPrioridade: true,
-      atendimento: true
-    }
-  });
-}
-
+  async findById(id: string) {
+    return this.model.findUnique({
+      where: { id },
+      include: {
+        operadorTriagem: true,
+        tipoAtendimento: true,
+        tipoPrioridade: true,
+      },
+    });
+  }
 }

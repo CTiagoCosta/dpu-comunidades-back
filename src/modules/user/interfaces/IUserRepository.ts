@@ -1,12 +1,10 @@
 import { User } from "../../../generated/prisma";
-import {
-  CreateUserInput,
-  UserOutput,
-} from "../useCases/createUser/CreateUserDtos";
+import { UserWithRole } from "../type/User";
+import { UserOutput } from "../useCases/createUser/CreateUserDtos";
 
 export interface IUserRepository {
-  createUser(dto: User): Promise<UserOutput | null>;
+  createUser(dto: User): Promise<UserWithRole | null>;
   emailExists(email: string): Promise<boolean>;
-  findByEmail(email: string): Promise<User | null>;
-  findById(id: string): Promise<User | null>;
+  findByEmail(email: string): Promise<UserWithRole | null>;
+  findById(id: string): Promise<UserWithRole | null>;
 }
