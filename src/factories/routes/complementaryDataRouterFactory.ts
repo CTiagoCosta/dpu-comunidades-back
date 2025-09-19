@@ -3,10 +3,12 @@ import { makeListComplementaryDataController } from "../controllers/listCompleme
 import { makeListMaritalStatusController } from "../controllers/listMaritalStatusControllerFactory";
 import { makeListTypeOfPrioritaryController } from "../controllers/listPrioritaryTypeControllerFactory";
 import { makeListProfessionsController } from "../controllers/listProfessionsControllerFactory";
+import { makeListTypeOfReferalOrganizationController } from "../controllers/listTypeOfReferalOrganizationControllerFactory";
 import { makeListTypeOfAttendanceController } from "../controllers/listTypeOfAttendanceControllerFactory";
 import { makeListTypeOfRequestForLegalAssistanceController } from "../controllers/listTypeOfRequestForLegalAssistance";
 import { makeListTypeOfResidenceController } from "../controllers/listTypeOfResidenceControllerFactory";
 import { makeListVulnerabilityController } from "../controllers/listVulnerabilityControllerFactory";
+import { makeListReferalOrganizationController } from "../controllers/listReferalOrganizationControllerFactory";
 
 export const makeComplementaryDataRoutes = (): ComplementaryRoutes => {
   return new ComplementaryRoutes(
@@ -17,6 +19,8 @@ export const makeComplementaryDataRoutes = (): ComplementaryRoutes => {
     makeListProfessionsController(),
     makeListTypeOfResidenceController(),
     makeListVulnerabilityController(),
-    makeListTypeOfRequestForLegalAssistanceController()
+    makeListTypeOfRequestForLegalAssistanceController(),
+    makeListTypeOfReferalOrganizationController(),
+    makeListReferalOrganizationController()
   );
 };

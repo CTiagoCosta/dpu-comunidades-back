@@ -112,6 +112,189 @@ async function main() {
       ],
       skipDuplicates: true,
     });
+  await prisma.tipoOrgaoEncaminhamento.createMany({
+    data: [
+      {
+        id: 1,
+        titulo: "Outros órgãos",
+        descricao: "Encaminhamentos para órgãos públicos e instituições",
+      },
+      {
+        id: 2,
+        titulo: "Extrajudiciais",
+        descricao: "Serviços de orientação e educação",
+      },
+      {
+        id: 3,
+        titulo: "Emissão de Documentos",
+        descricao: "Auxílio na obtenção de documentos",
+      },
+    ],
+    skipDuplicates: true,
+  });
+  await prisma.orgaoEncaminhamento.createMany({
+    data: [
+      {
+        nome: "Defensoria do estado de MS",
+        tipoOrgaoEncaminhamentoId: 1,
+      },
+      {
+        nome: "Ministério do Trabalho e MPT - Trabalho Análogo à Escravidão Demanda Identificada",
+        tipoOrgaoEncaminhamentoId: 1,
+      },
+      {
+        nome: "Justiça do Trabalho",
+        tipoOrgaoEncaminhamentoId: 1,
+      },
+      {
+        nome: "INSS",
+        tipoOrgaoEncaminhamentoId: 1,
+      },
+      {
+        nome: "FUNAI",
+        tipoOrgaoEncaminhamentoId: 1,
+      },
+      {
+        nome: "Emissão de RG",
+        tipoOrgaoEncaminhamentoId: 1,
+      },
+      {
+        nome: "Receita Federal",
+        tipoOrgaoEncaminhamentoId: 1,
+      },
+      {
+        nome: "Ministério Público do Trabalho",
+        tipoOrgaoEncaminhamentoId: 1,
+      },
+      {
+        nome: "Direitos Humanos - Demanda identificada em violação de direitos humanos",
+        tipoOrgaoEncaminhamentoId: 1,
+      },
+      {
+        nome: "Migrante - Demanda identificada não objeto do projeto",
+        tipoOrgaoEncaminhamentoId: 1,
+      },
+      {
+        nome: "Ministério Público Estadual/Federal",
+        tipoOrgaoEncaminhamentoId: 1,
+      },
+      {
+        nome: "INCRA",
+        tipoOrgaoEncaminhamentoId: 1,
+      },
+      {
+        nome: "SPU",
+        tipoOrgaoEncaminhamentoId: 1,
+      },
+      {
+        nome: "Cartorio de Registro Civil",
+        tipoOrgaoEncaminhamentoId: 1,
+      },
+      {
+        nome: "Atermação Justiça do Trabalho",
+        tipoOrgaoEncaminhamentoId: 1,
+      },
+      {
+        nome: "Atermação Justiça Federal",
+        tipoOrgaoEncaminhamentoId: 1,
+      },
+
+      {
+        nome: "Educação financeira/previdenciária",
+        tipoOrgaoEncaminhamentoId: 2,
+      },
+      {
+        nome: "Lei Maria da Penha/Direitos das Mulheres",
+        tipoOrgaoEncaminhamentoId: 2,
+      },
+      {
+        nome: "Abono salarial",
+        tipoOrgaoEncaminhamentoId: 2,
+      },
+      {
+        nome: "Cuidar de quem cuida",
+        tipoOrgaoEncaminhamentoId: 2,
+      },
+      {
+        nome: "Taus e outros da SPU",
+        tipoOrgaoEncaminhamentoId: 2,
+      },
+      {
+        nome: "Vaga escolar",
+        tipoOrgaoEncaminhamentoId: 2,
+      },
+      {
+        nome: "Orientação bancária",
+        tipoOrgaoEncaminhamentoId: 2,
+      },
+      {
+        nome: "Educação",
+        tipoOrgaoEncaminhamentoId: 2,
+      },
+      {
+        nome: "Mais social",
+        tipoOrgaoEncaminhamentoId: 2,
+      },
+      {
+        nome: "Energia social: Conta de luz zero",
+        tipoOrgaoEncaminhamentoId: 2,
+      },
+      {
+        nome: "INCRA/Titulação de imóvel",
+        tipoOrgaoEncaminhamentoId: 2,
+      },
+      {
+        nome: "Cancelamento de consignado/ilegal",
+        tipoOrgaoEncaminhamentoId: 2,
+      },
+
+      {
+        nome: "RG",
+        tipoOrgaoEncaminhamentoId: 3,
+      },
+      {
+        nome: "Certificado de alistamento militar",
+        tipoOrgaoEncaminhamentoId: 3,
+      },
+      {
+        nome: "Certidão de nascimento/casamento",
+        tipoOrgaoEncaminhamentoId: 3,
+      },
+      {
+        nome: "Conta corrente",
+        tipoOrgaoEncaminhamentoId: 3,
+      },
+      {
+        nome: "Carteira de pescador",
+        tipoOrgaoEncaminhamentoId: 3,
+      },
+      {
+        nome: "Retificação da certidão de nascimento - Pessoa transgênero",
+        tipoOrgaoEncaminhamentoId: 3,
+      },
+      {
+        nome: "Título de eleitor",
+        tipoOrgaoEncaminhamentoId: 3,
+      },
+      {
+        nome: "CPF/CNPJ",
+        tipoOrgaoEncaminhamentoId: 3,
+      },
+      {
+        nome: "CAF/INSCRIÇÃO ESTADUAL/CCIR",
+        tipoOrgaoEncaminhamentoId: 3,
+      },
+      {
+        nome: "Cad-Único",
+        tipoOrgaoEncaminhamentoId: 3,
+      },
+      {
+        nome: "Retificação da certidão de nascimento - INDÍGENA",
+        tipoOrgaoEncaminhamentoId: 3,
+      },
+    ],
+    skipDuplicates: true,
+  });
 }
 
 main()

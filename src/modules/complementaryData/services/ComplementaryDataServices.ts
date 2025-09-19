@@ -10,6 +10,10 @@ import { TypeOfResidenceRepository } from "../respositories/TypeOfResidenceRepos
 import { TypeOfVulnerabilityRepository } from "../respositories/TypeOfVulnerabilityRepository";
 import { ListRequestForLegalAssistanceResponse } from "../useCase/listRequestForLegalAssistance/ListRequestForLegalAssistanceDtos";
 import { TypeOfRequestForLegalAssistance } from "../respositories/TypeOfRequestForLegalAssistance";
+import { TypeOfReferalOrganizationRepository } from "../respositories/TypeOfReferalOrganizationRepository";
+import { ReferalOrganizationRepository } from "../respositories/ReferalOrganizationRepository";
+import { ListReferalOrganizationResponse } from "../useCase/listReferalOrganization/ListReferalOrganizationDtos";
+import { ListTypeOfReferalOrganizationResponse } from "../useCase/listTypeOfReferalOrganization/ListTypeOfReferalOrganizationDtos";
 
 export class ComplementaryDataServices implements IComplementaryDataServices {
   private typeOfServiceRepository: TypeOfServiceRepository;
@@ -20,6 +24,8 @@ export class ComplementaryDataServices implements IComplementaryDataServices {
   private typeOfResidenceRepository: TypeOfResidenceRepository;
   private typeOfVulnerabilityRepository: TypeOfVulnerabilityRepository;
   private typeOfRequestForLegalAssistance: TypeOfRequestForLegalAssistance;
+  private typeOfReferalOrganizationRepository: TypeOfReferalOrganizationRepository;
+  private referalOrganizationRepository: ReferalOrganizationRepository;
   constructor() {
     this.typeOfServiceRepository = new TypeOfServiceRepository();
     this.typeOfAttendanceServiceRepository =
@@ -29,7 +35,11 @@ export class ComplementaryDataServices implements IComplementaryDataServices {
     this.professionsRepository = new ProfessionsRepository();
     this.typeOfResidenceRepository = new TypeOfResidenceRepository();
     this.typeOfVulnerabilityRepository = new TypeOfVulnerabilityRepository();
-    this.typeOfRequestForLegalAssistance = new TypeOfRequestForLegalAssistance();
+    this.typeOfRequestForLegalAssistance =
+      new TypeOfRequestForLegalAssistance();
+    this.typeOfReferalOrganizationRepository =
+      new TypeOfReferalOrganizationRepository();
+    this.referalOrganizationRepository = new ReferalOrganizationRepository();
   }
   async listTypeofService(): Promise<ListTypeofServiceResponse[] | null> {
     return await this.typeOfServiceRepository.listTypeofService();
@@ -63,8 +73,21 @@ export class ComplementaryDataServices implements IComplementaryDataServices {
     return await this.typeOfVulnerabilityRepository.listAll();
   }
 
-  async listRequestForLegalAssistance(): Promise<ListRequestForLegalAssistanceResponse[] | null> {
+  async listRequestForLegalAssistance(): Promise<
+    ListRequestForLegalAssistanceResponse[] | null
+  > {
     return await this.typeOfRequestForLegalAssistance.listAll();
   }
 
+  async listTypeofReferalOrganization(): Promise<
+    ListTypeOfReferalOrganizationResponse[] | null
+  > {
+    return await this.typeOfReferalOrganizationRepository.listAll();
+  }
+
+  async listReferalOrganization(dto: {
+    typeReferalOrganization: number;
+  }): Promise<ListReferalOrganizationResponse[] | null> {
+    return await this.referalOrganizationRepository.listByType(dto);
+  }
 }

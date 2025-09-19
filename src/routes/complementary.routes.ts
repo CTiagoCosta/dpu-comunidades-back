@@ -9,6 +9,8 @@ import { ListProfessionsController } from "../modules/complementaryData/useCase/
 import { ListTypeOfResidenceController } from "../modules/complementaryData/useCase/listTypeOfResidence/ListTypeOfResidenceController";
 import { ListVulnerabilityTypeController } from "../modules/complementaryData/useCase/listVulnerabilityType/ListVulnerabilityTypeController";
 import { ListRequestForLegalAssistanceController } from "../modules/complementaryData/useCase/listRequestForLegalAssistance/ListRequestForLegalAssistanceController";
+import { ListTypeOfReferalOrganizationController } from "../modules/complementaryData/useCase/listTypeOfReferalOrganization/ListTypeOfReferalOrganizationController";
+import { ListReferalOrganizationController } from "../modules/complementaryData/useCase/listReferalOrganization/ListReferalOrganizationController";
 
 export class ComplementaryRoutes implements Route {
   private router: Router;
@@ -21,7 +23,9 @@ export class ComplementaryRoutes implements Route {
     private listProfessionsController: ListProfessionsController,
     private listTypeOfResidenceController: ListTypeOfResidenceController,
     private listVulnerabilityTypeController: ListVulnerabilityTypeController,
-    private listRequestForLegalAssistanceController: ListRequestForLegalAssistanceController
+    private listRequestForLegalAssistanceController: ListRequestForLegalAssistanceController,
+    private typeOfReferalOrganizationController: ListTypeOfReferalOrganizationController,
+    private listReferalOrganizationController: ListReferalOrganizationController
   ) {
     this.router = Router();
   }
@@ -57,6 +61,15 @@ export class ComplementaryRoutes implements Route {
     this.router.get(
       "/request-for-legal-assistance",
       adaptRoute(this.listRequestForLegalAssistanceController)
+    );
+    this.router.get(
+      "/type-of-referal-organization",
+      adaptRoute(this.typeOfReferalOrganizationController)
+    );
+
+    this.router.get(
+      "/referal-organization/:typeOfReferalId",
+      adaptRoute(this.listReferalOrganizationController)
     );
     return this.router;
   }
