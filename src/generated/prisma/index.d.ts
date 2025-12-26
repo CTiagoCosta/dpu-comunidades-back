@@ -44,6 +44,21 @@ export type FormularioPreenchido = $Result.DefaultSelection<Prisma.$FormularioPr
  */
 export type Documento = $Result.DefaultSelection<Prisma.$DocumentoPayload>
 /**
+ * Model RetornoDemandaJudicial
+ * 
+ */
+export type RetornoDemandaJudicial = $Result.DefaultSelection<Prisma.$RetornoDemandaJudicialPayload>
+/**
+ * Model OrientacaoJuridica
+ * 
+ */
+export type OrientacaoJuridica = $Result.DefaultSelection<Prisma.$OrientacaoJuridicaPayload>
+/**
+ * Model EncaminhamentoOutrosOrgaos
+ * 
+ */
+export type EncaminhamentoOutrosOrgaos = $Result.DefaultSelection<Prisma.$EncaminhamentoOutrosOrgaosPayload>
+/**
  * Model TipoAtendimento
  * 
  */
@@ -89,6 +104,11 @@ export type MembroFamiliar = $Result.DefaultSelection<Prisma.$MembroFamiliarPayl
  */
 export type TipoVulnerabilidade = $Result.DefaultSelection<Prisma.$TipoVulnerabilidadePayload>
 /**
+ * Model TipoPedidoDePrevidenciaJudiciaria
+ * 
+ */
+export type TipoPedidoDePrevidenciaJudiciaria = $Result.DefaultSelection<Prisma.$TipoPedidoDePrevidenciaJudiciariaPayload>
+/**
  * Model TipoDemandaPrevidenciaria
  * 
  */
@@ -98,6 +118,21 @@ export type TipoDemandaPrevidenciaria = $Result.DefaultSelection<Prisma.$TipoDem
  * 
  */
 export type CompetenciaJudicial = $Result.DefaultSelection<Prisma.$CompetenciaJudicialPayload>
+/**
+ * Model TipoOrgaoEncaminhamento
+ * 
+ */
+export type TipoOrgaoEncaminhamento = $Result.DefaultSelection<Prisma.$TipoOrgaoEncaminhamentoPayload>
+/**
+ * Model OrgaoEncaminhamento
+ * 
+ */
+export type OrgaoEncaminhamento = $Result.DefaultSelection<Prisma.$OrgaoEncaminhamentoPayload>
+/**
+ * Model LogFilaAtendimento
+ * 
+ */
+export type LogFilaAtendimento = $Result.DefaultSelection<Prisma.$LogFilaAtendimentoPayload>
 
 /**
  * Enums
@@ -150,7 +185,10 @@ export const TipoFormulario: {
   ANALISE_RENDA: 'ANALISE_RENDA',
   VIABILIDADE_DEMANDA: 'VIABILIDADE_DEMANDA',
   DOCUMENTOS_OBRIGATORIOS: 'DOCUMENTOS_OBRIGATORIOS',
-  JUSTIFICATIVA_ARQUIVAMENTO: 'JUSTIFICATIVA_ARQUIVAMENTO'
+  JUSTIFICATIVA_ARQUIVAMENTO: 'JUSTIFICATIVA_ARQUIVAMENTO',
+  RETORNO_DEMANDA_JUDICIAL: 'RETORNO_DEMANDA_JUDICIAL',
+  ORIENTACAO_JURIDICA: 'ORIENTACAO_JURIDICA',
+  ENCAMINHAMENTO_OUTROS_ORGAOS: 'ENCAMINHAMENTO_OUTROS_ORGAOS'
 };
 
 export type TipoFormulario = (typeof TipoFormulario)[keyof typeof TipoFormulario]
@@ -383,6 +421,36 @@ export class PrismaClient<
   get documento(): Prisma.DocumentoDelegate<ExtArgs, ClientOptions>;
 
   /**
+   * `prisma.retornoDemandaJudicial`: Exposes CRUD operations for the **RetornoDemandaJudicial** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more RetornoDemandaJudicials
+    * const retornoDemandaJudicials = await prisma.retornoDemandaJudicial.findMany()
+    * ```
+    */
+  get retornoDemandaJudicial(): Prisma.RetornoDemandaJudicialDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.orientacaoJuridica`: Exposes CRUD operations for the **OrientacaoJuridica** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more OrientacaoJuridicas
+    * const orientacaoJuridicas = await prisma.orientacaoJuridica.findMany()
+    * ```
+    */
+  get orientacaoJuridica(): Prisma.OrientacaoJuridicaDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.encaminhamentoOutrosOrgaos`: Exposes CRUD operations for the **EncaminhamentoOutrosOrgaos** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more EncaminhamentoOutrosOrgaos
+    * const encaminhamentoOutrosOrgaos = await prisma.encaminhamentoOutrosOrgaos.findMany()
+    * ```
+    */
+  get encaminhamentoOutrosOrgaos(): Prisma.EncaminhamentoOutrosOrgaosDelegate<ExtArgs, ClientOptions>;
+
+  /**
    * `prisma.tipoAtendimento`: Exposes CRUD operations for the **TipoAtendimento** model.
     * Example usage:
     * ```ts
@@ -473,6 +541,16 @@ export class PrismaClient<
   get tipoVulnerabilidade(): Prisma.TipoVulnerabilidadeDelegate<ExtArgs, ClientOptions>;
 
   /**
+   * `prisma.tipoPedidoDePrevidenciaJudiciaria`: Exposes CRUD operations for the **TipoPedidoDePrevidenciaJudiciaria** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more TipoPedidoDePrevidenciaJudiciarias
+    * const tipoPedidoDePrevidenciaJudiciarias = await prisma.tipoPedidoDePrevidenciaJudiciaria.findMany()
+    * ```
+    */
+  get tipoPedidoDePrevidenciaJudiciaria(): Prisma.TipoPedidoDePrevidenciaJudiciariaDelegate<ExtArgs, ClientOptions>;
+
+  /**
    * `prisma.tipoDemandaPrevidenciaria`: Exposes CRUD operations for the **TipoDemandaPrevidenciaria** model.
     * Example usage:
     * ```ts
@@ -491,6 +569,36 @@ export class PrismaClient<
     * ```
     */
   get competenciaJudicial(): Prisma.CompetenciaJudicialDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.tipoOrgaoEncaminhamento`: Exposes CRUD operations for the **TipoOrgaoEncaminhamento** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more TipoOrgaoEncaminhamentos
+    * const tipoOrgaoEncaminhamentos = await prisma.tipoOrgaoEncaminhamento.findMany()
+    * ```
+    */
+  get tipoOrgaoEncaminhamento(): Prisma.TipoOrgaoEncaminhamentoDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.orgaoEncaminhamento`: Exposes CRUD operations for the **OrgaoEncaminhamento** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more OrgaoEncaminhamentos
+    * const orgaoEncaminhamentos = await prisma.orgaoEncaminhamento.findMany()
+    * ```
+    */
+  get orgaoEncaminhamento(): Prisma.OrgaoEncaminhamentoDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.logFilaAtendimento`: Exposes CRUD operations for the **LogFilaAtendimento** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more LogFilaAtendimentos
+    * const logFilaAtendimentos = await prisma.logFilaAtendimento.findMany()
+    * ```
+    */
+  get logFilaAtendimento(): Prisma.LogFilaAtendimentoDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -937,6 +1045,9 @@ export namespace Prisma {
     Processo: 'Processo',
     FormularioPreenchido: 'FormularioPreenchido',
     Documento: 'Documento',
+    RetornoDemandaJudicial: 'RetornoDemandaJudicial',
+    OrientacaoJuridica: 'OrientacaoJuridica',
+    EncaminhamentoOutrosOrgaos: 'EncaminhamentoOutrosOrgaos',
     TipoAtendimento: 'TipoAtendimento',
     TipoPrioridade: 'TipoPrioridade',
     Assistido: 'Assistido',
@@ -946,8 +1057,12 @@ export namespace Prisma {
     TipoDomicilio: 'TipoDomicilio',
     MembroFamiliar: 'MembroFamiliar',
     TipoVulnerabilidade: 'TipoVulnerabilidade',
+    TipoPedidoDePrevidenciaJudiciaria: 'TipoPedidoDePrevidenciaJudiciaria',
     TipoDemandaPrevidenciaria: 'TipoDemandaPrevidenciaria',
-    CompetenciaJudicial: 'CompetenciaJudicial'
+    CompetenciaJudicial: 'CompetenciaJudicial',
+    TipoOrgaoEncaminhamento: 'TipoOrgaoEncaminhamento',
+    OrgaoEncaminhamento: 'OrgaoEncaminhamento',
+    LogFilaAtendimento: 'LogFilaAtendimento'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -966,7 +1081,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "filaAtendimento" | "atendimento" | "processo" | "formularioPreenchido" | "documento" | "tipoAtendimento" | "tipoPrioridade" | "assistido" | "tipoServicoAtendimento" | "estadoCivil" | "profissao" | "tipoDomicilio" | "membroFamiliar" | "tipoVulnerabilidade" | "tipoDemandaPrevidenciaria" | "competenciaJudicial"
+      modelProps: "user" | "filaAtendimento" | "atendimento" | "processo" | "formularioPreenchido" | "documento" | "retornoDemandaJudicial" | "orientacaoJuridica" | "encaminhamentoOutrosOrgaos" | "tipoAtendimento" | "tipoPrioridade" | "assistido" | "tipoServicoAtendimento" | "estadoCivil" | "profissao" | "tipoDomicilio" | "membroFamiliar" | "tipoVulnerabilidade" | "tipoPedidoDePrevidenciaJudiciaria" | "tipoDemandaPrevidenciaria" | "competenciaJudicial" | "tipoOrgaoEncaminhamento" | "orgaoEncaminhamento" | "logFilaAtendimento"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1411,6 +1526,228 @@ export namespace Prisma {
           count: {
             args: Prisma.DocumentoCountArgs<ExtArgs>
             result: $Utils.Optional<DocumentoCountAggregateOutputType> | number
+          }
+        }
+      }
+      RetornoDemandaJudicial: {
+        payload: Prisma.$RetornoDemandaJudicialPayload<ExtArgs>
+        fields: Prisma.RetornoDemandaJudicialFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.RetornoDemandaJudicialFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RetornoDemandaJudicialPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.RetornoDemandaJudicialFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RetornoDemandaJudicialPayload>
+          }
+          findFirst: {
+            args: Prisma.RetornoDemandaJudicialFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RetornoDemandaJudicialPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.RetornoDemandaJudicialFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RetornoDemandaJudicialPayload>
+          }
+          findMany: {
+            args: Prisma.RetornoDemandaJudicialFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RetornoDemandaJudicialPayload>[]
+          }
+          create: {
+            args: Prisma.RetornoDemandaJudicialCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RetornoDemandaJudicialPayload>
+          }
+          createMany: {
+            args: Prisma.RetornoDemandaJudicialCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.RetornoDemandaJudicialCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RetornoDemandaJudicialPayload>[]
+          }
+          delete: {
+            args: Prisma.RetornoDemandaJudicialDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RetornoDemandaJudicialPayload>
+          }
+          update: {
+            args: Prisma.RetornoDemandaJudicialUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RetornoDemandaJudicialPayload>
+          }
+          deleteMany: {
+            args: Prisma.RetornoDemandaJudicialDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.RetornoDemandaJudicialUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.RetornoDemandaJudicialUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RetornoDemandaJudicialPayload>[]
+          }
+          upsert: {
+            args: Prisma.RetornoDemandaJudicialUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RetornoDemandaJudicialPayload>
+          }
+          aggregate: {
+            args: Prisma.RetornoDemandaJudicialAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateRetornoDemandaJudicial>
+          }
+          groupBy: {
+            args: Prisma.RetornoDemandaJudicialGroupByArgs<ExtArgs>
+            result: $Utils.Optional<RetornoDemandaJudicialGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.RetornoDemandaJudicialCountArgs<ExtArgs>
+            result: $Utils.Optional<RetornoDemandaJudicialCountAggregateOutputType> | number
+          }
+        }
+      }
+      OrientacaoJuridica: {
+        payload: Prisma.$OrientacaoJuridicaPayload<ExtArgs>
+        fields: Prisma.OrientacaoJuridicaFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.OrientacaoJuridicaFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OrientacaoJuridicaPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.OrientacaoJuridicaFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OrientacaoJuridicaPayload>
+          }
+          findFirst: {
+            args: Prisma.OrientacaoJuridicaFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OrientacaoJuridicaPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.OrientacaoJuridicaFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OrientacaoJuridicaPayload>
+          }
+          findMany: {
+            args: Prisma.OrientacaoJuridicaFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OrientacaoJuridicaPayload>[]
+          }
+          create: {
+            args: Prisma.OrientacaoJuridicaCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OrientacaoJuridicaPayload>
+          }
+          createMany: {
+            args: Prisma.OrientacaoJuridicaCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.OrientacaoJuridicaCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OrientacaoJuridicaPayload>[]
+          }
+          delete: {
+            args: Prisma.OrientacaoJuridicaDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OrientacaoJuridicaPayload>
+          }
+          update: {
+            args: Prisma.OrientacaoJuridicaUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OrientacaoJuridicaPayload>
+          }
+          deleteMany: {
+            args: Prisma.OrientacaoJuridicaDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.OrientacaoJuridicaUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.OrientacaoJuridicaUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OrientacaoJuridicaPayload>[]
+          }
+          upsert: {
+            args: Prisma.OrientacaoJuridicaUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OrientacaoJuridicaPayload>
+          }
+          aggregate: {
+            args: Prisma.OrientacaoJuridicaAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateOrientacaoJuridica>
+          }
+          groupBy: {
+            args: Prisma.OrientacaoJuridicaGroupByArgs<ExtArgs>
+            result: $Utils.Optional<OrientacaoJuridicaGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.OrientacaoJuridicaCountArgs<ExtArgs>
+            result: $Utils.Optional<OrientacaoJuridicaCountAggregateOutputType> | number
+          }
+        }
+      }
+      EncaminhamentoOutrosOrgaos: {
+        payload: Prisma.$EncaminhamentoOutrosOrgaosPayload<ExtArgs>
+        fields: Prisma.EncaminhamentoOutrosOrgaosFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.EncaminhamentoOutrosOrgaosFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EncaminhamentoOutrosOrgaosPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.EncaminhamentoOutrosOrgaosFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EncaminhamentoOutrosOrgaosPayload>
+          }
+          findFirst: {
+            args: Prisma.EncaminhamentoOutrosOrgaosFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EncaminhamentoOutrosOrgaosPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.EncaminhamentoOutrosOrgaosFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EncaminhamentoOutrosOrgaosPayload>
+          }
+          findMany: {
+            args: Prisma.EncaminhamentoOutrosOrgaosFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EncaminhamentoOutrosOrgaosPayload>[]
+          }
+          create: {
+            args: Prisma.EncaminhamentoOutrosOrgaosCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EncaminhamentoOutrosOrgaosPayload>
+          }
+          createMany: {
+            args: Prisma.EncaminhamentoOutrosOrgaosCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.EncaminhamentoOutrosOrgaosCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EncaminhamentoOutrosOrgaosPayload>[]
+          }
+          delete: {
+            args: Prisma.EncaminhamentoOutrosOrgaosDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EncaminhamentoOutrosOrgaosPayload>
+          }
+          update: {
+            args: Prisma.EncaminhamentoOutrosOrgaosUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EncaminhamentoOutrosOrgaosPayload>
+          }
+          deleteMany: {
+            args: Prisma.EncaminhamentoOutrosOrgaosDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.EncaminhamentoOutrosOrgaosUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.EncaminhamentoOutrosOrgaosUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EncaminhamentoOutrosOrgaosPayload>[]
+          }
+          upsert: {
+            args: Prisma.EncaminhamentoOutrosOrgaosUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EncaminhamentoOutrosOrgaosPayload>
+          }
+          aggregate: {
+            args: Prisma.EncaminhamentoOutrosOrgaosAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateEncaminhamentoOutrosOrgaos>
+          }
+          groupBy: {
+            args: Prisma.EncaminhamentoOutrosOrgaosGroupByArgs<ExtArgs>
+            result: $Utils.Optional<EncaminhamentoOutrosOrgaosGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.EncaminhamentoOutrosOrgaosCountArgs<ExtArgs>
+            result: $Utils.Optional<EncaminhamentoOutrosOrgaosCountAggregateOutputType> | number
           }
         }
       }
@@ -2080,6 +2417,80 @@ export namespace Prisma {
           }
         }
       }
+      TipoPedidoDePrevidenciaJudiciaria: {
+        payload: Prisma.$TipoPedidoDePrevidenciaJudiciariaPayload<ExtArgs>
+        fields: Prisma.TipoPedidoDePrevidenciaJudiciariaFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.TipoPedidoDePrevidenciaJudiciariaFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TipoPedidoDePrevidenciaJudiciariaPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.TipoPedidoDePrevidenciaJudiciariaFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TipoPedidoDePrevidenciaJudiciariaPayload>
+          }
+          findFirst: {
+            args: Prisma.TipoPedidoDePrevidenciaJudiciariaFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TipoPedidoDePrevidenciaJudiciariaPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.TipoPedidoDePrevidenciaJudiciariaFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TipoPedidoDePrevidenciaJudiciariaPayload>
+          }
+          findMany: {
+            args: Prisma.TipoPedidoDePrevidenciaJudiciariaFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TipoPedidoDePrevidenciaJudiciariaPayload>[]
+          }
+          create: {
+            args: Prisma.TipoPedidoDePrevidenciaJudiciariaCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TipoPedidoDePrevidenciaJudiciariaPayload>
+          }
+          createMany: {
+            args: Prisma.TipoPedidoDePrevidenciaJudiciariaCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.TipoPedidoDePrevidenciaJudiciariaCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TipoPedidoDePrevidenciaJudiciariaPayload>[]
+          }
+          delete: {
+            args: Prisma.TipoPedidoDePrevidenciaJudiciariaDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TipoPedidoDePrevidenciaJudiciariaPayload>
+          }
+          update: {
+            args: Prisma.TipoPedidoDePrevidenciaJudiciariaUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TipoPedidoDePrevidenciaJudiciariaPayload>
+          }
+          deleteMany: {
+            args: Prisma.TipoPedidoDePrevidenciaJudiciariaDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.TipoPedidoDePrevidenciaJudiciariaUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.TipoPedidoDePrevidenciaJudiciariaUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TipoPedidoDePrevidenciaJudiciariaPayload>[]
+          }
+          upsert: {
+            args: Prisma.TipoPedidoDePrevidenciaJudiciariaUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TipoPedidoDePrevidenciaJudiciariaPayload>
+          }
+          aggregate: {
+            args: Prisma.TipoPedidoDePrevidenciaJudiciariaAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTipoPedidoDePrevidenciaJudiciaria>
+          }
+          groupBy: {
+            args: Prisma.TipoPedidoDePrevidenciaJudiciariaGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TipoPedidoDePrevidenciaJudiciariaGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.TipoPedidoDePrevidenciaJudiciariaCountArgs<ExtArgs>
+            result: $Utils.Optional<TipoPedidoDePrevidenciaJudiciariaCountAggregateOutputType> | number
+          }
+        }
+      }
       TipoDemandaPrevidenciaria: {
         payload: Prisma.$TipoDemandaPrevidenciariaPayload<ExtArgs>
         fields: Prisma.TipoDemandaPrevidenciariaFieldRefs
@@ -2228,6 +2639,228 @@ export namespace Prisma {
           }
         }
       }
+      TipoOrgaoEncaminhamento: {
+        payload: Prisma.$TipoOrgaoEncaminhamentoPayload<ExtArgs>
+        fields: Prisma.TipoOrgaoEncaminhamentoFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.TipoOrgaoEncaminhamentoFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TipoOrgaoEncaminhamentoPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.TipoOrgaoEncaminhamentoFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TipoOrgaoEncaminhamentoPayload>
+          }
+          findFirst: {
+            args: Prisma.TipoOrgaoEncaminhamentoFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TipoOrgaoEncaminhamentoPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.TipoOrgaoEncaminhamentoFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TipoOrgaoEncaminhamentoPayload>
+          }
+          findMany: {
+            args: Prisma.TipoOrgaoEncaminhamentoFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TipoOrgaoEncaminhamentoPayload>[]
+          }
+          create: {
+            args: Prisma.TipoOrgaoEncaminhamentoCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TipoOrgaoEncaminhamentoPayload>
+          }
+          createMany: {
+            args: Prisma.TipoOrgaoEncaminhamentoCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.TipoOrgaoEncaminhamentoCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TipoOrgaoEncaminhamentoPayload>[]
+          }
+          delete: {
+            args: Prisma.TipoOrgaoEncaminhamentoDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TipoOrgaoEncaminhamentoPayload>
+          }
+          update: {
+            args: Prisma.TipoOrgaoEncaminhamentoUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TipoOrgaoEncaminhamentoPayload>
+          }
+          deleteMany: {
+            args: Prisma.TipoOrgaoEncaminhamentoDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.TipoOrgaoEncaminhamentoUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.TipoOrgaoEncaminhamentoUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TipoOrgaoEncaminhamentoPayload>[]
+          }
+          upsert: {
+            args: Prisma.TipoOrgaoEncaminhamentoUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TipoOrgaoEncaminhamentoPayload>
+          }
+          aggregate: {
+            args: Prisma.TipoOrgaoEncaminhamentoAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTipoOrgaoEncaminhamento>
+          }
+          groupBy: {
+            args: Prisma.TipoOrgaoEncaminhamentoGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TipoOrgaoEncaminhamentoGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.TipoOrgaoEncaminhamentoCountArgs<ExtArgs>
+            result: $Utils.Optional<TipoOrgaoEncaminhamentoCountAggregateOutputType> | number
+          }
+        }
+      }
+      OrgaoEncaminhamento: {
+        payload: Prisma.$OrgaoEncaminhamentoPayload<ExtArgs>
+        fields: Prisma.OrgaoEncaminhamentoFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.OrgaoEncaminhamentoFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OrgaoEncaminhamentoPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.OrgaoEncaminhamentoFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OrgaoEncaminhamentoPayload>
+          }
+          findFirst: {
+            args: Prisma.OrgaoEncaminhamentoFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OrgaoEncaminhamentoPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.OrgaoEncaminhamentoFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OrgaoEncaminhamentoPayload>
+          }
+          findMany: {
+            args: Prisma.OrgaoEncaminhamentoFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OrgaoEncaminhamentoPayload>[]
+          }
+          create: {
+            args: Prisma.OrgaoEncaminhamentoCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OrgaoEncaminhamentoPayload>
+          }
+          createMany: {
+            args: Prisma.OrgaoEncaminhamentoCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.OrgaoEncaminhamentoCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OrgaoEncaminhamentoPayload>[]
+          }
+          delete: {
+            args: Prisma.OrgaoEncaminhamentoDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OrgaoEncaminhamentoPayload>
+          }
+          update: {
+            args: Prisma.OrgaoEncaminhamentoUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OrgaoEncaminhamentoPayload>
+          }
+          deleteMany: {
+            args: Prisma.OrgaoEncaminhamentoDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.OrgaoEncaminhamentoUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.OrgaoEncaminhamentoUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OrgaoEncaminhamentoPayload>[]
+          }
+          upsert: {
+            args: Prisma.OrgaoEncaminhamentoUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OrgaoEncaminhamentoPayload>
+          }
+          aggregate: {
+            args: Prisma.OrgaoEncaminhamentoAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateOrgaoEncaminhamento>
+          }
+          groupBy: {
+            args: Prisma.OrgaoEncaminhamentoGroupByArgs<ExtArgs>
+            result: $Utils.Optional<OrgaoEncaminhamentoGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.OrgaoEncaminhamentoCountArgs<ExtArgs>
+            result: $Utils.Optional<OrgaoEncaminhamentoCountAggregateOutputType> | number
+          }
+        }
+      }
+      LogFilaAtendimento: {
+        payload: Prisma.$LogFilaAtendimentoPayload<ExtArgs>
+        fields: Prisma.LogFilaAtendimentoFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.LogFilaAtendimentoFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LogFilaAtendimentoPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.LogFilaAtendimentoFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LogFilaAtendimentoPayload>
+          }
+          findFirst: {
+            args: Prisma.LogFilaAtendimentoFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LogFilaAtendimentoPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.LogFilaAtendimentoFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LogFilaAtendimentoPayload>
+          }
+          findMany: {
+            args: Prisma.LogFilaAtendimentoFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LogFilaAtendimentoPayload>[]
+          }
+          create: {
+            args: Prisma.LogFilaAtendimentoCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LogFilaAtendimentoPayload>
+          }
+          createMany: {
+            args: Prisma.LogFilaAtendimentoCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.LogFilaAtendimentoCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LogFilaAtendimentoPayload>[]
+          }
+          delete: {
+            args: Prisma.LogFilaAtendimentoDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LogFilaAtendimentoPayload>
+          }
+          update: {
+            args: Prisma.LogFilaAtendimentoUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LogFilaAtendimentoPayload>
+          }
+          deleteMany: {
+            args: Prisma.LogFilaAtendimentoDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.LogFilaAtendimentoUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.LogFilaAtendimentoUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LogFilaAtendimentoPayload>[]
+          }
+          upsert: {
+            args: Prisma.LogFilaAtendimentoUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LogFilaAtendimentoPayload>
+          }
+          aggregate: {
+            args: Prisma.LogFilaAtendimentoAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateLogFilaAtendimento>
+          }
+          groupBy: {
+            args: Prisma.LogFilaAtendimentoGroupByArgs<ExtArgs>
+            result: $Utils.Optional<LogFilaAtendimentoGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.LogFilaAtendimentoCountArgs<ExtArgs>
+            result: $Utils.Optional<LogFilaAtendimentoCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -2318,6 +2951,9 @@ export namespace Prisma {
     processo?: ProcessoOmit
     formularioPreenchido?: FormularioPreenchidoOmit
     documento?: DocumentoOmit
+    retornoDemandaJudicial?: RetornoDemandaJudicialOmit
+    orientacaoJuridica?: OrientacaoJuridicaOmit
+    encaminhamentoOutrosOrgaos?: EncaminhamentoOutrosOrgaosOmit
     tipoAtendimento?: TipoAtendimentoOmit
     tipoPrioridade?: TipoPrioridadeOmit
     assistido?: AssistidoOmit
@@ -2327,8 +2963,12 @@ export namespace Prisma {
     tipoDomicilio?: TipoDomicilioOmit
     membroFamiliar?: MembroFamiliarOmit
     tipoVulnerabilidade?: TipoVulnerabilidadeOmit
+    tipoPedidoDePrevidenciaJudiciaria?: TipoPedidoDePrevidenciaJudiciariaOmit
     tipoDemandaPrevidenciaria?: TipoDemandaPrevidenciariaOmit
     competenciaJudicial?: CompetenciaJudicialOmit
+    tipoOrgaoEncaminhamento?: TipoOrgaoEncaminhamentoOmit
+    orgaoEncaminhamento?: OrgaoEncaminhamentoOmit
+    logFilaAtendimento?: LogFilaAtendimentoOmit
   }
 
   /* Types for Logging */
@@ -2427,6 +3067,9 @@ export namespace Prisma {
     atendimentosTriagem: number
     atendimentosEmAndamento: number
     documentosUploadOperador: number
+    retornosDemandaJudicial: number
+    orientacoesJuridicas: number
+    encaminhamentosOutrosOrgaos: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2434,6 +3077,9 @@ export namespace Prisma {
     atendimentosTriagem?: boolean | UserCountOutputTypeCountAtendimentosTriagemArgs
     atendimentosEmAndamento?: boolean | UserCountOutputTypeCountAtendimentosEmAndamentoArgs
     documentosUploadOperador?: boolean | UserCountOutputTypeCountDocumentosUploadOperadorArgs
+    retornosDemandaJudicial?: boolean | UserCountOutputTypeCountRetornosDemandaJudicialArgs
+    orientacoesJuridicas?: boolean | UserCountOutputTypeCountOrientacoesJuridicasArgs
+    encaminhamentosOutrosOrgaos?: boolean | UserCountOutputTypeCountEncaminhamentosOutrosOrgaosArgs
   }
 
   // Custom InputTypes
@@ -2473,6 +3119,27 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountDocumentosUploadOperadorArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: DocumentoWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountRetornosDemandaJudicialArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RetornoDemandaJudicialWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountOrientacoesJuridicasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: OrientacaoJuridicaWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountEncaminhamentosOutrosOrgaosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: EncaminhamentoOutrosOrgaosWhereInput
   }
 
 
@@ -2810,6 +3477,37 @@ export namespace Prisma {
 
 
   /**
+   * Count Type TipoOrgaoEncaminhamentoCountOutputType
+   */
+
+  export type TipoOrgaoEncaminhamentoCountOutputType = {
+    OrgaoEncaminhamento: number
+  }
+
+  export type TipoOrgaoEncaminhamentoCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    OrgaoEncaminhamento?: boolean | TipoOrgaoEncaminhamentoCountOutputTypeCountOrgaoEncaminhamentoArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * TipoOrgaoEncaminhamentoCountOutputType without action
+   */
+  export type TipoOrgaoEncaminhamentoCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TipoOrgaoEncaminhamentoCountOutputType
+     */
+    select?: TipoOrgaoEncaminhamentoCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * TipoOrgaoEncaminhamentoCountOutputType without action
+   */
+  export type TipoOrgaoEncaminhamentoCountOutputTypeCountOrgaoEncaminhamentoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: OrgaoEncaminhamentoWhereInput
+  }
+
+
+  /**
    * Models
    */
 
@@ -2997,6 +3695,9 @@ export namespace Prisma {
     atendimentosTriagem?: boolean | User$atendimentosTriagemArgs<ExtArgs>
     atendimentosEmAndamento?: boolean | User$atendimentosEmAndamentoArgs<ExtArgs>
     documentosUploadOperador?: boolean | User$documentosUploadOperadorArgs<ExtArgs>
+    retornosDemandaJudicial?: boolean | User$retornosDemandaJudicialArgs<ExtArgs>
+    orientacoesJuridicas?: boolean | User$orientacoesJuridicasArgs<ExtArgs>
+    encaminhamentosOutrosOrgaos?: boolean | User$encaminhamentosOutrosOrgaosArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -3036,6 +3737,9 @@ export namespace Prisma {
     atendimentosTriagem?: boolean | User$atendimentosTriagemArgs<ExtArgs>
     atendimentosEmAndamento?: boolean | User$atendimentosEmAndamentoArgs<ExtArgs>
     documentosUploadOperador?: boolean | User$documentosUploadOperadorArgs<ExtArgs>
+    retornosDemandaJudicial?: boolean | User$retornosDemandaJudicialArgs<ExtArgs>
+    orientacoesJuridicas?: boolean | User$orientacoesJuridicasArgs<ExtArgs>
+    encaminhamentosOutrosOrgaos?: boolean | User$encaminhamentosOutrosOrgaosArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -3048,6 +3752,9 @@ export namespace Prisma {
       atendimentosTriagem: Prisma.$FilaAtendimentoPayload<ExtArgs>[]
       atendimentosEmAndamento: Prisma.$FilaAtendimentoPayload<ExtArgs>[]
       documentosUploadOperador: Prisma.$DocumentoPayload<ExtArgs>[]
+      retornosDemandaJudicial: Prisma.$RetornoDemandaJudicialPayload<ExtArgs>[]
+      orientacoesJuridicas: Prisma.$OrientacaoJuridicaPayload<ExtArgs>[]
+      encaminhamentosOutrosOrgaos: Prisma.$EncaminhamentoOutrosOrgaosPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -3455,6 +4162,9 @@ export namespace Prisma {
     atendimentosTriagem<T extends User$atendimentosTriagemArgs<ExtArgs> = {}>(args?: Subset<T, User$atendimentosTriagemArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FilaAtendimentoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     atendimentosEmAndamento<T extends User$atendimentosEmAndamentoArgs<ExtArgs> = {}>(args?: Subset<T, User$atendimentosEmAndamentoArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FilaAtendimentoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     documentosUploadOperador<T extends User$documentosUploadOperadorArgs<ExtArgs> = {}>(args?: Subset<T, User$documentosUploadOperadorArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DocumentoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    retornosDemandaJudicial<T extends User$retornosDemandaJudicialArgs<ExtArgs> = {}>(args?: Subset<T, User$retornosDemandaJudicialArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RetornoDemandaJudicialPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    orientacoesJuridicas<T extends User$orientacoesJuridicasArgs<ExtArgs> = {}>(args?: Subset<T, User$orientacoesJuridicasArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OrientacaoJuridicaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    encaminhamentosOutrosOrgaos<T extends User$encaminhamentosOutrosOrgaosArgs<ExtArgs> = {}>(args?: Subset<T, User$encaminhamentosOutrosOrgaosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EncaminhamentoOutrosOrgaosPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3972,6 +4682,78 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: DocumentoScalarFieldEnum | DocumentoScalarFieldEnum[]
+  }
+
+  /**
+   * User.retornosDemandaJudicial
+   */
+  export type User$retornosDemandaJudicialArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RetornoDemandaJudicial
+     */
+    select?: RetornoDemandaJudicialSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RetornoDemandaJudicial
+     */
+    omit?: RetornoDemandaJudicialOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RetornoDemandaJudicialInclude<ExtArgs> | null
+    where?: RetornoDemandaJudicialWhereInput
+    orderBy?: RetornoDemandaJudicialOrderByWithRelationInput | RetornoDemandaJudicialOrderByWithRelationInput[]
+    cursor?: RetornoDemandaJudicialWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: RetornoDemandaJudicialScalarFieldEnum | RetornoDemandaJudicialScalarFieldEnum[]
+  }
+
+  /**
+   * User.orientacoesJuridicas
+   */
+  export type User$orientacoesJuridicasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OrientacaoJuridica
+     */
+    select?: OrientacaoJuridicaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OrientacaoJuridica
+     */
+    omit?: OrientacaoJuridicaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OrientacaoJuridicaInclude<ExtArgs> | null
+    where?: OrientacaoJuridicaWhereInput
+    orderBy?: OrientacaoJuridicaOrderByWithRelationInput | OrientacaoJuridicaOrderByWithRelationInput[]
+    cursor?: OrientacaoJuridicaWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: OrientacaoJuridicaScalarFieldEnum | OrientacaoJuridicaScalarFieldEnum[]
+  }
+
+  /**
+   * User.encaminhamentosOutrosOrgaos
+   */
+  export type User$encaminhamentosOutrosOrgaosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EncaminhamentoOutrosOrgaos
+     */
+    select?: EncaminhamentoOutrosOrgaosSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EncaminhamentoOutrosOrgaos
+     */
+    omit?: EncaminhamentoOutrosOrgaosOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EncaminhamentoOutrosOrgaosInclude<ExtArgs> | null
+    where?: EncaminhamentoOutrosOrgaosWhereInput
+    orderBy?: EncaminhamentoOutrosOrgaosOrderByWithRelationInput | EncaminhamentoOutrosOrgaosOrderByWithRelationInput[]
+    cursor?: EncaminhamentoOutrosOrgaosWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: EncaminhamentoOutrosOrgaosScalarFieldEnum | EncaminhamentoOutrosOrgaosScalarFieldEnum[]
   }
 
   /**
@@ -5598,7 +6380,7 @@ export namespace Prisma {
     valorCausa: number | null
     processosAndamento: $Enums.ProcessosAndamento
     estadoCivilId: number
-    profissaoId: string
+    profissaoId: string | null
     tipoDomicilioId: number
     tipoDemandaPrevidenciariaId: number
     competenciaJudicialId: number
@@ -5647,7 +6429,7 @@ export namespace Prisma {
     operadorId?: boolean
     filaId?: boolean
     estadoCivil?: boolean | EstadoCivilDefaultArgs<ExtArgs>
-    profissao?: boolean | ProfissaoDefaultArgs<ExtArgs>
+    profissao?: boolean | Atendimento$profissaoArgs<ExtArgs>
     tipoDomicilio?: boolean | TipoDomicilioDefaultArgs<ExtArgs>
     tipoDemandaPrevidenciaria?: boolean | TipoDemandaPrevidenciariaDefaultArgs<ExtArgs>
     competenciaJudicial?: boolean | CompetenciaJudicialDefaultArgs<ExtArgs>
@@ -5657,6 +6439,9 @@ export namespace Prisma {
     processo?: boolean | Atendimento$processoArgs<ExtArgs>
     formularios?: boolean | Atendimento$formulariosArgs<ExtArgs>
     documentos?: boolean | Atendimento$documentosArgs<ExtArgs>
+    retornoDemandaJudicial?: boolean | Atendimento$retornoDemandaJudicialArgs<ExtArgs>
+    orientacaoJuridica?: boolean | Atendimento$orientacaoJuridicaArgs<ExtArgs>
+    encaminhamentoOutrosOrgaos?: boolean | Atendimento$encaminhamentoOutrosOrgaosArgs<ExtArgs>
     _count?: boolean | AtendimentoCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["atendimento"]>
 
@@ -5682,7 +6467,7 @@ export namespace Prisma {
     operadorId?: boolean
     filaId?: boolean
     estadoCivil?: boolean | EstadoCivilDefaultArgs<ExtArgs>
-    profissao?: boolean | ProfissaoDefaultArgs<ExtArgs>
+    profissao?: boolean | Atendimento$profissaoArgs<ExtArgs>
     tipoDomicilio?: boolean | TipoDomicilioDefaultArgs<ExtArgs>
     tipoDemandaPrevidenciaria?: boolean | TipoDemandaPrevidenciariaDefaultArgs<ExtArgs>
     competenciaJudicial?: boolean | CompetenciaJudicialDefaultArgs<ExtArgs>
@@ -5712,7 +6497,7 @@ export namespace Prisma {
     operadorId?: boolean
     filaId?: boolean
     estadoCivil?: boolean | EstadoCivilDefaultArgs<ExtArgs>
-    profissao?: boolean | ProfissaoDefaultArgs<ExtArgs>
+    profissao?: boolean | Atendimento$profissaoArgs<ExtArgs>
     tipoDomicilio?: boolean | TipoDomicilioDefaultArgs<ExtArgs>
     tipoDemandaPrevidenciaria?: boolean | TipoDemandaPrevidenciariaDefaultArgs<ExtArgs>
     competenciaJudicial?: boolean | CompetenciaJudicialDefaultArgs<ExtArgs>
@@ -5746,7 +6531,7 @@ export namespace Prisma {
   export type AtendimentoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "capacidadeCivil" | "cep" | "endereco" | "numero" | "complemento" | "bairro" | "cidade" | "uf" | "dataInicioBeneficio" | "parcelasVencidas" | "valorCausa" | "processosAndamento" | "estadoCivilId" | "profissaoId" | "tipoDomicilioId" | "tipoDemandaPrevidenciariaId" | "competenciaJudicialId" | "operadorId" | "filaId", ExtArgs["result"]["atendimento"]>
   export type AtendimentoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     estadoCivil?: boolean | EstadoCivilDefaultArgs<ExtArgs>
-    profissao?: boolean | ProfissaoDefaultArgs<ExtArgs>
+    profissao?: boolean | Atendimento$profissaoArgs<ExtArgs>
     tipoDomicilio?: boolean | TipoDomicilioDefaultArgs<ExtArgs>
     tipoDemandaPrevidenciaria?: boolean | TipoDemandaPrevidenciariaDefaultArgs<ExtArgs>
     competenciaJudicial?: boolean | CompetenciaJudicialDefaultArgs<ExtArgs>
@@ -5756,11 +6541,14 @@ export namespace Prisma {
     processo?: boolean | Atendimento$processoArgs<ExtArgs>
     formularios?: boolean | Atendimento$formulariosArgs<ExtArgs>
     documentos?: boolean | Atendimento$documentosArgs<ExtArgs>
+    retornoDemandaJudicial?: boolean | Atendimento$retornoDemandaJudicialArgs<ExtArgs>
+    orientacaoJuridica?: boolean | Atendimento$orientacaoJuridicaArgs<ExtArgs>
+    encaminhamentoOutrosOrgaos?: boolean | Atendimento$encaminhamentoOutrosOrgaosArgs<ExtArgs>
     _count?: boolean | AtendimentoCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type AtendimentoIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     estadoCivil?: boolean | EstadoCivilDefaultArgs<ExtArgs>
-    profissao?: boolean | ProfissaoDefaultArgs<ExtArgs>
+    profissao?: boolean | Atendimento$profissaoArgs<ExtArgs>
     tipoDomicilio?: boolean | TipoDomicilioDefaultArgs<ExtArgs>
     tipoDemandaPrevidenciaria?: boolean | TipoDemandaPrevidenciariaDefaultArgs<ExtArgs>
     competenciaJudicial?: boolean | CompetenciaJudicialDefaultArgs<ExtArgs>
@@ -5769,7 +6557,7 @@ export namespace Prisma {
   }
   export type AtendimentoIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     estadoCivil?: boolean | EstadoCivilDefaultArgs<ExtArgs>
-    profissao?: boolean | ProfissaoDefaultArgs<ExtArgs>
+    profissao?: boolean | Atendimento$profissaoArgs<ExtArgs>
     tipoDomicilio?: boolean | TipoDomicilioDefaultArgs<ExtArgs>
     tipoDemandaPrevidenciaria?: boolean | TipoDemandaPrevidenciariaDefaultArgs<ExtArgs>
     competenciaJudicial?: boolean | CompetenciaJudicialDefaultArgs<ExtArgs>
@@ -5781,7 +6569,7 @@ export namespace Prisma {
     name: "Atendimento"
     objects: {
       estadoCivil: Prisma.$EstadoCivilPayload<ExtArgs>
-      profissao: Prisma.$ProfissaoPayload<ExtArgs>
+      profissao: Prisma.$ProfissaoPayload<ExtArgs> | null
       tipoDomicilio: Prisma.$TipoDomicilioPayload<ExtArgs>
       tipoDemandaPrevidenciaria: Prisma.$TipoDemandaPrevidenciariaPayload<ExtArgs>
       competenciaJudicial: Prisma.$CompetenciaJudicialPayload<ExtArgs>
@@ -5791,6 +6579,9 @@ export namespace Prisma {
       processo: Prisma.$ProcessoPayload<ExtArgs> | null
       formularios: Prisma.$FormularioPreenchidoPayload<ExtArgs>[]
       documentos: Prisma.$DocumentoPayload<ExtArgs>[]
+      retornoDemandaJudicial: Prisma.$RetornoDemandaJudicialPayload<ExtArgs> | null
+      orientacaoJuridica: Prisma.$OrientacaoJuridicaPayload<ExtArgs> | null
+      encaminhamentoOutrosOrgaos: Prisma.$EncaminhamentoOutrosOrgaosPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -5807,7 +6598,7 @@ export namespace Prisma {
       valorCausa: number | null
       processosAndamento: $Enums.ProcessosAndamento
       estadoCivilId: number
-      profissaoId: string
+      profissaoId: string | null
       tipoDomicilioId: number
       tipoDemandaPrevidenciariaId: number
       competenciaJudicialId: number
@@ -6208,7 +6999,7 @@ export namespace Prisma {
   export interface Prisma__AtendimentoClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     estadoCivil<T extends EstadoCivilDefaultArgs<ExtArgs> = {}>(args?: Subset<T, EstadoCivilDefaultArgs<ExtArgs>>): Prisma__EstadoCivilClient<$Result.GetResult<Prisma.$EstadoCivilPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    profissao<T extends ProfissaoDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProfissaoDefaultArgs<ExtArgs>>): Prisma__ProfissaoClient<$Result.GetResult<Prisma.$ProfissaoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    profissao<T extends Atendimento$profissaoArgs<ExtArgs> = {}>(args?: Subset<T, Atendimento$profissaoArgs<ExtArgs>>): Prisma__ProfissaoClient<$Result.GetResult<Prisma.$ProfissaoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     tipoDomicilio<T extends TipoDomicilioDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TipoDomicilioDefaultArgs<ExtArgs>>): Prisma__TipoDomicilioClient<$Result.GetResult<Prisma.$TipoDomicilioPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     tipoDemandaPrevidenciaria<T extends TipoDemandaPrevidenciariaDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TipoDemandaPrevidenciariaDefaultArgs<ExtArgs>>): Prisma__TipoDemandaPrevidenciariaClient<$Result.GetResult<Prisma.$TipoDemandaPrevidenciariaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     competenciaJudicial<T extends CompetenciaJudicialDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CompetenciaJudicialDefaultArgs<ExtArgs>>): Prisma__CompetenciaJudicialClient<$Result.GetResult<Prisma.$CompetenciaJudicialPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
@@ -6218,6 +7009,9 @@ export namespace Prisma {
     processo<T extends Atendimento$processoArgs<ExtArgs> = {}>(args?: Subset<T, Atendimento$processoArgs<ExtArgs>>): Prisma__ProcessoClient<$Result.GetResult<Prisma.$ProcessoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     formularios<T extends Atendimento$formulariosArgs<ExtArgs> = {}>(args?: Subset<T, Atendimento$formulariosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FormularioPreenchidoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     documentos<T extends Atendimento$documentosArgs<ExtArgs> = {}>(args?: Subset<T, Atendimento$documentosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DocumentoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    retornoDemandaJudicial<T extends Atendimento$retornoDemandaJudicialArgs<ExtArgs> = {}>(args?: Subset<T, Atendimento$retornoDemandaJudicialArgs<ExtArgs>>): Prisma__RetornoDemandaJudicialClient<$Result.GetResult<Prisma.$RetornoDemandaJudicialPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    orientacaoJuridica<T extends Atendimento$orientacaoJuridicaArgs<ExtArgs> = {}>(args?: Subset<T, Atendimento$orientacaoJuridicaArgs<ExtArgs>>): Prisma__OrientacaoJuridicaClient<$Result.GetResult<Prisma.$OrientacaoJuridicaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    encaminhamentoOutrosOrgaos<T extends Atendimento$encaminhamentoOutrosOrgaosArgs<ExtArgs> = {}>(args?: Subset<T, Atendimento$encaminhamentoOutrosOrgaosArgs<ExtArgs>>): Prisma__EncaminhamentoOutrosOrgaosClient<$Result.GetResult<Prisma.$EncaminhamentoOutrosOrgaosPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6663,6 +7457,25 @@ export namespace Prisma {
   }
 
   /**
+   * Atendimento.profissao
+   */
+  export type Atendimento$profissaoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Profissao
+     */
+    select?: ProfissaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Profissao
+     */
+    omit?: ProfissaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProfissaoInclude<ExtArgs> | null
+    where?: ProfissaoWhereInput
+  }
+
+  /**
    * Atendimento.fila
    */
   export type Atendimento$filaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -6770,6 +7583,63 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: DocumentoScalarFieldEnum | DocumentoScalarFieldEnum[]
+  }
+
+  /**
+   * Atendimento.retornoDemandaJudicial
+   */
+  export type Atendimento$retornoDemandaJudicialArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RetornoDemandaJudicial
+     */
+    select?: RetornoDemandaJudicialSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RetornoDemandaJudicial
+     */
+    omit?: RetornoDemandaJudicialOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RetornoDemandaJudicialInclude<ExtArgs> | null
+    where?: RetornoDemandaJudicialWhereInput
+  }
+
+  /**
+   * Atendimento.orientacaoJuridica
+   */
+  export type Atendimento$orientacaoJuridicaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OrientacaoJuridica
+     */
+    select?: OrientacaoJuridicaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OrientacaoJuridica
+     */
+    omit?: OrientacaoJuridicaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OrientacaoJuridicaInclude<ExtArgs> | null
+    where?: OrientacaoJuridicaWhereInput
+  }
+
+  /**
+   * Atendimento.encaminhamentoOutrosOrgaos
+   */
+  export type Atendimento$encaminhamentoOutrosOrgaosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EncaminhamentoOutrosOrgaos
+     */
+    select?: EncaminhamentoOutrosOrgaosSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EncaminhamentoOutrosOrgaos
+     */
+    omit?: EncaminhamentoOutrosOrgaosOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EncaminhamentoOutrosOrgaosInclude<ExtArgs> | null
+    where?: EncaminhamentoOutrosOrgaosWhereInput
   }
 
   /**
@@ -10138,6 +11008,3300 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: DocumentoInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model RetornoDemandaJudicial
+   */
+
+  export type AggregateRetornoDemandaJudicial = {
+    _count: RetornoDemandaJudicialCountAggregateOutputType | null
+    _min: RetornoDemandaJudicialMinAggregateOutputType | null
+    _max: RetornoDemandaJudicialMaxAggregateOutputType | null
+  }
+
+  export type RetornoDemandaJudicialMinAggregateOutputType = {
+    id: string | null
+    pajAssistido: string | null
+    retornoRealizado: string | null
+    dataCriacao: Date | null
+    atendimentoId: string | null
+    operadorId: string | null
+  }
+
+  export type RetornoDemandaJudicialMaxAggregateOutputType = {
+    id: string | null
+    pajAssistido: string | null
+    retornoRealizado: string | null
+    dataCriacao: Date | null
+    atendimentoId: string | null
+    operadorId: string | null
+  }
+
+  export type RetornoDemandaJudicialCountAggregateOutputType = {
+    id: number
+    pajAssistido: number
+    retornoRealizado: number
+    dataCriacao: number
+    atendimentoId: number
+    operadorId: number
+    _all: number
+  }
+
+
+  export type RetornoDemandaJudicialMinAggregateInputType = {
+    id?: true
+    pajAssistido?: true
+    retornoRealizado?: true
+    dataCriacao?: true
+    atendimentoId?: true
+    operadorId?: true
+  }
+
+  export type RetornoDemandaJudicialMaxAggregateInputType = {
+    id?: true
+    pajAssistido?: true
+    retornoRealizado?: true
+    dataCriacao?: true
+    atendimentoId?: true
+    operadorId?: true
+  }
+
+  export type RetornoDemandaJudicialCountAggregateInputType = {
+    id?: true
+    pajAssistido?: true
+    retornoRealizado?: true
+    dataCriacao?: true
+    atendimentoId?: true
+    operadorId?: true
+    _all?: true
+  }
+
+  export type RetornoDemandaJudicialAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which RetornoDemandaJudicial to aggregate.
+     */
+    where?: RetornoDemandaJudicialWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RetornoDemandaJudicials to fetch.
+     */
+    orderBy?: RetornoDemandaJudicialOrderByWithRelationInput | RetornoDemandaJudicialOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: RetornoDemandaJudicialWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RetornoDemandaJudicials from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RetornoDemandaJudicials.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned RetornoDemandaJudicials
+    **/
+    _count?: true | RetornoDemandaJudicialCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: RetornoDemandaJudicialMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: RetornoDemandaJudicialMaxAggregateInputType
+  }
+
+  export type GetRetornoDemandaJudicialAggregateType<T extends RetornoDemandaJudicialAggregateArgs> = {
+        [P in keyof T & keyof AggregateRetornoDemandaJudicial]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateRetornoDemandaJudicial[P]>
+      : GetScalarType<T[P], AggregateRetornoDemandaJudicial[P]>
+  }
+
+
+
+
+  export type RetornoDemandaJudicialGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RetornoDemandaJudicialWhereInput
+    orderBy?: RetornoDemandaJudicialOrderByWithAggregationInput | RetornoDemandaJudicialOrderByWithAggregationInput[]
+    by: RetornoDemandaJudicialScalarFieldEnum[] | RetornoDemandaJudicialScalarFieldEnum
+    having?: RetornoDemandaJudicialScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: RetornoDemandaJudicialCountAggregateInputType | true
+    _min?: RetornoDemandaJudicialMinAggregateInputType
+    _max?: RetornoDemandaJudicialMaxAggregateInputType
+  }
+
+  export type RetornoDemandaJudicialGroupByOutputType = {
+    id: string
+    pajAssistido: string
+    retornoRealizado: string
+    dataCriacao: Date
+    atendimentoId: string
+    operadorId: string | null
+    _count: RetornoDemandaJudicialCountAggregateOutputType | null
+    _min: RetornoDemandaJudicialMinAggregateOutputType | null
+    _max: RetornoDemandaJudicialMaxAggregateOutputType | null
+  }
+
+  type GetRetornoDemandaJudicialGroupByPayload<T extends RetornoDemandaJudicialGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<RetornoDemandaJudicialGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof RetornoDemandaJudicialGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], RetornoDemandaJudicialGroupByOutputType[P]>
+            : GetScalarType<T[P], RetornoDemandaJudicialGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type RetornoDemandaJudicialSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    pajAssistido?: boolean
+    retornoRealizado?: boolean
+    dataCriacao?: boolean
+    atendimentoId?: boolean
+    operadorId?: boolean
+    atendimento?: boolean | AtendimentoDefaultArgs<ExtArgs>
+    operador?: boolean | RetornoDemandaJudicial$operadorArgs<ExtArgs>
+  }, ExtArgs["result"]["retornoDemandaJudicial"]>
+
+  export type RetornoDemandaJudicialSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    pajAssistido?: boolean
+    retornoRealizado?: boolean
+    dataCriacao?: boolean
+    atendimentoId?: boolean
+    operadorId?: boolean
+    atendimento?: boolean | AtendimentoDefaultArgs<ExtArgs>
+    operador?: boolean | RetornoDemandaJudicial$operadorArgs<ExtArgs>
+  }, ExtArgs["result"]["retornoDemandaJudicial"]>
+
+  export type RetornoDemandaJudicialSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    pajAssistido?: boolean
+    retornoRealizado?: boolean
+    dataCriacao?: boolean
+    atendimentoId?: boolean
+    operadorId?: boolean
+    atendimento?: boolean | AtendimentoDefaultArgs<ExtArgs>
+    operador?: boolean | RetornoDemandaJudicial$operadorArgs<ExtArgs>
+  }, ExtArgs["result"]["retornoDemandaJudicial"]>
+
+  export type RetornoDemandaJudicialSelectScalar = {
+    id?: boolean
+    pajAssistido?: boolean
+    retornoRealizado?: boolean
+    dataCriacao?: boolean
+    atendimentoId?: boolean
+    operadorId?: boolean
+  }
+
+  export type RetornoDemandaJudicialOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "pajAssistido" | "retornoRealizado" | "dataCriacao" | "atendimentoId" | "operadorId", ExtArgs["result"]["retornoDemandaJudicial"]>
+  export type RetornoDemandaJudicialInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    atendimento?: boolean | AtendimentoDefaultArgs<ExtArgs>
+    operador?: boolean | RetornoDemandaJudicial$operadorArgs<ExtArgs>
+  }
+  export type RetornoDemandaJudicialIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    atendimento?: boolean | AtendimentoDefaultArgs<ExtArgs>
+    operador?: boolean | RetornoDemandaJudicial$operadorArgs<ExtArgs>
+  }
+  export type RetornoDemandaJudicialIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    atendimento?: boolean | AtendimentoDefaultArgs<ExtArgs>
+    operador?: boolean | RetornoDemandaJudicial$operadorArgs<ExtArgs>
+  }
+
+  export type $RetornoDemandaJudicialPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "RetornoDemandaJudicial"
+    objects: {
+      atendimento: Prisma.$AtendimentoPayload<ExtArgs>
+      operador: Prisma.$UserPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      pajAssistido: string
+      retornoRealizado: string
+      dataCriacao: Date
+      atendimentoId: string
+      operadorId: string | null
+    }, ExtArgs["result"]["retornoDemandaJudicial"]>
+    composites: {}
+  }
+
+  type RetornoDemandaJudicialGetPayload<S extends boolean | null | undefined | RetornoDemandaJudicialDefaultArgs> = $Result.GetResult<Prisma.$RetornoDemandaJudicialPayload, S>
+
+  type RetornoDemandaJudicialCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<RetornoDemandaJudicialFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: RetornoDemandaJudicialCountAggregateInputType | true
+    }
+
+  export interface RetornoDemandaJudicialDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['RetornoDemandaJudicial'], meta: { name: 'RetornoDemandaJudicial' } }
+    /**
+     * Find zero or one RetornoDemandaJudicial that matches the filter.
+     * @param {RetornoDemandaJudicialFindUniqueArgs} args - Arguments to find a RetornoDemandaJudicial
+     * @example
+     * // Get one RetornoDemandaJudicial
+     * const retornoDemandaJudicial = await prisma.retornoDemandaJudicial.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends RetornoDemandaJudicialFindUniqueArgs>(args: SelectSubset<T, RetornoDemandaJudicialFindUniqueArgs<ExtArgs>>): Prisma__RetornoDemandaJudicialClient<$Result.GetResult<Prisma.$RetornoDemandaJudicialPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one RetornoDemandaJudicial that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {RetornoDemandaJudicialFindUniqueOrThrowArgs} args - Arguments to find a RetornoDemandaJudicial
+     * @example
+     * // Get one RetornoDemandaJudicial
+     * const retornoDemandaJudicial = await prisma.retornoDemandaJudicial.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends RetornoDemandaJudicialFindUniqueOrThrowArgs>(args: SelectSubset<T, RetornoDemandaJudicialFindUniqueOrThrowArgs<ExtArgs>>): Prisma__RetornoDemandaJudicialClient<$Result.GetResult<Prisma.$RetornoDemandaJudicialPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first RetornoDemandaJudicial that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RetornoDemandaJudicialFindFirstArgs} args - Arguments to find a RetornoDemandaJudicial
+     * @example
+     * // Get one RetornoDemandaJudicial
+     * const retornoDemandaJudicial = await prisma.retornoDemandaJudicial.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends RetornoDemandaJudicialFindFirstArgs>(args?: SelectSubset<T, RetornoDemandaJudicialFindFirstArgs<ExtArgs>>): Prisma__RetornoDemandaJudicialClient<$Result.GetResult<Prisma.$RetornoDemandaJudicialPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first RetornoDemandaJudicial that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RetornoDemandaJudicialFindFirstOrThrowArgs} args - Arguments to find a RetornoDemandaJudicial
+     * @example
+     * // Get one RetornoDemandaJudicial
+     * const retornoDemandaJudicial = await prisma.retornoDemandaJudicial.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends RetornoDemandaJudicialFindFirstOrThrowArgs>(args?: SelectSubset<T, RetornoDemandaJudicialFindFirstOrThrowArgs<ExtArgs>>): Prisma__RetornoDemandaJudicialClient<$Result.GetResult<Prisma.$RetornoDemandaJudicialPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more RetornoDemandaJudicials that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RetornoDemandaJudicialFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all RetornoDemandaJudicials
+     * const retornoDemandaJudicials = await prisma.retornoDemandaJudicial.findMany()
+     * 
+     * // Get first 10 RetornoDemandaJudicials
+     * const retornoDemandaJudicials = await prisma.retornoDemandaJudicial.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const retornoDemandaJudicialWithIdOnly = await prisma.retornoDemandaJudicial.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends RetornoDemandaJudicialFindManyArgs>(args?: SelectSubset<T, RetornoDemandaJudicialFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RetornoDemandaJudicialPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a RetornoDemandaJudicial.
+     * @param {RetornoDemandaJudicialCreateArgs} args - Arguments to create a RetornoDemandaJudicial.
+     * @example
+     * // Create one RetornoDemandaJudicial
+     * const RetornoDemandaJudicial = await prisma.retornoDemandaJudicial.create({
+     *   data: {
+     *     // ... data to create a RetornoDemandaJudicial
+     *   }
+     * })
+     * 
+     */
+    create<T extends RetornoDemandaJudicialCreateArgs>(args: SelectSubset<T, RetornoDemandaJudicialCreateArgs<ExtArgs>>): Prisma__RetornoDemandaJudicialClient<$Result.GetResult<Prisma.$RetornoDemandaJudicialPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many RetornoDemandaJudicials.
+     * @param {RetornoDemandaJudicialCreateManyArgs} args - Arguments to create many RetornoDemandaJudicials.
+     * @example
+     * // Create many RetornoDemandaJudicials
+     * const retornoDemandaJudicial = await prisma.retornoDemandaJudicial.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends RetornoDemandaJudicialCreateManyArgs>(args?: SelectSubset<T, RetornoDemandaJudicialCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many RetornoDemandaJudicials and returns the data saved in the database.
+     * @param {RetornoDemandaJudicialCreateManyAndReturnArgs} args - Arguments to create many RetornoDemandaJudicials.
+     * @example
+     * // Create many RetornoDemandaJudicials
+     * const retornoDemandaJudicial = await prisma.retornoDemandaJudicial.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many RetornoDemandaJudicials and only return the `id`
+     * const retornoDemandaJudicialWithIdOnly = await prisma.retornoDemandaJudicial.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends RetornoDemandaJudicialCreateManyAndReturnArgs>(args?: SelectSubset<T, RetornoDemandaJudicialCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RetornoDemandaJudicialPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a RetornoDemandaJudicial.
+     * @param {RetornoDemandaJudicialDeleteArgs} args - Arguments to delete one RetornoDemandaJudicial.
+     * @example
+     * // Delete one RetornoDemandaJudicial
+     * const RetornoDemandaJudicial = await prisma.retornoDemandaJudicial.delete({
+     *   where: {
+     *     // ... filter to delete one RetornoDemandaJudicial
+     *   }
+     * })
+     * 
+     */
+    delete<T extends RetornoDemandaJudicialDeleteArgs>(args: SelectSubset<T, RetornoDemandaJudicialDeleteArgs<ExtArgs>>): Prisma__RetornoDemandaJudicialClient<$Result.GetResult<Prisma.$RetornoDemandaJudicialPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one RetornoDemandaJudicial.
+     * @param {RetornoDemandaJudicialUpdateArgs} args - Arguments to update one RetornoDemandaJudicial.
+     * @example
+     * // Update one RetornoDemandaJudicial
+     * const retornoDemandaJudicial = await prisma.retornoDemandaJudicial.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends RetornoDemandaJudicialUpdateArgs>(args: SelectSubset<T, RetornoDemandaJudicialUpdateArgs<ExtArgs>>): Prisma__RetornoDemandaJudicialClient<$Result.GetResult<Prisma.$RetornoDemandaJudicialPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more RetornoDemandaJudicials.
+     * @param {RetornoDemandaJudicialDeleteManyArgs} args - Arguments to filter RetornoDemandaJudicials to delete.
+     * @example
+     * // Delete a few RetornoDemandaJudicials
+     * const { count } = await prisma.retornoDemandaJudicial.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends RetornoDemandaJudicialDeleteManyArgs>(args?: SelectSubset<T, RetornoDemandaJudicialDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more RetornoDemandaJudicials.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RetornoDemandaJudicialUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many RetornoDemandaJudicials
+     * const retornoDemandaJudicial = await prisma.retornoDemandaJudicial.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends RetornoDemandaJudicialUpdateManyArgs>(args: SelectSubset<T, RetornoDemandaJudicialUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more RetornoDemandaJudicials and returns the data updated in the database.
+     * @param {RetornoDemandaJudicialUpdateManyAndReturnArgs} args - Arguments to update many RetornoDemandaJudicials.
+     * @example
+     * // Update many RetornoDemandaJudicials
+     * const retornoDemandaJudicial = await prisma.retornoDemandaJudicial.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more RetornoDemandaJudicials and only return the `id`
+     * const retornoDemandaJudicialWithIdOnly = await prisma.retornoDemandaJudicial.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends RetornoDemandaJudicialUpdateManyAndReturnArgs>(args: SelectSubset<T, RetornoDemandaJudicialUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RetornoDemandaJudicialPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one RetornoDemandaJudicial.
+     * @param {RetornoDemandaJudicialUpsertArgs} args - Arguments to update or create a RetornoDemandaJudicial.
+     * @example
+     * // Update or create a RetornoDemandaJudicial
+     * const retornoDemandaJudicial = await prisma.retornoDemandaJudicial.upsert({
+     *   create: {
+     *     // ... data to create a RetornoDemandaJudicial
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the RetornoDemandaJudicial we want to update
+     *   }
+     * })
+     */
+    upsert<T extends RetornoDemandaJudicialUpsertArgs>(args: SelectSubset<T, RetornoDemandaJudicialUpsertArgs<ExtArgs>>): Prisma__RetornoDemandaJudicialClient<$Result.GetResult<Prisma.$RetornoDemandaJudicialPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of RetornoDemandaJudicials.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RetornoDemandaJudicialCountArgs} args - Arguments to filter RetornoDemandaJudicials to count.
+     * @example
+     * // Count the number of RetornoDemandaJudicials
+     * const count = await prisma.retornoDemandaJudicial.count({
+     *   where: {
+     *     // ... the filter for the RetornoDemandaJudicials we want to count
+     *   }
+     * })
+    **/
+    count<T extends RetornoDemandaJudicialCountArgs>(
+      args?: Subset<T, RetornoDemandaJudicialCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], RetornoDemandaJudicialCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a RetornoDemandaJudicial.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RetornoDemandaJudicialAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends RetornoDemandaJudicialAggregateArgs>(args: Subset<T, RetornoDemandaJudicialAggregateArgs>): Prisma.PrismaPromise<GetRetornoDemandaJudicialAggregateType<T>>
+
+    /**
+     * Group by RetornoDemandaJudicial.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RetornoDemandaJudicialGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends RetornoDemandaJudicialGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: RetornoDemandaJudicialGroupByArgs['orderBy'] }
+        : { orderBy?: RetornoDemandaJudicialGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, RetornoDemandaJudicialGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetRetornoDemandaJudicialGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the RetornoDemandaJudicial model
+   */
+  readonly fields: RetornoDemandaJudicialFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for RetornoDemandaJudicial.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__RetornoDemandaJudicialClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    atendimento<T extends AtendimentoDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AtendimentoDefaultArgs<ExtArgs>>): Prisma__AtendimentoClient<$Result.GetResult<Prisma.$AtendimentoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    operador<T extends RetornoDemandaJudicial$operadorArgs<ExtArgs> = {}>(args?: Subset<T, RetornoDemandaJudicial$operadorArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the RetornoDemandaJudicial model
+   */
+  interface RetornoDemandaJudicialFieldRefs {
+    readonly id: FieldRef<"RetornoDemandaJudicial", 'String'>
+    readonly pajAssistido: FieldRef<"RetornoDemandaJudicial", 'String'>
+    readonly retornoRealizado: FieldRef<"RetornoDemandaJudicial", 'String'>
+    readonly dataCriacao: FieldRef<"RetornoDemandaJudicial", 'DateTime'>
+    readonly atendimentoId: FieldRef<"RetornoDemandaJudicial", 'String'>
+    readonly operadorId: FieldRef<"RetornoDemandaJudicial", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * RetornoDemandaJudicial findUnique
+   */
+  export type RetornoDemandaJudicialFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RetornoDemandaJudicial
+     */
+    select?: RetornoDemandaJudicialSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RetornoDemandaJudicial
+     */
+    omit?: RetornoDemandaJudicialOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RetornoDemandaJudicialInclude<ExtArgs> | null
+    /**
+     * Filter, which RetornoDemandaJudicial to fetch.
+     */
+    where: RetornoDemandaJudicialWhereUniqueInput
+  }
+
+  /**
+   * RetornoDemandaJudicial findUniqueOrThrow
+   */
+  export type RetornoDemandaJudicialFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RetornoDemandaJudicial
+     */
+    select?: RetornoDemandaJudicialSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RetornoDemandaJudicial
+     */
+    omit?: RetornoDemandaJudicialOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RetornoDemandaJudicialInclude<ExtArgs> | null
+    /**
+     * Filter, which RetornoDemandaJudicial to fetch.
+     */
+    where: RetornoDemandaJudicialWhereUniqueInput
+  }
+
+  /**
+   * RetornoDemandaJudicial findFirst
+   */
+  export type RetornoDemandaJudicialFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RetornoDemandaJudicial
+     */
+    select?: RetornoDemandaJudicialSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RetornoDemandaJudicial
+     */
+    omit?: RetornoDemandaJudicialOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RetornoDemandaJudicialInclude<ExtArgs> | null
+    /**
+     * Filter, which RetornoDemandaJudicial to fetch.
+     */
+    where?: RetornoDemandaJudicialWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RetornoDemandaJudicials to fetch.
+     */
+    orderBy?: RetornoDemandaJudicialOrderByWithRelationInput | RetornoDemandaJudicialOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for RetornoDemandaJudicials.
+     */
+    cursor?: RetornoDemandaJudicialWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RetornoDemandaJudicials from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RetornoDemandaJudicials.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of RetornoDemandaJudicials.
+     */
+    distinct?: RetornoDemandaJudicialScalarFieldEnum | RetornoDemandaJudicialScalarFieldEnum[]
+  }
+
+  /**
+   * RetornoDemandaJudicial findFirstOrThrow
+   */
+  export type RetornoDemandaJudicialFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RetornoDemandaJudicial
+     */
+    select?: RetornoDemandaJudicialSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RetornoDemandaJudicial
+     */
+    omit?: RetornoDemandaJudicialOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RetornoDemandaJudicialInclude<ExtArgs> | null
+    /**
+     * Filter, which RetornoDemandaJudicial to fetch.
+     */
+    where?: RetornoDemandaJudicialWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RetornoDemandaJudicials to fetch.
+     */
+    orderBy?: RetornoDemandaJudicialOrderByWithRelationInput | RetornoDemandaJudicialOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for RetornoDemandaJudicials.
+     */
+    cursor?: RetornoDemandaJudicialWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RetornoDemandaJudicials from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RetornoDemandaJudicials.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of RetornoDemandaJudicials.
+     */
+    distinct?: RetornoDemandaJudicialScalarFieldEnum | RetornoDemandaJudicialScalarFieldEnum[]
+  }
+
+  /**
+   * RetornoDemandaJudicial findMany
+   */
+  export type RetornoDemandaJudicialFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RetornoDemandaJudicial
+     */
+    select?: RetornoDemandaJudicialSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RetornoDemandaJudicial
+     */
+    omit?: RetornoDemandaJudicialOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RetornoDemandaJudicialInclude<ExtArgs> | null
+    /**
+     * Filter, which RetornoDemandaJudicials to fetch.
+     */
+    where?: RetornoDemandaJudicialWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RetornoDemandaJudicials to fetch.
+     */
+    orderBy?: RetornoDemandaJudicialOrderByWithRelationInput | RetornoDemandaJudicialOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing RetornoDemandaJudicials.
+     */
+    cursor?: RetornoDemandaJudicialWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RetornoDemandaJudicials from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RetornoDemandaJudicials.
+     */
+    skip?: number
+    distinct?: RetornoDemandaJudicialScalarFieldEnum | RetornoDemandaJudicialScalarFieldEnum[]
+  }
+
+  /**
+   * RetornoDemandaJudicial create
+   */
+  export type RetornoDemandaJudicialCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RetornoDemandaJudicial
+     */
+    select?: RetornoDemandaJudicialSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RetornoDemandaJudicial
+     */
+    omit?: RetornoDemandaJudicialOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RetornoDemandaJudicialInclude<ExtArgs> | null
+    /**
+     * The data needed to create a RetornoDemandaJudicial.
+     */
+    data: XOR<RetornoDemandaJudicialCreateInput, RetornoDemandaJudicialUncheckedCreateInput>
+  }
+
+  /**
+   * RetornoDemandaJudicial createMany
+   */
+  export type RetornoDemandaJudicialCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many RetornoDemandaJudicials.
+     */
+    data: RetornoDemandaJudicialCreateManyInput | RetornoDemandaJudicialCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * RetornoDemandaJudicial createManyAndReturn
+   */
+  export type RetornoDemandaJudicialCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RetornoDemandaJudicial
+     */
+    select?: RetornoDemandaJudicialSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the RetornoDemandaJudicial
+     */
+    omit?: RetornoDemandaJudicialOmit<ExtArgs> | null
+    /**
+     * The data used to create many RetornoDemandaJudicials.
+     */
+    data: RetornoDemandaJudicialCreateManyInput | RetornoDemandaJudicialCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RetornoDemandaJudicialIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * RetornoDemandaJudicial update
+   */
+  export type RetornoDemandaJudicialUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RetornoDemandaJudicial
+     */
+    select?: RetornoDemandaJudicialSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RetornoDemandaJudicial
+     */
+    omit?: RetornoDemandaJudicialOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RetornoDemandaJudicialInclude<ExtArgs> | null
+    /**
+     * The data needed to update a RetornoDemandaJudicial.
+     */
+    data: XOR<RetornoDemandaJudicialUpdateInput, RetornoDemandaJudicialUncheckedUpdateInput>
+    /**
+     * Choose, which RetornoDemandaJudicial to update.
+     */
+    where: RetornoDemandaJudicialWhereUniqueInput
+  }
+
+  /**
+   * RetornoDemandaJudicial updateMany
+   */
+  export type RetornoDemandaJudicialUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update RetornoDemandaJudicials.
+     */
+    data: XOR<RetornoDemandaJudicialUpdateManyMutationInput, RetornoDemandaJudicialUncheckedUpdateManyInput>
+    /**
+     * Filter which RetornoDemandaJudicials to update
+     */
+    where?: RetornoDemandaJudicialWhereInput
+    /**
+     * Limit how many RetornoDemandaJudicials to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * RetornoDemandaJudicial updateManyAndReturn
+   */
+  export type RetornoDemandaJudicialUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RetornoDemandaJudicial
+     */
+    select?: RetornoDemandaJudicialSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the RetornoDemandaJudicial
+     */
+    omit?: RetornoDemandaJudicialOmit<ExtArgs> | null
+    /**
+     * The data used to update RetornoDemandaJudicials.
+     */
+    data: XOR<RetornoDemandaJudicialUpdateManyMutationInput, RetornoDemandaJudicialUncheckedUpdateManyInput>
+    /**
+     * Filter which RetornoDemandaJudicials to update
+     */
+    where?: RetornoDemandaJudicialWhereInput
+    /**
+     * Limit how many RetornoDemandaJudicials to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RetornoDemandaJudicialIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * RetornoDemandaJudicial upsert
+   */
+  export type RetornoDemandaJudicialUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RetornoDemandaJudicial
+     */
+    select?: RetornoDemandaJudicialSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RetornoDemandaJudicial
+     */
+    omit?: RetornoDemandaJudicialOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RetornoDemandaJudicialInclude<ExtArgs> | null
+    /**
+     * The filter to search for the RetornoDemandaJudicial to update in case it exists.
+     */
+    where: RetornoDemandaJudicialWhereUniqueInput
+    /**
+     * In case the RetornoDemandaJudicial found by the `where` argument doesn't exist, create a new RetornoDemandaJudicial with this data.
+     */
+    create: XOR<RetornoDemandaJudicialCreateInput, RetornoDemandaJudicialUncheckedCreateInput>
+    /**
+     * In case the RetornoDemandaJudicial was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<RetornoDemandaJudicialUpdateInput, RetornoDemandaJudicialUncheckedUpdateInput>
+  }
+
+  /**
+   * RetornoDemandaJudicial delete
+   */
+  export type RetornoDemandaJudicialDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RetornoDemandaJudicial
+     */
+    select?: RetornoDemandaJudicialSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RetornoDemandaJudicial
+     */
+    omit?: RetornoDemandaJudicialOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RetornoDemandaJudicialInclude<ExtArgs> | null
+    /**
+     * Filter which RetornoDemandaJudicial to delete.
+     */
+    where: RetornoDemandaJudicialWhereUniqueInput
+  }
+
+  /**
+   * RetornoDemandaJudicial deleteMany
+   */
+  export type RetornoDemandaJudicialDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which RetornoDemandaJudicials to delete
+     */
+    where?: RetornoDemandaJudicialWhereInput
+    /**
+     * Limit how many RetornoDemandaJudicials to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * RetornoDemandaJudicial.operador
+   */
+  export type RetornoDemandaJudicial$operadorArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
+  }
+
+  /**
+   * RetornoDemandaJudicial without action
+   */
+  export type RetornoDemandaJudicialDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RetornoDemandaJudicial
+     */
+    select?: RetornoDemandaJudicialSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RetornoDemandaJudicial
+     */
+    omit?: RetornoDemandaJudicialOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RetornoDemandaJudicialInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model OrientacaoJuridica
+   */
+
+  export type AggregateOrientacaoJuridica = {
+    _count: OrientacaoJuridicaCountAggregateOutputType | null
+    _min: OrientacaoJuridicaMinAggregateOutputType | null
+    _max: OrientacaoJuridicaMaxAggregateOutputType | null
+  }
+
+  export type OrientacaoJuridicaMinAggregateOutputType = {
+    id: string | null
+    orientacaoRealizada: string | null
+    dataCriacao: Date | null
+    atendimentoId: string | null
+    operadorId: string | null
+  }
+
+  export type OrientacaoJuridicaMaxAggregateOutputType = {
+    id: string | null
+    orientacaoRealizada: string | null
+    dataCriacao: Date | null
+    atendimentoId: string | null
+    operadorId: string | null
+  }
+
+  export type OrientacaoJuridicaCountAggregateOutputType = {
+    id: number
+    orientacaoRealizada: number
+    dataCriacao: number
+    atendimentoId: number
+    operadorId: number
+    _all: number
+  }
+
+
+  export type OrientacaoJuridicaMinAggregateInputType = {
+    id?: true
+    orientacaoRealizada?: true
+    dataCriacao?: true
+    atendimentoId?: true
+    operadorId?: true
+  }
+
+  export type OrientacaoJuridicaMaxAggregateInputType = {
+    id?: true
+    orientacaoRealizada?: true
+    dataCriacao?: true
+    atendimentoId?: true
+    operadorId?: true
+  }
+
+  export type OrientacaoJuridicaCountAggregateInputType = {
+    id?: true
+    orientacaoRealizada?: true
+    dataCriacao?: true
+    atendimentoId?: true
+    operadorId?: true
+    _all?: true
+  }
+
+  export type OrientacaoJuridicaAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which OrientacaoJuridica to aggregate.
+     */
+    where?: OrientacaoJuridicaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of OrientacaoJuridicas to fetch.
+     */
+    orderBy?: OrientacaoJuridicaOrderByWithRelationInput | OrientacaoJuridicaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: OrientacaoJuridicaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` OrientacaoJuridicas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` OrientacaoJuridicas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned OrientacaoJuridicas
+    **/
+    _count?: true | OrientacaoJuridicaCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: OrientacaoJuridicaMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: OrientacaoJuridicaMaxAggregateInputType
+  }
+
+  export type GetOrientacaoJuridicaAggregateType<T extends OrientacaoJuridicaAggregateArgs> = {
+        [P in keyof T & keyof AggregateOrientacaoJuridica]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateOrientacaoJuridica[P]>
+      : GetScalarType<T[P], AggregateOrientacaoJuridica[P]>
+  }
+
+
+
+
+  export type OrientacaoJuridicaGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: OrientacaoJuridicaWhereInput
+    orderBy?: OrientacaoJuridicaOrderByWithAggregationInput | OrientacaoJuridicaOrderByWithAggregationInput[]
+    by: OrientacaoJuridicaScalarFieldEnum[] | OrientacaoJuridicaScalarFieldEnum
+    having?: OrientacaoJuridicaScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: OrientacaoJuridicaCountAggregateInputType | true
+    _min?: OrientacaoJuridicaMinAggregateInputType
+    _max?: OrientacaoJuridicaMaxAggregateInputType
+  }
+
+  export type OrientacaoJuridicaGroupByOutputType = {
+    id: string
+    orientacaoRealizada: string
+    dataCriacao: Date
+    atendimentoId: string
+    operadorId: string | null
+    _count: OrientacaoJuridicaCountAggregateOutputType | null
+    _min: OrientacaoJuridicaMinAggregateOutputType | null
+    _max: OrientacaoJuridicaMaxAggregateOutputType | null
+  }
+
+  type GetOrientacaoJuridicaGroupByPayload<T extends OrientacaoJuridicaGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<OrientacaoJuridicaGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof OrientacaoJuridicaGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], OrientacaoJuridicaGroupByOutputType[P]>
+            : GetScalarType<T[P], OrientacaoJuridicaGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type OrientacaoJuridicaSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    orientacaoRealizada?: boolean
+    dataCriacao?: boolean
+    atendimentoId?: boolean
+    operadorId?: boolean
+    atendimento?: boolean | AtendimentoDefaultArgs<ExtArgs>
+    operador?: boolean | OrientacaoJuridica$operadorArgs<ExtArgs>
+  }, ExtArgs["result"]["orientacaoJuridica"]>
+
+  export type OrientacaoJuridicaSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    orientacaoRealizada?: boolean
+    dataCriacao?: boolean
+    atendimentoId?: boolean
+    operadorId?: boolean
+    atendimento?: boolean | AtendimentoDefaultArgs<ExtArgs>
+    operador?: boolean | OrientacaoJuridica$operadorArgs<ExtArgs>
+  }, ExtArgs["result"]["orientacaoJuridica"]>
+
+  export type OrientacaoJuridicaSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    orientacaoRealizada?: boolean
+    dataCriacao?: boolean
+    atendimentoId?: boolean
+    operadorId?: boolean
+    atendimento?: boolean | AtendimentoDefaultArgs<ExtArgs>
+    operador?: boolean | OrientacaoJuridica$operadorArgs<ExtArgs>
+  }, ExtArgs["result"]["orientacaoJuridica"]>
+
+  export type OrientacaoJuridicaSelectScalar = {
+    id?: boolean
+    orientacaoRealizada?: boolean
+    dataCriacao?: boolean
+    atendimentoId?: boolean
+    operadorId?: boolean
+  }
+
+  export type OrientacaoJuridicaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "orientacaoRealizada" | "dataCriacao" | "atendimentoId" | "operadorId", ExtArgs["result"]["orientacaoJuridica"]>
+  export type OrientacaoJuridicaInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    atendimento?: boolean | AtendimentoDefaultArgs<ExtArgs>
+    operador?: boolean | OrientacaoJuridica$operadorArgs<ExtArgs>
+  }
+  export type OrientacaoJuridicaIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    atendimento?: boolean | AtendimentoDefaultArgs<ExtArgs>
+    operador?: boolean | OrientacaoJuridica$operadorArgs<ExtArgs>
+  }
+  export type OrientacaoJuridicaIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    atendimento?: boolean | AtendimentoDefaultArgs<ExtArgs>
+    operador?: boolean | OrientacaoJuridica$operadorArgs<ExtArgs>
+  }
+
+  export type $OrientacaoJuridicaPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "OrientacaoJuridica"
+    objects: {
+      atendimento: Prisma.$AtendimentoPayload<ExtArgs>
+      operador: Prisma.$UserPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      orientacaoRealizada: string
+      dataCriacao: Date
+      atendimentoId: string
+      operadorId: string | null
+    }, ExtArgs["result"]["orientacaoJuridica"]>
+    composites: {}
+  }
+
+  type OrientacaoJuridicaGetPayload<S extends boolean | null | undefined | OrientacaoJuridicaDefaultArgs> = $Result.GetResult<Prisma.$OrientacaoJuridicaPayload, S>
+
+  type OrientacaoJuridicaCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<OrientacaoJuridicaFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: OrientacaoJuridicaCountAggregateInputType | true
+    }
+
+  export interface OrientacaoJuridicaDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['OrientacaoJuridica'], meta: { name: 'OrientacaoJuridica' } }
+    /**
+     * Find zero or one OrientacaoJuridica that matches the filter.
+     * @param {OrientacaoJuridicaFindUniqueArgs} args - Arguments to find a OrientacaoJuridica
+     * @example
+     * // Get one OrientacaoJuridica
+     * const orientacaoJuridica = await prisma.orientacaoJuridica.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends OrientacaoJuridicaFindUniqueArgs>(args: SelectSubset<T, OrientacaoJuridicaFindUniqueArgs<ExtArgs>>): Prisma__OrientacaoJuridicaClient<$Result.GetResult<Prisma.$OrientacaoJuridicaPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one OrientacaoJuridica that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {OrientacaoJuridicaFindUniqueOrThrowArgs} args - Arguments to find a OrientacaoJuridica
+     * @example
+     * // Get one OrientacaoJuridica
+     * const orientacaoJuridica = await prisma.orientacaoJuridica.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends OrientacaoJuridicaFindUniqueOrThrowArgs>(args: SelectSubset<T, OrientacaoJuridicaFindUniqueOrThrowArgs<ExtArgs>>): Prisma__OrientacaoJuridicaClient<$Result.GetResult<Prisma.$OrientacaoJuridicaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first OrientacaoJuridica that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OrientacaoJuridicaFindFirstArgs} args - Arguments to find a OrientacaoJuridica
+     * @example
+     * // Get one OrientacaoJuridica
+     * const orientacaoJuridica = await prisma.orientacaoJuridica.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends OrientacaoJuridicaFindFirstArgs>(args?: SelectSubset<T, OrientacaoJuridicaFindFirstArgs<ExtArgs>>): Prisma__OrientacaoJuridicaClient<$Result.GetResult<Prisma.$OrientacaoJuridicaPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first OrientacaoJuridica that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OrientacaoJuridicaFindFirstOrThrowArgs} args - Arguments to find a OrientacaoJuridica
+     * @example
+     * // Get one OrientacaoJuridica
+     * const orientacaoJuridica = await prisma.orientacaoJuridica.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends OrientacaoJuridicaFindFirstOrThrowArgs>(args?: SelectSubset<T, OrientacaoJuridicaFindFirstOrThrowArgs<ExtArgs>>): Prisma__OrientacaoJuridicaClient<$Result.GetResult<Prisma.$OrientacaoJuridicaPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more OrientacaoJuridicas that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OrientacaoJuridicaFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all OrientacaoJuridicas
+     * const orientacaoJuridicas = await prisma.orientacaoJuridica.findMany()
+     * 
+     * // Get first 10 OrientacaoJuridicas
+     * const orientacaoJuridicas = await prisma.orientacaoJuridica.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const orientacaoJuridicaWithIdOnly = await prisma.orientacaoJuridica.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends OrientacaoJuridicaFindManyArgs>(args?: SelectSubset<T, OrientacaoJuridicaFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OrientacaoJuridicaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a OrientacaoJuridica.
+     * @param {OrientacaoJuridicaCreateArgs} args - Arguments to create a OrientacaoJuridica.
+     * @example
+     * // Create one OrientacaoJuridica
+     * const OrientacaoJuridica = await prisma.orientacaoJuridica.create({
+     *   data: {
+     *     // ... data to create a OrientacaoJuridica
+     *   }
+     * })
+     * 
+     */
+    create<T extends OrientacaoJuridicaCreateArgs>(args: SelectSubset<T, OrientacaoJuridicaCreateArgs<ExtArgs>>): Prisma__OrientacaoJuridicaClient<$Result.GetResult<Prisma.$OrientacaoJuridicaPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many OrientacaoJuridicas.
+     * @param {OrientacaoJuridicaCreateManyArgs} args - Arguments to create many OrientacaoJuridicas.
+     * @example
+     * // Create many OrientacaoJuridicas
+     * const orientacaoJuridica = await prisma.orientacaoJuridica.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends OrientacaoJuridicaCreateManyArgs>(args?: SelectSubset<T, OrientacaoJuridicaCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many OrientacaoJuridicas and returns the data saved in the database.
+     * @param {OrientacaoJuridicaCreateManyAndReturnArgs} args - Arguments to create many OrientacaoJuridicas.
+     * @example
+     * // Create many OrientacaoJuridicas
+     * const orientacaoJuridica = await prisma.orientacaoJuridica.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many OrientacaoJuridicas and only return the `id`
+     * const orientacaoJuridicaWithIdOnly = await prisma.orientacaoJuridica.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends OrientacaoJuridicaCreateManyAndReturnArgs>(args?: SelectSubset<T, OrientacaoJuridicaCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OrientacaoJuridicaPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a OrientacaoJuridica.
+     * @param {OrientacaoJuridicaDeleteArgs} args - Arguments to delete one OrientacaoJuridica.
+     * @example
+     * // Delete one OrientacaoJuridica
+     * const OrientacaoJuridica = await prisma.orientacaoJuridica.delete({
+     *   where: {
+     *     // ... filter to delete one OrientacaoJuridica
+     *   }
+     * })
+     * 
+     */
+    delete<T extends OrientacaoJuridicaDeleteArgs>(args: SelectSubset<T, OrientacaoJuridicaDeleteArgs<ExtArgs>>): Prisma__OrientacaoJuridicaClient<$Result.GetResult<Prisma.$OrientacaoJuridicaPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one OrientacaoJuridica.
+     * @param {OrientacaoJuridicaUpdateArgs} args - Arguments to update one OrientacaoJuridica.
+     * @example
+     * // Update one OrientacaoJuridica
+     * const orientacaoJuridica = await prisma.orientacaoJuridica.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends OrientacaoJuridicaUpdateArgs>(args: SelectSubset<T, OrientacaoJuridicaUpdateArgs<ExtArgs>>): Prisma__OrientacaoJuridicaClient<$Result.GetResult<Prisma.$OrientacaoJuridicaPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more OrientacaoJuridicas.
+     * @param {OrientacaoJuridicaDeleteManyArgs} args - Arguments to filter OrientacaoJuridicas to delete.
+     * @example
+     * // Delete a few OrientacaoJuridicas
+     * const { count } = await prisma.orientacaoJuridica.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends OrientacaoJuridicaDeleteManyArgs>(args?: SelectSubset<T, OrientacaoJuridicaDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more OrientacaoJuridicas.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OrientacaoJuridicaUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many OrientacaoJuridicas
+     * const orientacaoJuridica = await prisma.orientacaoJuridica.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends OrientacaoJuridicaUpdateManyArgs>(args: SelectSubset<T, OrientacaoJuridicaUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more OrientacaoJuridicas and returns the data updated in the database.
+     * @param {OrientacaoJuridicaUpdateManyAndReturnArgs} args - Arguments to update many OrientacaoJuridicas.
+     * @example
+     * // Update many OrientacaoJuridicas
+     * const orientacaoJuridica = await prisma.orientacaoJuridica.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more OrientacaoJuridicas and only return the `id`
+     * const orientacaoJuridicaWithIdOnly = await prisma.orientacaoJuridica.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends OrientacaoJuridicaUpdateManyAndReturnArgs>(args: SelectSubset<T, OrientacaoJuridicaUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OrientacaoJuridicaPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one OrientacaoJuridica.
+     * @param {OrientacaoJuridicaUpsertArgs} args - Arguments to update or create a OrientacaoJuridica.
+     * @example
+     * // Update or create a OrientacaoJuridica
+     * const orientacaoJuridica = await prisma.orientacaoJuridica.upsert({
+     *   create: {
+     *     // ... data to create a OrientacaoJuridica
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the OrientacaoJuridica we want to update
+     *   }
+     * })
+     */
+    upsert<T extends OrientacaoJuridicaUpsertArgs>(args: SelectSubset<T, OrientacaoJuridicaUpsertArgs<ExtArgs>>): Prisma__OrientacaoJuridicaClient<$Result.GetResult<Prisma.$OrientacaoJuridicaPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of OrientacaoJuridicas.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OrientacaoJuridicaCountArgs} args - Arguments to filter OrientacaoJuridicas to count.
+     * @example
+     * // Count the number of OrientacaoJuridicas
+     * const count = await prisma.orientacaoJuridica.count({
+     *   where: {
+     *     // ... the filter for the OrientacaoJuridicas we want to count
+     *   }
+     * })
+    **/
+    count<T extends OrientacaoJuridicaCountArgs>(
+      args?: Subset<T, OrientacaoJuridicaCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], OrientacaoJuridicaCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a OrientacaoJuridica.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OrientacaoJuridicaAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends OrientacaoJuridicaAggregateArgs>(args: Subset<T, OrientacaoJuridicaAggregateArgs>): Prisma.PrismaPromise<GetOrientacaoJuridicaAggregateType<T>>
+
+    /**
+     * Group by OrientacaoJuridica.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OrientacaoJuridicaGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends OrientacaoJuridicaGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: OrientacaoJuridicaGroupByArgs['orderBy'] }
+        : { orderBy?: OrientacaoJuridicaGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, OrientacaoJuridicaGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetOrientacaoJuridicaGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the OrientacaoJuridica model
+   */
+  readonly fields: OrientacaoJuridicaFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for OrientacaoJuridica.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__OrientacaoJuridicaClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    atendimento<T extends AtendimentoDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AtendimentoDefaultArgs<ExtArgs>>): Prisma__AtendimentoClient<$Result.GetResult<Prisma.$AtendimentoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    operador<T extends OrientacaoJuridica$operadorArgs<ExtArgs> = {}>(args?: Subset<T, OrientacaoJuridica$operadorArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the OrientacaoJuridica model
+   */
+  interface OrientacaoJuridicaFieldRefs {
+    readonly id: FieldRef<"OrientacaoJuridica", 'String'>
+    readonly orientacaoRealizada: FieldRef<"OrientacaoJuridica", 'String'>
+    readonly dataCriacao: FieldRef<"OrientacaoJuridica", 'DateTime'>
+    readonly atendimentoId: FieldRef<"OrientacaoJuridica", 'String'>
+    readonly operadorId: FieldRef<"OrientacaoJuridica", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * OrientacaoJuridica findUnique
+   */
+  export type OrientacaoJuridicaFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OrientacaoJuridica
+     */
+    select?: OrientacaoJuridicaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OrientacaoJuridica
+     */
+    omit?: OrientacaoJuridicaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OrientacaoJuridicaInclude<ExtArgs> | null
+    /**
+     * Filter, which OrientacaoJuridica to fetch.
+     */
+    where: OrientacaoJuridicaWhereUniqueInput
+  }
+
+  /**
+   * OrientacaoJuridica findUniqueOrThrow
+   */
+  export type OrientacaoJuridicaFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OrientacaoJuridica
+     */
+    select?: OrientacaoJuridicaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OrientacaoJuridica
+     */
+    omit?: OrientacaoJuridicaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OrientacaoJuridicaInclude<ExtArgs> | null
+    /**
+     * Filter, which OrientacaoJuridica to fetch.
+     */
+    where: OrientacaoJuridicaWhereUniqueInput
+  }
+
+  /**
+   * OrientacaoJuridica findFirst
+   */
+  export type OrientacaoJuridicaFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OrientacaoJuridica
+     */
+    select?: OrientacaoJuridicaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OrientacaoJuridica
+     */
+    omit?: OrientacaoJuridicaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OrientacaoJuridicaInclude<ExtArgs> | null
+    /**
+     * Filter, which OrientacaoJuridica to fetch.
+     */
+    where?: OrientacaoJuridicaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of OrientacaoJuridicas to fetch.
+     */
+    orderBy?: OrientacaoJuridicaOrderByWithRelationInput | OrientacaoJuridicaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for OrientacaoJuridicas.
+     */
+    cursor?: OrientacaoJuridicaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` OrientacaoJuridicas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` OrientacaoJuridicas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of OrientacaoJuridicas.
+     */
+    distinct?: OrientacaoJuridicaScalarFieldEnum | OrientacaoJuridicaScalarFieldEnum[]
+  }
+
+  /**
+   * OrientacaoJuridica findFirstOrThrow
+   */
+  export type OrientacaoJuridicaFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OrientacaoJuridica
+     */
+    select?: OrientacaoJuridicaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OrientacaoJuridica
+     */
+    omit?: OrientacaoJuridicaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OrientacaoJuridicaInclude<ExtArgs> | null
+    /**
+     * Filter, which OrientacaoJuridica to fetch.
+     */
+    where?: OrientacaoJuridicaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of OrientacaoJuridicas to fetch.
+     */
+    orderBy?: OrientacaoJuridicaOrderByWithRelationInput | OrientacaoJuridicaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for OrientacaoJuridicas.
+     */
+    cursor?: OrientacaoJuridicaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` OrientacaoJuridicas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` OrientacaoJuridicas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of OrientacaoJuridicas.
+     */
+    distinct?: OrientacaoJuridicaScalarFieldEnum | OrientacaoJuridicaScalarFieldEnum[]
+  }
+
+  /**
+   * OrientacaoJuridica findMany
+   */
+  export type OrientacaoJuridicaFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OrientacaoJuridica
+     */
+    select?: OrientacaoJuridicaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OrientacaoJuridica
+     */
+    omit?: OrientacaoJuridicaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OrientacaoJuridicaInclude<ExtArgs> | null
+    /**
+     * Filter, which OrientacaoJuridicas to fetch.
+     */
+    where?: OrientacaoJuridicaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of OrientacaoJuridicas to fetch.
+     */
+    orderBy?: OrientacaoJuridicaOrderByWithRelationInput | OrientacaoJuridicaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing OrientacaoJuridicas.
+     */
+    cursor?: OrientacaoJuridicaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` OrientacaoJuridicas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` OrientacaoJuridicas.
+     */
+    skip?: number
+    distinct?: OrientacaoJuridicaScalarFieldEnum | OrientacaoJuridicaScalarFieldEnum[]
+  }
+
+  /**
+   * OrientacaoJuridica create
+   */
+  export type OrientacaoJuridicaCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OrientacaoJuridica
+     */
+    select?: OrientacaoJuridicaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OrientacaoJuridica
+     */
+    omit?: OrientacaoJuridicaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OrientacaoJuridicaInclude<ExtArgs> | null
+    /**
+     * The data needed to create a OrientacaoJuridica.
+     */
+    data: XOR<OrientacaoJuridicaCreateInput, OrientacaoJuridicaUncheckedCreateInput>
+  }
+
+  /**
+   * OrientacaoJuridica createMany
+   */
+  export type OrientacaoJuridicaCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many OrientacaoJuridicas.
+     */
+    data: OrientacaoJuridicaCreateManyInput | OrientacaoJuridicaCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * OrientacaoJuridica createManyAndReturn
+   */
+  export type OrientacaoJuridicaCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OrientacaoJuridica
+     */
+    select?: OrientacaoJuridicaSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the OrientacaoJuridica
+     */
+    omit?: OrientacaoJuridicaOmit<ExtArgs> | null
+    /**
+     * The data used to create many OrientacaoJuridicas.
+     */
+    data: OrientacaoJuridicaCreateManyInput | OrientacaoJuridicaCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OrientacaoJuridicaIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * OrientacaoJuridica update
+   */
+  export type OrientacaoJuridicaUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OrientacaoJuridica
+     */
+    select?: OrientacaoJuridicaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OrientacaoJuridica
+     */
+    omit?: OrientacaoJuridicaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OrientacaoJuridicaInclude<ExtArgs> | null
+    /**
+     * The data needed to update a OrientacaoJuridica.
+     */
+    data: XOR<OrientacaoJuridicaUpdateInput, OrientacaoJuridicaUncheckedUpdateInput>
+    /**
+     * Choose, which OrientacaoJuridica to update.
+     */
+    where: OrientacaoJuridicaWhereUniqueInput
+  }
+
+  /**
+   * OrientacaoJuridica updateMany
+   */
+  export type OrientacaoJuridicaUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update OrientacaoJuridicas.
+     */
+    data: XOR<OrientacaoJuridicaUpdateManyMutationInput, OrientacaoJuridicaUncheckedUpdateManyInput>
+    /**
+     * Filter which OrientacaoJuridicas to update
+     */
+    where?: OrientacaoJuridicaWhereInput
+    /**
+     * Limit how many OrientacaoJuridicas to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * OrientacaoJuridica updateManyAndReturn
+   */
+  export type OrientacaoJuridicaUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OrientacaoJuridica
+     */
+    select?: OrientacaoJuridicaSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the OrientacaoJuridica
+     */
+    omit?: OrientacaoJuridicaOmit<ExtArgs> | null
+    /**
+     * The data used to update OrientacaoJuridicas.
+     */
+    data: XOR<OrientacaoJuridicaUpdateManyMutationInput, OrientacaoJuridicaUncheckedUpdateManyInput>
+    /**
+     * Filter which OrientacaoJuridicas to update
+     */
+    where?: OrientacaoJuridicaWhereInput
+    /**
+     * Limit how many OrientacaoJuridicas to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OrientacaoJuridicaIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * OrientacaoJuridica upsert
+   */
+  export type OrientacaoJuridicaUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OrientacaoJuridica
+     */
+    select?: OrientacaoJuridicaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OrientacaoJuridica
+     */
+    omit?: OrientacaoJuridicaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OrientacaoJuridicaInclude<ExtArgs> | null
+    /**
+     * The filter to search for the OrientacaoJuridica to update in case it exists.
+     */
+    where: OrientacaoJuridicaWhereUniqueInput
+    /**
+     * In case the OrientacaoJuridica found by the `where` argument doesn't exist, create a new OrientacaoJuridica with this data.
+     */
+    create: XOR<OrientacaoJuridicaCreateInput, OrientacaoJuridicaUncheckedCreateInput>
+    /**
+     * In case the OrientacaoJuridica was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<OrientacaoJuridicaUpdateInput, OrientacaoJuridicaUncheckedUpdateInput>
+  }
+
+  /**
+   * OrientacaoJuridica delete
+   */
+  export type OrientacaoJuridicaDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OrientacaoJuridica
+     */
+    select?: OrientacaoJuridicaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OrientacaoJuridica
+     */
+    omit?: OrientacaoJuridicaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OrientacaoJuridicaInclude<ExtArgs> | null
+    /**
+     * Filter which OrientacaoJuridica to delete.
+     */
+    where: OrientacaoJuridicaWhereUniqueInput
+  }
+
+  /**
+   * OrientacaoJuridica deleteMany
+   */
+  export type OrientacaoJuridicaDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which OrientacaoJuridicas to delete
+     */
+    where?: OrientacaoJuridicaWhereInput
+    /**
+     * Limit how many OrientacaoJuridicas to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * OrientacaoJuridica.operador
+   */
+  export type OrientacaoJuridica$operadorArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
+  }
+
+  /**
+   * OrientacaoJuridica without action
+   */
+  export type OrientacaoJuridicaDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OrientacaoJuridica
+     */
+    select?: OrientacaoJuridicaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OrientacaoJuridica
+     */
+    omit?: OrientacaoJuridicaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OrientacaoJuridicaInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model EncaminhamentoOutrosOrgaos
+   */
+
+  export type AggregateEncaminhamentoOutrosOrgaos = {
+    _count: EncaminhamentoOutrosOrgaosCountAggregateOutputType | null
+    _min: EncaminhamentoOutrosOrgaosMinAggregateOutputType | null
+    _max: EncaminhamentoOutrosOrgaosMaxAggregateOutputType | null
+  }
+
+  export type EncaminhamentoOutrosOrgaosMinAggregateOutputType = {
+    id: string | null
+    orgaoDestino: string | null
+    motivoEncaminhamento: string | null
+    observacoes: string | null
+    dataCriacao: Date | null
+    atendimentoId: string | null
+    operadorId: string | null
+  }
+
+  export type EncaminhamentoOutrosOrgaosMaxAggregateOutputType = {
+    id: string | null
+    orgaoDestino: string | null
+    motivoEncaminhamento: string | null
+    observacoes: string | null
+    dataCriacao: Date | null
+    atendimentoId: string | null
+    operadorId: string | null
+  }
+
+  export type EncaminhamentoOutrosOrgaosCountAggregateOutputType = {
+    id: number
+    orgaoDestino: number
+    motivoEncaminhamento: number
+    observacoes: number
+    dataCriacao: number
+    atendimentoId: number
+    operadorId: number
+    _all: number
+  }
+
+
+  export type EncaminhamentoOutrosOrgaosMinAggregateInputType = {
+    id?: true
+    orgaoDestino?: true
+    motivoEncaminhamento?: true
+    observacoes?: true
+    dataCriacao?: true
+    atendimentoId?: true
+    operadorId?: true
+  }
+
+  export type EncaminhamentoOutrosOrgaosMaxAggregateInputType = {
+    id?: true
+    orgaoDestino?: true
+    motivoEncaminhamento?: true
+    observacoes?: true
+    dataCriacao?: true
+    atendimentoId?: true
+    operadorId?: true
+  }
+
+  export type EncaminhamentoOutrosOrgaosCountAggregateInputType = {
+    id?: true
+    orgaoDestino?: true
+    motivoEncaminhamento?: true
+    observacoes?: true
+    dataCriacao?: true
+    atendimentoId?: true
+    operadorId?: true
+    _all?: true
+  }
+
+  export type EncaminhamentoOutrosOrgaosAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which EncaminhamentoOutrosOrgaos to aggregate.
+     */
+    where?: EncaminhamentoOutrosOrgaosWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of EncaminhamentoOutrosOrgaos to fetch.
+     */
+    orderBy?: EncaminhamentoOutrosOrgaosOrderByWithRelationInput | EncaminhamentoOutrosOrgaosOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: EncaminhamentoOutrosOrgaosWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` EncaminhamentoOutrosOrgaos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` EncaminhamentoOutrosOrgaos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned EncaminhamentoOutrosOrgaos
+    **/
+    _count?: true | EncaminhamentoOutrosOrgaosCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: EncaminhamentoOutrosOrgaosMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: EncaminhamentoOutrosOrgaosMaxAggregateInputType
+  }
+
+  export type GetEncaminhamentoOutrosOrgaosAggregateType<T extends EncaminhamentoOutrosOrgaosAggregateArgs> = {
+        [P in keyof T & keyof AggregateEncaminhamentoOutrosOrgaos]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateEncaminhamentoOutrosOrgaos[P]>
+      : GetScalarType<T[P], AggregateEncaminhamentoOutrosOrgaos[P]>
+  }
+
+
+
+
+  export type EncaminhamentoOutrosOrgaosGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: EncaminhamentoOutrosOrgaosWhereInput
+    orderBy?: EncaminhamentoOutrosOrgaosOrderByWithAggregationInput | EncaminhamentoOutrosOrgaosOrderByWithAggregationInput[]
+    by: EncaminhamentoOutrosOrgaosScalarFieldEnum[] | EncaminhamentoOutrosOrgaosScalarFieldEnum
+    having?: EncaminhamentoOutrosOrgaosScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: EncaminhamentoOutrosOrgaosCountAggregateInputType | true
+    _min?: EncaminhamentoOutrosOrgaosMinAggregateInputType
+    _max?: EncaminhamentoOutrosOrgaosMaxAggregateInputType
+  }
+
+  export type EncaminhamentoOutrosOrgaosGroupByOutputType = {
+    id: string
+    orgaoDestino: string
+    motivoEncaminhamento: string
+    observacoes: string | null
+    dataCriacao: Date
+    atendimentoId: string
+    operadorId: string | null
+    _count: EncaminhamentoOutrosOrgaosCountAggregateOutputType | null
+    _min: EncaminhamentoOutrosOrgaosMinAggregateOutputType | null
+    _max: EncaminhamentoOutrosOrgaosMaxAggregateOutputType | null
+  }
+
+  type GetEncaminhamentoOutrosOrgaosGroupByPayload<T extends EncaminhamentoOutrosOrgaosGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<EncaminhamentoOutrosOrgaosGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof EncaminhamentoOutrosOrgaosGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], EncaminhamentoOutrosOrgaosGroupByOutputType[P]>
+            : GetScalarType<T[P], EncaminhamentoOutrosOrgaosGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type EncaminhamentoOutrosOrgaosSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    orgaoDestino?: boolean
+    motivoEncaminhamento?: boolean
+    observacoes?: boolean
+    dataCriacao?: boolean
+    atendimentoId?: boolean
+    operadorId?: boolean
+    atendimento?: boolean | AtendimentoDefaultArgs<ExtArgs>
+    operador?: boolean | EncaminhamentoOutrosOrgaos$operadorArgs<ExtArgs>
+  }, ExtArgs["result"]["encaminhamentoOutrosOrgaos"]>
+
+  export type EncaminhamentoOutrosOrgaosSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    orgaoDestino?: boolean
+    motivoEncaminhamento?: boolean
+    observacoes?: boolean
+    dataCriacao?: boolean
+    atendimentoId?: boolean
+    operadorId?: boolean
+    atendimento?: boolean | AtendimentoDefaultArgs<ExtArgs>
+    operador?: boolean | EncaminhamentoOutrosOrgaos$operadorArgs<ExtArgs>
+  }, ExtArgs["result"]["encaminhamentoOutrosOrgaos"]>
+
+  export type EncaminhamentoOutrosOrgaosSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    orgaoDestino?: boolean
+    motivoEncaminhamento?: boolean
+    observacoes?: boolean
+    dataCriacao?: boolean
+    atendimentoId?: boolean
+    operadorId?: boolean
+    atendimento?: boolean | AtendimentoDefaultArgs<ExtArgs>
+    operador?: boolean | EncaminhamentoOutrosOrgaos$operadorArgs<ExtArgs>
+  }, ExtArgs["result"]["encaminhamentoOutrosOrgaos"]>
+
+  export type EncaminhamentoOutrosOrgaosSelectScalar = {
+    id?: boolean
+    orgaoDestino?: boolean
+    motivoEncaminhamento?: boolean
+    observacoes?: boolean
+    dataCriacao?: boolean
+    atendimentoId?: boolean
+    operadorId?: boolean
+  }
+
+  export type EncaminhamentoOutrosOrgaosOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "orgaoDestino" | "motivoEncaminhamento" | "observacoes" | "dataCriacao" | "atendimentoId" | "operadorId", ExtArgs["result"]["encaminhamentoOutrosOrgaos"]>
+  export type EncaminhamentoOutrosOrgaosInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    atendimento?: boolean | AtendimentoDefaultArgs<ExtArgs>
+    operador?: boolean | EncaminhamentoOutrosOrgaos$operadorArgs<ExtArgs>
+  }
+  export type EncaminhamentoOutrosOrgaosIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    atendimento?: boolean | AtendimentoDefaultArgs<ExtArgs>
+    operador?: boolean | EncaminhamentoOutrosOrgaos$operadorArgs<ExtArgs>
+  }
+  export type EncaminhamentoOutrosOrgaosIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    atendimento?: boolean | AtendimentoDefaultArgs<ExtArgs>
+    operador?: boolean | EncaminhamentoOutrosOrgaos$operadorArgs<ExtArgs>
+  }
+
+  export type $EncaminhamentoOutrosOrgaosPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "EncaminhamentoOutrosOrgaos"
+    objects: {
+      atendimento: Prisma.$AtendimentoPayload<ExtArgs>
+      operador: Prisma.$UserPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      orgaoDestino: string
+      motivoEncaminhamento: string
+      observacoes: string | null
+      dataCriacao: Date
+      atendimentoId: string
+      operadorId: string | null
+    }, ExtArgs["result"]["encaminhamentoOutrosOrgaos"]>
+    composites: {}
+  }
+
+  type EncaminhamentoOutrosOrgaosGetPayload<S extends boolean | null | undefined | EncaminhamentoOutrosOrgaosDefaultArgs> = $Result.GetResult<Prisma.$EncaminhamentoOutrosOrgaosPayload, S>
+
+  type EncaminhamentoOutrosOrgaosCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<EncaminhamentoOutrosOrgaosFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: EncaminhamentoOutrosOrgaosCountAggregateInputType | true
+    }
+
+  export interface EncaminhamentoOutrosOrgaosDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['EncaminhamentoOutrosOrgaos'], meta: { name: 'EncaminhamentoOutrosOrgaos' } }
+    /**
+     * Find zero or one EncaminhamentoOutrosOrgaos that matches the filter.
+     * @param {EncaminhamentoOutrosOrgaosFindUniqueArgs} args - Arguments to find a EncaminhamentoOutrosOrgaos
+     * @example
+     * // Get one EncaminhamentoOutrosOrgaos
+     * const encaminhamentoOutrosOrgaos = await prisma.encaminhamentoOutrosOrgaos.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends EncaminhamentoOutrosOrgaosFindUniqueArgs>(args: SelectSubset<T, EncaminhamentoOutrosOrgaosFindUniqueArgs<ExtArgs>>): Prisma__EncaminhamentoOutrosOrgaosClient<$Result.GetResult<Prisma.$EncaminhamentoOutrosOrgaosPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one EncaminhamentoOutrosOrgaos that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {EncaminhamentoOutrosOrgaosFindUniqueOrThrowArgs} args - Arguments to find a EncaminhamentoOutrosOrgaos
+     * @example
+     * // Get one EncaminhamentoOutrosOrgaos
+     * const encaminhamentoOutrosOrgaos = await prisma.encaminhamentoOutrosOrgaos.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends EncaminhamentoOutrosOrgaosFindUniqueOrThrowArgs>(args: SelectSubset<T, EncaminhamentoOutrosOrgaosFindUniqueOrThrowArgs<ExtArgs>>): Prisma__EncaminhamentoOutrosOrgaosClient<$Result.GetResult<Prisma.$EncaminhamentoOutrosOrgaosPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first EncaminhamentoOutrosOrgaos that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EncaminhamentoOutrosOrgaosFindFirstArgs} args - Arguments to find a EncaminhamentoOutrosOrgaos
+     * @example
+     * // Get one EncaminhamentoOutrosOrgaos
+     * const encaminhamentoOutrosOrgaos = await prisma.encaminhamentoOutrosOrgaos.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends EncaminhamentoOutrosOrgaosFindFirstArgs>(args?: SelectSubset<T, EncaminhamentoOutrosOrgaosFindFirstArgs<ExtArgs>>): Prisma__EncaminhamentoOutrosOrgaosClient<$Result.GetResult<Prisma.$EncaminhamentoOutrosOrgaosPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first EncaminhamentoOutrosOrgaos that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EncaminhamentoOutrosOrgaosFindFirstOrThrowArgs} args - Arguments to find a EncaminhamentoOutrosOrgaos
+     * @example
+     * // Get one EncaminhamentoOutrosOrgaos
+     * const encaminhamentoOutrosOrgaos = await prisma.encaminhamentoOutrosOrgaos.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends EncaminhamentoOutrosOrgaosFindFirstOrThrowArgs>(args?: SelectSubset<T, EncaminhamentoOutrosOrgaosFindFirstOrThrowArgs<ExtArgs>>): Prisma__EncaminhamentoOutrosOrgaosClient<$Result.GetResult<Prisma.$EncaminhamentoOutrosOrgaosPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more EncaminhamentoOutrosOrgaos that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EncaminhamentoOutrosOrgaosFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all EncaminhamentoOutrosOrgaos
+     * const encaminhamentoOutrosOrgaos = await prisma.encaminhamentoOutrosOrgaos.findMany()
+     * 
+     * // Get first 10 EncaminhamentoOutrosOrgaos
+     * const encaminhamentoOutrosOrgaos = await prisma.encaminhamentoOutrosOrgaos.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const encaminhamentoOutrosOrgaosWithIdOnly = await prisma.encaminhamentoOutrosOrgaos.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends EncaminhamentoOutrosOrgaosFindManyArgs>(args?: SelectSubset<T, EncaminhamentoOutrosOrgaosFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EncaminhamentoOutrosOrgaosPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a EncaminhamentoOutrosOrgaos.
+     * @param {EncaminhamentoOutrosOrgaosCreateArgs} args - Arguments to create a EncaminhamentoOutrosOrgaos.
+     * @example
+     * // Create one EncaminhamentoOutrosOrgaos
+     * const EncaminhamentoOutrosOrgaos = await prisma.encaminhamentoOutrosOrgaos.create({
+     *   data: {
+     *     // ... data to create a EncaminhamentoOutrosOrgaos
+     *   }
+     * })
+     * 
+     */
+    create<T extends EncaminhamentoOutrosOrgaosCreateArgs>(args: SelectSubset<T, EncaminhamentoOutrosOrgaosCreateArgs<ExtArgs>>): Prisma__EncaminhamentoOutrosOrgaosClient<$Result.GetResult<Prisma.$EncaminhamentoOutrosOrgaosPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many EncaminhamentoOutrosOrgaos.
+     * @param {EncaminhamentoOutrosOrgaosCreateManyArgs} args - Arguments to create many EncaminhamentoOutrosOrgaos.
+     * @example
+     * // Create many EncaminhamentoOutrosOrgaos
+     * const encaminhamentoOutrosOrgaos = await prisma.encaminhamentoOutrosOrgaos.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends EncaminhamentoOutrosOrgaosCreateManyArgs>(args?: SelectSubset<T, EncaminhamentoOutrosOrgaosCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many EncaminhamentoOutrosOrgaos and returns the data saved in the database.
+     * @param {EncaminhamentoOutrosOrgaosCreateManyAndReturnArgs} args - Arguments to create many EncaminhamentoOutrosOrgaos.
+     * @example
+     * // Create many EncaminhamentoOutrosOrgaos
+     * const encaminhamentoOutrosOrgaos = await prisma.encaminhamentoOutrosOrgaos.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many EncaminhamentoOutrosOrgaos and only return the `id`
+     * const encaminhamentoOutrosOrgaosWithIdOnly = await prisma.encaminhamentoOutrosOrgaos.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends EncaminhamentoOutrosOrgaosCreateManyAndReturnArgs>(args?: SelectSubset<T, EncaminhamentoOutrosOrgaosCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EncaminhamentoOutrosOrgaosPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a EncaminhamentoOutrosOrgaos.
+     * @param {EncaminhamentoOutrosOrgaosDeleteArgs} args - Arguments to delete one EncaminhamentoOutrosOrgaos.
+     * @example
+     * // Delete one EncaminhamentoOutrosOrgaos
+     * const EncaminhamentoOutrosOrgaos = await prisma.encaminhamentoOutrosOrgaos.delete({
+     *   where: {
+     *     // ... filter to delete one EncaminhamentoOutrosOrgaos
+     *   }
+     * })
+     * 
+     */
+    delete<T extends EncaminhamentoOutrosOrgaosDeleteArgs>(args: SelectSubset<T, EncaminhamentoOutrosOrgaosDeleteArgs<ExtArgs>>): Prisma__EncaminhamentoOutrosOrgaosClient<$Result.GetResult<Prisma.$EncaminhamentoOutrosOrgaosPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one EncaminhamentoOutrosOrgaos.
+     * @param {EncaminhamentoOutrosOrgaosUpdateArgs} args - Arguments to update one EncaminhamentoOutrosOrgaos.
+     * @example
+     * // Update one EncaminhamentoOutrosOrgaos
+     * const encaminhamentoOutrosOrgaos = await prisma.encaminhamentoOutrosOrgaos.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends EncaminhamentoOutrosOrgaosUpdateArgs>(args: SelectSubset<T, EncaminhamentoOutrosOrgaosUpdateArgs<ExtArgs>>): Prisma__EncaminhamentoOutrosOrgaosClient<$Result.GetResult<Prisma.$EncaminhamentoOutrosOrgaosPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more EncaminhamentoOutrosOrgaos.
+     * @param {EncaminhamentoOutrosOrgaosDeleteManyArgs} args - Arguments to filter EncaminhamentoOutrosOrgaos to delete.
+     * @example
+     * // Delete a few EncaminhamentoOutrosOrgaos
+     * const { count } = await prisma.encaminhamentoOutrosOrgaos.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends EncaminhamentoOutrosOrgaosDeleteManyArgs>(args?: SelectSubset<T, EncaminhamentoOutrosOrgaosDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more EncaminhamentoOutrosOrgaos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EncaminhamentoOutrosOrgaosUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many EncaminhamentoOutrosOrgaos
+     * const encaminhamentoOutrosOrgaos = await prisma.encaminhamentoOutrosOrgaos.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends EncaminhamentoOutrosOrgaosUpdateManyArgs>(args: SelectSubset<T, EncaminhamentoOutrosOrgaosUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more EncaminhamentoOutrosOrgaos and returns the data updated in the database.
+     * @param {EncaminhamentoOutrosOrgaosUpdateManyAndReturnArgs} args - Arguments to update many EncaminhamentoOutrosOrgaos.
+     * @example
+     * // Update many EncaminhamentoOutrosOrgaos
+     * const encaminhamentoOutrosOrgaos = await prisma.encaminhamentoOutrosOrgaos.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more EncaminhamentoOutrosOrgaos and only return the `id`
+     * const encaminhamentoOutrosOrgaosWithIdOnly = await prisma.encaminhamentoOutrosOrgaos.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends EncaminhamentoOutrosOrgaosUpdateManyAndReturnArgs>(args: SelectSubset<T, EncaminhamentoOutrosOrgaosUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EncaminhamentoOutrosOrgaosPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one EncaminhamentoOutrosOrgaos.
+     * @param {EncaminhamentoOutrosOrgaosUpsertArgs} args - Arguments to update or create a EncaminhamentoOutrosOrgaos.
+     * @example
+     * // Update or create a EncaminhamentoOutrosOrgaos
+     * const encaminhamentoOutrosOrgaos = await prisma.encaminhamentoOutrosOrgaos.upsert({
+     *   create: {
+     *     // ... data to create a EncaminhamentoOutrosOrgaos
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the EncaminhamentoOutrosOrgaos we want to update
+     *   }
+     * })
+     */
+    upsert<T extends EncaminhamentoOutrosOrgaosUpsertArgs>(args: SelectSubset<T, EncaminhamentoOutrosOrgaosUpsertArgs<ExtArgs>>): Prisma__EncaminhamentoOutrosOrgaosClient<$Result.GetResult<Prisma.$EncaminhamentoOutrosOrgaosPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of EncaminhamentoOutrosOrgaos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EncaminhamentoOutrosOrgaosCountArgs} args - Arguments to filter EncaminhamentoOutrosOrgaos to count.
+     * @example
+     * // Count the number of EncaminhamentoOutrosOrgaos
+     * const count = await prisma.encaminhamentoOutrosOrgaos.count({
+     *   where: {
+     *     // ... the filter for the EncaminhamentoOutrosOrgaos we want to count
+     *   }
+     * })
+    **/
+    count<T extends EncaminhamentoOutrosOrgaosCountArgs>(
+      args?: Subset<T, EncaminhamentoOutrosOrgaosCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], EncaminhamentoOutrosOrgaosCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a EncaminhamentoOutrosOrgaos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EncaminhamentoOutrosOrgaosAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends EncaminhamentoOutrosOrgaosAggregateArgs>(args: Subset<T, EncaminhamentoOutrosOrgaosAggregateArgs>): Prisma.PrismaPromise<GetEncaminhamentoOutrosOrgaosAggregateType<T>>
+
+    /**
+     * Group by EncaminhamentoOutrosOrgaos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EncaminhamentoOutrosOrgaosGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends EncaminhamentoOutrosOrgaosGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: EncaminhamentoOutrosOrgaosGroupByArgs['orderBy'] }
+        : { orderBy?: EncaminhamentoOutrosOrgaosGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, EncaminhamentoOutrosOrgaosGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetEncaminhamentoOutrosOrgaosGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the EncaminhamentoOutrosOrgaos model
+   */
+  readonly fields: EncaminhamentoOutrosOrgaosFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for EncaminhamentoOutrosOrgaos.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__EncaminhamentoOutrosOrgaosClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    atendimento<T extends AtendimentoDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AtendimentoDefaultArgs<ExtArgs>>): Prisma__AtendimentoClient<$Result.GetResult<Prisma.$AtendimentoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    operador<T extends EncaminhamentoOutrosOrgaos$operadorArgs<ExtArgs> = {}>(args?: Subset<T, EncaminhamentoOutrosOrgaos$operadorArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the EncaminhamentoOutrosOrgaos model
+   */
+  interface EncaminhamentoOutrosOrgaosFieldRefs {
+    readonly id: FieldRef<"EncaminhamentoOutrosOrgaos", 'String'>
+    readonly orgaoDestino: FieldRef<"EncaminhamentoOutrosOrgaos", 'String'>
+    readonly motivoEncaminhamento: FieldRef<"EncaminhamentoOutrosOrgaos", 'String'>
+    readonly observacoes: FieldRef<"EncaminhamentoOutrosOrgaos", 'String'>
+    readonly dataCriacao: FieldRef<"EncaminhamentoOutrosOrgaos", 'DateTime'>
+    readonly atendimentoId: FieldRef<"EncaminhamentoOutrosOrgaos", 'String'>
+    readonly operadorId: FieldRef<"EncaminhamentoOutrosOrgaos", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * EncaminhamentoOutrosOrgaos findUnique
+   */
+  export type EncaminhamentoOutrosOrgaosFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EncaminhamentoOutrosOrgaos
+     */
+    select?: EncaminhamentoOutrosOrgaosSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EncaminhamentoOutrosOrgaos
+     */
+    omit?: EncaminhamentoOutrosOrgaosOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EncaminhamentoOutrosOrgaosInclude<ExtArgs> | null
+    /**
+     * Filter, which EncaminhamentoOutrosOrgaos to fetch.
+     */
+    where: EncaminhamentoOutrosOrgaosWhereUniqueInput
+  }
+
+  /**
+   * EncaminhamentoOutrosOrgaos findUniqueOrThrow
+   */
+  export type EncaminhamentoOutrosOrgaosFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EncaminhamentoOutrosOrgaos
+     */
+    select?: EncaminhamentoOutrosOrgaosSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EncaminhamentoOutrosOrgaos
+     */
+    omit?: EncaminhamentoOutrosOrgaosOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EncaminhamentoOutrosOrgaosInclude<ExtArgs> | null
+    /**
+     * Filter, which EncaminhamentoOutrosOrgaos to fetch.
+     */
+    where: EncaminhamentoOutrosOrgaosWhereUniqueInput
+  }
+
+  /**
+   * EncaminhamentoOutrosOrgaos findFirst
+   */
+  export type EncaminhamentoOutrosOrgaosFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EncaminhamentoOutrosOrgaos
+     */
+    select?: EncaminhamentoOutrosOrgaosSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EncaminhamentoOutrosOrgaos
+     */
+    omit?: EncaminhamentoOutrosOrgaosOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EncaminhamentoOutrosOrgaosInclude<ExtArgs> | null
+    /**
+     * Filter, which EncaminhamentoOutrosOrgaos to fetch.
+     */
+    where?: EncaminhamentoOutrosOrgaosWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of EncaminhamentoOutrosOrgaos to fetch.
+     */
+    orderBy?: EncaminhamentoOutrosOrgaosOrderByWithRelationInput | EncaminhamentoOutrosOrgaosOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for EncaminhamentoOutrosOrgaos.
+     */
+    cursor?: EncaminhamentoOutrosOrgaosWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` EncaminhamentoOutrosOrgaos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` EncaminhamentoOutrosOrgaos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of EncaminhamentoOutrosOrgaos.
+     */
+    distinct?: EncaminhamentoOutrosOrgaosScalarFieldEnum | EncaminhamentoOutrosOrgaosScalarFieldEnum[]
+  }
+
+  /**
+   * EncaminhamentoOutrosOrgaos findFirstOrThrow
+   */
+  export type EncaminhamentoOutrosOrgaosFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EncaminhamentoOutrosOrgaos
+     */
+    select?: EncaminhamentoOutrosOrgaosSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EncaminhamentoOutrosOrgaos
+     */
+    omit?: EncaminhamentoOutrosOrgaosOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EncaminhamentoOutrosOrgaosInclude<ExtArgs> | null
+    /**
+     * Filter, which EncaminhamentoOutrosOrgaos to fetch.
+     */
+    where?: EncaminhamentoOutrosOrgaosWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of EncaminhamentoOutrosOrgaos to fetch.
+     */
+    orderBy?: EncaminhamentoOutrosOrgaosOrderByWithRelationInput | EncaminhamentoOutrosOrgaosOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for EncaminhamentoOutrosOrgaos.
+     */
+    cursor?: EncaminhamentoOutrosOrgaosWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` EncaminhamentoOutrosOrgaos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` EncaminhamentoOutrosOrgaos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of EncaminhamentoOutrosOrgaos.
+     */
+    distinct?: EncaminhamentoOutrosOrgaosScalarFieldEnum | EncaminhamentoOutrosOrgaosScalarFieldEnum[]
+  }
+
+  /**
+   * EncaminhamentoOutrosOrgaos findMany
+   */
+  export type EncaminhamentoOutrosOrgaosFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EncaminhamentoOutrosOrgaos
+     */
+    select?: EncaminhamentoOutrosOrgaosSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EncaminhamentoOutrosOrgaos
+     */
+    omit?: EncaminhamentoOutrosOrgaosOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EncaminhamentoOutrosOrgaosInclude<ExtArgs> | null
+    /**
+     * Filter, which EncaminhamentoOutrosOrgaos to fetch.
+     */
+    where?: EncaminhamentoOutrosOrgaosWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of EncaminhamentoOutrosOrgaos to fetch.
+     */
+    orderBy?: EncaminhamentoOutrosOrgaosOrderByWithRelationInput | EncaminhamentoOutrosOrgaosOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing EncaminhamentoOutrosOrgaos.
+     */
+    cursor?: EncaminhamentoOutrosOrgaosWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` EncaminhamentoOutrosOrgaos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` EncaminhamentoOutrosOrgaos.
+     */
+    skip?: number
+    distinct?: EncaminhamentoOutrosOrgaosScalarFieldEnum | EncaminhamentoOutrosOrgaosScalarFieldEnum[]
+  }
+
+  /**
+   * EncaminhamentoOutrosOrgaos create
+   */
+  export type EncaminhamentoOutrosOrgaosCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EncaminhamentoOutrosOrgaos
+     */
+    select?: EncaminhamentoOutrosOrgaosSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EncaminhamentoOutrosOrgaos
+     */
+    omit?: EncaminhamentoOutrosOrgaosOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EncaminhamentoOutrosOrgaosInclude<ExtArgs> | null
+    /**
+     * The data needed to create a EncaminhamentoOutrosOrgaos.
+     */
+    data: XOR<EncaminhamentoOutrosOrgaosCreateInput, EncaminhamentoOutrosOrgaosUncheckedCreateInput>
+  }
+
+  /**
+   * EncaminhamentoOutrosOrgaos createMany
+   */
+  export type EncaminhamentoOutrosOrgaosCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many EncaminhamentoOutrosOrgaos.
+     */
+    data: EncaminhamentoOutrosOrgaosCreateManyInput | EncaminhamentoOutrosOrgaosCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * EncaminhamentoOutrosOrgaos createManyAndReturn
+   */
+  export type EncaminhamentoOutrosOrgaosCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EncaminhamentoOutrosOrgaos
+     */
+    select?: EncaminhamentoOutrosOrgaosSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the EncaminhamentoOutrosOrgaos
+     */
+    omit?: EncaminhamentoOutrosOrgaosOmit<ExtArgs> | null
+    /**
+     * The data used to create many EncaminhamentoOutrosOrgaos.
+     */
+    data: EncaminhamentoOutrosOrgaosCreateManyInput | EncaminhamentoOutrosOrgaosCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EncaminhamentoOutrosOrgaosIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * EncaminhamentoOutrosOrgaos update
+   */
+  export type EncaminhamentoOutrosOrgaosUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EncaminhamentoOutrosOrgaos
+     */
+    select?: EncaminhamentoOutrosOrgaosSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EncaminhamentoOutrosOrgaos
+     */
+    omit?: EncaminhamentoOutrosOrgaosOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EncaminhamentoOutrosOrgaosInclude<ExtArgs> | null
+    /**
+     * The data needed to update a EncaminhamentoOutrosOrgaos.
+     */
+    data: XOR<EncaminhamentoOutrosOrgaosUpdateInput, EncaminhamentoOutrosOrgaosUncheckedUpdateInput>
+    /**
+     * Choose, which EncaminhamentoOutrosOrgaos to update.
+     */
+    where: EncaminhamentoOutrosOrgaosWhereUniqueInput
+  }
+
+  /**
+   * EncaminhamentoOutrosOrgaos updateMany
+   */
+  export type EncaminhamentoOutrosOrgaosUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update EncaminhamentoOutrosOrgaos.
+     */
+    data: XOR<EncaminhamentoOutrosOrgaosUpdateManyMutationInput, EncaminhamentoOutrosOrgaosUncheckedUpdateManyInput>
+    /**
+     * Filter which EncaminhamentoOutrosOrgaos to update
+     */
+    where?: EncaminhamentoOutrosOrgaosWhereInput
+    /**
+     * Limit how many EncaminhamentoOutrosOrgaos to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * EncaminhamentoOutrosOrgaos updateManyAndReturn
+   */
+  export type EncaminhamentoOutrosOrgaosUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EncaminhamentoOutrosOrgaos
+     */
+    select?: EncaminhamentoOutrosOrgaosSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the EncaminhamentoOutrosOrgaos
+     */
+    omit?: EncaminhamentoOutrosOrgaosOmit<ExtArgs> | null
+    /**
+     * The data used to update EncaminhamentoOutrosOrgaos.
+     */
+    data: XOR<EncaminhamentoOutrosOrgaosUpdateManyMutationInput, EncaminhamentoOutrosOrgaosUncheckedUpdateManyInput>
+    /**
+     * Filter which EncaminhamentoOutrosOrgaos to update
+     */
+    where?: EncaminhamentoOutrosOrgaosWhereInput
+    /**
+     * Limit how many EncaminhamentoOutrosOrgaos to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EncaminhamentoOutrosOrgaosIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * EncaminhamentoOutrosOrgaos upsert
+   */
+  export type EncaminhamentoOutrosOrgaosUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EncaminhamentoOutrosOrgaos
+     */
+    select?: EncaminhamentoOutrosOrgaosSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EncaminhamentoOutrosOrgaos
+     */
+    omit?: EncaminhamentoOutrosOrgaosOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EncaminhamentoOutrosOrgaosInclude<ExtArgs> | null
+    /**
+     * The filter to search for the EncaminhamentoOutrosOrgaos to update in case it exists.
+     */
+    where: EncaminhamentoOutrosOrgaosWhereUniqueInput
+    /**
+     * In case the EncaminhamentoOutrosOrgaos found by the `where` argument doesn't exist, create a new EncaminhamentoOutrosOrgaos with this data.
+     */
+    create: XOR<EncaminhamentoOutrosOrgaosCreateInput, EncaminhamentoOutrosOrgaosUncheckedCreateInput>
+    /**
+     * In case the EncaminhamentoOutrosOrgaos was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<EncaminhamentoOutrosOrgaosUpdateInput, EncaminhamentoOutrosOrgaosUncheckedUpdateInput>
+  }
+
+  /**
+   * EncaminhamentoOutrosOrgaos delete
+   */
+  export type EncaminhamentoOutrosOrgaosDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EncaminhamentoOutrosOrgaos
+     */
+    select?: EncaminhamentoOutrosOrgaosSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EncaminhamentoOutrosOrgaos
+     */
+    omit?: EncaminhamentoOutrosOrgaosOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EncaminhamentoOutrosOrgaosInclude<ExtArgs> | null
+    /**
+     * Filter which EncaminhamentoOutrosOrgaos to delete.
+     */
+    where: EncaminhamentoOutrosOrgaosWhereUniqueInput
+  }
+
+  /**
+   * EncaminhamentoOutrosOrgaos deleteMany
+   */
+  export type EncaminhamentoOutrosOrgaosDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which EncaminhamentoOutrosOrgaos to delete
+     */
+    where?: EncaminhamentoOutrosOrgaosWhereInput
+    /**
+     * Limit how many EncaminhamentoOutrosOrgaos to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * EncaminhamentoOutrosOrgaos.operador
+   */
+  export type EncaminhamentoOutrosOrgaos$operadorArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
+  }
+
+  /**
+   * EncaminhamentoOutrosOrgaos without action
+   */
+  export type EncaminhamentoOutrosOrgaosDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EncaminhamentoOutrosOrgaos
+     */
+    select?: EncaminhamentoOutrosOrgaosSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EncaminhamentoOutrosOrgaos
+     */
+    omit?: EncaminhamentoOutrosOrgaosOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EncaminhamentoOutrosOrgaosInclude<ExtArgs> | null
   }
 
 
@@ -19979,6 +24143,996 @@ export namespace Prisma {
 
 
   /**
+   * Model TipoPedidoDePrevidenciaJudiciaria
+   */
+
+  export type AggregateTipoPedidoDePrevidenciaJudiciaria = {
+    _count: TipoPedidoDePrevidenciaJudiciariaCountAggregateOutputType | null
+    _avg: TipoPedidoDePrevidenciaJudiciariaAvgAggregateOutputType | null
+    _sum: TipoPedidoDePrevidenciaJudiciariaSumAggregateOutputType | null
+    _min: TipoPedidoDePrevidenciaJudiciariaMinAggregateOutputType | null
+    _max: TipoPedidoDePrevidenciaJudiciariaMaxAggregateOutputType | null
+  }
+
+  export type TipoPedidoDePrevidenciaJudiciariaAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type TipoPedidoDePrevidenciaJudiciariaSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type TipoPedidoDePrevidenciaJudiciariaMinAggregateOutputType = {
+    id: number | null
+    descricao: string | null
+  }
+
+  export type TipoPedidoDePrevidenciaJudiciariaMaxAggregateOutputType = {
+    id: number | null
+    descricao: string | null
+  }
+
+  export type TipoPedidoDePrevidenciaJudiciariaCountAggregateOutputType = {
+    id: number
+    descricao: number
+    _all: number
+  }
+
+
+  export type TipoPedidoDePrevidenciaJudiciariaAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type TipoPedidoDePrevidenciaJudiciariaSumAggregateInputType = {
+    id?: true
+  }
+
+  export type TipoPedidoDePrevidenciaJudiciariaMinAggregateInputType = {
+    id?: true
+    descricao?: true
+  }
+
+  export type TipoPedidoDePrevidenciaJudiciariaMaxAggregateInputType = {
+    id?: true
+    descricao?: true
+  }
+
+  export type TipoPedidoDePrevidenciaJudiciariaCountAggregateInputType = {
+    id?: true
+    descricao?: true
+    _all?: true
+  }
+
+  export type TipoPedidoDePrevidenciaJudiciariaAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TipoPedidoDePrevidenciaJudiciaria to aggregate.
+     */
+    where?: TipoPedidoDePrevidenciaJudiciariaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TipoPedidoDePrevidenciaJudiciarias to fetch.
+     */
+    orderBy?: TipoPedidoDePrevidenciaJudiciariaOrderByWithRelationInput | TipoPedidoDePrevidenciaJudiciariaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: TipoPedidoDePrevidenciaJudiciariaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TipoPedidoDePrevidenciaJudiciarias from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TipoPedidoDePrevidenciaJudiciarias.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned TipoPedidoDePrevidenciaJudiciarias
+    **/
+    _count?: true | TipoPedidoDePrevidenciaJudiciariaCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: TipoPedidoDePrevidenciaJudiciariaAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: TipoPedidoDePrevidenciaJudiciariaSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TipoPedidoDePrevidenciaJudiciariaMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TipoPedidoDePrevidenciaJudiciariaMaxAggregateInputType
+  }
+
+  export type GetTipoPedidoDePrevidenciaJudiciariaAggregateType<T extends TipoPedidoDePrevidenciaJudiciariaAggregateArgs> = {
+        [P in keyof T & keyof AggregateTipoPedidoDePrevidenciaJudiciaria]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTipoPedidoDePrevidenciaJudiciaria[P]>
+      : GetScalarType<T[P], AggregateTipoPedidoDePrevidenciaJudiciaria[P]>
+  }
+
+
+
+
+  export type TipoPedidoDePrevidenciaJudiciariaGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TipoPedidoDePrevidenciaJudiciariaWhereInput
+    orderBy?: TipoPedidoDePrevidenciaJudiciariaOrderByWithAggregationInput | TipoPedidoDePrevidenciaJudiciariaOrderByWithAggregationInput[]
+    by: TipoPedidoDePrevidenciaJudiciariaScalarFieldEnum[] | TipoPedidoDePrevidenciaJudiciariaScalarFieldEnum
+    having?: TipoPedidoDePrevidenciaJudiciariaScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TipoPedidoDePrevidenciaJudiciariaCountAggregateInputType | true
+    _avg?: TipoPedidoDePrevidenciaJudiciariaAvgAggregateInputType
+    _sum?: TipoPedidoDePrevidenciaJudiciariaSumAggregateInputType
+    _min?: TipoPedidoDePrevidenciaJudiciariaMinAggregateInputType
+    _max?: TipoPedidoDePrevidenciaJudiciariaMaxAggregateInputType
+  }
+
+  export type TipoPedidoDePrevidenciaJudiciariaGroupByOutputType = {
+    id: number
+    descricao: string
+    _count: TipoPedidoDePrevidenciaJudiciariaCountAggregateOutputType | null
+    _avg: TipoPedidoDePrevidenciaJudiciariaAvgAggregateOutputType | null
+    _sum: TipoPedidoDePrevidenciaJudiciariaSumAggregateOutputType | null
+    _min: TipoPedidoDePrevidenciaJudiciariaMinAggregateOutputType | null
+    _max: TipoPedidoDePrevidenciaJudiciariaMaxAggregateOutputType | null
+  }
+
+  type GetTipoPedidoDePrevidenciaJudiciariaGroupByPayload<T extends TipoPedidoDePrevidenciaJudiciariaGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TipoPedidoDePrevidenciaJudiciariaGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TipoPedidoDePrevidenciaJudiciariaGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TipoPedidoDePrevidenciaJudiciariaGroupByOutputType[P]>
+            : GetScalarType<T[P], TipoPedidoDePrevidenciaJudiciariaGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type TipoPedidoDePrevidenciaJudiciariaSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    descricao?: boolean
+  }, ExtArgs["result"]["tipoPedidoDePrevidenciaJudiciaria"]>
+
+  export type TipoPedidoDePrevidenciaJudiciariaSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    descricao?: boolean
+  }, ExtArgs["result"]["tipoPedidoDePrevidenciaJudiciaria"]>
+
+  export type TipoPedidoDePrevidenciaJudiciariaSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    descricao?: boolean
+  }, ExtArgs["result"]["tipoPedidoDePrevidenciaJudiciaria"]>
+
+  export type TipoPedidoDePrevidenciaJudiciariaSelectScalar = {
+    id?: boolean
+    descricao?: boolean
+  }
+
+  export type TipoPedidoDePrevidenciaJudiciariaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "descricao", ExtArgs["result"]["tipoPedidoDePrevidenciaJudiciaria"]>
+
+  export type $TipoPedidoDePrevidenciaJudiciariaPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "TipoPedidoDePrevidenciaJudiciaria"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      descricao: string
+    }, ExtArgs["result"]["tipoPedidoDePrevidenciaJudiciaria"]>
+    composites: {}
+  }
+
+  type TipoPedidoDePrevidenciaJudiciariaGetPayload<S extends boolean | null | undefined | TipoPedidoDePrevidenciaJudiciariaDefaultArgs> = $Result.GetResult<Prisma.$TipoPedidoDePrevidenciaJudiciariaPayload, S>
+
+  type TipoPedidoDePrevidenciaJudiciariaCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<TipoPedidoDePrevidenciaJudiciariaFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: TipoPedidoDePrevidenciaJudiciariaCountAggregateInputType | true
+    }
+
+  export interface TipoPedidoDePrevidenciaJudiciariaDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['TipoPedidoDePrevidenciaJudiciaria'], meta: { name: 'TipoPedidoDePrevidenciaJudiciaria' } }
+    /**
+     * Find zero or one TipoPedidoDePrevidenciaJudiciaria that matches the filter.
+     * @param {TipoPedidoDePrevidenciaJudiciariaFindUniqueArgs} args - Arguments to find a TipoPedidoDePrevidenciaJudiciaria
+     * @example
+     * // Get one TipoPedidoDePrevidenciaJudiciaria
+     * const tipoPedidoDePrevidenciaJudiciaria = await prisma.tipoPedidoDePrevidenciaJudiciaria.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends TipoPedidoDePrevidenciaJudiciariaFindUniqueArgs>(args: SelectSubset<T, TipoPedidoDePrevidenciaJudiciariaFindUniqueArgs<ExtArgs>>): Prisma__TipoPedidoDePrevidenciaJudiciariaClient<$Result.GetResult<Prisma.$TipoPedidoDePrevidenciaJudiciariaPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one TipoPedidoDePrevidenciaJudiciaria that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {TipoPedidoDePrevidenciaJudiciariaFindUniqueOrThrowArgs} args - Arguments to find a TipoPedidoDePrevidenciaJudiciaria
+     * @example
+     * // Get one TipoPedidoDePrevidenciaJudiciaria
+     * const tipoPedidoDePrevidenciaJudiciaria = await prisma.tipoPedidoDePrevidenciaJudiciaria.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends TipoPedidoDePrevidenciaJudiciariaFindUniqueOrThrowArgs>(args: SelectSubset<T, TipoPedidoDePrevidenciaJudiciariaFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TipoPedidoDePrevidenciaJudiciariaClient<$Result.GetResult<Prisma.$TipoPedidoDePrevidenciaJudiciariaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TipoPedidoDePrevidenciaJudiciaria that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TipoPedidoDePrevidenciaJudiciariaFindFirstArgs} args - Arguments to find a TipoPedidoDePrevidenciaJudiciaria
+     * @example
+     * // Get one TipoPedidoDePrevidenciaJudiciaria
+     * const tipoPedidoDePrevidenciaJudiciaria = await prisma.tipoPedidoDePrevidenciaJudiciaria.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends TipoPedidoDePrevidenciaJudiciariaFindFirstArgs>(args?: SelectSubset<T, TipoPedidoDePrevidenciaJudiciariaFindFirstArgs<ExtArgs>>): Prisma__TipoPedidoDePrevidenciaJudiciariaClient<$Result.GetResult<Prisma.$TipoPedidoDePrevidenciaJudiciariaPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TipoPedidoDePrevidenciaJudiciaria that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TipoPedidoDePrevidenciaJudiciariaFindFirstOrThrowArgs} args - Arguments to find a TipoPedidoDePrevidenciaJudiciaria
+     * @example
+     * // Get one TipoPedidoDePrevidenciaJudiciaria
+     * const tipoPedidoDePrevidenciaJudiciaria = await prisma.tipoPedidoDePrevidenciaJudiciaria.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends TipoPedidoDePrevidenciaJudiciariaFindFirstOrThrowArgs>(args?: SelectSubset<T, TipoPedidoDePrevidenciaJudiciariaFindFirstOrThrowArgs<ExtArgs>>): Prisma__TipoPedidoDePrevidenciaJudiciariaClient<$Result.GetResult<Prisma.$TipoPedidoDePrevidenciaJudiciariaPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more TipoPedidoDePrevidenciaJudiciarias that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TipoPedidoDePrevidenciaJudiciariaFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all TipoPedidoDePrevidenciaJudiciarias
+     * const tipoPedidoDePrevidenciaJudiciarias = await prisma.tipoPedidoDePrevidenciaJudiciaria.findMany()
+     * 
+     * // Get first 10 TipoPedidoDePrevidenciaJudiciarias
+     * const tipoPedidoDePrevidenciaJudiciarias = await prisma.tipoPedidoDePrevidenciaJudiciaria.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const tipoPedidoDePrevidenciaJudiciariaWithIdOnly = await prisma.tipoPedidoDePrevidenciaJudiciaria.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends TipoPedidoDePrevidenciaJudiciariaFindManyArgs>(args?: SelectSubset<T, TipoPedidoDePrevidenciaJudiciariaFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TipoPedidoDePrevidenciaJudiciariaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a TipoPedidoDePrevidenciaJudiciaria.
+     * @param {TipoPedidoDePrevidenciaJudiciariaCreateArgs} args - Arguments to create a TipoPedidoDePrevidenciaJudiciaria.
+     * @example
+     * // Create one TipoPedidoDePrevidenciaJudiciaria
+     * const TipoPedidoDePrevidenciaJudiciaria = await prisma.tipoPedidoDePrevidenciaJudiciaria.create({
+     *   data: {
+     *     // ... data to create a TipoPedidoDePrevidenciaJudiciaria
+     *   }
+     * })
+     * 
+     */
+    create<T extends TipoPedidoDePrevidenciaJudiciariaCreateArgs>(args: SelectSubset<T, TipoPedidoDePrevidenciaJudiciariaCreateArgs<ExtArgs>>): Prisma__TipoPedidoDePrevidenciaJudiciariaClient<$Result.GetResult<Prisma.$TipoPedidoDePrevidenciaJudiciariaPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many TipoPedidoDePrevidenciaJudiciarias.
+     * @param {TipoPedidoDePrevidenciaJudiciariaCreateManyArgs} args - Arguments to create many TipoPedidoDePrevidenciaJudiciarias.
+     * @example
+     * // Create many TipoPedidoDePrevidenciaJudiciarias
+     * const tipoPedidoDePrevidenciaJudiciaria = await prisma.tipoPedidoDePrevidenciaJudiciaria.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends TipoPedidoDePrevidenciaJudiciariaCreateManyArgs>(args?: SelectSubset<T, TipoPedidoDePrevidenciaJudiciariaCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many TipoPedidoDePrevidenciaJudiciarias and returns the data saved in the database.
+     * @param {TipoPedidoDePrevidenciaJudiciariaCreateManyAndReturnArgs} args - Arguments to create many TipoPedidoDePrevidenciaJudiciarias.
+     * @example
+     * // Create many TipoPedidoDePrevidenciaJudiciarias
+     * const tipoPedidoDePrevidenciaJudiciaria = await prisma.tipoPedidoDePrevidenciaJudiciaria.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many TipoPedidoDePrevidenciaJudiciarias and only return the `id`
+     * const tipoPedidoDePrevidenciaJudiciariaWithIdOnly = await prisma.tipoPedidoDePrevidenciaJudiciaria.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends TipoPedidoDePrevidenciaJudiciariaCreateManyAndReturnArgs>(args?: SelectSubset<T, TipoPedidoDePrevidenciaJudiciariaCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TipoPedidoDePrevidenciaJudiciariaPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a TipoPedidoDePrevidenciaJudiciaria.
+     * @param {TipoPedidoDePrevidenciaJudiciariaDeleteArgs} args - Arguments to delete one TipoPedidoDePrevidenciaJudiciaria.
+     * @example
+     * // Delete one TipoPedidoDePrevidenciaJudiciaria
+     * const TipoPedidoDePrevidenciaJudiciaria = await prisma.tipoPedidoDePrevidenciaJudiciaria.delete({
+     *   where: {
+     *     // ... filter to delete one TipoPedidoDePrevidenciaJudiciaria
+     *   }
+     * })
+     * 
+     */
+    delete<T extends TipoPedidoDePrevidenciaJudiciariaDeleteArgs>(args: SelectSubset<T, TipoPedidoDePrevidenciaJudiciariaDeleteArgs<ExtArgs>>): Prisma__TipoPedidoDePrevidenciaJudiciariaClient<$Result.GetResult<Prisma.$TipoPedidoDePrevidenciaJudiciariaPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one TipoPedidoDePrevidenciaJudiciaria.
+     * @param {TipoPedidoDePrevidenciaJudiciariaUpdateArgs} args - Arguments to update one TipoPedidoDePrevidenciaJudiciaria.
+     * @example
+     * // Update one TipoPedidoDePrevidenciaJudiciaria
+     * const tipoPedidoDePrevidenciaJudiciaria = await prisma.tipoPedidoDePrevidenciaJudiciaria.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends TipoPedidoDePrevidenciaJudiciariaUpdateArgs>(args: SelectSubset<T, TipoPedidoDePrevidenciaJudiciariaUpdateArgs<ExtArgs>>): Prisma__TipoPedidoDePrevidenciaJudiciariaClient<$Result.GetResult<Prisma.$TipoPedidoDePrevidenciaJudiciariaPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more TipoPedidoDePrevidenciaJudiciarias.
+     * @param {TipoPedidoDePrevidenciaJudiciariaDeleteManyArgs} args - Arguments to filter TipoPedidoDePrevidenciaJudiciarias to delete.
+     * @example
+     * // Delete a few TipoPedidoDePrevidenciaJudiciarias
+     * const { count } = await prisma.tipoPedidoDePrevidenciaJudiciaria.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends TipoPedidoDePrevidenciaJudiciariaDeleteManyArgs>(args?: SelectSubset<T, TipoPedidoDePrevidenciaJudiciariaDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TipoPedidoDePrevidenciaJudiciarias.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TipoPedidoDePrevidenciaJudiciariaUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many TipoPedidoDePrevidenciaJudiciarias
+     * const tipoPedidoDePrevidenciaJudiciaria = await prisma.tipoPedidoDePrevidenciaJudiciaria.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends TipoPedidoDePrevidenciaJudiciariaUpdateManyArgs>(args: SelectSubset<T, TipoPedidoDePrevidenciaJudiciariaUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TipoPedidoDePrevidenciaJudiciarias and returns the data updated in the database.
+     * @param {TipoPedidoDePrevidenciaJudiciariaUpdateManyAndReturnArgs} args - Arguments to update many TipoPedidoDePrevidenciaJudiciarias.
+     * @example
+     * // Update many TipoPedidoDePrevidenciaJudiciarias
+     * const tipoPedidoDePrevidenciaJudiciaria = await prisma.tipoPedidoDePrevidenciaJudiciaria.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more TipoPedidoDePrevidenciaJudiciarias and only return the `id`
+     * const tipoPedidoDePrevidenciaJudiciariaWithIdOnly = await prisma.tipoPedidoDePrevidenciaJudiciaria.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends TipoPedidoDePrevidenciaJudiciariaUpdateManyAndReturnArgs>(args: SelectSubset<T, TipoPedidoDePrevidenciaJudiciariaUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TipoPedidoDePrevidenciaJudiciariaPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one TipoPedidoDePrevidenciaJudiciaria.
+     * @param {TipoPedidoDePrevidenciaJudiciariaUpsertArgs} args - Arguments to update or create a TipoPedidoDePrevidenciaJudiciaria.
+     * @example
+     * // Update or create a TipoPedidoDePrevidenciaJudiciaria
+     * const tipoPedidoDePrevidenciaJudiciaria = await prisma.tipoPedidoDePrevidenciaJudiciaria.upsert({
+     *   create: {
+     *     // ... data to create a TipoPedidoDePrevidenciaJudiciaria
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the TipoPedidoDePrevidenciaJudiciaria we want to update
+     *   }
+     * })
+     */
+    upsert<T extends TipoPedidoDePrevidenciaJudiciariaUpsertArgs>(args: SelectSubset<T, TipoPedidoDePrevidenciaJudiciariaUpsertArgs<ExtArgs>>): Prisma__TipoPedidoDePrevidenciaJudiciariaClient<$Result.GetResult<Prisma.$TipoPedidoDePrevidenciaJudiciariaPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of TipoPedidoDePrevidenciaJudiciarias.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TipoPedidoDePrevidenciaJudiciariaCountArgs} args - Arguments to filter TipoPedidoDePrevidenciaJudiciarias to count.
+     * @example
+     * // Count the number of TipoPedidoDePrevidenciaJudiciarias
+     * const count = await prisma.tipoPedidoDePrevidenciaJudiciaria.count({
+     *   where: {
+     *     // ... the filter for the TipoPedidoDePrevidenciaJudiciarias we want to count
+     *   }
+     * })
+    **/
+    count<T extends TipoPedidoDePrevidenciaJudiciariaCountArgs>(
+      args?: Subset<T, TipoPedidoDePrevidenciaJudiciariaCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TipoPedidoDePrevidenciaJudiciariaCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a TipoPedidoDePrevidenciaJudiciaria.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TipoPedidoDePrevidenciaJudiciariaAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TipoPedidoDePrevidenciaJudiciariaAggregateArgs>(args: Subset<T, TipoPedidoDePrevidenciaJudiciariaAggregateArgs>): Prisma.PrismaPromise<GetTipoPedidoDePrevidenciaJudiciariaAggregateType<T>>
+
+    /**
+     * Group by TipoPedidoDePrevidenciaJudiciaria.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TipoPedidoDePrevidenciaJudiciariaGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TipoPedidoDePrevidenciaJudiciariaGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TipoPedidoDePrevidenciaJudiciariaGroupByArgs['orderBy'] }
+        : { orderBy?: TipoPedidoDePrevidenciaJudiciariaGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TipoPedidoDePrevidenciaJudiciariaGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTipoPedidoDePrevidenciaJudiciariaGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the TipoPedidoDePrevidenciaJudiciaria model
+   */
+  readonly fields: TipoPedidoDePrevidenciaJudiciariaFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for TipoPedidoDePrevidenciaJudiciaria.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__TipoPedidoDePrevidenciaJudiciariaClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the TipoPedidoDePrevidenciaJudiciaria model
+   */
+  interface TipoPedidoDePrevidenciaJudiciariaFieldRefs {
+    readonly id: FieldRef<"TipoPedidoDePrevidenciaJudiciaria", 'Int'>
+    readonly descricao: FieldRef<"TipoPedidoDePrevidenciaJudiciaria", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * TipoPedidoDePrevidenciaJudiciaria findUnique
+   */
+  export type TipoPedidoDePrevidenciaJudiciariaFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TipoPedidoDePrevidenciaJudiciaria
+     */
+    select?: TipoPedidoDePrevidenciaJudiciariaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TipoPedidoDePrevidenciaJudiciaria
+     */
+    omit?: TipoPedidoDePrevidenciaJudiciariaOmit<ExtArgs> | null
+    /**
+     * Filter, which TipoPedidoDePrevidenciaJudiciaria to fetch.
+     */
+    where: TipoPedidoDePrevidenciaJudiciariaWhereUniqueInput
+  }
+
+  /**
+   * TipoPedidoDePrevidenciaJudiciaria findUniqueOrThrow
+   */
+  export type TipoPedidoDePrevidenciaJudiciariaFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TipoPedidoDePrevidenciaJudiciaria
+     */
+    select?: TipoPedidoDePrevidenciaJudiciariaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TipoPedidoDePrevidenciaJudiciaria
+     */
+    omit?: TipoPedidoDePrevidenciaJudiciariaOmit<ExtArgs> | null
+    /**
+     * Filter, which TipoPedidoDePrevidenciaJudiciaria to fetch.
+     */
+    where: TipoPedidoDePrevidenciaJudiciariaWhereUniqueInput
+  }
+
+  /**
+   * TipoPedidoDePrevidenciaJudiciaria findFirst
+   */
+  export type TipoPedidoDePrevidenciaJudiciariaFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TipoPedidoDePrevidenciaJudiciaria
+     */
+    select?: TipoPedidoDePrevidenciaJudiciariaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TipoPedidoDePrevidenciaJudiciaria
+     */
+    omit?: TipoPedidoDePrevidenciaJudiciariaOmit<ExtArgs> | null
+    /**
+     * Filter, which TipoPedidoDePrevidenciaJudiciaria to fetch.
+     */
+    where?: TipoPedidoDePrevidenciaJudiciariaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TipoPedidoDePrevidenciaJudiciarias to fetch.
+     */
+    orderBy?: TipoPedidoDePrevidenciaJudiciariaOrderByWithRelationInput | TipoPedidoDePrevidenciaJudiciariaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TipoPedidoDePrevidenciaJudiciarias.
+     */
+    cursor?: TipoPedidoDePrevidenciaJudiciariaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TipoPedidoDePrevidenciaJudiciarias from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TipoPedidoDePrevidenciaJudiciarias.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TipoPedidoDePrevidenciaJudiciarias.
+     */
+    distinct?: TipoPedidoDePrevidenciaJudiciariaScalarFieldEnum | TipoPedidoDePrevidenciaJudiciariaScalarFieldEnum[]
+  }
+
+  /**
+   * TipoPedidoDePrevidenciaJudiciaria findFirstOrThrow
+   */
+  export type TipoPedidoDePrevidenciaJudiciariaFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TipoPedidoDePrevidenciaJudiciaria
+     */
+    select?: TipoPedidoDePrevidenciaJudiciariaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TipoPedidoDePrevidenciaJudiciaria
+     */
+    omit?: TipoPedidoDePrevidenciaJudiciariaOmit<ExtArgs> | null
+    /**
+     * Filter, which TipoPedidoDePrevidenciaJudiciaria to fetch.
+     */
+    where?: TipoPedidoDePrevidenciaJudiciariaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TipoPedidoDePrevidenciaJudiciarias to fetch.
+     */
+    orderBy?: TipoPedidoDePrevidenciaJudiciariaOrderByWithRelationInput | TipoPedidoDePrevidenciaJudiciariaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TipoPedidoDePrevidenciaJudiciarias.
+     */
+    cursor?: TipoPedidoDePrevidenciaJudiciariaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TipoPedidoDePrevidenciaJudiciarias from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TipoPedidoDePrevidenciaJudiciarias.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TipoPedidoDePrevidenciaJudiciarias.
+     */
+    distinct?: TipoPedidoDePrevidenciaJudiciariaScalarFieldEnum | TipoPedidoDePrevidenciaJudiciariaScalarFieldEnum[]
+  }
+
+  /**
+   * TipoPedidoDePrevidenciaJudiciaria findMany
+   */
+  export type TipoPedidoDePrevidenciaJudiciariaFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TipoPedidoDePrevidenciaJudiciaria
+     */
+    select?: TipoPedidoDePrevidenciaJudiciariaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TipoPedidoDePrevidenciaJudiciaria
+     */
+    omit?: TipoPedidoDePrevidenciaJudiciariaOmit<ExtArgs> | null
+    /**
+     * Filter, which TipoPedidoDePrevidenciaJudiciarias to fetch.
+     */
+    where?: TipoPedidoDePrevidenciaJudiciariaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TipoPedidoDePrevidenciaJudiciarias to fetch.
+     */
+    orderBy?: TipoPedidoDePrevidenciaJudiciariaOrderByWithRelationInput | TipoPedidoDePrevidenciaJudiciariaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing TipoPedidoDePrevidenciaJudiciarias.
+     */
+    cursor?: TipoPedidoDePrevidenciaJudiciariaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TipoPedidoDePrevidenciaJudiciarias from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TipoPedidoDePrevidenciaJudiciarias.
+     */
+    skip?: number
+    distinct?: TipoPedidoDePrevidenciaJudiciariaScalarFieldEnum | TipoPedidoDePrevidenciaJudiciariaScalarFieldEnum[]
+  }
+
+  /**
+   * TipoPedidoDePrevidenciaJudiciaria create
+   */
+  export type TipoPedidoDePrevidenciaJudiciariaCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TipoPedidoDePrevidenciaJudiciaria
+     */
+    select?: TipoPedidoDePrevidenciaJudiciariaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TipoPedidoDePrevidenciaJudiciaria
+     */
+    omit?: TipoPedidoDePrevidenciaJudiciariaOmit<ExtArgs> | null
+    /**
+     * The data needed to create a TipoPedidoDePrevidenciaJudiciaria.
+     */
+    data: XOR<TipoPedidoDePrevidenciaJudiciariaCreateInput, TipoPedidoDePrevidenciaJudiciariaUncheckedCreateInput>
+  }
+
+  /**
+   * TipoPedidoDePrevidenciaJudiciaria createMany
+   */
+  export type TipoPedidoDePrevidenciaJudiciariaCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many TipoPedidoDePrevidenciaJudiciarias.
+     */
+    data: TipoPedidoDePrevidenciaJudiciariaCreateManyInput | TipoPedidoDePrevidenciaJudiciariaCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * TipoPedidoDePrevidenciaJudiciaria createManyAndReturn
+   */
+  export type TipoPedidoDePrevidenciaJudiciariaCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TipoPedidoDePrevidenciaJudiciaria
+     */
+    select?: TipoPedidoDePrevidenciaJudiciariaSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TipoPedidoDePrevidenciaJudiciaria
+     */
+    omit?: TipoPedidoDePrevidenciaJudiciariaOmit<ExtArgs> | null
+    /**
+     * The data used to create many TipoPedidoDePrevidenciaJudiciarias.
+     */
+    data: TipoPedidoDePrevidenciaJudiciariaCreateManyInput | TipoPedidoDePrevidenciaJudiciariaCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * TipoPedidoDePrevidenciaJudiciaria update
+   */
+  export type TipoPedidoDePrevidenciaJudiciariaUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TipoPedidoDePrevidenciaJudiciaria
+     */
+    select?: TipoPedidoDePrevidenciaJudiciariaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TipoPedidoDePrevidenciaJudiciaria
+     */
+    omit?: TipoPedidoDePrevidenciaJudiciariaOmit<ExtArgs> | null
+    /**
+     * The data needed to update a TipoPedidoDePrevidenciaJudiciaria.
+     */
+    data: XOR<TipoPedidoDePrevidenciaJudiciariaUpdateInput, TipoPedidoDePrevidenciaJudiciariaUncheckedUpdateInput>
+    /**
+     * Choose, which TipoPedidoDePrevidenciaJudiciaria to update.
+     */
+    where: TipoPedidoDePrevidenciaJudiciariaWhereUniqueInput
+  }
+
+  /**
+   * TipoPedidoDePrevidenciaJudiciaria updateMany
+   */
+  export type TipoPedidoDePrevidenciaJudiciariaUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update TipoPedidoDePrevidenciaJudiciarias.
+     */
+    data: XOR<TipoPedidoDePrevidenciaJudiciariaUpdateManyMutationInput, TipoPedidoDePrevidenciaJudiciariaUncheckedUpdateManyInput>
+    /**
+     * Filter which TipoPedidoDePrevidenciaJudiciarias to update
+     */
+    where?: TipoPedidoDePrevidenciaJudiciariaWhereInput
+    /**
+     * Limit how many TipoPedidoDePrevidenciaJudiciarias to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * TipoPedidoDePrevidenciaJudiciaria updateManyAndReturn
+   */
+  export type TipoPedidoDePrevidenciaJudiciariaUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TipoPedidoDePrevidenciaJudiciaria
+     */
+    select?: TipoPedidoDePrevidenciaJudiciariaSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TipoPedidoDePrevidenciaJudiciaria
+     */
+    omit?: TipoPedidoDePrevidenciaJudiciariaOmit<ExtArgs> | null
+    /**
+     * The data used to update TipoPedidoDePrevidenciaJudiciarias.
+     */
+    data: XOR<TipoPedidoDePrevidenciaJudiciariaUpdateManyMutationInput, TipoPedidoDePrevidenciaJudiciariaUncheckedUpdateManyInput>
+    /**
+     * Filter which TipoPedidoDePrevidenciaJudiciarias to update
+     */
+    where?: TipoPedidoDePrevidenciaJudiciariaWhereInput
+    /**
+     * Limit how many TipoPedidoDePrevidenciaJudiciarias to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * TipoPedidoDePrevidenciaJudiciaria upsert
+   */
+  export type TipoPedidoDePrevidenciaJudiciariaUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TipoPedidoDePrevidenciaJudiciaria
+     */
+    select?: TipoPedidoDePrevidenciaJudiciariaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TipoPedidoDePrevidenciaJudiciaria
+     */
+    omit?: TipoPedidoDePrevidenciaJudiciariaOmit<ExtArgs> | null
+    /**
+     * The filter to search for the TipoPedidoDePrevidenciaJudiciaria to update in case it exists.
+     */
+    where: TipoPedidoDePrevidenciaJudiciariaWhereUniqueInput
+    /**
+     * In case the TipoPedidoDePrevidenciaJudiciaria found by the `where` argument doesn't exist, create a new TipoPedidoDePrevidenciaJudiciaria with this data.
+     */
+    create: XOR<TipoPedidoDePrevidenciaJudiciariaCreateInput, TipoPedidoDePrevidenciaJudiciariaUncheckedCreateInput>
+    /**
+     * In case the TipoPedidoDePrevidenciaJudiciaria was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<TipoPedidoDePrevidenciaJudiciariaUpdateInput, TipoPedidoDePrevidenciaJudiciariaUncheckedUpdateInput>
+  }
+
+  /**
+   * TipoPedidoDePrevidenciaJudiciaria delete
+   */
+  export type TipoPedidoDePrevidenciaJudiciariaDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TipoPedidoDePrevidenciaJudiciaria
+     */
+    select?: TipoPedidoDePrevidenciaJudiciariaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TipoPedidoDePrevidenciaJudiciaria
+     */
+    omit?: TipoPedidoDePrevidenciaJudiciariaOmit<ExtArgs> | null
+    /**
+     * Filter which TipoPedidoDePrevidenciaJudiciaria to delete.
+     */
+    where: TipoPedidoDePrevidenciaJudiciariaWhereUniqueInput
+  }
+
+  /**
+   * TipoPedidoDePrevidenciaJudiciaria deleteMany
+   */
+  export type TipoPedidoDePrevidenciaJudiciariaDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TipoPedidoDePrevidenciaJudiciarias to delete
+     */
+    where?: TipoPedidoDePrevidenciaJudiciariaWhereInput
+    /**
+     * Limit how many TipoPedidoDePrevidenciaJudiciarias to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * TipoPedidoDePrevidenciaJudiciaria without action
+   */
+  export type TipoPedidoDePrevidenciaJudiciariaDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TipoPedidoDePrevidenciaJudiciaria
+     */
+    select?: TipoPedidoDePrevidenciaJudiciariaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TipoPedidoDePrevidenciaJudiciaria
+     */
+    omit?: TipoPedidoDePrevidenciaJudiciariaOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Model TipoDemandaPrevidenciaria
    */
 
@@ -22109,6 +27263,3188 @@ export namespace Prisma {
 
 
   /**
+   * Model TipoOrgaoEncaminhamento
+   */
+
+  export type AggregateTipoOrgaoEncaminhamento = {
+    _count: TipoOrgaoEncaminhamentoCountAggregateOutputType | null
+    _avg: TipoOrgaoEncaminhamentoAvgAggregateOutputType | null
+    _sum: TipoOrgaoEncaminhamentoSumAggregateOutputType | null
+    _min: TipoOrgaoEncaminhamentoMinAggregateOutputType | null
+    _max: TipoOrgaoEncaminhamentoMaxAggregateOutputType | null
+  }
+
+  export type TipoOrgaoEncaminhamentoAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type TipoOrgaoEncaminhamentoSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type TipoOrgaoEncaminhamentoMinAggregateOutputType = {
+    id: number | null
+    titulo: string | null
+    descricao: string | null
+    ativo: boolean | null
+  }
+
+  export type TipoOrgaoEncaminhamentoMaxAggregateOutputType = {
+    id: number | null
+    titulo: string | null
+    descricao: string | null
+    ativo: boolean | null
+  }
+
+  export type TipoOrgaoEncaminhamentoCountAggregateOutputType = {
+    id: number
+    titulo: number
+    descricao: number
+    ativo: number
+    _all: number
+  }
+
+
+  export type TipoOrgaoEncaminhamentoAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type TipoOrgaoEncaminhamentoSumAggregateInputType = {
+    id?: true
+  }
+
+  export type TipoOrgaoEncaminhamentoMinAggregateInputType = {
+    id?: true
+    titulo?: true
+    descricao?: true
+    ativo?: true
+  }
+
+  export type TipoOrgaoEncaminhamentoMaxAggregateInputType = {
+    id?: true
+    titulo?: true
+    descricao?: true
+    ativo?: true
+  }
+
+  export type TipoOrgaoEncaminhamentoCountAggregateInputType = {
+    id?: true
+    titulo?: true
+    descricao?: true
+    ativo?: true
+    _all?: true
+  }
+
+  export type TipoOrgaoEncaminhamentoAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TipoOrgaoEncaminhamento to aggregate.
+     */
+    where?: TipoOrgaoEncaminhamentoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TipoOrgaoEncaminhamentos to fetch.
+     */
+    orderBy?: TipoOrgaoEncaminhamentoOrderByWithRelationInput | TipoOrgaoEncaminhamentoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: TipoOrgaoEncaminhamentoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TipoOrgaoEncaminhamentos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TipoOrgaoEncaminhamentos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned TipoOrgaoEncaminhamentos
+    **/
+    _count?: true | TipoOrgaoEncaminhamentoCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: TipoOrgaoEncaminhamentoAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: TipoOrgaoEncaminhamentoSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TipoOrgaoEncaminhamentoMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TipoOrgaoEncaminhamentoMaxAggregateInputType
+  }
+
+  export type GetTipoOrgaoEncaminhamentoAggregateType<T extends TipoOrgaoEncaminhamentoAggregateArgs> = {
+        [P in keyof T & keyof AggregateTipoOrgaoEncaminhamento]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTipoOrgaoEncaminhamento[P]>
+      : GetScalarType<T[P], AggregateTipoOrgaoEncaminhamento[P]>
+  }
+
+
+
+
+  export type TipoOrgaoEncaminhamentoGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TipoOrgaoEncaminhamentoWhereInput
+    orderBy?: TipoOrgaoEncaminhamentoOrderByWithAggregationInput | TipoOrgaoEncaminhamentoOrderByWithAggregationInput[]
+    by: TipoOrgaoEncaminhamentoScalarFieldEnum[] | TipoOrgaoEncaminhamentoScalarFieldEnum
+    having?: TipoOrgaoEncaminhamentoScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TipoOrgaoEncaminhamentoCountAggregateInputType | true
+    _avg?: TipoOrgaoEncaminhamentoAvgAggregateInputType
+    _sum?: TipoOrgaoEncaminhamentoSumAggregateInputType
+    _min?: TipoOrgaoEncaminhamentoMinAggregateInputType
+    _max?: TipoOrgaoEncaminhamentoMaxAggregateInputType
+  }
+
+  export type TipoOrgaoEncaminhamentoGroupByOutputType = {
+    id: number
+    titulo: string
+    descricao: string
+    ativo: boolean
+    _count: TipoOrgaoEncaminhamentoCountAggregateOutputType | null
+    _avg: TipoOrgaoEncaminhamentoAvgAggregateOutputType | null
+    _sum: TipoOrgaoEncaminhamentoSumAggregateOutputType | null
+    _min: TipoOrgaoEncaminhamentoMinAggregateOutputType | null
+    _max: TipoOrgaoEncaminhamentoMaxAggregateOutputType | null
+  }
+
+  type GetTipoOrgaoEncaminhamentoGroupByPayload<T extends TipoOrgaoEncaminhamentoGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TipoOrgaoEncaminhamentoGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TipoOrgaoEncaminhamentoGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TipoOrgaoEncaminhamentoGroupByOutputType[P]>
+            : GetScalarType<T[P], TipoOrgaoEncaminhamentoGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type TipoOrgaoEncaminhamentoSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    titulo?: boolean
+    descricao?: boolean
+    ativo?: boolean
+    OrgaoEncaminhamento?: boolean | TipoOrgaoEncaminhamento$OrgaoEncaminhamentoArgs<ExtArgs>
+    _count?: boolean | TipoOrgaoEncaminhamentoCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["tipoOrgaoEncaminhamento"]>
+
+  export type TipoOrgaoEncaminhamentoSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    titulo?: boolean
+    descricao?: boolean
+    ativo?: boolean
+  }, ExtArgs["result"]["tipoOrgaoEncaminhamento"]>
+
+  export type TipoOrgaoEncaminhamentoSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    titulo?: boolean
+    descricao?: boolean
+    ativo?: boolean
+  }, ExtArgs["result"]["tipoOrgaoEncaminhamento"]>
+
+  export type TipoOrgaoEncaminhamentoSelectScalar = {
+    id?: boolean
+    titulo?: boolean
+    descricao?: boolean
+    ativo?: boolean
+  }
+
+  export type TipoOrgaoEncaminhamentoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "titulo" | "descricao" | "ativo", ExtArgs["result"]["tipoOrgaoEncaminhamento"]>
+  export type TipoOrgaoEncaminhamentoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    OrgaoEncaminhamento?: boolean | TipoOrgaoEncaminhamento$OrgaoEncaminhamentoArgs<ExtArgs>
+    _count?: boolean | TipoOrgaoEncaminhamentoCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type TipoOrgaoEncaminhamentoIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type TipoOrgaoEncaminhamentoIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $TipoOrgaoEncaminhamentoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "TipoOrgaoEncaminhamento"
+    objects: {
+      OrgaoEncaminhamento: Prisma.$OrgaoEncaminhamentoPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      titulo: string
+      descricao: string
+      ativo: boolean
+    }, ExtArgs["result"]["tipoOrgaoEncaminhamento"]>
+    composites: {}
+  }
+
+  type TipoOrgaoEncaminhamentoGetPayload<S extends boolean | null | undefined | TipoOrgaoEncaminhamentoDefaultArgs> = $Result.GetResult<Prisma.$TipoOrgaoEncaminhamentoPayload, S>
+
+  type TipoOrgaoEncaminhamentoCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<TipoOrgaoEncaminhamentoFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: TipoOrgaoEncaminhamentoCountAggregateInputType | true
+    }
+
+  export interface TipoOrgaoEncaminhamentoDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['TipoOrgaoEncaminhamento'], meta: { name: 'TipoOrgaoEncaminhamento' } }
+    /**
+     * Find zero or one TipoOrgaoEncaminhamento that matches the filter.
+     * @param {TipoOrgaoEncaminhamentoFindUniqueArgs} args - Arguments to find a TipoOrgaoEncaminhamento
+     * @example
+     * // Get one TipoOrgaoEncaminhamento
+     * const tipoOrgaoEncaminhamento = await prisma.tipoOrgaoEncaminhamento.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends TipoOrgaoEncaminhamentoFindUniqueArgs>(args: SelectSubset<T, TipoOrgaoEncaminhamentoFindUniqueArgs<ExtArgs>>): Prisma__TipoOrgaoEncaminhamentoClient<$Result.GetResult<Prisma.$TipoOrgaoEncaminhamentoPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one TipoOrgaoEncaminhamento that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {TipoOrgaoEncaminhamentoFindUniqueOrThrowArgs} args - Arguments to find a TipoOrgaoEncaminhamento
+     * @example
+     * // Get one TipoOrgaoEncaminhamento
+     * const tipoOrgaoEncaminhamento = await prisma.tipoOrgaoEncaminhamento.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends TipoOrgaoEncaminhamentoFindUniqueOrThrowArgs>(args: SelectSubset<T, TipoOrgaoEncaminhamentoFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TipoOrgaoEncaminhamentoClient<$Result.GetResult<Prisma.$TipoOrgaoEncaminhamentoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TipoOrgaoEncaminhamento that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TipoOrgaoEncaminhamentoFindFirstArgs} args - Arguments to find a TipoOrgaoEncaminhamento
+     * @example
+     * // Get one TipoOrgaoEncaminhamento
+     * const tipoOrgaoEncaminhamento = await prisma.tipoOrgaoEncaminhamento.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends TipoOrgaoEncaminhamentoFindFirstArgs>(args?: SelectSubset<T, TipoOrgaoEncaminhamentoFindFirstArgs<ExtArgs>>): Prisma__TipoOrgaoEncaminhamentoClient<$Result.GetResult<Prisma.$TipoOrgaoEncaminhamentoPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TipoOrgaoEncaminhamento that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TipoOrgaoEncaminhamentoFindFirstOrThrowArgs} args - Arguments to find a TipoOrgaoEncaminhamento
+     * @example
+     * // Get one TipoOrgaoEncaminhamento
+     * const tipoOrgaoEncaminhamento = await prisma.tipoOrgaoEncaminhamento.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends TipoOrgaoEncaminhamentoFindFirstOrThrowArgs>(args?: SelectSubset<T, TipoOrgaoEncaminhamentoFindFirstOrThrowArgs<ExtArgs>>): Prisma__TipoOrgaoEncaminhamentoClient<$Result.GetResult<Prisma.$TipoOrgaoEncaminhamentoPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more TipoOrgaoEncaminhamentos that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TipoOrgaoEncaminhamentoFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all TipoOrgaoEncaminhamentos
+     * const tipoOrgaoEncaminhamentos = await prisma.tipoOrgaoEncaminhamento.findMany()
+     * 
+     * // Get first 10 TipoOrgaoEncaminhamentos
+     * const tipoOrgaoEncaminhamentos = await prisma.tipoOrgaoEncaminhamento.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const tipoOrgaoEncaminhamentoWithIdOnly = await prisma.tipoOrgaoEncaminhamento.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends TipoOrgaoEncaminhamentoFindManyArgs>(args?: SelectSubset<T, TipoOrgaoEncaminhamentoFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TipoOrgaoEncaminhamentoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a TipoOrgaoEncaminhamento.
+     * @param {TipoOrgaoEncaminhamentoCreateArgs} args - Arguments to create a TipoOrgaoEncaminhamento.
+     * @example
+     * // Create one TipoOrgaoEncaminhamento
+     * const TipoOrgaoEncaminhamento = await prisma.tipoOrgaoEncaminhamento.create({
+     *   data: {
+     *     // ... data to create a TipoOrgaoEncaminhamento
+     *   }
+     * })
+     * 
+     */
+    create<T extends TipoOrgaoEncaminhamentoCreateArgs>(args: SelectSubset<T, TipoOrgaoEncaminhamentoCreateArgs<ExtArgs>>): Prisma__TipoOrgaoEncaminhamentoClient<$Result.GetResult<Prisma.$TipoOrgaoEncaminhamentoPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many TipoOrgaoEncaminhamentos.
+     * @param {TipoOrgaoEncaminhamentoCreateManyArgs} args - Arguments to create many TipoOrgaoEncaminhamentos.
+     * @example
+     * // Create many TipoOrgaoEncaminhamentos
+     * const tipoOrgaoEncaminhamento = await prisma.tipoOrgaoEncaminhamento.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends TipoOrgaoEncaminhamentoCreateManyArgs>(args?: SelectSubset<T, TipoOrgaoEncaminhamentoCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many TipoOrgaoEncaminhamentos and returns the data saved in the database.
+     * @param {TipoOrgaoEncaminhamentoCreateManyAndReturnArgs} args - Arguments to create many TipoOrgaoEncaminhamentos.
+     * @example
+     * // Create many TipoOrgaoEncaminhamentos
+     * const tipoOrgaoEncaminhamento = await prisma.tipoOrgaoEncaminhamento.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many TipoOrgaoEncaminhamentos and only return the `id`
+     * const tipoOrgaoEncaminhamentoWithIdOnly = await prisma.tipoOrgaoEncaminhamento.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends TipoOrgaoEncaminhamentoCreateManyAndReturnArgs>(args?: SelectSubset<T, TipoOrgaoEncaminhamentoCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TipoOrgaoEncaminhamentoPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a TipoOrgaoEncaminhamento.
+     * @param {TipoOrgaoEncaminhamentoDeleteArgs} args - Arguments to delete one TipoOrgaoEncaminhamento.
+     * @example
+     * // Delete one TipoOrgaoEncaminhamento
+     * const TipoOrgaoEncaminhamento = await prisma.tipoOrgaoEncaminhamento.delete({
+     *   where: {
+     *     // ... filter to delete one TipoOrgaoEncaminhamento
+     *   }
+     * })
+     * 
+     */
+    delete<T extends TipoOrgaoEncaminhamentoDeleteArgs>(args: SelectSubset<T, TipoOrgaoEncaminhamentoDeleteArgs<ExtArgs>>): Prisma__TipoOrgaoEncaminhamentoClient<$Result.GetResult<Prisma.$TipoOrgaoEncaminhamentoPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one TipoOrgaoEncaminhamento.
+     * @param {TipoOrgaoEncaminhamentoUpdateArgs} args - Arguments to update one TipoOrgaoEncaminhamento.
+     * @example
+     * // Update one TipoOrgaoEncaminhamento
+     * const tipoOrgaoEncaminhamento = await prisma.tipoOrgaoEncaminhamento.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends TipoOrgaoEncaminhamentoUpdateArgs>(args: SelectSubset<T, TipoOrgaoEncaminhamentoUpdateArgs<ExtArgs>>): Prisma__TipoOrgaoEncaminhamentoClient<$Result.GetResult<Prisma.$TipoOrgaoEncaminhamentoPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more TipoOrgaoEncaminhamentos.
+     * @param {TipoOrgaoEncaminhamentoDeleteManyArgs} args - Arguments to filter TipoOrgaoEncaminhamentos to delete.
+     * @example
+     * // Delete a few TipoOrgaoEncaminhamentos
+     * const { count } = await prisma.tipoOrgaoEncaminhamento.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends TipoOrgaoEncaminhamentoDeleteManyArgs>(args?: SelectSubset<T, TipoOrgaoEncaminhamentoDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TipoOrgaoEncaminhamentos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TipoOrgaoEncaminhamentoUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many TipoOrgaoEncaminhamentos
+     * const tipoOrgaoEncaminhamento = await prisma.tipoOrgaoEncaminhamento.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends TipoOrgaoEncaminhamentoUpdateManyArgs>(args: SelectSubset<T, TipoOrgaoEncaminhamentoUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TipoOrgaoEncaminhamentos and returns the data updated in the database.
+     * @param {TipoOrgaoEncaminhamentoUpdateManyAndReturnArgs} args - Arguments to update many TipoOrgaoEncaminhamentos.
+     * @example
+     * // Update many TipoOrgaoEncaminhamentos
+     * const tipoOrgaoEncaminhamento = await prisma.tipoOrgaoEncaminhamento.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more TipoOrgaoEncaminhamentos and only return the `id`
+     * const tipoOrgaoEncaminhamentoWithIdOnly = await prisma.tipoOrgaoEncaminhamento.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends TipoOrgaoEncaminhamentoUpdateManyAndReturnArgs>(args: SelectSubset<T, TipoOrgaoEncaminhamentoUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TipoOrgaoEncaminhamentoPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one TipoOrgaoEncaminhamento.
+     * @param {TipoOrgaoEncaminhamentoUpsertArgs} args - Arguments to update or create a TipoOrgaoEncaminhamento.
+     * @example
+     * // Update or create a TipoOrgaoEncaminhamento
+     * const tipoOrgaoEncaminhamento = await prisma.tipoOrgaoEncaminhamento.upsert({
+     *   create: {
+     *     // ... data to create a TipoOrgaoEncaminhamento
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the TipoOrgaoEncaminhamento we want to update
+     *   }
+     * })
+     */
+    upsert<T extends TipoOrgaoEncaminhamentoUpsertArgs>(args: SelectSubset<T, TipoOrgaoEncaminhamentoUpsertArgs<ExtArgs>>): Prisma__TipoOrgaoEncaminhamentoClient<$Result.GetResult<Prisma.$TipoOrgaoEncaminhamentoPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of TipoOrgaoEncaminhamentos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TipoOrgaoEncaminhamentoCountArgs} args - Arguments to filter TipoOrgaoEncaminhamentos to count.
+     * @example
+     * // Count the number of TipoOrgaoEncaminhamentos
+     * const count = await prisma.tipoOrgaoEncaminhamento.count({
+     *   where: {
+     *     // ... the filter for the TipoOrgaoEncaminhamentos we want to count
+     *   }
+     * })
+    **/
+    count<T extends TipoOrgaoEncaminhamentoCountArgs>(
+      args?: Subset<T, TipoOrgaoEncaminhamentoCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TipoOrgaoEncaminhamentoCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a TipoOrgaoEncaminhamento.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TipoOrgaoEncaminhamentoAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TipoOrgaoEncaminhamentoAggregateArgs>(args: Subset<T, TipoOrgaoEncaminhamentoAggregateArgs>): Prisma.PrismaPromise<GetTipoOrgaoEncaminhamentoAggregateType<T>>
+
+    /**
+     * Group by TipoOrgaoEncaminhamento.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TipoOrgaoEncaminhamentoGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TipoOrgaoEncaminhamentoGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TipoOrgaoEncaminhamentoGroupByArgs['orderBy'] }
+        : { orderBy?: TipoOrgaoEncaminhamentoGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TipoOrgaoEncaminhamentoGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTipoOrgaoEncaminhamentoGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the TipoOrgaoEncaminhamento model
+   */
+  readonly fields: TipoOrgaoEncaminhamentoFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for TipoOrgaoEncaminhamento.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__TipoOrgaoEncaminhamentoClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    OrgaoEncaminhamento<T extends TipoOrgaoEncaminhamento$OrgaoEncaminhamentoArgs<ExtArgs> = {}>(args?: Subset<T, TipoOrgaoEncaminhamento$OrgaoEncaminhamentoArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OrgaoEncaminhamentoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the TipoOrgaoEncaminhamento model
+   */
+  interface TipoOrgaoEncaminhamentoFieldRefs {
+    readonly id: FieldRef<"TipoOrgaoEncaminhamento", 'Int'>
+    readonly titulo: FieldRef<"TipoOrgaoEncaminhamento", 'String'>
+    readonly descricao: FieldRef<"TipoOrgaoEncaminhamento", 'String'>
+    readonly ativo: FieldRef<"TipoOrgaoEncaminhamento", 'Boolean'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * TipoOrgaoEncaminhamento findUnique
+   */
+  export type TipoOrgaoEncaminhamentoFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TipoOrgaoEncaminhamento
+     */
+    select?: TipoOrgaoEncaminhamentoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TipoOrgaoEncaminhamento
+     */
+    omit?: TipoOrgaoEncaminhamentoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TipoOrgaoEncaminhamentoInclude<ExtArgs> | null
+    /**
+     * Filter, which TipoOrgaoEncaminhamento to fetch.
+     */
+    where: TipoOrgaoEncaminhamentoWhereUniqueInput
+  }
+
+  /**
+   * TipoOrgaoEncaminhamento findUniqueOrThrow
+   */
+  export type TipoOrgaoEncaminhamentoFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TipoOrgaoEncaminhamento
+     */
+    select?: TipoOrgaoEncaminhamentoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TipoOrgaoEncaminhamento
+     */
+    omit?: TipoOrgaoEncaminhamentoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TipoOrgaoEncaminhamentoInclude<ExtArgs> | null
+    /**
+     * Filter, which TipoOrgaoEncaminhamento to fetch.
+     */
+    where: TipoOrgaoEncaminhamentoWhereUniqueInput
+  }
+
+  /**
+   * TipoOrgaoEncaminhamento findFirst
+   */
+  export type TipoOrgaoEncaminhamentoFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TipoOrgaoEncaminhamento
+     */
+    select?: TipoOrgaoEncaminhamentoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TipoOrgaoEncaminhamento
+     */
+    omit?: TipoOrgaoEncaminhamentoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TipoOrgaoEncaminhamentoInclude<ExtArgs> | null
+    /**
+     * Filter, which TipoOrgaoEncaminhamento to fetch.
+     */
+    where?: TipoOrgaoEncaminhamentoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TipoOrgaoEncaminhamentos to fetch.
+     */
+    orderBy?: TipoOrgaoEncaminhamentoOrderByWithRelationInput | TipoOrgaoEncaminhamentoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TipoOrgaoEncaminhamentos.
+     */
+    cursor?: TipoOrgaoEncaminhamentoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TipoOrgaoEncaminhamentos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TipoOrgaoEncaminhamentos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TipoOrgaoEncaminhamentos.
+     */
+    distinct?: TipoOrgaoEncaminhamentoScalarFieldEnum | TipoOrgaoEncaminhamentoScalarFieldEnum[]
+  }
+
+  /**
+   * TipoOrgaoEncaminhamento findFirstOrThrow
+   */
+  export type TipoOrgaoEncaminhamentoFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TipoOrgaoEncaminhamento
+     */
+    select?: TipoOrgaoEncaminhamentoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TipoOrgaoEncaminhamento
+     */
+    omit?: TipoOrgaoEncaminhamentoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TipoOrgaoEncaminhamentoInclude<ExtArgs> | null
+    /**
+     * Filter, which TipoOrgaoEncaminhamento to fetch.
+     */
+    where?: TipoOrgaoEncaminhamentoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TipoOrgaoEncaminhamentos to fetch.
+     */
+    orderBy?: TipoOrgaoEncaminhamentoOrderByWithRelationInput | TipoOrgaoEncaminhamentoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TipoOrgaoEncaminhamentos.
+     */
+    cursor?: TipoOrgaoEncaminhamentoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TipoOrgaoEncaminhamentos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TipoOrgaoEncaminhamentos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TipoOrgaoEncaminhamentos.
+     */
+    distinct?: TipoOrgaoEncaminhamentoScalarFieldEnum | TipoOrgaoEncaminhamentoScalarFieldEnum[]
+  }
+
+  /**
+   * TipoOrgaoEncaminhamento findMany
+   */
+  export type TipoOrgaoEncaminhamentoFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TipoOrgaoEncaminhamento
+     */
+    select?: TipoOrgaoEncaminhamentoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TipoOrgaoEncaminhamento
+     */
+    omit?: TipoOrgaoEncaminhamentoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TipoOrgaoEncaminhamentoInclude<ExtArgs> | null
+    /**
+     * Filter, which TipoOrgaoEncaminhamentos to fetch.
+     */
+    where?: TipoOrgaoEncaminhamentoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TipoOrgaoEncaminhamentos to fetch.
+     */
+    orderBy?: TipoOrgaoEncaminhamentoOrderByWithRelationInput | TipoOrgaoEncaminhamentoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing TipoOrgaoEncaminhamentos.
+     */
+    cursor?: TipoOrgaoEncaminhamentoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TipoOrgaoEncaminhamentos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TipoOrgaoEncaminhamentos.
+     */
+    skip?: number
+    distinct?: TipoOrgaoEncaminhamentoScalarFieldEnum | TipoOrgaoEncaminhamentoScalarFieldEnum[]
+  }
+
+  /**
+   * TipoOrgaoEncaminhamento create
+   */
+  export type TipoOrgaoEncaminhamentoCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TipoOrgaoEncaminhamento
+     */
+    select?: TipoOrgaoEncaminhamentoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TipoOrgaoEncaminhamento
+     */
+    omit?: TipoOrgaoEncaminhamentoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TipoOrgaoEncaminhamentoInclude<ExtArgs> | null
+    /**
+     * The data needed to create a TipoOrgaoEncaminhamento.
+     */
+    data: XOR<TipoOrgaoEncaminhamentoCreateInput, TipoOrgaoEncaminhamentoUncheckedCreateInput>
+  }
+
+  /**
+   * TipoOrgaoEncaminhamento createMany
+   */
+  export type TipoOrgaoEncaminhamentoCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many TipoOrgaoEncaminhamentos.
+     */
+    data: TipoOrgaoEncaminhamentoCreateManyInput | TipoOrgaoEncaminhamentoCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * TipoOrgaoEncaminhamento createManyAndReturn
+   */
+  export type TipoOrgaoEncaminhamentoCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TipoOrgaoEncaminhamento
+     */
+    select?: TipoOrgaoEncaminhamentoSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TipoOrgaoEncaminhamento
+     */
+    omit?: TipoOrgaoEncaminhamentoOmit<ExtArgs> | null
+    /**
+     * The data used to create many TipoOrgaoEncaminhamentos.
+     */
+    data: TipoOrgaoEncaminhamentoCreateManyInput | TipoOrgaoEncaminhamentoCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * TipoOrgaoEncaminhamento update
+   */
+  export type TipoOrgaoEncaminhamentoUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TipoOrgaoEncaminhamento
+     */
+    select?: TipoOrgaoEncaminhamentoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TipoOrgaoEncaminhamento
+     */
+    omit?: TipoOrgaoEncaminhamentoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TipoOrgaoEncaminhamentoInclude<ExtArgs> | null
+    /**
+     * The data needed to update a TipoOrgaoEncaminhamento.
+     */
+    data: XOR<TipoOrgaoEncaminhamentoUpdateInput, TipoOrgaoEncaminhamentoUncheckedUpdateInput>
+    /**
+     * Choose, which TipoOrgaoEncaminhamento to update.
+     */
+    where: TipoOrgaoEncaminhamentoWhereUniqueInput
+  }
+
+  /**
+   * TipoOrgaoEncaminhamento updateMany
+   */
+  export type TipoOrgaoEncaminhamentoUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update TipoOrgaoEncaminhamentos.
+     */
+    data: XOR<TipoOrgaoEncaminhamentoUpdateManyMutationInput, TipoOrgaoEncaminhamentoUncheckedUpdateManyInput>
+    /**
+     * Filter which TipoOrgaoEncaminhamentos to update
+     */
+    where?: TipoOrgaoEncaminhamentoWhereInput
+    /**
+     * Limit how many TipoOrgaoEncaminhamentos to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * TipoOrgaoEncaminhamento updateManyAndReturn
+   */
+  export type TipoOrgaoEncaminhamentoUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TipoOrgaoEncaminhamento
+     */
+    select?: TipoOrgaoEncaminhamentoSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TipoOrgaoEncaminhamento
+     */
+    omit?: TipoOrgaoEncaminhamentoOmit<ExtArgs> | null
+    /**
+     * The data used to update TipoOrgaoEncaminhamentos.
+     */
+    data: XOR<TipoOrgaoEncaminhamentoUpdateManyMutationInput, TipoOrgaoEncaminhamentoUncheckedUpdateManyInput>
+    /**
+     * Filter which TipoOrgaoEncaminhamentos to update
+     */
+    where?: TipoOrgaoEncaminhamentoWhereInput
+    /**
+     * Limit how many TipoOrgaoEncaminhamentos to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * TipoOrgaoEncaminhamento upsert
+   */
+  export type TipoOrgaoEncaminhamentoUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TipoOrgaoEncaminhamento
+     */
+    select?: TipoOrgaoEncaminhamentoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TipoOrgaoEncaminhamento
+     */
+    omit?: TipoOrgaoEncaminhamentoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TipoOrgaoEncaminhamentoInclude<ExtArgs> | null
+    /**
+     * The filter to search for the TipoOrgaoEncaminhamento to update in case it exists.
+     */
+    where: TipoOrgaoEncaminhamentoWhereUniqueInput
+    /**
+     * In case the TipoOrgaoEncaminhamento found by the `where` argument doesn't exist, create a new TipoOrgaoEncaminhamento with this data.
+     */
+    create: XOR<TipoOrgaoEncaminhamentoCreateInput, TipoOrgaoEncaminhamentoUncheckedCreateInput>
+    /**
+     * In case the TipoOrgaoEncaminhamento was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<TipoOrgaoEncaminhamentoUpdateInput, TipoOrgaoEncaminhamentoUncheckedUpdateInput>
+  }
+
+  /**
+   * TipoOrgaoEncaminhamento delete
+   */
+  export type TipoOrgaoEncaminhamentoDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TipoOrgaoEncaminhamento
+     */
+    select?: TipoOrgaoEncaminhamentoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TipoOrgaoEncaminhamento
+     */
+    omit?: TipoOrgaoEncaminhamentoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TipoOrgaoEncaminhamentoInclude<ExtArgs> | null
+    /**
+     * Filter which TipoOrgaoEncaminhamento to delete.
+     */
+    where: TipoOrgaoEncaminhamentoWhereUniqueInput
+  }
+
+  /**
+   * TipoOrgaoEncaminhamento deleteMany
+   */
+  export type TipoOrgaoEncaminhamentoDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TipoOrgaoEncaminhamentos to delete
+     */
+    where?: TipoOrgaoEncaminhamentoWhereInput
+    /**
+     * Limit how many TipoOrgaoEncaminhamentos to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * TipoOrgaoEncaminhamento.OrgaoEncaminhamento
+   */
+  export type TipoOrgaoEncaminhamento$OrgaoEncaminhamentoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OrgaoEncaminhamento
+     */
+    select?: OrgaoEncaminhamentoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OrgaoEncaminhamento
+     */
+    omit?: OrgaoEncaminhamentoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OrgaoEncaminhamentoInclude<ExtArgs> | null
+    where?: OrgaoEncaminhamentoWhereInput
+    orderBy?: OrgaoEncaminhamentoOrderByWithRelationInput | OrgaoEncaminhamentoOrderByWithRelationInput[]
+    cursor?: OrgaoEncaminhamentoWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: OrgaoEncaminhamentoScalarFieldEnum | OrgaoEncaminhamentoScalarFieldEnum[]
+  }
+
+  /**
+   * TipoOrgaoEncaminhamento without action
+   */
+  export type TipoOrgaoEncaminhamentoDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TipoOrgaoEncaminhamento
+     */
+    select?: TipoOrgaoEncaminhamentoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TipoOrgaoEncaminhamento
+     */
+    omit?: TipoOrgaoEncaminhamentoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TipoOrgaoEncaminhamentoInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model OrgaoEncaminhamento
+   */
+
+  export type AggregateOrgaoEncaminhamento = {
+    _count: OrgaoEncaminhamentoCountAggregateOutputType | null
+    _avg: OrgaoEncaminhamentoAvgAggregateOutputType | null
+    _sum: OrgaoEncaminhamentoSumAggregateOutputType | null
+    _min: OrgaoEncaminhamentoMinAggregateOutputType | null
+    _max: OrgaoEncaminhamentoMaxAggregateOutputType | null
+  }
+
+  export type OrgaoEncaminhamentoAvgAggregateOutputType = {
+    id: number | null
+    tipoOrgaoEncaminhamentoId: number | null
+  }
+
+  export type OrgaoEncaminhamentoSumAggregateOutputType = {
+    id: number | null
+    tipoOrgaoEncaminhamentoId: number | null
+  }
+
+  export type OrgaoEncaminhamentoMinAggregateOutputType = {
+    id: number | null
+    nome: string | null
+    ativo: boolean | null
+    tipoOrgaoEncaminhamentoId: number | null
+  }
+
+  export type OrgaoEncaminhamentoMaxAggregateOutputType = {
+    id: number | null
+    nome: string | null
+    ativo: boolean | null
+    tipoOrgaoEncaminhamentoId: number | null
+  }
+
+  export type OrgaoEncaminhamentoCountAggregateOutputType = {
+    id: number
+    nome: number
+    ativo: number
+    tipoOrgaoEncaminhamentoId: number
+    _all: number
+  }
+
+
+  export type OrgaoEncaminhamentoAvgAggregateInputType = {
+    id?: true
+    tipoOrgaoEncaminhamentoId?: true
+  }
+
+  export type OrgaoEncaminhamentoSumAggregateInputType = {
+    id?: true
+    tipoOrgaoEncaminhamentoId?: true
+  }
+
+  export type OrgaoEncaminhamentoMinAggregateInputType = {
+    id?: true
+    nome?: true
+    ativo?: true
+    tipoOrgaoEncaminhamentoId?: true
+  }
+
+  export type OrgaoEncaminhamentoMaxAggregateInputType = {
+    id?: true
+    nome?: true
+    ativo?: true
+    tipoOrgaoEncaminhamentoId?: true
+  }
+
+  export type OrgaoEncaminhamentoCountAggregateInputType = {
+    id?: true
+    nome?: true
+    ativo?: true
+    tipoOrgaoEncaminhamentoId?: true
+    _all?: true
+  }
+
+  export type OrgaoEncaminhamentoAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which OrgaoEncaminhamento to aggregate.
+     */
+    where?: OrgaoEncaminhamentoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of OrgaoEncaminhamentos to fetch.
+     */
+    orderBy?: OrgaoEncaminhamentoOrderByWithRelationInput | OrgaoEncaminhamentoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: OrgaoEncaminhamentoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` OrgaoEncaminhamentos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` OrgaoEncaminhamentos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned OrgaoEncaminhamentos
+    **/
+    _count?: true | OrgaoEncaminhamentoCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: OrgaoEncaminhamentoAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: OrgaoEncaminhamentoSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: OrgaoEncaminhamentoMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: OrgaoEncaminhamentoMaxAggregateInputType
+  }
+
+  export type GetOrgaoEncaminhamentoAggregateType<T extends OrgaoEncaminhamentoAggregateArgs> = {
+        [P in keyof T & keyof AggregateOrgaoEncaminhamento]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateOrgaoEncaminhamento[P]>
+      : GetScalarType<T[P], AggregateOrgaoEncaminhamento[P]>
+  }
+
+
+
+
+  export type OrgaoEncaminhamentoGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: OrgaoEncaminhamentoWhereInput
+    orderBy?: OrgaoEncaminhamentoOrderByWithAggregationInput | OrgaoEncaminhamentoOrderByWithAggregationInput[]
+    by: OrgaoEncaminhamentoScalarFieldEnum[] | OrgaoEncaminhamentoScalarFieldEnum
+    having?: OrgaoEncaminhamentoScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: OrgaoEncaminhamentoCountAggregateInputType | true
+    _avg?: OrgaoEncaminhamentoAvgAggregateInputType
+    _sum?: OrgaoEncaminhamentoSumAggregateInputType
+    _min?: OrgaoEncaminhamentoMinAggregateInputType
+    _max?: OrgaoEncaminhamentoMaxAggregateInputType
+  }
+
+  export type OrgaoEncaminhamentoGroupByOutputType = {
+    id: number
+    nome: string
+    ativo: boolean
+    tipoOrgaoEncaminhamentoId: number
+    _count: OrgaoEncaminhamentoCountAggregateOutputType | null
+    _avg: OrgaoEncaminhamentoAvgAggregateOutputType | null
+    _sum: OrgaoEncaminhamentoSumAggregateOutputType | null
+    _min: OrgaoEncaminhamentoMinAggregateOutputType | null
+    _max: OrgaoEncaminhamentoMaxAggregateOutputType | null
+  }
+
+  type GetOrgaoEncaminhamentoGroupByPayload<T extends OrgaoEncaminhamentoGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<OrgaoEncaminhamentoGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof OrgaoEncaminhamentoGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], OrgaoEncaminhamentoGroupByOutputType[P]>
+            : GetScalarType<T[P], OrgaoEncaminhamentoGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type OrgaoEncaminhamentoSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    nome?: boolean
+    ativo?: boolean
+    tipoOrgaoEncaminhamentoId?: boolean
+    tipoOrgaoEncaminhamento?: boolean | TipoOrgaoEncaminhamentoDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["orgaoEncaminhamento"]>
+
+  export type OrgaoEncaminhamentoSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    nome?: boolean
+    ativo?: boolean
+    tipoOrgaoEncaminhamentoId?: boolean
+    tipoOrgaoEncaminhamento?: boolean | TipoOrgaoEncaminhamentoDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["orgaoEncaminhamento"]>
+
+  export type OrgaoEncaminhamentoSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    nome?: boolean
+    ativo?: boolean
+    tipoOrgaoEncaminhamentoId?: boolean
+    tipoOrgaoEncaminhamento?: boolean | TipoOrgaoEncaminhamentoDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["orgaoEncaminhamento"]>
+
+  export type OrgaoEncaminhamentoSelectScalar = {
+    id?: boolean
+    nome?: boolean
+    ativo?: boolean
+    tipoOrgaoEncaminhamentoId?: boolean
+  }
+
+  export type OrgaoEncaminhamentoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nome" | "ativo" | "tipoOrgaoEncaminhamentoId", ExtArgs["result"]["orgaoEncaminhamento"]>
+  export type OrgaoEncaminhamentoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    tipoOrgaoEncaminhamento?: boolean | TipoOrgaoEncaminhamentoDefaultArgs<ExtArgs>
+  }
+  export type OrgaoEncaminhamentoIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    tipoOrgaoEncaminhamento?: boolean | TipoOrgaoEncaminhamentoDefaultArgs<ExtArgs>
+  }
+  export type OrgaoEncaminhamentoIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    tipoOrgaoEncaminhamento?: boolean | TipoOrgaoEncaminhamentoDefaultArgs<ExtArgs>
+  }
+
+  export type $OrgaoEncaminhamentoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "OrgaoEncaminhamento"
+    objects: {
+      tipoOrgaoEncaminhamento: Prisma.$TipoOrgaoEncaminhamentoPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      nome: string
+      ativo: boolean
+      tipoOrgaoEncaminhamentoId: number
+    }, ExtArgs["result"]["orgaoEncaminhamento"]>
+    composites: {}
+  }
+
+  type OrgaoEncaminhamentoGetPayload<S extends boolean | null | undefined | OrgaoEncaminhamentoDefaultArgs> = $Result.GetResult<Prisma.$OrgaoEncaminhamentoPayload, S>
+
+  type OrgaoEncaminhamentoCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<OrgaoEncaminhamentoFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: OrgaoEncaminhamentoCountAggregateInputType | true
+    }
+
+  export interface OrgaoEncaminhamentoDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['OrgaoEncaminhamento'], meta: { name: 'OrgaoEncaminhamento' } }
+    /**
+     * Find zero or one OrgaoEncaminhamento that matches the filter.
+     * @param {OrgaoEncaminhamentoFindUniqueArgs} args - Arguments to find a OrgaoEncaminhamento
+     * @example
+     * // Get one OrgaoEncaminhamento
+     * const orgaoEncaminhamento = await prisma.orgaoEncaminhamento.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends OrgaoEncaminhamentoFindUniqueArgs>(args: SelectSubset<T, OrgaoEncaminhamentoFindUniqueArgs<ExtArgs>>): Prisma__OrgaoEncaminhamentoClient<$Result.GetResult<Prisma.$OrgaoEncaminhamentoPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one OrgaoEncaminhamento that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {OrgaoEncaminhamentoFindUniqueOrThrowArgs} args - Arguments to find a OrgaoEncaminhamento
+     * @example
+     * // Get one OrgaoEncaminhamento
+     * const orgaoEncaminhamento = await prisma.orgaoEncaminhamento.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends OrgaoEncaminhamentoFindUniqueOrThrowArgs>(args: SelectSubset<T, OrgaoEncaminhamentoFindUniqueOrThrowArgs<ExtArgs>>): Prisma__OrgaoEncaminhamentoClient<$Result.GetResult<Prisma.$OrgaoEncaminhamentoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first OrgaoEncaminhamento that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OrgaoEncaminhamentoFindFirstArgs} args - Arguments to find a OrgaoEncaminhamento
+     * @example
+     * // Get one OrgaoEncaminhamento
+     * const orgaoEncaminhamento = await prisma.orgaoEncaminhamento.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends OrgaoEncaminhamentoFindFirstArgs>(args?: SelectSubset<T, OrgaoEncaminhamentoFindFirstArgs<ExtArgs>>): Prisma__OrgaoEncaminhamentoClient<$Result.GetResult<Prisma.$OrgaoEncaminhamentoPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first OrgaoEncaminhamento that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OrgaoEncaminhamentoFindFirstOrThrowArgs} args - Arguments to find a OrgaoEncaminhamento
+     * @example
+     * // Get one OrgaoEncaminhamento
+     * const orgaoEncaminhamento = await prisma.orgaoEncaminhamento.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends OrgaoEncaminhamentoFindFirstOrThrowArgs>(args?: SelectSubset<T, OrgaoEncaminhamentoFindFirstOrThrowArgs<ExtArgs>>): Prisma__OrgaoEncaminhamentoClient<$Result.GetResult<Prisma.$OrgaoEncaminhamentoPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more OrgaoEncaminhamentos that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OrgaoEncaminhamentoFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all OrgaoEncaminhamentos
+     * const orgaoEncaminhamentos = await prisma.orgaoEncaminhamento.findMany()
+     * 
+     * // Get first 10 OrgaoEncaminhamentos
+     * const orgaoEncaminhamentos = await prisma.orgaoEncaminhamento.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const orgaoEncaminhamentoWithIdOnly = await prisma.orgaoEncaminhamento.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends OrgaoEncaminhamentoFindManyArgs>(args?: SelectSubset<T, OrgaoEncaminhamentoFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OrgaoEncaminhamentoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a OrgaoEncaminhamento.
+     * @param {OrgaoEncaminhamentoCreateArgs} args - Arguments to create a OrgaoEncaminhamento.
+     * @example
+     * // Create one OrgaoEncaminhamento
+     * const OrgaoEncaminhamento = await prisma.orgaoEncaminhamento.create({
+     *   data: {
+     *     // ... data to create a OrgaoEncaminhamento
+     *   }
+     * })
+     * 
+     */
+    create<T extends OrgaoEncaminhamentoCreateArgs>(args: SelectSubset<T, OrgaoEncaminhamentoCreateArgs<ExtArgs>>): Prisma__OrgaoEncaminhamentoClient<$Result.GetResult<Prisma.$OrgaoEncaminhamentoPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many OrgaoEncaminhamentos.
+     * @param {OrgaoEncaminhamentoCreateManyArgs} args - Arguments to create many OrgaoEncaminhamentos.
+     * @example
+     * // Create many OrgaoEncaminhamentos
+     * const orgaoEncaminhamento = await prisma.orgaoEncaminhamento.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends OrgaoEncaminhamentoCreateManyArgs>(args?: SelectSubset<T, OrgaoEncaminhamentoCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many OrgaoEncaminhamentos and returns the data saved in the database.
+     * @param {OrgaoEncaminhamentoCreateManyAndReturnArgs} args - Arguments to create many OrgaoEncaminhamentos.
+     * @example
+     * // Create many OrgaoEncaminhamentos
+     * const orgaoEncaminhamento = await prisma.orgaoEncaminhamento.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many OrgaoEncaminhamentos and only return the `id`
+     * const orgaoEncaminhamentoWithIdOnly = await prisma.orgaoEncaminhamento.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends OrgaoEncaminhamentoCreateManyAndReturnArgs>(args?: SelectSubset<T, OrgaoEncaminhamentoCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OrgaoEncaminhamentoPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a OrgaoEncaminhamento.
+     * @param {OrgaoEncaminhamentoDeleteArgs} args - Arguments to delete one OrgaoEncaminhamento.
+     * @example
+     * // Delete one OrgaoEncaminhamento
+     * const OrgaoEncaminhamento = await prisma.orgaoEncaminhamento.delete({
+     *   where: {
+     *     // ... filter to delete one OrgaoEncaminhamento
+     *   }
+     * })
+     * 
+     */
+    delete<T extends OrgaoEncaminhamentoDeleteArgs>(args: SelectSubset<T, OrgaoEncaminhamentoDeleteArgs<ExtArgs>>): Prisma__OrgaoEncaminhamentoClient<$Result.GetResult<Prisma.$OrgaoEncaminhamentoPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one OrgaoEncaminhamento.
+     * @param {OrgaoEncaminhamentoUpdateArgs} args - Arguments to update one OrgaoEncaminhamento.
+     * @example
+     * // Update one OrgaoEncaminhamento
+     * const orgaoEncaminhamento = await prisma.orgaoEncaminhamento.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends OrgaoEncaminhamentoUpdateArgs>(args: SelectSubset<T, OrgaoEncaminhamentoUpdateArgs<ExtArgs>>): Prisma__OrgaoEncaminhamentoClient<$Result.GetResult<Prisma.$OrgaoEncaminhamentoPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more OrgaoEncaminhamentos.
+     * @param {OrgaoEncaminhamentoDeleteManyArgs} args - Arguments to filter OrgaoEncaminhamentos to delete.
+     * @example
+     * // Delete a few OrgaoEncaminhamentos
+     * const { count } = await prisma.orgaoEncaminhamento.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends OrgaoEncaminhamentoDeleteManyArgs>(args?: SelectSubset<T, OrgaoEncaminhamentoDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more OrgaoEncaminhamentos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OrgaoEncaminhamentoUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many OrgaoEncaminhamentos
+     * const orgaoEncaminhamento = await prisma.orgaoEncaminhamento.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends OrgaoEncaminhamentoUpdateManyArgs>(args: SelectSubset<T, OrgaoEncaminhamentoUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more OrgaoEncaminhamentos and returns the data updated in the database.
+     * @param {OrgaoEncaminhamentoUpdateManyAndReturnArgs} args - Arguments to update many OrgaoEncaminhamentos.
+     * @example
+     * // Update many OrgaoEncaminhamentos
+     * const orgaoEncaminhamento = await prisma.orgaoEncaminhamento.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more OrgaoEncaminhamentos and only return the `id`
+     * const orgaoEncaminhamentoWithIdOnly = await prisma.orgaoEncaminhamento.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends OrgaoEncaminhamentoUpdateManyAndReturnArgs>(args: SelectSubset<T, OrgaoEncaminhamentoUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OrgaoEncaminhamentoPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one OrgaoEncaminhamento.
+     * @param {OrgaoEncaminhamentoUpsertArgs} args - Arguments to update or create a OrgaoEncaminhamento.
+     * @example
+     * // Update or create a OrgaoEncaminhamento
+     * const orgaoEncaminhamento = await prisma.orgaoEncaminhamento.upsert({
+     *   create: {
+     *     // ... data to create a OrgaoEncaminhamento
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the OrgaoEncaminhamento we want to update
+     *   }
+     * })
+     */
+    upsert<T extends OrgaoEncaminhamentoUpsertArgs>(args: SelectSubset<T, OrgaoEncaminhamentoUpsertArgs<ExtArgs>>): Prisma__OrgaoEncaminhamentoClient<$Result.GetResult<Prisma.$OrgaoEncaminhamentoPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of OrgaoEncaminhamentos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OrgaoEncaminhamentoCountArgs} args - Arguments to filter OrgaoEncaminhamentos to count.
+     * @example
+     * // Count the number of OrgaoEncaminhamentos
+     * const count = await prisma.orgaoEncaminhamento.count({
+     *   where: {
+     *     // ... the filter for the OrgaoEncaminhamentos we want to count
+     *   }
+     * })
+    **/
+    count<T extends OrgaoEncaminhamentoCountArgs>(
+      args?: Subset<T, OrgaoEncaminhamentoCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], OrgaoEncaminhamentoCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a OrgaoEncaminhamento.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OrgaoEncaminhamentoAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends OrgaoEncaminhamentoAggregateArgs>(args: Subset<T, OrgaoEncaminhamentoAggregateArgs>): Prisma.PrismaPromise<GetOrgaoEncaminhamentoAggregateType<T>>
+
+    /**
+     * Group by OrgaoEncaminhamento.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OrgaoEncaminhamentoGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends OrgaoEncaminhamentoGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: OrgaoEncaminhamentoGroupByArgs['orderBy'] }
+        : { orderBy?: OrgaoEncaminhamentoGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, OrgaoEncaminhamentoGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetOrgaoEncaminhamentoGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the OrgaoEncaminhamento model
+   */
+  readonly fields: OrgaoEncaminhamentoFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for OrgaoEncaminhamento.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__OrgaoEncaminhamentoClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    tipoOrgaoEncaminhamento<T extends TipoOrgaoEncaminhamentoDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TipoOrgaoEncaminhamentoDefaultArgs<ExtArgs>>): Prisma__TipoOrgaoEncaminhamentoClient<$Result.GetResult<Prisma.$TipoOrgaoEncaminhamentoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the OrgaoEncaminhamento model
+   */
+  interface OrgaoEncaminhamentoFieldRefs {
+    readonly id: FieldRef<"OrgaoEncaminhamento", 'Int'>
+    readonly nome: FieldRef<"OrgaoEncaminhamento", 'String'>
+    readonly ativo: FieldRef<"OrgaoEncaminhamento", 'Boolean'>
+    readonly tipoOrgaoEncaminhamentoId: FieldRef<"OrgaoEncaminhamento", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * OrgaoEncaminhamento findUnique
+   */
+  export type OrgaoEncaminhamentoFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OrgaoEncaminhamento
+     */
+    select?: OrgaoEncaminhamentoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OrgaoEncaminhamento
+     */
+    omit?: OrgaoEncaminhamentoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OrgaoEncaminhamentoInclude<ExtArgs> | null
+    /**
+     * Filter, which OrgaoEncaminhamento to fetch.
+     */
+    where: OrgaoEncaminhamentoWhereUniqueInput
+  }
+
+  /**
+   * OrgaoEncaminhamento findUniqueOrThrow
+   */
+  export type OrgaoEncaminhamentoFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OrgaoEncaminhamento
+     */
+    select?: OrgaoEncaminhamentoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OrgaoEncaminhamento
+     */
+    omit?: OrgaoEncaminhamentoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OrgaoEncaminhamentoInclude<ExtArgs> | null
+    /**
+     * Filter, which OrgaoEncaminhamento to fetch.
+     */
+    where: OrgaoEncaminhamentoWhereUniqueInput
+  }
+
+  /**
+   * OrgaoEncaminhamento findFirst
+   */
+  export type OrgaoEncaminhamentoFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OrgaoEncaminhamento
+     */
+    select?: OrgaoEncaminhamentoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OrgaoEncaminhamento
+     */
+    omit?: OrgaoEncaminhamentoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OrgaoEncaminhamentoInclude<ExtArgs> | null
+    /**
+     * Filter, which OrgaoEncaminhamento to fetch.
+     */
+    where?: OrgaoEncaminhamentoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of OrgaoEncaminhamentos to fetch.
+     */
+    orderBy?: OrgaoEncaminhamentoOrderByWithRelationInput | OrgaoEncaminhamentoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for OrgaoEncaminhamentos.
+     */
+    cursor?: OrgaoEncaminhamentoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` OrgaoEncaminhamentos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` OrgaoEncaminhamentos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of OrgaoEncaminhamentos.
+     */
+    distinct?: OrgaoEncaminhamentoScalarFieldEnum | OrgaoEncaminhamentoScalarFieldEnum[]
+  }
+
+  /**
+   * OrgaoEncaminhamento findFirstOrThrow
+   */
+  export type OrgaoEncaminhamentoFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OrgaoEncaminhamento
+     */
+    select?: OrgaoEncaminhamentoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OrgaoEncaminhamento
+     */
+    omit?: OrgaoEncaminhamentoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OrgaoEncaminhamentoInclude<ExtArgs> | null
+    /**
+     * Filter, which OrgaoEncaminhamento to fetch.
+     */
+    where?: OrgaoEncaminhamentoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of OrgaoEncaminhamentos to fetch.
+     */
+    orderBy?: OrgaoEncaminhamentoOrderByWithRelationInput | OrgaoEncaminhamentoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for OrgaoEncaminhamentos.
+     */
+    cursor?: OrgaoEncaminhamentoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` OrgaoEncaminhamentos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` OrgaoEncaminhamentos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of OrgaoEncaminhamentos.
+     */
+    distinct?: OrgaoEncaminhamentoScalarFieldEnum | OrgaoEncaminhamentoScalarFieldEnum[]
+  }
+
+  /**
+   * OrgaoEncaminhamento findMany
+   */
+  export type OrgaoEncaminhamentoFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OrgaoEncaminhamento
+     */
+    select?: OrgaoEncaminhamentoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OrgaoEncaminhamento
+     */
+    omit?: OrgaoEncaminhamentoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OrgaoEncaminhamentoInclude<ExtArgs> | null
+    /**
+     * Filter, which OrgaoEncaminhamentos to fetch.
+     */
+    where?: OrgaoEncaminhamentoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of OrgaoEncaminhamentos to fetch.
+     */
+    orderBy?: OrgaoEncaminhamentoOrderByWithRelationInput | OrgaoEncaminhamentoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing OrgaoEncaminhamentos.
+     */
+    cursor?: OrgaoEncaminhamentoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` OrgaoEncaminhamentos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` OrgaoEncaminhamentos.
+     */
+    skip?: number
+    distinct?: OrgaoEncaminhamentoScalarFieldEnum | OrgaoEncaminhamentoScalarFieldEnum[]
+  }
+
+  /**
+   * OrgaoEncaminhamento create
+   */
+  export type OrgaoEncaminhamentoCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OrgaoEncaminhamento
+     */
+    select?: OrgaoEncaminhamentoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OrgaoEncaminhamento
+     */
+    omit?: OrgaoEncaminhamentoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OrgaoEncaminhamentoInclude<ExtArgs> | null
+    /**
+     * The data needed to create a OrgaoEncaminhamento.
+     */
+    data: XOR<OrgaoEncaminhamentoCreateInput, OrgaoEncaminhamentoUncheckedCreateInput>
+  }
+
+  /**
+   * OrgaoEncaminhamento createMany
+   */
+  export type OrgaoEncaminhamentoCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many OrgaoEncaminhamentos.
+     */
+    data: OrgaoEncaminhamentoCreateManyInput | OrgaoEncaminhamentoCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * OrgaoEncaminhamento createManyAndReturn
+   */
+  export type OrgaoEncaminhamentoCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OrgaoEncaminhamento
+     */
+    select?: OrgaoEncaminhamentoSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the OrgaoEncaminhamento
+     */
+    omit?: OrgaoEncaminhamentoOmit<ExtArgs> | null
+    /**
+     * The data used to create many OrgaoEncaminhamentos.
+     */
+    data: OrgaoEncaminhamentoCreateManyInput | OrgaoEncaminhamentoCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OrgaoEncaminhamentoIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * OrgaoEncaminhamento update
+   */
+  export type OrgaoEncaminhamentoUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OrgaoEncaminhamento
+     */
+    select?: OrgaoEncaminhamentoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OrgaoEncaminhamento
+     */
+    omit?: OrgaoEncaminhamentoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OrgaoEncaminhamentoInclude<ExtArgs> | null
+    /**
+     * The data needed to update a OrgaoEncaminhamento.
+     */
+    data: XOR<OrgaoEncaminhamentoUpdateInput, OrgaoEncaminhamentoUncheckedUpdateInput>
+    /**
+     * Choose, which OrgaoEncaminhamento to update.
+     */
+    where: OrgaoEncaminhamentoWhereUniqueInput
+  }
+
+  /**
+   * OrgaoEncaminhamento updateMany
+   */
+  export type OrgaoEncaminhamentoUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update OrgaoEncaminhamentos.
+     */
+    data: XOR<OrgaoEncaminhamentoUpdateManyMutationInput, OrgaoEncaminhamentoUncheckedUpdateManyInput>
+    /**
+     * Filter which OrgaoEncaminhamentos to update
+     */
+    where?: OrgaoEncaminhamentoWhereInput
+    /**
+     * Limit how many OrgaoEncaminhamentos to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * OrgaoEncaminhamento updateManyAndReturn
+   */
+  export type OrgaoEncaminhamentoUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OrgaoEncaminhamento
+     */
+    select?: OrgaoEncaminhamentoSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the OrgaoEncaminhamento
+     */
+    omit?: OrgaoEncaminhamentoOmit<ExtArgs> | null
+    /**
+     * The data used to update OrgaoEncaminhamentos.
+     */
+    data: XOR<OrgaoEncaminhamentoUpdateManyMutationInput, OrgaoEncaminhamentoUncheckedUpdateManyInput>
+    /**
+     * Filter which OrgaoEncaminhamentos to update
+     */
+    where?: OrgaoEncaminhamentoWhereInput
+    /**
+     * Limit how many OrgaoEncaminhamentos to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OrgaoEncaminhamentoIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * OrgaoEncaminhamento upsert
+   */
+  export type OrgaoEncaminhamentoUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OrgaoEncaminhamento
+     */
+    select?: OrgaoEncaminhamentoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OrgaoEncaminhamento
+     */
+    omit?: OrgaoEncaminhamentoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OrgaoEncaminhamentoInclude<ExtArgs> | null
+    /**
+     * The filter to search for the OrgaoEncaminhamento to update in case it exists.
+     */
+    where: OrgaoEncaminhamentoWhereUniqueInput
+    /**
+     * In case the OrgaoEncaminhamento found by the `where` argument doesn't exist, create a new OrgaoEncaminhamento with this data.
+     */
+    create: XOR<OrgaoEncaminhamentoCreateInput, OrgaoEncaminhamentoUncheckedCreateInput>
+    /**
+     * In case the OrgaoEncaminhamento was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<OrgaoEncaminhamentoUpdateInput, OrgaoEncaminhamentoUncheckedUpdateInput>
+  }
+
+  /**
+   * OrgaoEncaminhamento delete
+   */
+  export type OrgaoEncaminhamentoDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OrgaoEncaminhamento
+     */
+    select?: OrgaoEncaminhamentoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OrgaoEncaminhamento
+     */
+    omit?: OrgaoEncaminhamentoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OrgaoEncaminhamentoInclude<ExtArgs> | null
+    /**
+     * Filter which OrgaoEncaminhamento to delete.
+     */
+    where: OrgaoEncaminhamentoWhereUniqueInput
+  }
+
+  /**
+   * OrgaoEncaminhamento deleteMany
+   */
+  export type OrgaoEncaminhamentoDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which OrgaoEncaminhamentos to delete
+     */
+    where?: OrgaoEncaminhamentoWhereInput
+    /**
+     * Limit how many OrgaoEncaminhamentos to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * OrgaoEncaminhamento without action
+   */
+  export type OrgaoEncaminhamentoDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OrgaoEncaminhamento
+     */
+    select?: OrgaoEncaminhamentoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OrgaoEncaminhamento
+     */
+    omit?: OrgaoEncaminhamentoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OrgaoEncaminhamentoInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model LogFilaAtendimento
+   */
+
+  export type AggregateLogFilaAtendimento = {
+    _count: LogFilaAtendimentoCountAggregateOutputType | null
+    _min: LogFilaAtendimentoMinAggregateOutputType | null
+    _max: LogFilaAtendimentoMaxAggregateOutputType | null
+  }
+
+  export type LogFilaAtendimentoMinAggregateOutputType = {
+    id: string | null
+    action: string | null
+    queueId: string | null
+    userId: string | null
+    timestamp: Date | null
+    details: string | null
+  }
+
+  export type LogFilaAtendimentoMaxAggregateOutputType = {
+    id: string | null
+    action: string | null
+    queueId: string | null
+    userId: string | null
+    timestamp: Date | null
+    details: string | null
+  }
+
+  export type LogFilaAtendimentoCountAggregateOutputType = {
+    id: number
+    action: number
+    queueId: number
+    userId: number
+    timestamp: number
+    details: number
+    _all: number
+  }
+
+
+  export type LogFilaAtendimentoMinAggregateInputType = {
+    id?: true
+    action?: true
+    queueId?: true
+    userId?: true
+    timestamp?: true
+    details?: true
+  }
+
+  export type LogFilaAtendimentoMaxAggregateInputType = {
+    id?: true
+    action?: true
+    queueId?: true
+    userId?: true
+    timestamp?: true
+    details?: true
+  }
+
+  export type LogFilaAtendimentoCountAggregateInputType = {
+    id?: true
+    action?: true
+    queueId?: true
+    userId?: true
+    timestamp?: true
+    details?: true
+    _all?: true
+  }
+
+  export type LogFilaAtendimentoAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which LogFilaAtendimento to aggregate.
+     */
+    where?: LogFilaAtendimentoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of LogFilaAtendimentos to fetch.
+     */
+    orderBy?: LogFilaAtendimentoOrderByWithRelationInput | LogFilaAtendimentoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: LogFilaAtendimentoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` LogFilaAtendimentos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` LogFilaAtendimentos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned LogFilaAtendimentos
+    **/
+    _count?: true | LogFilaAtendimentoCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: LogFilaAtendimentoMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: LogFilaAtendimentoMaxAggregateInputType
+  }
+
+  export type GetLogFilaAtendimentoAggregateType<T extends LogFilaAtendimentoAggregateArgs> = {
+        [P in keyof T & keyof AggregateLogFilaAtendimento]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateLogFilaAtendimento[P]>
+      : GetScalarType<T[P], AggregateLogFilaAtendimento[P]>
+  }
+
+
+
+
+  export type LogFilaAtendimentoGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: LogFilaAtendimentoWhereInput
+    orderBy?: LogFilaAtendimentoOrderByWithAggregationInput | LogFilaAtendimentoOrderByWithAggregationInput[]
+    by: LogFilaAtendimentoScalarFieldEnum[] | LogFilaAtendimentoScalarFieldEnum
+    having?: LogFilaAtendimentoScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: LogFilaAtendimentoCountAggregateInputType | true
+    _min?: LogFilaAtendimentoMinAggregateInputType
+    _max?: LogFilaAtendimentoMaxAggregateInputType
+  }
+
+  export type LogFilaAtendimentoGroupByOutputType = {
+    id: string
+    action: string
+    queueId: string
+    userId: string
+    timestamp: Date
+    details: string | null
+    _count: LogFilaAtendimentoCountAggregateOutputType | null
+    _min: LogFilaAtendimentoMinAggregateOutputType | null
+    _max: LogFilaAtendimentoMaxAggregateOutputType | null
+  }
+
+  type GetLogFilaAtendimentoGroupByPayload<T extends LogFilaAtendimentoGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<LogFilaAtendimentoGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof LogFilaAtendimentoGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], LogFilaAtendimentoGroupByOutputType[P]>
+            : GetScalarType<T[P], LogFilaAtendimentoGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type LogFilaAtendimentoSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    action?: boolean
+    queueId?: boolean
+    userId?: boolean
+    timestamp?: boolean
+    details?: boolean
+  }, ExtArgs["result"]["logFilaAtendimento"]>
+
+  export type LogFilaAtendimentoSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    action?: boolean
+    queueId?: boolean
+    userId?: boolean
+    timestamp?: boolean
+    details?: boolean
+  }, ExtArgs["result"]["logFilaAtendimento"]>
+
+  export type LogFilaAtendimentoSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    action?: boolean
+    queueId?: boolean
+    userId?: boolean
+    timestamp?: boolean
+    details?: boolean
+  }, ExtArgs["result"]["logFilaAtendimento"]>
+
+  export type LogFilaAtendimentoSelectScalar = {
+    id?: boolean
+    action?: boolean
+    queueId?: boolean
+    userId?: boolean
+    timestamp?: boolean
+    details?: boolean
+  }
+
+  export type LogFilaAtendimentoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "action" | "queueId" | "userId" | "timestamp" | "details", ExtArgs["result"]["logFilaAtendimento"]>
+
+  export type $LogFilaAtendimentoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "LogFilaAtendimento"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      action: string
+      queueId: string
+      userId: string
+      timestamp: Date
+      details: string | null
+    }, ExtArgs["result"]["logFilaAtendimento"]>
+    composites: {}
+  }
+
+  type LogFilaAtendimentoGetPayload<S extends boolean | null | undefined | LogFilaAtendimentoDefaultArgs> = $Result.GetResult<Prisma.$LogFilaAtendimentoPayload, S>
+
+  type LogFilaAtendimentoCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<LogFilaAtendimentoFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: LogFilaAtendimentoCountAggregateInputType | true
+    }
+
+  export interface LogFilaAtendimentoDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['LogFilaAtendimento'], meta: { name: 'LogFilaAtendimento' } }
+    /**
+     * Find zero or one LogFilaAtendimento that matches the filter.
+     * @param {LogFilaAtendimentoFindUniqueArgs} args - Arguments to find a LogFilaAtendimento
+     * @example
+     * // Get one LogFilaAtendimento
+     * const logFilaAtendimento = await prisma.logFilaAtendimento.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends LogFilaAtendimentoFindUniqueArgs>(args: SelectSubset<T, LogFilaAtendimentoFindUniqueArgs<ExtArgs>>): Prisma__LogFilaAtendimentoClient<$Result.GetResult<Prisma.$LogFilaAtendimentoPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one LogFilaAtendimento that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {LogFilaAtendimentoFindUniqueOrThrowArgs} args - Arguments to find a LogFilaAtendimento
+     * @example
+     * // Get one LogFilaAtendimento
+     * const logFilaAtendimento = await prisma.logFilaAtendimento.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends LogFilaAtendimentoFindUniqueOrThrowArgs>(args: SelectSubset<T, LogFilaAtendimentoFindUniqueOrThrowArgs<ExtArgs>>): Prisma__LogFilaAtendimentoClient<$Result.GetResult<Prisma.$LogFilaAtendimentoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first LogFilaAtendimento that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LogFilaAtendimentoFindFirstArgs} args - Arguments to find a LogFilaAtendimento
+     * @example
+     * // Get one LogFilaAtendimento
+     * const logFilaAtendimento = await prisma.logFilaAtendimento.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends LogFilaAtendimentoFindFirstArgs>(args?: SelectSubset<T, LogFilaAtendimentoFindFirstArgs<ExtArgs>>): Prisma__LogFilaAtendimentoClient<$Result.GetResult<Prisma.$LogFilaAtendimentoPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first LogFilaAtendimento that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LogFilaAtendimentoFindFirstOrThrowArgs} args - Arguments to find a LogFilaAtendimento
+     * @example
+     * // Get one LogFilaAtendimento
+     * const logFilaAtendimento = await prisma.logFilaAtendimento.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends LogFilaAtendimentoFindFirstOrThrowArgs>(args?: SelectSubset<T, LogFilaAtendimentoFindFirstOrThrowArgs<ExtArgs>>): Prisma__LogFilaAtendimentoClient<$Result.GetResult<Prisma.$LogFilaAtendimentoPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more LogFilaAtendimentos that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LogFilaAtendimentoFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all LogFilaAtendimentos
+     * const logFilaAtendimentos = await prisma.logFilaAtendimento.findMany()
+     * 
+     * // Get first 10 LogFilaAtendimentos
+     * const logFilaAtendimentos = await prisma.logFilaAtendimento.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const logFilaAtendimentoWithIdOnly = await prisma.logFilaAtendimento.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends LogFilaAtendimentoFindManyArgs>(args?: SelectSubset<T, LogFilaAtendimentoFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LogFilaAtendimentoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a LogFilaAtendimento.
+     * @param {LogFilaAtendimentoCreateArgs} args - Arguments to create a LogFilaAtendimento.
+     * @example
+     * // Create one LogFilaAtendimento
+     * const LogFilaAtendimento = await prisma.logFilaAtendimento.create({
+     *   data: {
+     *     // ... data to create a LogFilaAtendimento
+     *   }
+     * })
+     * 
+     */
+    create<T extends LogFilaAtendimentoCreateArgs>(args: SelectSubset<T, LogFilaAtendimentoCreateArgs<ExtArgs>>): Prisma__LogFilaAtendimentoClient<$Result.GetResult<Prisma.$LogFilaAtendimentoPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many LogFilaAtendimentos.
+     * @param {LogFilaAtendimentoCreateManyArgs} args - Arguments to create many LogFilaAtendimentos.
+     * @example
+     * // Create many LogFilaAtendimentos
+     * const logFilaAtendimento = await prisma.logFilaAtendimento.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends LogFilaAtendimentoCreateManyArgs>(args?: SelectSubset<T, LogFilaAtendimentoCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many LogFilaAtendimentos and returns the data saved in the database.
+     * @param {LogFilaAtendimentoCreateManyAndReturnArgs} args - Arguments to create many LogFilaAtendimentos.
+     * @example
+     * // Create many LogFilaAtendimentos
+     * const logFilaAtendimento = await prisma.logFilaAtendimento.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many LogFilaAtendimentos and only return the `id`
+     * const logFilaAtendimentoWithIdOnly = await prisma.logFilaAtendimento.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends LogFilaAtendimentoCreateManyAndReturnArgs>(args?: SelectSubset<T, LogFilaAtendimentoCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LogFilaAtendimentoPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a LogFilaAtendimento.
+     * @param {LogFilaAtendimentoDeleteArgs} args - Arguments to delete one LogFilaAtendimento.
+     * @example
+     * // Delete one LogFilaAtendimento
+     * const LogFilaAtendimento = await prisma.logFilaAtendimento.delete({
+     *   where: {
+     *     // ... filter to delete one LogFilaAtendimento
+     *   }
+     * })
+     * 
+     */
+    delete<T extends LogFilaAtendimentoDeleteArgs>(args: SelectSubset<T, LogFilaAtendimentoDeleteArgs<ExtArgs>>): Prisma__LogFilaAtendimentoClient<$Result.GetResult<Prisma.$LogFilaAtendimentoPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one LogFilaAtendimento.
+     * @param {LogFilaAtendimentoUpdateArgs} args - Arguments to update one LogFilaAtendimento.
+     * @example
+     * // Update one LogFilaAtendimento
+     * const logFilaAtendimento = await prisma.logFilaAtendimento.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends LogFilaAtendimentoUpdateArgs>(args: SelectSubset<T, LogFilaAtendimentoUpdateArgs<ExtArgs>>): Prisma__LogFilaAtendimentoClient<$Result.GetResult<Prisma.$LogFilaAtendimentoPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more LogFilaAtendimentos.
+     * @param {LogFilaAtendimentoDeleteManyArgs} args - Arguments to filter LogFilaAtendimentos to delete.
+     * @example
+     * // Delete a few LogFilaAtendimentos
+     * const { count } = await prisma.logFilaAtendimento.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends LogFilaAtendimentoDeleteManyArgs>(args?: SelectSubset<T, LogFilaAtendimentoDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more LogFilaAtendimentos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LogFilaAtendimentoUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many LogFilaAtendimentos
+     * const logFilaAtendimento = await prisma.logFilaAtendimento.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends LogFilaAtendimentoUpdateManyArgs>(args: SelectSubset<T, LogFilaAtendimentoUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more LogFilaAtendimentos and returns the data updated in the database.
+     * @param {LogFilaAtendimentoUpdateManyAndReturnArgs} args - Arguments to update many LogFilaAtendimentos.
+     * @example
+     * // Update many LogFilaAtendimentos
+     * const logFilaAtendimento = await prisma.logFilaAtendimento.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more LogFilaAtendimentos and only return the `id`
+     * const logFilaAtendimentoWithIdOnly = await prisma.logFilaAtendimento.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends LogFilaAtendimentoUpdateManyAndReturnArgs>(args: SelectSubset<T, LogFilaAtendimentoUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LogFilaAtendimentoPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one LogFilaAtendimento.
+     * @param {LogFilaAtendimentoUpsertArgs} args - Arguments to update or create a LogFilaAtendimento.
+     * @example
+     * // Update or create a LogFilaAtendimento
+     * const logFilaAtendimento = await prisma.logFilaAtendimento.upsert({
+     *   create: {
+     *     // ... data to create a LogFilaAtendimento
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the LogFilaAtendimento we want to update
+     *   }
+     * })
+     */
+    upsert<T extends LogFilaAtendimentoUpsertArgs>(args: SelectSubset<T, LogFilaAtendimentoUpsertArgs<ExtArgs>>): Prisma__LogFilaAtendimentoClient<$Result.GetResult<Prisma.$LogFilaAtendimentoPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of LogFilaAtendimentos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LogFilaAtendimentoCountArgs} args - Arguments to filter LogFilaAtendimentos to count.
+     * @example
+     * // Count the number of LogFilaAtendimentos
+     * const count = await prisma.logFilaAtendimento.count({
+     *   where: {
+     *     // ... the filter for the LogFilaAtendimentos we want to count
+     *   }
+     * })
+    **/
+    count<T extends LogFilaAtendimentoCountArgs>(
+      args?: Subset<T, LogFilaAtendimentoCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], LogFilaAtendimentoCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a LogFilaAtendimento.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LogFilaAtendimentoAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends LogFilaAtendimentoAggregateArgs>(args: Subset<T, LogFilaAtendimentoAggregateArgs>): Prisma.PrismaPromise<GetLogFilaAtendimentoAggregateType<T>>
+
+    /**
+     * Group by LogFilaAtendimento.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LogFilaAtendimentoGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends LogFilaAtendimentoGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: LogFilaAtendimentoGroupByArgs['orderBy'] }
+        : { orderBy?: LogFilaAtendimentoGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, LogFilaAtendimentoGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetLogFilaAtendimentoGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the LogFilaAtendimento model
+   */
+  readonly fields: LogFilaAtendimentoFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for LogFilaAtendimento.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__LogFilaAtendimentoClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the LogFilaAtendimento model
+   */
+  interface LogFilaAtendimentoFieldRefs {
+    readonly id: FieldRef<"LogFilaAtendimento", 'String'>
+    readonly action: FieldRef<"LogFilaAtendimento", 'String'>
+    readonly queueId: FieldRef<"LogFilaAtendimento", 'String'>
+    readonly userId: FieldRef<"LogFilaAtendimento", 'String'>
+    readonly timestamp: FieldRef<"LogFilaAtendimento", 'DateTime'>
+    readonly details: FieldRef<"LogFilaAtendimento", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * LogFilaAtendimento findUnique
+   */
+  export type LogFilaAtendimentoFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LogFilaAtendimento
+     */
+    select?: LogFilaAtendimentoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LogFilaAtendimento
+     */
+    omit?: LogFilaAtendimentoOmit<ExtArgs> | null
+    /**
+     * Filter, which LogFilaAtendimento to fetch.
+     */
+    where: LogFilaAtendimentoWhereUniqueInput
+  }
+
+  /**
+   * LogFilaAtendimento findUniqueOrThrow
+   */
+  export type LogFilaAtendimentoFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LogFilaAtendimento
+     */
+    select?: LogFilaAtendimentoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LogFilaAtendimento
+     */
+    omit?: LogFilaAtendimentoOmit<ExtArgs> | null
+    /**
+     * Filter, which LogFilaAtendimento to fetch.
+     */
+    where: LogFilaAtendimentoWhereUniqueInput
+  }
+
+  /**
+   * LogFilaAtendimento findFirst
+   */
+  export type LogFilaAtendimentoFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LogFilaAtendimento
+     */
+    select?: LogFilaAtendimentoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LogFilaAtendimento
+     */
+    omit?: LogFilaAtendimentoOmit<ExtArgs> | null
+    /**
+     * Filter, which LogFilaAtendimento to fetch.
+     */
+    where?: LogFilaAtendimentoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of LogFilaAtendimentos to fetch.
+     */
+    orderBy?: LogFilaAtendimentoOrderByWithRelationInput | LogFilaAtendimentoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for LogFilaAtendimentos.
+     */
+    cursor?: LogFilaAtendimentoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` LogFilaAtendimentos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` LogFilaAtendimentos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of LogFilaAtendimentos.
+     */
+    distinct?: LogFilaAtendimentoScalarFieldEnum | LogFilaAtendimentoScalarFieldEnum[]
+  }
+
+  /**
+   * LogFilaAtendimento findFirstOrThrow
+   */
+  export type LogFilaAtendimentoFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LogFilaAtendimento
+     */
+    select?: LogFilaAtendimentoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LogFilaAtendimento
+     */
+    omit?: LogFilaAtendimentoOmit<ExtArgs> | null
+    /**
+     * Filter, which LogFilaAtendimento to fetch.
+     */
+    where?: LogFilaAtendimentoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of LogFilaAtendimentos to fetch.
+     */
+    orderBy?: LogFilaAtendimentoOrderByWithRelationInput | LogFilaAtendimentoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for LogFilaAtendimentos.
+     */
+    cursor?: LogFilaAtendimentoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` LogFilaAtendimentos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` LogFilaAtendimentos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of LogFilaAtendimentos.
+     */
+    distinct?: LogFilaAtendimentoScalarFieldEnum | LogFilaAtendimentoScalarFieldEnum[]
+  }
+
+  /**
+   * LogFilaAtendimento findMany
+   */
+  export type LogFilaAtendimentoFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LogFilaAtendimento
+     */
+    select?: LogFilaAtendimentoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LogFilaAtendimento
+     */
+    omit?: LogFilaAtendimentoOmit<ExtArgs> | null
+    /**
+     * Filter, which LogFilaAtendimentos to fetch.
+     */
+    where?: LogFilaAtendimentoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of LogFilaAtendimentos to fetch.
+     */
+    orderBy?: LogFilaAtendimentoOrderByWithRelationInput | LogFilaAtendimentoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing LogFilaAtendimentos.
+     */
+    cursor?: LogFilaAtendimentoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` LogFilaAtendimentos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` LogFilaAtendimentos.
+     */
+    skip?: number
+    distinct?: LogFilaAtendimentoScalarFieldEnum | LogFilaAtendimentoScalarFieldEnum[]
+  }
+
+  /**
+   * LogFilaAtendimento create
+   */
+  export type LogFilaAtendimentoCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LogFilaAtendimento
+     */
+    select?: LogFilaAtendimentoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LogFilaAtendimento
+     */
+    omit?: LogFilaAtendimentoOmit<ExtArgs> | null
+    /**
+     * The data needed to create a LogFilaAtendimento.
+     */
+    data: XOR<LogFilaAtendimentoCreateInput, LogFilaAtendimentoUncheckedCreateInput>
+  }
+
+  /**
+   * LogFilaAtendimento createMany
+   */
+  export type LogFilaAtendimentoCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many LogFilaAtendimentos.
+     */
+    data: LogFilaAtendimentoCreateManyInput | LogFilaAtendimentoCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * LogFilaAtendimento createManyAndReturn
+   */
+  export type LogFilaAtendimentoCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LogFilaAtendimento
+     */
+    select?: LogFilaAtendimentoSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the LogFilaAtendimento
+     */
+    omit?: LogFilaAtendimentoOmit<ExtArgs> | null
+    /**
+     * The data used to create many LogFilaAtendimentos.
+     */
+    data: LogFilaAtendimentoCreateManyInput | LogFilaAtendimentoCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * LogFilaAtendimento update
+   */
+  export type LogFilaAtendimentoUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LogFilaAtendimento
+     */
+    select?: LogFilaAtendimentoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LogFilaAtendimento
+     */
+    omit?: LogFilaAtendimentoOmit<ExtArgs> | null
+    /**
+     * The data needed to update a LogFilaAtendimento.
+     */
+    data: XOR<LogFilaAtendimentoUpdateInput, LogFilaAtendimentoUncheckedUpdateInput>
+    /**
+     * Choose, which LogFilaAtendimento to update.
+     */
+    where: LogFilaAtendimentoWhereUniqueInput
+  }
+
+  /**
+   * LogFilaAtendimento updateMany
+   */
+  export type LogFilaAtendimentoUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update LogFilaAtendimentos.
+     */
+    data: XOR<LogFilaAtendimentoUpdateManyMutationInput, LogFilaAtendimentoUncheckedUpdateManyInput>
+    /**
+     * Filter which LogFilaAtendimentos to update
+     */
+    where?: LogFilaAtendimentoWhereInput
+    /**
+     * Limit how many LogFilaAtendimentos to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * LogFilaAtendimento updateManyAndReturn
+   */
+  export type LogFilaAtendimentoUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LogFilaAtendimento
+     */
+    select?: LogFilaAtendimentoSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the LogFilaAtendimento
+     */
+    omit?: LogFilaAtendimentoOmit<ExtArgs> | null
+    /**
+     * The data used to update LogFilaAtendimentos.
+     */
+    data: XOR<LogFilaAtendimentoUpdateManyMutationInput, LogFilaAtendimentoUncheckedUpdateManyInput>
+    /**
+     * Filter which LogFilaAtendimentos to update
+     */
+    where?: LogFilaAtendimentoWhereInput
+    /**
+     * Limit how many LogFilaAtendimentos to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * LogFilaAtendimento upsert
+   */
+  export type LogFilaAtendimentoUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LogFilaAtendimento
+     */
+    select?: LogFilaAtendimentoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LogFilaAtendimento
+     */
+    omit?: LogFilaAtendimentoOmit<ExtArgs> | null
+    /**
+     * The filter to search for the LogFilaAtendimento to update in case it exists.
+     */
+    where: LogFilaAtendimentoWhereUniqueInput
+    /**
+     * In case the LogFilaAtendimento found by the `where` argument doesn't exist, create a new LogFilaAtendimento with this data.
+     */
+    create: XOR<LogFilaAtendimentoCreateInput, LogFilaAtendimentoUncheckedCreateInput>
+    /**
+     * In case the LogFilaAtendimento was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<LogFilaAtendimentoUpdateInput, LogFilaAtendimentoUncheckedUpdateInput>
+  }
+
+  /**
+   * LogFilaAtendimento delete
+   */
+  export type LogFilaAtendimentoDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LogFilaAtendimento
+     */
+    select?: LogFilaAtendimentoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LogFilaAtendimento
+     */
+    omit?: LogFilaAtendimentoOmit<ExtArgs> | null
+    /**
+     * Filter which LogFilaAtendimento to delete.
+     */
+    where: LogFilaAtendimentoWhereUniqueInput
+  }
+
+  /**
+   * LogFilaAtendimento deleteMany
+   */
+  export type LogFilaAtendimentoDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which LogFilaAtendimentos to delete
+     */
+    where?: LogFilaAtendimentoWhereInput
+    /**
+     * Limit how many LogFilaAtendimentos to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * LogFilaAtendimento without action
+   */
+  export type LogFilaAtendimentoDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LogFilaAtendimento
+     */
+    select?: LogFilaAtendimentoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LogFilaAtendimento
+     */
+    omit?: LogFilaAtendimentoOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -22223,6 +30559,42 @@ export namespace Prisma {
   export type DocumentoScalarFieldEnum = (typeof DocumentoScalarFieldEnum)[keyof typeof DocumentoScalarFieldEnum]
 
 
+  export const RetornoDemandaJudicialScalarFieldEnum: {
+    id: 'id',
+    pajAssistido: 'pajAssistido',
+    retornoRealizado: 'retornoRealizado',
+    dataCriacao: 'dataCriacao',
+    atendimentoId: 'atendimentoId',
+    operadorId: 'operadorId'
+  };
+
+  export type RetornoDemandaJudicialScalarFieldEnum = (typeof RetornoDemandaJudicialScalarFieldEnum)[keyof typeof RetornoDemandaJudicialScalarFieldEnum]
+
+
+  export const OrientacaoJuridicaScalarFieldEnum: {
+    id: 'id',
+    orientacaoRealizada: 'orientacaoRealizada',
+    dataCriacao: 'dataCriacao',
+    atendimentoId: 'atendimentoId',
+    operadorId: 'operadorId'
+  };
+
+  export type OrientacaoJuridicaScalarFieldEnum = (typeof OrientacaoJuridicaScalarFieldEnum)[keyof typeof OrientacaoJuridicaScalarFieldEnum]
+
+
+  export const EncaminhamentoOutrosOrgaosScalarFieldEnum: {
+    id: 'id',
+    orgaoDestino: 'orgaoDestino',
+    motivoEncaminhamento: 'motivoEncaminhamento',
+    observacoes: 'observacoes',
+    dataCriacao: 'dataCriacao',
+    atendimentoId: 'atendimentoId',
+    operadorId: 'operadorId'
+  };
+
+  export type EncaminhamentoOutrosOrgaosScalarFieldEnum = (typeof EncaminhamentoOutrosOrgaosScalarFieldEnum)[keyof typeof EncaminhamentoOutrosOrgaosScalarFieldEnum]
+
+
   export const TipoAtendimentoScalarFieldEnum: {
     id: 'id',
     descricao: 'descricao'
@@ -22309,6 +30681,14 @@ export namespace Prisma {
   export type TipoVulnerabilidadeScalarFieldEnum = (typeof TipoVulnerabilidadeScalarFieldEnum)[keyof typeof TipoVulnerabilidadeScalarFieldEnum]
 
 
+  export const TipoPedidoDePrevidenciaJudiciariaScalarFieldEnum: {
+    id: 'id',
+    descricao: 'descricao'
+  };
+
+  export type TipoPedidoDePrevidenciaJudiciariaScalarFieldEnum = (typeof TipoPedidoDePrevidenciaJudiciariaScalarFieldEnum)[keyof typeof TipoPedidoDePrevidenciaJudiciariaScalarFieldEnum]
+
+
   export const TipoDemandaPrevidenciariaScalarFieldEnum: {
     id: 'id',
     descricao: 'descricao'
@@ -22323,6 +30703,38 @@ export namespace Prisma {
   };
 
   export type CompetenciaJudicialScalarFieldEnum = (typeof CompetenciaJudicialScalarFieldEnum)[keyof typeof CompetenciaJudicialScalarFieldEnum]
+
+
+  export const TipoOrgaoEncaminhamentoScalarFieldEnum: {
+    id: 'id',
+    titulo: 'titulo',
+    descricao: 'descricao',
+    ativo: 'ativo'
+  };
+
+  export type TipoOrgaoEncaminhamentoScalarFieldEnum = (typeof TipoOrgaoEncaminhamentoScalarFieldEnum)[keyof typeof TipoOrgaoEncaminhamentoScalarFieldEnum]
+
+
+  export const OrgaoEncaminhamentoScalarFieldEnum: {
+    id: 'id',
+    nome: 'nome',
+    ativo: 'ativo',
+    tipoOrgaoEncaminhamentoId: 'tipoOrgaoEncaminhamentoId'
+  };
+
+  export type OrgaoEncaminhamentoScalarFieldEnum = (typeof OrgaoEncaminhamentoScalarFieldEnum)[keyof typeof OrgaoEncaminhamentoScalarFieldEnum]
+
+
+  export const LogFilaAtendimentoScalarFieldEnum: {
+    id: 'id',
+    action: 'action',
+    queueId: 'queueId',
+    userId: 'userId',
+    timestamp: 'timestamp',
+    details: 'details'
+  };
+
+  export type LogFilaAtendimentoScalarFieldEnum = (typeof LogFilaAtendimentoScalarFieldEnum)[keyof typeof LogFilaAtendimentoScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -22535,6 +30947,9 @@ export namespace Prisma {
     atendimentosTriagem?: FilaAtendimentoListRelationFilter
     atendimentosEmAndamento?: FilaAtendimentoListRelationFilter
     documentosUploadOperador?: DocumentoListRelationFilter
+    retornosDemandaJudicial?: RetornoDemandaJudicialListRelationFilter
+    orientacoesJuridicas?: OrientacaoJuridicaListRelationFilter
+    encaminhamentosOutrosOrgaos?: EncaminhamentoOutrosOrgaosListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -22549,6 +30964,9 @@ export namespace Prisma {
     atendimentosTriagem?: FilaAtendimentoOrderByRelationAggregateInput
     atendimentosEmAndamento?: FilaAtendimentoOrderByRelationAggregateInput
     documentosUploadOperador?: DocumentoOrderByRelationAggregateInput
+    retornosDemandaJudicial?: RetornoDemandaJudicialOrderByRelationAggregateInput
+    orientacoesJuridicas?: OrientacaoJuridicaOrderByRelationAggregateInput
+    encaminhamentosOutrosOrgaos?: EncaminhamentoOutrosOrgaosOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -22566,6 +30984,9 @@ export namespace Prisma {
     atendimentosTriagem?: FilaAtendimentoListRelationFilter
     atendimentosEmAndamento?: FilaAtendimentoListRelationFilter
     documentosUploadOperador?: DocumentoListRelationFilter
+    retornosDemandaJudicial?: RetornoDemandaJudicialListRelationFilter
+    orientacoesJuridicas?: OrientacaoJuridicaListRelationFilter
+    encaminhamentosOutrosOrgaos?: EncaminhamentoOutrosOrgaosListRelationFilter
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -22731,14 +31152,14 @@ export namespace Prisma {
     valorCausa?: FloatNullableFilter<"Atendimento"> | number | null
     processosAndamento?: EnumProcessosAndamentoFilter<"Atendimento"> | $Enums.ProcessosAndamento
     estadoCivilId?: IntFilter<"Atendimento"> | number
-    profissaoId?: StringFilter<"Atendimento"> | string
+    profissaoId?: StringNullableFilter<"Atendimento"> | string | null
     tipoDomicilioId?: IntFilter<"Atendimento"> | number
     tipoDemandaPrevidenciariaId?: IntFilter<"Atendimento"> | number
     competenciaJudicialId?: IntFilter<"Atendimento"> | number
     operadorId?: StringFilter<"Atendimento"> | string
     filaId?: StringNullableFilter<"Atendimento"> | string | null
     estadoCivil?: XOR<EstadoCivilScalarRelationFilter, EstadoCivilWhereInput>
-    profissao?: XOR<ProfissaoScalarRelationFilter, ProfissaoWhereInput>
+    profissao?: XOR<ProfissaoNullableScalarRelationFilter, ProfissaoWhereInput> | null
     tipoDomicilio?: XOR<TipoDomicilioScalarRelationFilter, TipoDomicilioWhereInput>
     tipoDemandaPrevidenciaria?: XOR<TipoDemandaPrevidenciariaScalarRelationFilter, TipoDemandaPrevidenciariaWhereInput>
     competenciaJudicial?: XOR<CompetenciaJudicialScalarRelationFilter, CompetenciaJudicialWhereInput>
@@ -22748,6 +31169,9 @@ export namespace Prisma {
     processo?: XOR<ProcessoNullableScalarRelationFilter, ProcessoWhereInput> | null
     formularios?: FormularioPreenchidoListRelationFilter
     documentos?: DocumentoListRelationFilter
+    retornoDemandaJudicial?: XOR<RetornoDemandaJudicialNullableScalarRelationFilter, RetornoDemandaJudicialWhereInput> | null
+    orientacaoJuridica?: XOR<OrientacaoJuridicaNullableScalarRelationFilter, OrientacaoJuridicaWhereInput> | null
+    encaminhamentoOutrosOrgaos?: XOR<EncaminhamentoOutrosOrgaosNullableScalarRelationFilter, EncaminhamentoOutrosOrgaosWhereInput> | null
   }
 
   export type AtendimentoOrderByWithRelationInput = {
@@ -22765,7 +31189,7 @@ export namespace Prisma {
     valorCausa?: SortOrderInput | SortOrder
     processosAndamento?: SortOrder
     estadoCivilId?: SortOrder
-    profissaoId?: SortOrder
+    profissaoId?: SortOrderInput | SortOrder
     tipoDomicilioId?: SortOrder
     tipoDemandaPrevidenciariaId?: SortOrder
     competenciaJudicialId?: SortOrder
@@ -22782,6 +31206,9 @@ export namespace Prisma {
     processo?: ProcessoOrderByWithRelationInput
     formularios?: FormularioPreenchidoOrderByRelationAggregateInput
     documentos?: DocumentoOrderByRelationAggregateInput
+    retornoDemandaJudicial?: RetornoDemandaJudicialOrderByWithRelationInput
+    orientacaoJuridica?: OrientacaoJuridicaOrderByWithRelationInput
+    encaminhamentoOutrosOrgaos?: EncaminhamentoOutrosOrgaosOrderByWithRelationInput
   }
 
   export type AtendimentoWhereUniqueInput = Prisma.AtLeast<{
@@ -22803,13 +31230,13 @@ export namespace Prisma {
     valorCausa?: FloatNullableFilter<"Atendimento"> | number | null
     processosAndamento?: EnumProcessosAndamentoFilter<"Atendimento"> | $Enums.ProcessosAndamento
     estadoCivilId?: IntFilter<"Atendimento"> | number
-    profissaoId?: StringFilter<"Atendimento"> | string
+    profissaoId?: StringNullableFilter<"Atendimento"> | string | null
     tipoDomicilioId?: IntFilter<"Atendimento"> | number
     tipoDemandaPrevidenciariaId?: IntFilter<"Atendimento"> | number
     competenciaJudicialId?: IntFilter<"Atendimento"> | number
     operadorId?: StringFilter<"Atendimento"> | string
     estadoCivil?: XOR<EstadoCivilScalarRelationFilter, EstadoCivilWhereInput>
-    profissao?: XOR<ProfissaoScalarRelationFilter, ProfissaoWhereInput>
+    profissao?: XOR<ProfissaoNullableScalarRelationFilter, ProfissaoWhereInput> | null
     tipoDomicilio?: XOR<TipoDomicilioScalarRelationFilter, TipoDomicilioWhereInput>
     tipoDemandaPrevidenciaria?: XOR<TipoDemandaPrevidenciariaScalarRelationFilter, TipoDemandaPrevidenciariaWhereInput>
     competenciaJudicial?: XOR<CompetenciaJudicialScalarRelationFilter, CompetenciaJudicialWhereInput>
@@ -22819,6 +31246,9 @@ export namespace Prisma {
     processo?: XOR<ProcessoNullableScalarRelationFilter, ProcessoWhereInput> | null
     formularios?: FormularioPreenchidoListRelationFilter
     documentos?: DocumentoListRelationFilter
+    retornoDemandaJudicial?: XOR<RetornoDemandaJudicialNullableScalarRelationFilter, RetornoDemandaJudicialWhereInput> | null
+    orientacaoJuridica?: XOR<OrientacaoJuridicaNullableScalarRelationFilter, OrientacaoJuridicaWhereInput> | null
+    encaminhamentoOutrosOrgaos?: XOR<EncaminhamentoOutrosOrgaosNullableScalarRelationFilter, EncaminhamentoOutrosOrgaosWhereInput> | null
   }, "id" | "filaId">
 
   export type AtendimentoOrderByWithAggregationInput = {
@@ -22836,7 +31266,7 @@ export namespace Prisma {
     valorCausa?: SortOrderInput | SortOrder
     processosAndamento?: SortOrder
     estadoCivilId?: SortOrder
-    profissaoId?: SortOrder
+    profissaoId?: SortOrderInput | SortOrder
     tipoDomicilioId?: SortOrder
     tipoDemandaPrevidenciariaId?: SortOrder
     competenciaJudicialId?: SortOrder
@@ -22867,7 +31297,7 @@ export namespace Prisma {
     valorCausa?: FloatNullableWithAggregatesFilter<"Atendimento"> | number | null
     processosAndamento?: EnumProcessosAndamentoWithAggregatesFilter<"Atendimento"> | $Enums.ProcessosAndamento
     estadoCivilId?: IntWithAggregatesFilter<"Atendimento"> | number
-    profissaoId?: StringWithAggregatesFilter<"Atendimento"> | string
+    profissaoId?: StringNullableWithAggregatesFilter<"Atendimento"> | string | null
     tipoDomicilioId?: IntWithAggregatesFilter<"Atendimento"> | number
     tipoDemandaPrevidenciariaId?: IntWithAggregatesFilter<"Atendimento"> | number
     competenciaJudicialId?: IntWithAggregatesFilter<"Atendimento"> | number
@@ -23085,6 +31515,195 @@ export namespace Prisma {
     dataCriacao?: DateTimeWithAggregatesFilter<"Documento"> | Date | string
     atendimentoId?: StringWithAggregatesFilter<"Documento"> | string
     operadorUploadId?: StringWithAggregatesFilter<"Documento"> | string
+  }
+
+  export type RetornoDemandaJudicialWhereInput = {
+    AND?: RetornoDemandaJudicialWhereInput | RetornoDemandaJudicialWhereInput[]
+    OR?: RetornoDemandaJudicialWhereInput[]
+    NOT?: RetornoDemandaJudicialWhereInput | RetornoDemandaJudicialWhereInput[]
+    id?: StringFilter<"RetornoDemandaJudicial"> | string
+    pajAssistido?: StringFilter<"RetornoDemandaJudicial"> | string
+    retornoRealizado?: StringFilter<"RetornoDemandaJudicial"> | string
+    dataCriacao?: DateTimeFilter<"RetornoDemandaJudicial"> | Date | string
+    atendimentoId?: StringFilter<"RetornoDemandaJudicial"> | string
+    operadorId?: StringNullableFilter<"RetornoDemandaJudicial"> | string | null
+    atendimento?: XOR<AtendimentoScalarRelationFilter, AtendimentoWhereInput>
+    operador?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+  }
+
+  export type RetornoDemandaJudicialOrderByWithRelationInput = {
+    id?: SortOrder
+    pajAssistido?: SortOrder
+    retornoRealizado?: SortOrder
+    dataCriacao?: SortOrder
+    atendimentoId?: SortOrder
+    operadorId?: SortOrderInput | SortOrder
+    atendimento?: AtendimentoOrderByWithRelationInput
+    operador?: UserOrderByWithRelationInput
+  }
+
+  export type RetornoDemandaJudicialWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    atendimentoId?: string
+    AND?: RetornoDemandaJudicialWhereInput | RetornoDemandaJudicialWhereInput[]
+    OR?: RetornoDemandaJudicialWhereInput[]
+    NOT?: RetornoDemandaJudicialWhereInput | RetornoDemandaJudicialWhereInput[]
+    pajAssistido?: StringFilter<"RetornoDemandaJudicial"> | string
+    retornoRealizado?: StringFilter<"RetornoDemandaJudicial"> | string
+    dataCriacao?: DateTimeFilter<"RetornoDemandaJudicial"> | Date | string
+    operadorId?: StringNullableFilter<"RetornoDemandaJudicial"> | string | null
+    atendimento?: XOR<AtendimentoScalarRelationFilter, AtendimentoWhereInput>
+    operador?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+  }, "id" | "atendimentoId">
+
+  export type RetornoDemandaJudicialOrderByWithAggregationInput = {
+    id?: SortOrder
+    pajAssistido?: SortOrder
+    retornoRealizado?: SortOrder
+    dataCriacao?: SortOrder
+    atendimentoId?: SortOrder
+    operadorId?: SortOrderInput | SortOrder
+    _count?: RetornoDemandaJudicialCountOrderByAggregateInput
+    _max?: RetornoDemandaJudicialMaxOrderByAggregateInput
+    _min?: RetornoDemandaJudicialMinOrderByAggregateInput
+  }
+
+  export type RetornoDemandaJudicialScalarWhereWithAggregatesInput = {
+    AND?: RetornoDemandaJudicialScalarWhereWithAggregatesInput | RetornoDemandaJudicialScalarWhereWithAggregatesInput[]
+    OR?: RetornoDemandaJudicialScalarWhereWithAggregatesInput[]
+    NOT?: RetornoDemandaJudicialScalarWhereWithAggregatesInput | RetornoDemandaJudicialScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"RetornoDemandaJudicial"> | string
+    pajAssistido?: StringWithAggregatesFilter<"RetornoDemandaJudicial"> | string
+    retornoRealizado?: StringWithAggregatesFilter<"RetornoDemandaJudicial"> | string
+    dataCriacao?: DateTimeWithAggregatesFilter<"RetornoDemandaJudicial"> | Date | string
+    atendimentoId?: StringWithAggregatesFilter<"RetornoDemandaJudicial"> | string
+    operadorId?: StringNullableWithAggregatesFilter<"RetornoDemandaJudicial"> | string | null
+  }
+
+  export type OrientacaoJuridicaWhereInput = {
+    AND?: OrientacaoJuridicaWhereInput | OrientacaoJuridicaWhereInput[]
+    OR?: OrientacaoJuridicaWhereInput[]
+    NOT?: OrientacaoJuridicaWhereInput | OrientacaoJuridicaWhereInput[]
+    id?: StringFilter<"OrientacaoJuridica"> | string
+    orientacaoRealizada?: StringFilter<"OrientacaoJuridica"> | string
+    dataCriacao?: DateTimeFilter<"OrientacaoJuridica"> | Date | string
+    atendimentoId?: StringFilter<"OrientacaoJuridica"> | string
+    operadorId?: StringNullableFilter<"OrientacaoJuridica"> | string | null
+    atendimento?: XOR<AtendimentoScalarRelationFilter, AtendimentoWhereInput>
+    operador?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+  }
+
+  export type OrientacaoJuridicaOrderByWithRelationInput = {
+    id?: SortOrder
+    orientacaoRealizada?: SortOrder
+    dataCriacao?: SortOrder
+    atendimentoId?: SortOrder
+    operadorId?: SortOrderInput | SortOrder
+    atendimento?: AtendimentoOrderByWithRelationInput
+    operador?: UserOrderByWithRelationInput
+  }
+
+  export type OrientacaoJuridicaWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    atendimentoId?: string
+    AND?: OrientacaoJuridicaWhereInput | OrientacaoJuridicaWhereInput[]
+    OR?: OrientacaoJuridicaWhereInput[]
+    NOT?: OrientacaoJuridicaWhereInput | OrientacaoJuridicaWhereInput[]
+    orientacaoRealizada?: StringFilter<"OrientacaoJuridica"> | string
+    dataCriacao?: DateTimeFilter<"OrientacaoJuridica"> | Date | string
+    operadorId?: StringNullableFilter<"OrientacaoJuridica"> | string | null
+    atendimento?: XOR<AtendimentoScalarRelationFilter, AtendimentoWhereInput>
+    operador?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+  }, "id" | "atendimentoId">
+
+  export type OrientacaoJuridicaOrderByWithAggregationInput = {
+    id?: SortOrder
+    orientacaoRealizada?: SortOrder
+    dataCriacao?: SortOrder
+    atendimentoId?: SortOrder
+    operadorId?: SortOrderInput | SortOrder
+    _count?: OrientacaoJuridicaCountOrderByAggregateInput
+    _max?: OrientacaoJuridicaMaxOrderByAggregateInput
+    _min?: OrientacaoJuridicaMinOrderByAggregateInput
+  }
+
+  export type OrientacaoJuridicaScalarWhereWithAggregatesInput = {
+    AND?: OrientacaoJuridicaScalarWhereWithAggregatesInput | OrientacaoJuridicaScalarWhereWithAggregatesInput[]
+    OR?: OrientacaoJuridicaScalarWhereWithAggregatesInput[]
+    NOT?: OrientacaoJuridicaScalarWhereWithAggregatesInput | OrientacaoJuridicaScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"OrientacaoJuridica"> | string
+    orientacaoRealizada?: StringWithAggregatesFilter<"OrientacaoJuridica"> | string
+    dataCriacao?: DateTimeWithAggregatesFilter<"OrientacaoJuridica"> | Date | string
+    atendimentoId?: StringWithAggregatesFilter<"OrientacaoJuridica"> | string
+    operadorId?: StringNullableWithAggregatesFilter<"OrientacaoJuridica"> | string | null
+  }
+
+  export type EncaminhamentoOutrosOrgaosWhereInput = {
+    AND?: EncaminhamentoOutrosOrgaosWhereInput | EncaminhamentoOutrosOrgaosWhereInput[]
+    OR?: EncaminhamentoOutrosOrgaosWhereInput[]
+    NOT?: EncaminhamentoOutrosOrgaosWhereInput | EncaminhamentoOutrosOrgaosWhereInput[]
+    id?: StringFilter<"EncaminhamentoOutrosOrgaos"> | string
+    orgaoDestino?: StringFilter<"EncaminhamentoOutrosOrgaos"> | string
+    motivoEncaminhamento?: StringFilter<"EncaminhamentoOutrosOrgaos"> | string
+    observacoes?: StringNullableFilter<"EncaminhamentoOutrosOrgaos"> | string | null
+    dataCriacao?: DateTimeFilter<"EncaminhamentoOutrosOrgaos"> | Date | string
+    atendimentoId?: StringFilter<"EncaminhamentoOutrosOrgaos"> | string
+    operadorId?: StringNullableFilter<"EncaminhamentoOutrosOrgaos"> | string | null
+    atendimento?: XOR<AtendimentoScalarRelationFilter, AtendimentoWhereInput>
+    operador?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+  }
+
+  export type EncaminhamentoOutrosOrgaosOrderByWithRelationInput = {
+    id?: SortOrder
+    orgaoDestino?: SortOrder
+    motivoEncaminhamento?: SortOrder
+    observacoes?: SortOrderInput | SortOrder
+    dataCriacao?: SortOrder
+    atendimentoId?: SortOrder
+    operadorId?: SortOrderInput | SortOrder
+    atendimento?: AtendimentoOrderByWithRelationInput
+    operador?: UserOrderByWithRelationInput
+  }
+
+  export type EncaminhamentoOutrosOrgaosWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    atendimentoId?: string
+    AND?: EncaminhamentoOutrosOrgaosWhereInput | EncaminhamentoOutrosOrgaosWhereInput[]
+    OR?: EncaminhamentoOutrosOrgaosWhereInput[]
+    NOT?: EncaminhamentoOutrosOrgaosWhereInput | EncaminhamentoOutrosOrgaosWhereInput[]
+    orgaoDestino?: StringFilter<"EncaminhamentoOutrosOrgaos"> | string
+    motivoEncaminhamento?: StringFilter<"EncaminhamentoOutrosOrgaos"> | string
+    observacoes?: StringNullableFilter<"EncaminhamentoOutrosOrgaos"> | string | null
+    dataCriacao?: DateTimeFilter<"EncaminhamentoOutrosOrgaos"> | Date | string
+    operadorId?: StringNullableFilter<"EncaminhamentoOutrosOrgaos"> | string | null
+    atendimento?: XOR<AtendimentoScalarRelationFilter, AtendimentoWhereInput>
+    operador?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+  }, "id" | "atendimentoId">
+
+  export type EncaminhamentoOutrosOrgaosOrderByWithAggregationInput = {
+    id?: SortOrder
+    orgaoDestino?: SortOrder
+    motivoEncaminhamento?: SortOrder
+    observacoes?: SortOrderInput | SortOrder
+    dataCriacao?: SortOrder
+    atendimentoId?: SortOrder
+    operadorId?: SortOrderInput | SortOrder
+    _count?: EncaminhamentoOutrosOrgaosCountOrderByAggregateInput
+    _max?: EncaminhamentoOutrosOrgaosMaxOrderByAggregateInput
+    _min?: EncaminhamentoOutrosOrgaosMinOrderByAggregateInput
+  }
+
+  export type EncaminhamentoOutrosOrgaosScalarWhereWithAggregatesInput = {
+    AND?: EncaminhamentoOutrosOrgaosScalarWhereWithAggregatesInput | EncaminhamentoOutrosOrgaosScalarWhereWithAggregatesInput[]
+    OR?: EncaminhamentoOutrosOrgaosScalarWhereWithAggregatesInput[]
+    NOT?: EncaminhamentoOutrosOrgaosScalarWhereWithAggregatesInput | EncaminhamentoOutrosOrgaosScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"EncaminhamentoOutrosOrgaos"> | string
+    orgaoDestino?: StringWithAggregatesFilter<"EncaminhamentoOutrosOrgaos"> | string
+    motivoEncaminhamento?: StringWithAggregatesFilter<"EncaminhamentoOutrosOrgaos"> | string
+    observacoes?: StringNullableWithAggregatesFilter<"EncaminhamentoOutrosOrgaos"> | string | null
+    dataCriacao?: DateTimeWithAggregatesFilter<"EncaminhamentoOutrosOrgaos"> | Date | string
+    atendimentoId?: StringWithAggregatesFilter<"EncaminhamentoOutrosOrgaos"> | string
+    operadorId?: StringNullableWithAggregatesFilter<"EncaminhamentoOutrosOrgaos"> | string | null
   }
 
   export type TipoAtendimentoWhereInput = {
@@ -23554,6 +32173,45 @@ export namespace Prisma {
     descricao?: StringWithAggregatesFilter<"TipoVulnerabilidade"> | string
   }
 
+  export type TipoPedidoDePrevidenciaJudiciariaWhereInput = {
+    AND?: TipoPedidoDePrevidenciaJudiciariaWhereInput | TipoPedidoDePrevidenciaJudiciariaWhereInput[]
+    OR?: TipoPedidoDePrevidenciaJudiciariaWhereInput[]
+    NOT?: TipoPedidoDePrevidenciaJudiciariaWhereInput | TipoPedidoDePrevidenciaJudiciariaWhereInput[]
+    id?: IntFilter<"TipoPedidoDePrevidenciaJudiciaria"> | number
+    descricao?: StringFilter<"TipoPedidoDePrevidenciaJudiciaria"> | string
+  }
+
+  export type TipoPedidoDePrevidenciaJudiciariaOrderByWithRelationInput = {
+    id?: SortOrder
+    descricao?: SortOrder
+  }
+
+  export type TipoPedidoDePrevidenciaJudiciariaWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: TipoPedidoDePrevidenciaJudiciariaWhereInput | TipoPedidoDePrevidenciaJudiciariaWhereInput[]
+    OR?: TipoPedidoDePrevidenciaJudiciariaWhereInput[]
+    NOT?: TipoPedidoDePrevidenciaJudiciariaWhereInput | TipoPedidoDePrevidenciaJudiciariaWhereInput[]
+    descricao?: StringFilter<"TipoPedidoDePrevidenciaJudiciaria"> | string
+  }, "id">
+
+  export type TipoPedidoDePrevidenciaJudiciariaOrderByWithAggregationInput = {
+    id?: SortOrder
+    descricao?: SortOrder
+    _count?: TipoPedidoDePrevidenciaJudiciariaCountOrderByAggregateInput
+    _avg?: TipoPedidoDePrevidenciaJudiciariaAvgOrderByAggregateInput
+    _max?: TipoPedidoDePrevidenciaJudiciariaMaxOrderByAggregateInput
+    _min?: TipoPedidoDePrevidenciaJudiciariaMinOrderByAggregateInput
+    _sum?: TipoPedidoDePrevidenciaJudiciariaSumOrderByAggregateInput
+  }
+
+  export type TipoPedidoDePrevidenciaJudiciariaScalarWhereWithAggregatesInput = {
+    AND?: TipoPedidoDePrevidenciaJudiciariaScalarWhereWithAggregatesInput | TipoPedidoDePrevidenciaJudiciariaScalarWhereWithAggregatesInput[]
+    OR?: TipoPedidoDePrevidenciaJudiciariaScalarWhereWithAggregatesInput[]
+    NOT?: TipoPedidoDePrevidenciaJudiciariaScalarWhereWithAggregatesInput | TipoPedidoDePrevidenciaJudiciariaScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"TipoPedidoDePrevidenciaJudiciaria"> | number
+    descricao?: StringWithAggregatesFilter<"TipoPedidoDePrevidenciaJudiciaria"> | string
+  }
+
   export type TipoDemandaPrevidenciariaWhereInput = {
     AND?: TipoDemandaPrevidenciariaWhereInput | TipoDemandaPrevidenciariaWhereInput[]
     OR?: TipoDemandaPrevidenciariaWhereInput[]
@@ -23638,6 +32296,167 @@ export namespace Prisma {
     descricao?: StringWithAggregatesFilter<"CompetenciaJudicial"> | string
   }
 
+  export type TipoOrgaoEncaminhamentoWhereInput = {
+    AND?: TipoOrgaoEncaminhamentoWhereInput | TipoOrgaoEncaminhamentoWhereInput[]
+    OR?: TipoOrgaoEncaminhamentoWhereInput[]
+    NOT?: TipoOrgaoEncaminhamentoWhereInput | TipoOrgaoEncaminhamentoWhereInput[]
+    id?: IntFilter<"TipoOrgaoEncaminhamento"> | number
+    titulo?: StringFilter<"TipoOrgaoEncaminhamento"> | string
+    descricao?: StringFilter<"TipoOrgaoEncaminhamento"> | string
+    ativo?: BoolFilter<"TipoOrgaoEncaminhamento"> | boolean
+    OrgaoEncaminhamento?: OrgaoEncaminhamentoListRelationFilter
+  }
+
+  export type TipoOrgaoEncaminhamentoOrderByWithRelationInput = {
+    id?: SortOrder
+    titulo?: SortOrder
+    descricao?: SortOrder
+    ativo?: SortOrder
+    OrgaoEncaminhamento?: OrgaoEncaminhamentoOrderByRelationAggregateInput
+  }
+
+  export type TipoOrgaoEncaminhamentoWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: TipoOrgaoEncaminhamentoWhereInput | TipoOrgaoEncaminhamentoWhereInput[]
+    OR?: TipoOrgaoEncaminhamentoWhereInput[]
+    NOT?: TipoOrgaoEncaminhamentoWhereInput | TipoOrgaoEncaminhamentoWhereInput[]
+    titulo?: StringFilter<"TipoOrgaoEncaminhamento"> | string
+    descricao?: StringFilter<"TipoOrgaoEncaminhamento"> | string
+    ativo?: BoolFilter<"TipoOrgaoEncaminhamento"> | boolean
+    OrgaoEncaminhamento?: OrgaoEncaminhamentoListRelationFilter
+  }, "id">
+
+  export type TipoOrgaoEncaminhamentoOrderByWithAggregationInput = {
+    id?: SortOrder
+    titulo?: SortOrder
+    descricao?: SortOrder
+    ativo?: SortOrder
+    _count?: TipoOrgaoEncaminhamentoCountOrderByAggregateInput
+    _avg?: TipoOrgaoEncaminhamentoAvgOrderByAggregateInput
+    _max?: TipoOrgaoEncaminhamentoMaxOrderByAggregateInput
+    _min?: TipoOrgaoEncaminhamentoMinOrderByAggregateInput
+    _sum?: TipoOrgaoEncaminhamentoSumOrderByAggregateInput
+  }
+
+  export type TipoOrgaoEncaminhamentoScalarWhereWithAggregatesInput = {
+    AND?: TipoOrgaoEncaminhamentoScalarWhereWithAggregatesInput | TipoOrgaoEncaminhamentoScalarWhereWithAggregatesInput[]
+    OR?: TipoOrgaoEncaminhamentoScalarWhereWithAggregatesInput[]
+    NOT?: TipoOrgaoEncaminhamentoScalarWhereWithAggregatesInput | TipoOrgaoEncaminhamentoScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"TipoOrgaoEncaminhamento"> | number
+    titulo?: StringWithAggregatesFilter<"TipoOrgaoEncaminhamento"> | string
+    descricao?: StringWithAggregatesFilter<"TipoOrgaoEncaminhamento"> | string
+    ativo?: BoolWithAggregatesFilter<"TipoOrgaoEncaminhamento"> | boolean
+  }
+
+  export type OrgaoEncaminhamentoWhereInput = {
+    AND?: OrgaoEncaminhamentoWhereInput | OrgaoEncaminhamentoWhereInput[]
+    OR?: OrgaoEncaminhamentoWhereInput[]
+    NOT?: OrgaoEncaminhamentoWhereInput | OrgaoEncaminhamentoWhereInput[]
+    id?: IntFilter<"OrgaoEncaminhamento"> | number
+    nome?: StringFilter<"OrgaoEncaminhamento"> | string
+    ativo?: BoolFilter<"OrgaoEncaminhamento"> | boolean
+    tipoOrgaoEncaminhamentoId?: IntFilter<"OrgaoEncaminhamento"> | number
+    tipoOrgaoEncaminhamento?: XOR<TipoOrgaoEncaminhamentoScalarRelationFilter, TipoOrgaoEncaminhamentoWhereInput>
+  }
+
+  export type OrgaoEncaminhamentoOrderByWithRelationInput = {
+    id?: SortOrder
+    nome?: SortOrder
+    ativo?: SortOrder
+    tipoOrgaoEncaminhamentoId?: SortOrder
+    tipoOrgaoEncaminhamento?: TipoOrgaoEncaminhamentoOrderByWithRelationInput
+  }
+
+  export type OrgaoEncaminhamentoWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: OrgaoEncaminhamentoWhereInput | OrgaoEncaminhamentoWhereInput[]
+    OR?: OrgaoEncaminhamentoWhereInput[]
+    NOT?: OrgaoEncaminhamentoWhereInput | OrgaoEncaminhamentoWhereInput[]
+    nome?: StringFilter<"OrgaoEncaminhamento"> | string
+    ativo?: BoolFilter<"OrgaoEncaminhamento"> | boolean
+    tipoOrgaoEncaminhamentoId?: IntFilter<"OrgaoEncaminhamento"> | number
+    tipoOrgaoEncaminhamento?: XOR<TipoOrgaoEncaminhamentoScalarRelationFilter, TipoOrgaoEncaminhamentoWhereInput>
+  }, "id">
+
+  export type OrgaoEncaminhamentoOrderByWithAggregationInput = {
+    id?: SortOrder
+    nome?: SortOrder
+    ativo?: SortOrder
+    tipoOrgaoEncaminhamentoId?: SortOrder
+    _count?: OrgaoEncaminhamentoCountOrderByAggregateInput
+    _avg?: OrgaoEncaminhamentoAvgOrderByAggregateInput
+    _max?: OrgaoEncaminhamentoMaxOrderByAggregateInput
+    _min?: OrgaoEncaminhamentoMinOrderByAggregateInput
+    _sum?: OrgaoEncaminhamentoSumOrderByAggregateInput
+  }
+
+  export type OrgaoEncaminhamentoScalarWhereWithAggregatesInput = {
+    AND?: OrgaoEncaminhamentoScalarWhereWithAggregatesInput | OrgaoEncaminhamentoScalarWhereWithAggregatesInput[]
+    OR?: OrgaoEncaminhamentoScalarWhereWithAggregatesInput[]
+    NOT?: OrgaoEncaminhamentoScalarWhereWithAggregatesInput | OrgaoEncaminhamentoScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"OrgaoEncaminhamento"> | number
+    nome?: StringWithAggregatesFilter<"OrgaoEncaminhamento"> | string
+    ativo?: BoolWithAggregatesFilter<"OrgaoEncaminhamento"> | boolean
+    tipoOrgaoEncaminhamentoId?: IntWithAggregatesFilter<"OrgaoEncaminhamento"> | number
+  }
+
+  export type LogFilaAtendimentoWhereInput = {
+    AND?: LogFilaAtendimentoWhereInput | LogFilaAtendimentoWhereInput[]
+    OR?: LogFilaAtendimentoWhereInput[]
+    NOT?: LogFilaAtendimentoWhereInput | LogFilaAtendimentoWhereInput[]
+    id?: StringFilter<"LogFilaAtendimento"> | string
+    action?: StringFilter<"LogFilaAtendimento"> | string
+    queueId?: StringFilter<"LogFilaAtendimento"> | string
+    userId?: StringFilter<"LogFilaAtendimento"> | string
+    timestamp?: DateTimeFilter<"LogFilaAtendimento"> | Date | string
+    details?: StringNullableFilter<"LogFilaAtendimento"> | string | null
+  }
+
+  export type LogFilaAtendimentoOrderByWithRelationInput = {
+    id?: SortOrder
+    action?: SortOrder
+    queueId?: SortOrder
+    userId?: SortOrder
+    timestamp?: SortOrder
+    details?: SortOrderInput | SortOrder
+  }
+
+  export type LogFilaAtendimentoWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: LogFilaAtendimentoWhereInput | LogFilaAtendimentoWhereInput[]
+    OR?: LogFilaAtendimentoWhereInput[]
+    NOT?: LogFilaAtendimentoWhereInput | LogFilaAtendimentoWhereInput[]
+    action?: StringFilter<"LogFilaAtendimento"> | string
+    queueId?: StringFilter<"LogFilaAtendimento"> | string
+    userId?: StringFilter<"LogFilaAtendimento"> | string
+    timestamp?: DateTimeFilter<"LogFilaAtendimento"> | Date | string
+    details?: StringNullableFilter<"LogFilaAtendimento"> | string | null
+  }, "id">
+
+  export type LogFilaAtendimentoOrderByWithAggregationInput = {
+    id?: SortOrder
+    action?: SortOrder
+    queueId?: SortOrder
+    userId?: SortOrder
+    timestamp?: SortOrder
+    details?: SortOrderInput | SortOrder
+    _count?: LogFilaAtendimentoCountOrderByAggregateInput
+    _max?: LogFilaAtendimentoMaxOrderByAggregateInput
+    _min?: LogFilaAtendimentoMinOrderByAggregateInput
+  }
+
+  export type LogFilaAtendimentoScalarWhereWithAggregatesInput = {
+    AND?: LogFilaAtendimentoScalarWhereWithAggregatesInput | LogFilaAtendimentoScalarWhereWithAggregatesInput[]
+    OR?: LogFilaAtendimentoScalarWhereWithAggregatesInput[]
+    NOT?: LogFilaAtendimentoScalarWhereWithAggregatesInput | LogFilaAtendimentoScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"LogFilaAtendimento"> | string
+    action?: StringWithAggregatesFilter<"LogFilaAtendimento"> | string
+    queueId?: StringWithAggregatesFilter<"LogFilaAtendimento"> | string
+    userId?: StringWithAggregatesFilter<"LogFilaAtendimento"> | string
+    timestamp?: DateTimeWithAggregatesFilter<"LogFilaAtendimento"> | Date | string
+    details?: StringNullableWithAggregatesFilter<"LogFilaAtendimento"> | string | null
+  }
+
   export type UserCreateInput = {
     id?: string
     email: string
@@ -23650,6 +32469,9 @@ export namespace Prisma {
     atendimentosTriagem?: FilaAtendimentoCreateNestedManyWithoutOperadorTriagemInput
     atendimentosEmAndamento?: FilaAtendimentoCreateNestedManyWithoutOperadorAtendimentoInput
     documentosUploadOperador?: DocumentoCreateNestedManyWithoutOperadorUploadInput
+    retornosDemandaJudicial?: RetornoDemandaJudicialCreateNestedManyWithoutOperadorInput
+    orientacoesJuridicas?: OrientacaoJuridicaCreateNestedManyWithoutOperadorInput
+    encaminhamentosOutrosOrgaos?: EncaminhamentoOutrosOrgaosCreateNestedManyWithoutOperadorInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -23664,6 +32486,9 @@ export namespace Prisma {
     atendimentosTriagem?: FilaAtendimentoUncheckedCreateNestedManyWithoutOperadorTriagemInput
     atendimentosEmAndamento?: FilaAtendimentoUncheckedCreateNestedManyWithoutOperadorAtendimentoInput
     documentosUploadOperador?: DocumentoUncheckedCreateNestedManyWithoutOperadorUploadInput
+    retornosDemandaJudicial?: RetornoDemandaJudicialUncheckedCreateNestedManyWithoutOperadorInput
+    orientacoesJuridicas?: OrientacaoJuridicaUncheckedCreateNestedManyWithoutOperadorInput
+    encaminhamentosOutrosOrgaos?: EncaminhamentoOutrosOrgaosUncheckedCreateNestedManyWithoutOperadorInput
   }
 
   export type UserUpdateInput = {
@@ -23678,6 +32503,9 @@ export namespace Prisma {
     atendimentosTriagem?: FilaAtendimentoUpdateManyWithoutOperadorTriagemNestedInput
     atendimentosEmAndamento?: FilaAtendimentoUpdateManyWithoutOperadorAtendimentoNestedInput
     documentosUploadOperador?: DocumentoUpdateManyWithoutOperadorUploadNestedInput
+    retornosDemandaJudicial?: RetornoDemandaJudicialUpdateManyWithoutOperadorNestedInput
+    orientacoesJuridicas?: OrientacaoJuridicaUpdateManyWithoutOperadorNestedInput
+    encaminhamentosOutrosOrgaos?: EncaminhamentoOutrosOrgaosUpdateManyWithoutOperadorNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -23692,6 +32520,9 @@ export namespace Prisma {
     atendimentosTriagem?: FilaAtendimentoUncheckedUpdateManyWithoutOperadorTriagemNestedInput
     atendimentosEmAndamento?: FilaAtendimentoUncheckedUpdateManyWithoutOperadorAtendimentoNestedInput
     documentosUploadOperador?: DocumentoUncheckedUpdateManyWithoutOperadorUploadNestedInput
+    retornosDemandaJudicial?: RetornoDemandaJudicialUncheckedUpdateManyWithoutOperadorNestedInput
+    orientacoesJuridicas?: OrientacaoJuridicaUncheckedUpdateManyWithoutOperadorNestedInput
+    encaminhamentosOutrosOrgaos?: EncaminhamentoOutrosOrgaosUncheckedUpdateManyWithoutOperadorNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -23865,7 +32696,7 @@ export namespace Prisma {
     valorCausa?: number | null
     processosAndamento: $Enums.ProcessosAndamento
     estadoCivil: EstadoCivilCreateNestedOneWithoutAtendimentosInput
-    profissao: ProfissaoCreateNestedOneWithoutAtendimentosInput
+    profissao?: ProfissaoCreateNestedOneWithoutAtendimentosInput
     tipoDomicilio: TipoDomicilioCreateNestedOneWithoutAtendimentosInput
     tipoDemandaPrevidenciaria: TipoDemandaPrevidenciariaCreateNestedOneWithoutAtendimentosInput
     competenciaJudicial: CompetenciaJudicialCreateNestedOneWithoutAtendimentosInput
@@ -23875,6 +32706,9 @@ export namespace Prisma {
     processo?: ProcessoCreateNestedOneWithoutAtendimentoInput
     formularios?: FormularioPreenchidoCreateNestedManyWithoutAtendimentoInput
     documentos?: DocumentoCreateNestedManyWithoutAtendimentoInput
+    retornoDemandaJudicial?: RetornoDemandaJudicialCreateNestedOneWithoutAtendimentoInput
+    orientacaoJuridica?: OrientacaoJuridicaCreateNestedOneWithoutAtendimentoInput
+    encaminhamentoOutrosOrgaos?: EncaminhamentoOutrosOrgaosCreateNestedOneWithoutAtendimentoInput
   }
 
   export type AtendimentoUncheckedCreateInput = {
@@ -23892,7 +32726,7 @@ export namespace Prisma {
     valorCausa?: number | null
     processosAndamento: $Enums.ProcessosAndamento
     estadoCivilId: number
-    profissaoId: string
+    profissaoId?: string | null
     tipoDomicilioId: number
     tipoDemandaPrevidenciariaId: number
     competenciaJudicialId: number
@@ -23902,6 +32736,9 @@ export namespace Prisma {
     processo?: ProcessoUncheckedCreateNestedOneWithoutAtendimentoInput
     formularios?: FormularioPreenchidoUncheckedCreateNestedManyWithoutAtendimentoInput
     documentos?: DocumentoUncheckedCreateNestedManyWithoutAtendimentoInput
+    retornoDemandaJudicial?: RetornoDemandaJudicialUncheckedCreateNestedOneWithoutAtendimentoInput
+    orientacaoJuridica?: OrientacaoJuridicaUncheckedCreateNestedOneWithoutAtendimentoInput
+    encaminhamentoOutrosOrgaos?: EncaminhamentoOutrosOrgaosUncheckedCreateNestedOneWithoutAtendimentoInput
   }
 
   export type AtendimentoUpdateInput = {
@@ -23919,7 +32756,7 @@ export namespace Prisma {
     valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
     estadoCivil?: EstadoCivilUpdateOneRequiredWithoutAtendimentosNestedInput
-    profissao?: ProfissaoUpdateOneRequiredWithoutAtendimentosNestedInput
+    profissao?: ProfissaoUpdateOneWithoutAtendimentosNestedInput
     tipoDomicilio?: TipoDomicilioUpdateOneRequiredWithoutAtendimentosNestedInput
     tipoDemandaPrevidenciaria?: TipoDemandaPrevidenciariaUpdateOneRequiredWithoutAtendimentosNestedInput
     competenciaJudicial?: CompetenciaJudicialUpdateOneRequiredWithoutAtendimentosNestedInput
@@ -23929,6 +32766,9 @@ export namespace Prisma {
     processo?: ProcessoUpdateOneWithoutAtendimentoNestedInput
     formularios?: FormularioPreenchidoUpdateManyWithoutAtendimentoNestedInput
     documentos?: DocumentoUpdateManyWithoutAtendimentoNestedInput
+    retornoDemandaJudicial?: RetornoDemandaJudicialUpdateOneWithoutAtendimentoNestedInput
+    orientacaoJuridica?: OrientacaoJuridicaUpdateOneWithoutAtendimentoNestedInput
+    encaminhamentoOutrosOrgaos?: EncaminhamentoOutrosOrgaosUpdateOneWithoutAtendimentoNestedInput
   }
 
   export type AtendimentoUncheckedUpdateInput = {
@@ -23946,7 +32786,7 @@ export namespace Prisma {
     valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
     estadoCivilId?: IntFieldUpdateOperationsInput | number
-    profissaoId?: StringFieldUpdateOperationsInput | string
+    profissaoId?: NullableStringFieldUpdateOperationsInput | string | null
     tipoDomicilioId?: IntFieldUpdateOperationsInput | number
     tipoDemandaPrevidenciariaId?: IntFieldUpdateOperationsInput | number
     competenciaJudicialId?: IntFieldUpdateOperationsInput | number
@@ -23956,6 +32796,9 @@ export namespace Prisma {
     processo?: ProcessoUncheckedUpdateOneWithoutAtendimentoNestedInput
     formularios?: FormularioPreenchidoUncheckedUpdateManyWithoutAtendimentoNestedInput
     documentos?: DocumentoUncheckedUpdateManyWithoutAtendimentoNestedInput
+    retornoDemandaJudicial?: RetornoDemandaJudicialUncheckedUpdateOneWithoutAtendimentoNestedInput
+    orientacaoJuridica?: OrientacaoJuridicaUncheckedUpdateOneWithoutAtendimentoNestedInput
+    encaminhamentoOutrosOrgaos?: EncaminhamentoOutrosOrgaosUncheckedUpdateOneWithoutAtendimentoNestedInput
   }
 
   export type AtendimentoCreateManyInput = {
@@ -23973,7 +32816,7 @@ export namespace Prisma {
     valorCausa?: number | null
     processosAndamento: $Enums.ProcessosAndamento
     estadoCivilId: number
-    profissaoId: string
+    profissaoId?: string | null
     tipoDomicilioId: number
     tipoDemandaPrevidenciariaId: number
     competenciaJudicialId: number
@@ -24012,7 +32855,7 @@ export namespace Prisma {
     valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
     estadoCivilId?: IntFieldUpdateOperationsInput | number
-    profissaoId?: StringFieldUpdateOperationsInput | string
+    profissaoId?: NullableStringFieldUpdateOperationsInput | string | null
     tipoDomicilioId?: IntFieldUpdateOperationsInput | number
     tipoDemandaPrevidenciariaId?: IntFieldUpdateOperationsInput | number
     competenciaJudicialId?: IntFieldUpdateOperationsInput | number
@@ -24235,6 +33078,189 @@ export namespace Prisma {
     dataCriacao?: DateTimeFieldUpdateOperationsInput | Date | string
     atendimentoId?: StringFieldUpdateOperationsInput | string
     operadorUploadId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type RetornoDemandaJudicialCreateInput = {
+    id?: string
+    pajAssistido: string
+    retornoRealizado: string
+    dataCriacao?: Date | string
+    atendimento: AtendimentoCreateNestedOneWithoutRetornoDemandaJudicialInput
+    operador?: UserCreateNestedOneWithoutRetornosDemandaJudicialInput
+  }
+
+  export type RetornoDemandaJudicialUncheckedCreateInput = {
+    id?: string
+    pajAssistido: string
+    retornoRealizado: string
+    dataCriacao?: Date | string
+    atendimentoId: string
+    operadorId?: string | null
+  }
+
+  export type RetornoDemandaJudicialUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    pajAssistido?: StringFieldUpdateOperationsInput | string
+    retornoRealizado?: StringFieldUpdateOperationsInput | string
+    dataCriacao?: DateTimeFieldUpdateOperationsInput | Date | string
+    atendimento?: AtendimentoUpdateOneRequiredWithoutRetornoDemandaJudicialNestedInput
+    operador?: UserUpdateOneWithoutRetornosDemandaJudicialNestedInput
+  }
+
+  export type RetornoDemandaJudicialUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    pajAssistido?: StringFieldUpdateOperationsInput | string
+    retornoRealizado?: StringFieldUpdateOperationsInput | string
+    dataCriacao?: DateTimeFieldUpdateOperationsInput | Date | string
+    atendimentoId?: StringFieldUpdateOperationsInput | string
+    operadorId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type RetornoDemandaJudicialCreateManyInput = {
+    id?: string
+    pajAssistido: string
+    retornoRealizado: string
+    dataCriacao?: Date | string
+    atendimentoId: string
+    operadorId?: string | null
+  }
+
+  export type RetornoDemandaJudicialUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    pajAssistido?: StringFieldUpdateOperationsInput | string
+    retornoRealizado?: StringFieldUpdateOperationsInput | string
+    dataCriacao?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RetornoDemandaJudicialUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    pajAssistido?: StringFieldUpdateOperationsInput | string
+    retornoRealizado?: StringFieldUpdateOperationsInput | string
+    dataCriacao?: DateTimeFieldUpdateOperationsInput | Date | string
+    atendimentoId?: StringFieldUpdateOperationsInput | string
+    operadorId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type OrientacaoJuridicaCreateInput = {
+    id?: string
+    orientacaoRealizada: string
+    dataCriacao?: Date | string
+    atendimento: AtendimentoCreateNestedOneWithoutOrientacaoJuridicaInput
+    operador?: UserCreateNestedOneWithoutOrientacoesJuridicasInput
+  }
+
+  export type OrientacaoJuridicaUncheckedCreateInput = {
+    id?: string
+    orientacaoRealizada: string
+    dataCriacao?: Date | string
+    atendimentoId: string
+    operadorId?: string | null
+  }
+
+  export type OrientacaoJuridicaUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    orientacaoRealizada?: StringFieldUpdateOperationsInput | string
+    dataCriacao?: DateTimeFieldUpdateOperationsInput | Date | string
+    atendimento?: AtendimentoUpdateOneRequiredWithoutOrientacaoJuridicaNestedInput
+    operador?: UserUpdateOneWithoutOrientacoesJuridicasNestedInput
+  }
+
+  export type OrientacaoJuridicaUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    orientacaoRealizada?: StringFieldUpdateOperationsInput | string
+    dataCriacao?: DateTimeFieldUpdateOperationsInput | Date | string
+    atendimentoId?: StringFieldUpdateOperationsInput | string
+    operadorId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type OrientacaoJuridicaCreateManyInput = {
+    id?: string
+    orientacaoRealizada: string
+    dataCriacao?: Date | string
+    atendimentoId: string
+    operadorId?: string | null
+  }
+
+  export type OrientacaoJuridicaUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    orientacaoRealizada?: StringFieldUpdateOperationsInput | string
+    dataCriacao?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type OrientacaoJuridicaUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    orientacaoRealizada?: StringFieldUpdateOperationsInput | string
+    dataCriacao?: DateTimeFieldUpdateOperationsInput | Date | string
+    atendimentoId?: StringFieldUpdateOperationsInput | string
+    operadorId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type EncaminhamentoOutrosOrgaosCreateInput = {
+    id?: string
+    orgaoDestino: string
+    motivoEncaminhamento: string
+    observacoes?: string | null
+    dataCriacao?: Date | string
+    atendimento: AtendimentoCreateNestedOneWithoutEncaminhamentoOutrosOrgaosInput
+    operador?: UserCreateNestedOneWithoutEncaminhamentosOutrosOrgaosInput
+  }
+
+  export type EncaminhamentoOutrosOrgaosUncheckedCreateInput = {
+    id?: string
+    orgaoDestino: string
+    motivoEncaminhamento: string
+    observacoes?: string | null
+    dataCriacao?: Date | string
+    atendimentoId: string
+    operadorId?: string | null
+  }
+
+  export type EncaminhamentoOutrosOrgaosUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    orgaoDestino?: StringFieldUpdateOperationsInput | string
+    motivoEncaminhamento?: StringFieldUpdateOperationsInput | string
+    observacoes?: NullableStringFieldUpdateOperationsInput | string | null
+    dataCriacao?: DateTimeFieldUpdateOperationsInput | Date | string
+    atendimento?: AtendimentoUpdateOneRequiredWithoutEncaminhamentoOutrosOrgaosNestedInput
+    operador?: UserUpdateOneWithoutEncaminhamentosOutrosOrgaosNestedInput
+  }
+
+  export type EncaminhamentoOutrosOrgaosUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    orgaoDestino?: StringFieldUpdateOperationsInput | string
+    motivoEncaminhamento?: StringFieldUpdateOperationsInput | string
+    observacoes?: NullableStringFieldUpdateOperationsInput | string | null
+    dataCriacao?: DateTimeFieldUpdateOperationsInput | Date | string
+    atendimentoId?: StringFieldUpdateOperationsInput | string
+    operadorId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type EncaminhamentoOutrosOrgaosCreateManyInput = {
+    id?: string
+    orgaoDestino: string
+    motivoEncaminhamento: string
+    observacoes?: string | null
+    dataCriacao?: Date | string
+    atendimentoId: string
+    operadorId?: string | null
+  }
+
+  export type EncaminhamentoOutrosOrgaosUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    orgaoDestino?: StringFieldUpdateOperationsInput | string
+    motivoEncaminhamento?: StringFieldUpdateOperationsInput | string
+    observacoes?: NullableStringFieldUpdateOperationsInput | string | null
+    dataCriacao?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EncaminhamentoOutrosOrgaosUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    orgaoDestino?: StringFieldUpdateOperationsInput | string
+    motivoEncaminhamento?: StringFieldUpdateOperationsInput | string
+    observacoes?: NullableStringFieldUpdateOperationsInput | string | null
+    dataCriacao?: DateTimeFieldUpdateOperationsInput | Date | string
+    atendimentoId?: StringFieldUpdateOperationsInput | string
+    operadorId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type TipoAtendimentoCreateInput = {
@@ -24666,6 +33692,38 @@ export namespace Prisma {
     descricao?: StringFieldUpdateOperationsInput | string
   }
 
+  export type TipoPedidoDePrevidenciaJudiciariaCreateInput = {
+    descricao: string
+  }
+
+  export type TipoPedidoDePrevidenciaJudiciariaUncheckedCreateInput = {
+    id?: number
+    descricao: string
+  }
+
+  export type TipoPedidoDePrevidenciaJudiciariaUpdateInput = {
+    descricao?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TipoPedidoDePrevidenciaJudiciariaUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    descricao?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TipoPedidoDePrevidenciaJudiciariaCreateManyInput = {
+    id?: number
+    descricao: string
+  }
+
+  export type TipoPedidoDePrevidenciaJudiciariaUpdateManyMutationInput = {
+    descricao?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TipoPedidoDePrevidenciaJudiciariaUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    descricao?: StringFieldUpdateOperationsInput | string
+  }
+
   export type TipoDemandaPrevidenciariaCreateInput = {
     descricao: string
     atendimentos?: AtendimentoCreateNestedManyWithoutTipoDemandaPrevidenciariaInput
@@ -24738,6 +33796,164 @@ export namespace Prisma {
     descricao?: StringFieldUpdateOperationsInput | string
   }
 
+  export type TipoOrgaoEncaminhamentoCreateInput = {
+    titulo: string
+    descricao: string
+    ativo?: boolean
+    OrgaoEncaminhamento?: OrgaoEncaminhamentoCreateNestedManyWithoutTipoOrgaoEncaminhamentoInput
+  }
+
+  export type TipoOrgaoEncaminhamentoUncheckedCreateInput = {
+    id?: number
+    titulo: string
+    descricao: string
+    ativo?: boolean
+    OrgaoEncaminhamento?: OrgaoEncaminhamentoUncheckedCreateNestedManyWithoutTipoOrgaoEncaminhamentoInput
+  }
+
+  export type TipoOrgaoEncaminhamentoUpdateInput = {
+    titulo?: StringFieldUpdateOperationsInput | string
+    descricao?: StringFieldUpdateOperationsInput | string
+    ativo?: BoolFieldUpdateOperationsInput | boolean
+    OrgaoEncaminhamento?: OrgaoEncaminhamentoUpdateManyWithoutTipoOrgaoEncaminhamentoNestedInput
+  }
+
+  export type TipoOrgaoEncaminhamentoUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    titulo?: StringFieldUpdateOperationsInput | string
+    descricao?: StringFieldUpdateOperationsInput | string
+    ativo?: BoolFieldUpdateOperationsInput | boolean
+    OrgaoEncaminhamento?: OrgaoEncaminhamentoUncheckedUpdateManyWithoutTipoOrgaoEncaminhamentoNestedInput
+  }
+
+  export type TipoOrgaoEncaminhamentoCreateManyInput = {
+    id?: number
+    titulo: string
+    descricao: string
+    ativo?: boolean
+  }
+
+  export type TipoOrgaoEncaminhamentoUpdateManyMutationInput = {
+    titulo?: StringFieldUpdateOperationsInput | string
+    descricao?: StringFieldUpdateOperationsInput | string
+    ativo?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type TipoOrgaoEncaminhamentoUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    titulo?: StringFieldUpdateOperationsInput | string
+    descricao?: StringFieldUpdateOperationsInput | string
+    ativo?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type OrgaoEncaminhamentoCreateInput = {
+    nome: string
+    ativo?: boolean
+    tipoOrgaoEncaminhamento: TipoOrgaoEncaminhamentoCreateNestedOneWithoutOrgaoEncaminhamentoInput
+  }
+
+  export type OrgaoEncaminhamentoUncheckedCreateInput = {
+    id?: number
+    nome: string
+    ativo?: boolean
+    tipoOrgaoEncaminhamentoId: number
+  }
+
+  export type OrgaoEncaminhamentoUpdateInput = {
+    nome?: StringFieldUpdateOperationsInput | string
+    ativo?: BoolFieldUpdateOperationsInput | boolean
+    tipoOrgaoEncaminhamento?: TipoOrgaoEncaminhamentoUpdateOneRequiredWithoutOrgaoEncaminhamentoNestedInput
+  }
+
+  export type OrgaoEncaminhamentoUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nome?: StringFieldUpdateOperationsInput | string
+    ativo?: BoolFieldUpdateOperationsInput | boolean
+    tipoOrgaoEncaminhamentoId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type OrgaoEncaminhamentoCreateManyInput = {
+    id?: number
+    nome: string
+    ativo?: boolean
+    tipoOrgaoEncaminhamentoId: number
+  }
+
+  export type OrgaoEncaminhamentoUpdateManyMutationInput = {
+    nome?: StringFieldUpdateOperationsInput | string
+    ativo?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type OrgaoEncaminhamentoUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nome?: StringFieldUpdateOperationsInput | string
+    ativo?: BoolFieldUpdateOperationsInput | boolean
+    tipoOrgaoEncaminhamentoId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type LogFilaAtendimentoCreateInput = {
+    id?: string
+    action: string
+    queueId: string
+    userId: string
+    timestamp?: Date | string
+    details?: string | null
+  }
+
+  export type LogFilaAtendimentoUncheckedCreateInput = {
+    id?: string
+    action: string
+    queueId: string
+    userId: string
+    timestamp?: Date | string
+    details?: string | null
+  }
+
+  export type LogFilaAtendimentoUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    action?: StringFieldUpdateOperationsInput | string
+    queueId?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    details?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type LogFilaAtendimentoUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    action?: StringFieldUpdateOperationsInput | string
+    queueId?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    details?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type LogFilaAtendimentoCreateManyInput = {
+    id?: string
+    action: string
+    queueId: string
+    userId: string
+    timestamp?: Date | string
+    details?: string | null
+  }
+
+  export type LogFilaAtendimentoUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    action?: StringFieldUpdateOperationsInput | string
+    queueId?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    details?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type LogFilaAtendimentoUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    action?: StringFieldUpdateOperationsInput | string
+    queueId?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    details?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -24794,6 +34010,24 @@ export namespace Prisma {
     none?: DocumentoWhereInput
   }
 
+  export type RetornoDemandaJudicialListRelationFilter = {
+    every?: RetornoDemandaJudicialWhereInput
+    some?: RetornoDemandaJudicialWhereInput
+    none?: RetornoDemandaJudicialWhereInput
+  }
+
+  export type OrientacaoJuridicaListRelationFilter = {
+    every?: OrientacaoJuridicaWhereInput
+    some?: OrientacaoJuridicaWhereInput
+    none?: OrientacaoJuridicaWhereInput
+  }
+
+  export type EncaminhamentoOutrosOrgaosListRelationFilter = {
+    every?: EncaminhamentoOutrosOrgaosWhereInput
+    some?: EncaminhamentoOutrosOrgaosWhereInput
+    none?: EncaminhamentoOutrosOrgaosWhereInput
+  }
+
   export type AtendimentoOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -24803,6 +34037,18 @@ export namespace Prisma {
   }
 
   export type DocumentoOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type RetornoDemandaJudicialOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type OrientacaoJuridicaOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type EncaminhamentoOutrosOrgaosOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -25132,9 +34378,9 @@ export namespace Prisma {
     isNot?: EstadoCivilWhereInput
   }
 
-  export type ProfissaoScalarRelationFilter = {
-    is?: ProfissaoWhereInput
-    isNot?: ProfissaoWhereInput
+  export type ProfissaoNullableScalarRelationFilter = {
+    is?: ProfissaoWhereInput | null
+    isNot?: ProfissaoWhereInput | null
   }
 
   export type TipoDomicilioScalarRelationFilter = {
@@ -25172,6 +34418,21 @@ export namespace Prisma {
     every?: FormularioPreenchidoWhereInput
     some?: FormularioPreenchidoWhereInput
     none?: FormularioPreenchidoWhereInput
+  }
+
+  export type RetornoDemandaJudicialNullableScalarRelationFilter = {
+    is?: RetornoDemandaJudicialWhereInput | null
+    isNot?: RetornoDemandaJudicialWhereInput | null
+  }
+
+  export type OrientacaoJuridicaNullableScalarRelationFilter = {
+    is?: OrientacaoJuridicaWhereInput | null
+    isNot?: OrientacaoJuridicaWhereInput | null
+  }
+
+  export type EncaminhamentoOutrosOrgaosNullableScalarRelationFilter = {
+    is?: EncaminhamentoOutrosOrgaosWhereInput | null
+    isNot?: EncaminhamentoOutrosOrgaosWhereInput | null
   }
 
   export type MembroFamiliarOrderByRelationAggregateInput = {
@@ -25493,6 +34754,87 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumTipoDocumentoFilter<$PrismaModel>
     _max?: NestedEnumTipoDocumentoFilter<$PrismaModel>
+  }
+
+  export type RetornoDemandaJudicialCountOrderByAggregateInput = {
+    id?: SortOrder
+    pajAssistido?: SortOrder
+    retornoRealizado?: SortOrder
+    dataCriacao?: SortOrder
+    atendimentoId?: SortOrder
+    operadorId?: SortOrder
+  }
+
+  export type RetornoDemandaJudicialMaxOrderByAggregateInput = {
+    id?: SortOrder
+    pajAssistido?: SortOrder
+    retornoRealizado?: SortOrder
+    dataCriacao?: SortOrder
+    atendimentoId?: SortOrder
+    operadorId?: SortOrder
+  }
+
+  export type RetornoDemandaJudicialMinOrderByAggregateInput = {
+    id?: SortOrder
+    pajAssistido?: SortOrder
+    retornoRealizado?: SortOrder
+    dataCriacao?: SortOrder
+    atendimentoId?: SortOrder
+    operadorId?: SortOrder
+  }
+
+  export type OrientacaoJuridicaCountOrderByAggregateInput = {
+    id?: SortOrder
+    orientacaoRealizada?: SortOrder
+    dataCriacao?: SortOrder
+    atendimentoId?: SortOrder
+    operadorId?: SortOrder
+  }
+
+  export type OrientacaoJuridicaMaxOrderByAggregateInput = {
+    id?: SortOrder
+    orientacaoRealizada?: SortOrder
+    dataCriacao?: SortOrder
+    atendimentoId?: SortOrder
+    operadorId?: SortOrder
+  }
+
+  export type OrientacaoJuridicaMinOrderByAggregateInput = {
+    id?: SortOrder
+    orientacaoRealizada?: SortOrder
+    dataCriacao?: SortOrder
+    atendimentoId?: SortOrder
+    operadorId?: SortOrder
+  }
+
+  export type EncaminhamentoOutrosOrgaosCountOrderByAggregateInput = {
+    id?: SortOrder
+    orgaoDestino?: SortOrder
+    motivoEncaminhamento?: SortOrder
+    observacoes?: SortOrder
+    dataCriacao?: SortOrder
+    atendimentoId?: SortOrder
+    operadorId?: SortOrder
+  }
+
+  export type EncaminhamentoOutrosOrgaosMaxOrderByAggregateInput = {
+    id?: SortOrder
+    orgaoDestino?: SortOrder
+    motivoEncaminhamento?: SortOrder
+    observacoes?: SortOrder
+    dataCriacao?: SortOrder
+    atendimentoId?: SortOrder
+    operadorId?: SortOrder
+  }
+
+  export type EncaminhamentoOutrosOrgaosMinOrderByAggregateInput = {
+    id?: SortOrder
+    orgaoDestino?: SortOrder
+    motivoEncaminhamento?: SortOrder
+    observacoes?: SortOrder
+    dataCriacao?: SortOrder
+    atendimentoId?: SortOrder
+    operadorId?: SortOrder
   }
 
   export type AssistidoListRelationFilter = {
@@ -25818,6 +35160,29 @@ export namespace Prisma {
     id?: SortOrder
   }
 
+  export type TipoPedidoDePrevidenciaJudiciariaCountOrderByAggregateInput = {
+    id?: SortOrder
+    descricao?: SortOrder
+  }
+
+  export type TipoPedidoDePrevidenciaJudiciariaAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type TipoPedidoDePrevidenciaJudiciariaMaxOrderByAggregateInput = {
+    id?: SortOrder
+    descricao?: SortOrder
+  }
+
+  export type TipoPedidoDePrevidenciaJudiciariaMinOrderByAggregateInput = {
+    id?: SortOrder
+    descricao?: SortOrder
+  }
+
+  export type TipoPedidoDePrevidenciaJudiciariaSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
   export type TipoDemandaPrevidenciariaCountOrderByAggregateInput = {
     id?: SortOrder
     descricao?: SortOrder
@@ -25864,6 +35229,108 @@ export namespace Prisma {
     id?: SortOrder
   }
 
+  export type OrgaoEncaminhamentoListRelationFilter = {
+    every?: OrgaoEncaminhamentoWhereInput
+    some?: OrgaoEncaminhamentoWhereInput
+    none?: OrgaoEncaminhamentoWhereInput
+  }
+
+  export type OrgaoEncaminhamentoOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type TipoOrgaoEncaminhamentoCountOrderByAggregateInput = {
+    id?: SortOrder
+    titulo?: SortOrder
+    descricao?: SortOrder
+    ativo?: SortOrder
+  }
+
+  export type TipoOrgaoEncaminhamentoAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type TipoOrgaoEncaminhamentoMaxOrderByAggregateInput = {
+    id?: SortOrder
+    titulo?: SortOrder
+    descricao?: SortOrder
+    ativo?: SortOrder
+  }
+
+  export type TipoOrgaoEncaminhamentoMinOrderByAggregateInput = {
+    id?: SortOrder
+    titulo?: SortOrder
+    descricao?: SortOrder
+    ativo?: SortOrder
+  }
+
+  export type TipoOrgaoEncaminhamentoSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type TipoOrgaoEncaminhamentoScalarRelationFilter = {
+    is?: TipoOrgaoEncaminhamentoWhereInput
+    isNot?: TipoOrgaoEncaminhamentoWhereInput
+  }
+
+  export type OrgaoEncaminhamentoCountOrderByAggregateInput = {
+    id?: SortOrder
+    nome?: SortOrder
+    ativo?: SortOrder
+    tipoOrgaoEncaminhamentoId?: SortOrder
+  }
+
+  export type OrgaoEncaminhamentoAvgOrderByAggregateInput = {
+    id?: SortOrder
+    tipoOrgaoEncaminhamentoId?: SortOrder
+  }
+
+  export type OrgaoEncaminhamentoMaxOrderByAggregateInput = {
+    id?: SortOrder
+    nome?: SortOrder
+    ativo?: SortOrder
+    tipoOrgaoEncaminhamentoId?: SortOrder
+  }
+
+  export type OrgaoEncaminhamentoMinOrderByAggregateInput = {
+    id?: SortOrder
+    nome?: SortOrder
+    ativo?: SortOrder
+    tipoOrgaoEncaminhamentoId?: SortOrder
+  }
+
+  export type OrgaoEncaminhamentoSumOrderByAggregateInput = {
+    id?: SortOrder
+    tipoOrgaoEncaminhamentoId?: SortOrder
+  }
+
+  export type LogFilaAtendimentoCountOrderByAggregateInput = {
+    id?: SortOrder
+    action?: SortOrder
+    queueId?: SortOrder
+    userId?: SortOrder
+    timestamp?: SortOrder
+    details?: SortOrder
+  }
+
+  export type LogFilaAtendimentoMaxOrderByAggregateInput = {
+    id?: SortOrder
+    action?: SortOrder
+    queueId?: SortOrder
+    userId?: SortOrder
+    timestamp?: SortOrder
+    details?: SortOrder
+  }
+
+  export type LogFilaAtendimentoMinOrderByAggregateInput = {
+    id?: SortOrder
+    action?: SortOrder
+    queueId?: SortOrder
+    userId?: SortOrder
+    timestamp?: SortOrder
+    details?: SortOrder
+  }
+
   export type AtendimentoCreateNestedManyWithoutOperadorInput = {
     create?: XOR<AtendimentoCreateWithoutOperadorInput, AtendimentoUncheckedCreateWithoutOperadorInput> | AtendimentoCreateWithoutOperadorInput[] | AtendimentoUncheckedCreateWithoutOperadorInput[]
     connectOrCreate?: AtendimentoCreateOrConnectWithoutOperadorInput | AtendimentoCreateOrConnectWithoutOperadorInput[]
@@ -25892,6 +35359,27 @@ export namespace Prisma {
     connect?: DocumentoWhereUniqueInput | DocumentoWhereUniqueInput[]
   }
 
+  export type RetornoDemandaJudicialCreateNestedManyWithoutOperadorInput = {
+    create?: XOR<RetornoDemandaJudicialCreateWithoutOperadorInput, RetornoDemandaJudicialUncheckedCreateWithoutOperadorInput> | RetornoDemandaJudicialCreateWithoutOperadorInput[] | RetornoDemandaJudicialUncheckedCreateWithoutOperadorInput[]
+    connectOrCreate?: RetornoDemandaJudicialCreateOrConnectWithoutOperadorInput | RetornoDemandaJudicialCreateOrConnectWithoutOperadorInput[]
+    createMany?: RetornoDemandaJudicialCreateManyOperadorInputEnvelope
+    connect?: RetornoDemandaJudicialWhereUniqueInput | RetornoDemandaJudicialWhereUniqueInput[]
+  }
+
+  export type OrientacaoJuridicaCreateNestedManyWithoutOperadorInput = {
+    create?: XOR<OrientacaoJuridicaCreateWithoutOperadorInput, OrientacaoJuridicaUncheckedCreateWithoutOperadorInput> | OrientacaoJuridicaCreateWithoutOperadorInput[] | OrientacaoJuridicaUncheckedCreateWithoutOperadorInput[]
+    connectOrCreate?: OrientacaoJuridicaCreateOrConnectWithoutOperadorInput | OrientacaoJuridicaCreateOrConnectWithoutOperadorInput[]
+    createMany?: OrientacaoJuridicaCreateManyOperadorInputEnvelope
+    connect?: OrientacaoJuridicaWhereUniqueInput | OrientacaoJuridicaWhereUniqueInput[]
+  }
+
+  export type EncaminhamentoOutrosOrgaosCreateNestedManyWithoutOperadorInput = {
+    create?: XOR<EncaminhamentoOutrosOrgaosCreateWithoutOperadorInput, EncaminhamentoOutrosOrgaosUncheckedCreateWithoutOperadorInput> | EncaminhamentoOutrosOrgaosCreateWithoutOperadorInput[] | EncaminhamentoOutrosOrgaosUncheckedCreateWithoutOperadorInput[]
+    connectOrCreate?: EncaminhamentoOutrosOrgaosCreateOrConnectWithoutOperadorInput | EncaminhamentoOutrosOrgaosCreateOrConnectWithoutOperadorInput[]
+    createMany?: EncaminhamentoOutrosOrgaosCreateManyOperadorInputEnvelope
+    connect?: EncaminhamentoOutrosOrgaosWhereUniqueInput | EncaminhamentoOutrosOrgaosWhereUniqueInput[]
+  }
+
   export type AtendimentoUncheckedCreateNestedManyWithoutOperadorInput = {
     create?: XOR<AtendimentoCreateWithoutOperadorInput, AtendimentoUncheckedCreateWithoutOperadorInput> | AtendimentoCreateWithoutOperadorInput[] | AtendimentoUncheckedCreateWithoutOperadorInput[]
     connectOrCreate?: AtendimentoCreateOrConnectWithoutOperadorInput | AtendimentoCreateOrConnectWithoutOperadorInput[]
@@ -25918,6 +35406,27 @@ export namespace Prisma {
     connectOrCreate?: DocumentoCreateOrConnectWithoutOperadorUploadInput | DocumentoCreateOrConnectWithoutOperadorUploadInput[]
     createMany?: DocumentoCreateManyOperadorUploadInputEnvelope
     connect?: DocumentoWhereUniqueInput | DocumentoWhereUniqueInput[]
+  }
+
+  export type RetornoDemandaJudicialUncheckedCreateNestedManyWithoutOperadorInput = {
+    create?: XOR<RetornoDemandaJudicialCreateWithoutOperadorInput, RetornoDemandaJudicialUncheckedCreateWithoutOperadorInput> | RetornoDemandaJudicialCreateWithoutOperadorInput[] | RetornoDemandaJudicialUncheckedCreateWithoutOperadorInput[]
+    connectOrCreate?: RetornoDemandaJudicialCreateOrConnectWithoutOperadorInput | RetornoDemandaJudicialCreateOrConnectWithoutOperadorInput[]
+    createMany?: RetornoDemandaJudicialCreateManyOperadorInputEnvelope
+    connect?: RetornoDemandaJudicialWhereUniqueInput | RetornoDemandaJudicialWhereUniqueInput[]
+  }
+
+  export type OrientacaoJuridicaUncheckedCreateNestedManyWithoutOperadorInput = {
+    create?: XOR<OrientacaoJuridicaCreateWithoutOperadorInput, OrientacaoJuridicaUncheckedCreateWithoutOperadorInput> | OrientacaoJuridicaCreateWithoutOperadorInput[] | OrientacaoJuridicaUncheckedCreateWithoutOperadorInput[]
+    connectOrCreate?: OrientacaoJuridicaCreateOrConnectWithoutOperadorInput | OrientacaoJuridicaCreateOrConnectWithoutOperadorInput[]
+    createMany?: OrientacaoJuridicaCreateManyOperadorInputEnvelope
+    connect?: OrientacaoJuridicaWhereUniqueInput | OrientacaoJuridicaWhereUniqueInput[]
+  }
+
+  export type EncaminhamentoOutrosOrgaosUncheckedCreateNestedManyWithoutOperadorInput = {
+    create?: XOR<EncaminhamentoOutrosOrgaosCreateWithoutOperadorInput, EncaminhamentoOutrosOrgaosUncheckedCreateWithoutOperadorInput> | EncaminhamentoOutrosOrgaosCreateWithoutOperadorInput[] | EncaminhamentoOutrosOrgaosUncheckedCreateWithoutOperadorInput[]
+    connectOrCreate?: EncaminhamentoOutrosOrgaosCreateOrConnectWithoutOperadorInput | EncaminhamentoOutrosOrgaosCreateOrConnectWithoutOperadorInput[]
+    createMany?: EncaminhamentoOutrosOrgaosCreateManyOperadorInputEnvelope
+    connect?: EncaminhamentoOutrosOrgaosWhereUniqueInput | EncaminhamentoOutrosOrgaosWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -25992,6 +35501,48 @@ export namespace Prisma {
     deleteMany?: DocumentoScalarWhereInput | DocumentoScalarWhereInput[]
   }
 
+  export type RetornoDemandaJudicialUpdateManyWithoutOperadorNestedInput = {
+    create?: XOR<RetornoDemandaJudicialCreateWithoutOperadorInput, RetornoDemandaJudicialUncheckedCreateWithoutOperadorInput> | RetornoDemandaJudicialCreateWithoutOperadorInput[] | RetornoDemandaJudicialUncheckedCreateWithoutOperadorInput[]
+    connectOrCreate?: RetornoDemandaJudicialCreateOrConnectWithoutOperadorInput | RetornoDemandaJudicialCreateOrConnectWithoutOperadorInput[]
+    upsert?: RetornoDemandaJudicialUpsertWithWhereUniqueWithoutOperadorInput | RetornoDemandaJudicialUpsertWithWhereUniqueWithoutOperadorInput[]
+    createMany?: RetornoDemandaJudicialCreateManyOperadorInputEnvelope
+    set?: RetornoDemandaJudicialWhereUniqueInput | RetornoDemandaJudicialWhereUniqueInput[]
+    disconnect?: RetornoDemandaJudicialWhereUniqueInput | RetornoDemandaJudicialWhereUniqueInput[]
+    delete?: RetornoDemandaJudicialWhereUniqueInput | RetornoDemandaJudicialWhereUniqueInput[]
+    connect?: RetornoDemandaJudicialWhereUniqueInput | RetornoDemandaJudicialWhereUniqueInput[]
+    update?: RetornoDemandaJudicialUpdateWithWhereUniqueWithoutOperadorInput | RetornoDemandaJudicialUpdateWithWhereUniqueWithoutOperadorInput[]
+    updateMany?: RetornoDemandaJudicialUpdateManyWithWhereWithoutOperadorInput | RetornoDemandaJudicialUpdateManyWithWhereWithoutOperadorInput[]
+    deleteMany?: RetornoDemandaJudicialScalarWhereInput | RetornoDemandaJudicialScalarWhereInput[]
+  }
+
+  export type OrientacaoJuridicaUpdateManyWithoutOperadorNestedInput = {
+    create?: XOR<OrientacaoJuridicaCreateWithoutOperadorInput, OrientacaoJuridicaUncheckedCreateWithoutOperadorInput> | OrientacaoJuridicaCreateWithoutOperadorInput[] | OrientacaoJuridicaUncheckedCreateWithoutOperadorInput[]
+    connectOrCreate?: OrientacaoJuridicaCreateOrConnectWithoutOperadorInput | OrientacaoJuridicaCreateOrConnectWithoutOperadorInput[]
+    upsert?: OrientacaoJuridicaUpsertWithWhereUniqueWithoutOperadorInput | OrientacaoJuridicaUpsertWithWhereUniqueWithoutOperadorInput[]
+    createMany?: OrientacaoJuridicaCreateManyOperadorInputEnvelope
+    set?: OrientacaoJuridicaWhereUniqueInput | OrientacaoJuridicaWhereUniqueInput[]
+    disconnect?: OrientacaoJuridicaWhereUniqueInput | OrientacaoJuridicaWhereUniqueInput[]
+    delete?: OrientacaoJuridicaWhereUniqueInput | OrientacaoJuridicaWhereUniqueInput[]
+    connect?: OrientacaoJuridicaWhereUniqueInput | OrientacaoJuridicaWhereUniqueInput[]
+    update?: OrientacaoJuridicaUpdateWithWhereUniqueWithoutOperadorInput | OrientacaoJuridicaUpdateWithWhereUniqueWithoutOperadorInput[]
+    updateMany?: OrientacaoJuridicaUpdateManyWithWhereWithoutOperadorInput | OrientacaoJuridicaUpdateManyWithWhereWithoutOperadorInput[]
+    deleteMany?: OrientacaoJuridicaScalarWhereInput | OrientacaoJuridicaScalarWhereInput[]
+  }
+
+  export type EncaminhamentoOutrosOrgaosUpdateManyWithoutOperadorNestedInput = {
+    create?: XOR<EncaminhamentoOutrosOrgaosCreateWithoutOperadorInput, EncaminhamentoOutrosOrgaosUncheckedCreateWithoutOperadorInput> | EncaminhamentoOutrosOrgaosCreateWithoutOperadorInput[] | EncaminhamentoOutrosOrgaosUncheckedCreateWithoutOperadorInput[]
+    connectOrCreate?: EncaminhamentoOutrosOrgaosCreateOrConnectWithoutOperadorInput | EncaminhamentoOutrosOrgaosCreateOrConnectWithoutOperadorInput[]
+    upsert?: EncaminhamentoOutrosOrgaosUpsertWithWhereUniqueWithoutOperadorInput | EncaminhamentoOutrosOrgaosUpsertWithWhereUniqueWithoutOperadorInput[]
+    createMany?: EncaminhamentoOutrosOrgaosCreateManyOperadorInputEnvelope
+    set?: EncaminhamentoOutrosOrgaosWhereUniqueInput | EncaminhamentoOutrosOrgaosWhereUniqueInput[]
+    disconnect?: EncaminhamentoOutrosOrgaosWhereUniqueInput | EncaminhamentoOutrosOrgaosWhereUniqueInput[]
+    delete?: EncaminhamentoOutrosOrgaosWhereUniqueInput | EncaminhamentoOutrosOrgaosWhereUniqueInput[]
+    connect?: EncaminhamentoOutrosOrgaosWhereUniqueInput | EncaminhamentoOutrosOrgaosWhereUniqueInput[]
+    update?: EncaminhamentoOutrosOrgaosUpdateWithWhereUniqueWithoutOperadorInput | EncaminhamentoOutrosOrgaosUpdateWithWhereUniqueWithoutOperadorInput[]
+    updateMany?: EncaminhamentoOutrosOrgaosUpdateManyWithWhereWithoutOperadorInput | EncaminhamentoOutrosOrgaosUpdateManyWithWhereWithoutOperadorInput[]
+    deleteMany?: EncaminhamentoOutrosOrgaosScalarWhereInput | EncaminhamentoOutrosOrgaosScalarWhereInput[]
+  }
+
   export type AtendimentoUncheckedUpdateManyWithoutOperadorNestedInput = {
     create?: XOR<AtendimentoCreateWithoutOperadorInput, AtendimentoUncheckedCreateWithoutOperadorInput> | AtendimentoCreateWithoutOperadorInput[] | AtendimentoUncheckedCreateWithoutOperadorInput[]
     connectOrCreate?: AtendimentoCreateOrConnectWithoutOperadorInput | AtendimentoCreateOrConnectWithoutOperadorInput[]
@@ -26046,6 +35597,48 @@ export namespace Prisma {
     update?: DocumentoUpdateWithWhereUniqueWithoutOperadorUploadInput | DocumentoUpdateWithWhereUniqueWithoutOperadorUploadInput[]
     updateMany?: DocumentoUpdateManyWithWhereWithoutOperadorUploadInput | DocumentoUpdateManyWithWhereWithoutOperadorUploadInput[]
     deleteMany?: DocumentoScalarWhereInput | DocumentoScalarWhereInput[]
+  }
+
+  export type RetornoDemandaJudicialUncheckedUpdateManyWithoutOperadorNestedInput = {
+    create?: XOR<RetornoDemandaJudicialCreateWithoutOperadorInput, RetornoDemandaJudicialUncheckedCreateWithoutOperadorInput> | RetornoDemandaJudicialCreateWithoutOperadorInput[] | RetornoDemandaJudicialUncheckedCreateWithoutOperadorInput[]
+    connectOrCreate?: RetornoDemandaJudicialCreateOrConnectWithoutOperadorInput | RetornoDemandaJudicialCreateOrConnectWithoutOperadorInput[]
+    upsert?: RetornoDemandaJudicialUpsertWithWhereUniqueWithoutOperadorInput | RetornoDemandaJudicialUpsertWithWhereUniqueWithoutOperadorInput[]
+    createMany?: RetornoDemandaJudicialCreateManyOperadorInputEnvelope
+    set?: RetornoDemandaJudicialWhereUniqueInput | RetornoDemandaJudicialWhereUniqueInput[]
+    disconnect?: RetornoDemandaJudicialWhereUniqueInput | RetornoDemandaJudicialWhereUniqueInput[]
+    delete?: RetornoDemandaJudicialWhereUniqueInput | RetornoDemandaJudicialWhereUniqueInput[]
+    connect?: RetornoDemandaJudicialWhereUniqueInput | RetornoDemandaJudicialWhereUniqueInput[]
+    update?: RetornoDemandaJudicialUpdateWithWhereUniqueWithoutOperadorInput | RetornoDemandaJudicialUpdateWithWhereUniqueWithoutOperadorInput[]
+    updateMany?: RetornoDemandaJudicialUpdateManyWithWhereWithoutOperadorInput | RetornoDemandaJudicialUpdateManyWithWhereWithoutOperadorInput[]
+    deleteMany?: RetornoDemandaJudicialScalarWhereInput | RetornoDemandaJudicialScalarWhereInput[]
+  }
+
+  export type OrientacaoJuridicaUncheckedUpdateManyWithoutOperadorNestedInput = {
+    create?: XOR<OrientacaoJuridicaCreateWithoutOperadorInput, OrientacaoJuridicaUncheckedCreateWithoutOperadorInput> | OrientacaoJuridicaCreateWithoutOperadorInput[] | OrientacaoJuridicaUncheckedCreateWithoutOperadorInput[]
+    connectOrCreate?: OrientacaoJuridicaCreateOrConnectWithoutOperadorInput | OrientacaoJuridicaCreateOrConnectWithoutOperadorInput[]
+    upsert?: OrientacaoJuridicaUpsertWithWhereUniqueWithoutOperadorInput | OrientacaoJuridicaUpsertWithWhereUniqueWithoutOperadorInput[]
+    createMany?: OrientacaoJuridicaCreateManyOperadorInputEnvelope
+    set?: OrientacaoJuridicaWhereUniqueInput | OrientacaoJuridicaWhereUniqueInput[]
+    disconnect?: OrientacaoJuridicaWhereUniqueInput | OrientacaoJuridicaWhereUniqueInput[]
+    delete?: OrientacaoJuridicaWhereUniqueInput | OrientacaoJuridicaWhereUniqueInput[]
+    connect?: OrientacaoJuridicaWhereUniqueInput | OrientacaoJuridicaWhereUniqueInput[]
+    update?: OrientacaoJuridicaUpdateWithWhereUniqueWithoutOperadorInput | OrientacaoJuridicaUpdateWithWhereUniqueWithoutOperadorInput[]
+    updateMany?: OrientacaoJuridicaUpdateManyWithWhereWithoutOperadorInput | OrientacaoJuridicaUpdateManyWithWhereWithoutOperadorInput[]
+    deleteMany?: OrientacaoJuridicaScalarWhereInput | OrientacaoJuridicaScalarWhereInput[]
+  }
+
+  export type EncaminhamentoOutrosOrgaosUncheckedUpdateManyWithoutOperadorNestedInput = {
+    create?: XOR<EncaminhamentoOutrosOrgaosCreateWithoutOperadorInput, EncaminhamentoOutrosOrgaosUncheckedCreateWithoutOperadorInput> | EncaminhamentoOutrosOrgaosCreateWithoutOperadorInput[] | EncaminhamentoOutrosOrgaosUncheckedCreateWithoutOperadorInput[]
+    connectOrCreate?: EncaminhamentoOutrosOrgaosCreateOrConnectWithoutOperadorInput | EncaminhamentoOutrosOrgaosCreateOrConnectWithoutOperadorInput[]
+    upsert?: EncaminhamentoOutrosOrgaosUpsertWithWhereUniqueWithoutOperadorInput | EncaminhamentoOutrosOrgaosUpsertWithWhereUniqueWithoutOperadorInput[]
+    createMany?: EncaminhamentoOutrosOrgaosCreateManyOperadorInputEnvelope
+    set?: EncaminhamentoOutrosOrgaosWhereUniqueInput | EncaminhamentoOutrosOrgaosWhereUniqueInput[]
+    disconnect?: EncaminhamentoOutrosOrgaosWhereUniqueInput | EncaminhamentoOutrosOrgaosWhereUniqueInput[]
+    delete?: EncaminhamentoOutrosOrgaosWhereUniqueInput | EncaminhamentoOutrosOrgaosWhereUniqueInput[]
+    connect?: EncaminhamentoOutrosOrgaosWhereUniqueInput | EncaminhamentoOutrosOrgaosWhereUniqueInput[]
+    update?: EncaminhamentoOutrosOrgaosUpdateWithWhereUniqueWithoutOperadorInput | EncaminhamentoOutrosOrgaosUpdateWithWhereUniqueWithoutOperadorInput[]
+    updateMany?: EncaminhamentoOutrosOrgaosUpdateManyWithWhereWithoutOperadorInput | EncaminhamentoOutrosOrgaosUpdateManyWithWhereWithoutOperadorInput[]
+    deleteMany?: EncaminhamentoOutrosOrgaosScalarWhereInput | EncaminhamentoOutrosOrgaosScalarWhereInput[]
   }
 
   export type UserCreateNestedOneWithoutAtendimentosTriagemInput = {
@@ -26237,6 +35830,24 @@ export namespace Prisma {
     connect?: DocumentoWhereUniqueInput | DocumentoWhereUniqueInput[]
   }
 
+  export type RetornoDemandaJudicialCreateNestedOneWithoutAtendimentoInput = {
+    create?: XOR<RetornoDemandaJudicialCreateWithoutAtendimentoInput, RetornoDemandaJudicialUncheckedCreateWithoutAtendimentoInput>
+    connectOrCreate?: RetornoDemandaJudicialCreateOrConnectWithoutAtendimentoInput
+    connect?: RetornoDemandaJudicialWhereUniqueInput
+  }
+
+  export type OrientacaoJuridicaCreateNestedOneWithoutAtendimentoInput = {
+    create?: XOR<OrientacaoJuridicaCreateWithoutAtendimentoInput, OrientacaoJuridicaUncheckedCreateWithoutAtendimentoInput>
+    connectOrCreate?: OrientacaoJuridicaCreateOrConnectWithoutAtendimentoInput
+    connect?: OrientacaoJuridicaWhereUniqueInput
+  }
+
+  export type EncaminhamentoOutrosOrgaosCreateNestedOneWithoutAtendimentoInput = {
+    create?: XOR<EncaminhamentoOutrosOrgaosCreateWithoutAtendimentoInput, EncaminhamentoOutrosOrgaosUncheckedCreateWithoutAtendimentoInput>
+    connectOrCreate?: EncaminhamentoOutrosOrgaosCreateOrConnectWithoutAtendimentoInput
+    connect?: EncaminhamentoOutrosOrgaosWhereUniqueInput
+  }
+
   export type MembroFamiliarUncheckedCreateNestedManyWithoutAtendimentoInput = {
     create?: XOR<MembroFamiliarCreateWithoutAtendimentoInput, MembroFamiliarUncheckedCreateWithoutAtendimentoInput> | MembroFamiliarCreateWithoutAtendimentoInput[] | MembroFamiliarUncheckedCreateWithoutAtendimentoInput[]
     connectOrCreate?: MembroFamiliarCreateOrConnectWithoutAtendimentoInput | MembroFamiliarCreateOrConnectWithoutAtendimentoInput[]
@@ -26264,6 +35875,24 @@ export namespace Prisma {
     connect?: DocumentoWhereUniqueInput | DocumentoWhereUniqueInput[]
   }
 
+  export type RetornoDemandaJudicialUncheckedCreateNestedOneWithoutAtendimentoInput = {
+    create?: XOR<RetornoDemandaJudicialCreateWithoutAtendimentoInput, RetornoDemandaJudicialUncheckedCreateWithoutAtendimentoInput>
+    connectOrCreate?: RetornoDemandaJudicialCreateOrConnectWithoutAtendimentoInput
+    connect?: RetornoDemandaJudicialWhereUniqueInput
+  }
+
+  export type OrientacaoJuridicaUncheckedCreateNestedOneWithoutAtendimentoInput = {
+    create?: XOR<OrientacaoJuridicaCreateWithoutAtendimentoInput, OrientacaoJuridicaUncheckedCreateWithoutAtendimentoInput>
+    connectOrCreate?: OrientacaoJuridicaCreateOrConnectWithoutAtendimentoInput
+    connect?: OrientacaoJuridicaWhereUniqueInput
+  }
+
+  export type EncaminhamentoOutrosOrgaosUncheckedCreateNestedOneWithoutAtendimentoInput = {
+    create?: XOR<EncaminhamentoOutrosOrgaosCreateWithoutAtendimentoInput, EncaminhamentoOutrosOrgaosUncheckedCreateWithoutAtendimentoInput>
+    connectOrCreate?: EncaminhamentoOutrosOrgaosCreateOrConnectWithoutAtendimentoInput
+    connect?: EncaminhamentoOutrosOrgaosWhereUniqueInput
+  }
+
   export type NullableFloatFieldUpdateOperationsInput = {
     set?: number | null
     increment?: number
@@ -26284,10 +35913,12 @@ export namespace Prisma {
     update?: XOR<XOR<EstadoCivilUpdateToOneWithWhereWithoutAtendimentosInput, EstadoCivilUpdateWithoutAtendimentosInput>, EstadoCivilUncheckedUpdateWithoutAtendimentosInput>
   }
 
-  export type ProfissaoUpdateOneRequiredWithoutAtendimentosNestedInput = {
+  export type ProfissaoUpdateOneWithoutAtendimentosNestedInput = {
     create?: XOR<ProfissaoCreateWithoutAtendimentosInput, ProfissaoUncheckedCreateWithoutAtendimentosInput>
     connectOrCreate?: ProfissaoCreateOrConnectWithoutAtendimentosInput
     upsert?: ProfissaoUpsertWithoutAtendimentosInput
+    disconnect?: ProfissaoWhereInput | boolean
+    delete?: ProfissaoWhereInput | boolean
     connect?: ProfissaoWhereUniqueInput
     update?: XOR<XOR<ProfissaoUpdateToOneWithWhereWithoutAtendimentosInput, ProfissaoUpdateWithoutAtendimentosInput>, ProfissaoUncheckedUpdateWithoutAtendimentosInput>
   }
@@ -26386,6 +36017,36 @@ export namespace Prisma {
     deleteMany?: DocumentoScalarWhereInput | DocumentoScalarWhereInput[]
   }
 
+  export type RetornoDemandaJudicialUpdateOneWithoutAtendimentoNestedInput = {
+    create?: XOR<RetornoDemandaJudicialCreateWithoutAtendimentoInput, RetornoDemandaJudicialUncheckedCreateWithoutAtendimentoInput>
+    connectOrCreate?: RetornoDemandaJudicialCreateOrConnectWithoutAtendimentoInput
+    upsert?: RetornoDemandaJudicialUpsertWithoutAtendimentoInput
+    disconnect?: RetornoDemandaJudicialWhereInput | boolean
+    delete?: RetornoDemandaJudicialWhereInput | boolean
+    connect?: RetornoDemandaJudicialWhereUniqueInput
+    update?: XOR<XOR<RetornoDemandaJudicialUpdateToOneWithWhereWithoutAtendimentoInput, RetornoDemandaJudicialUpdateWithoutAtendimentoInput>, RetornoDemandaJudicialUncheckedUpdateWithoutAtendimentoInput>
+  }
+
+  export type OrientacaoJuridicaUpdateOneWithoutAtendimentoNestedInput = {
+    create?: XOR<OrientacaoJuridicaCreateWithoutAtendimentoInput, OrientacaoJuridicaUncheckedCreateWithoutAtendimentoInput>
+    connectOrCreate?: OrientacaoJuridicaCreateOrConnectWithoutAtendimentoInput
+    upsert?: OrientacaoJuridicaUpsertWithoutAtendimentoInput
+    disconnect?: OrientacaoJuridicaWhereInput | boolean
+    delete?: OrientacaoJuridicaWhereInput | boolean
+    connect?: OrientacaoJuridicaWhereUniqueInput
+    update?: XOR<XOR<OrientacaoJuridicaUpdateToOneWithWhereWithoutAtendimentoInput, OrientacaoJuridicaUpdateWithoutAtendimentoInput>, OrientacaoJuridicaUncheckedUpdateWithoutAtendimentoInput>
+  }
+
+  export type EncaminhamentoOutrosOrgaosUpdateOneWithoutAtendimentoNestedInput = {
+    create?: XOR<EncaminhamentoOutrosOrgaosCreateWithoutAtendimentoInput, EncaminhamentoOutrosOrgaosUncheckedCreateWithoutAtendimentoInput>
+    connectOrCreate?: EncaminhamentoOutrosOrgaosCreateOrConnectWithoutAtendimentoInput
+    upsert?: EncaminhamentoOutrosOrgaosUpsertWithoutAtendimentoInput
+    disconnect?: EncaminhamentoOutrosOrgaosWhereInput | boolean
+    delete?: EncaminhamentoOutrosOrgaosWhereInput | boolean
+    connect?: EncaminhamentoOutrosOrgaosWhereUniqueInput
+    update?: XOR<XOR<EncaminhamentoOutrosOrgaosUpdateToOneWithWhereWithoutAtendimentoInput, EncaminhamentoOutrosOrgaosUpdateWithoutAtendimentoInput>, EncaminhamentoOutrosOrgaosUncheckedUpdateWithoutAtendimentoInput>
+  }
+
   export type MembroFamiliarUncheckedUpdateManyWithoutAtendimentoNestedInput = {
     create?: XOR<MembroFamiliarCreateWithoutAtendimentoInput, MembroFamiliarUncheckedCreateWithoutAtendimentoInput> | MembroFamiliarCreateWithoutAtendimentoInput[] | MembroFamiliarUncheckedCreateWithoutAtendimentoInput[]
     connectOrCreate?: MembroFamiliarCreateOrConnectWithoutAtendimentoInput | MembroFamiliarCreateOrConnectWithoutAtendimentoInput[]
@@ -26436,6 +36097,36 @@ export namespace Prisma {
     update?: DocumentoUpdateWithWhereUniqueWithoutAtendimentoInput | DocumentoUpdateWithWhereUniqueWithoutAtendimentoInput[]
     updateMany?: DocumentoUpdateManyWithWhereWithoutAtendimentoInput | DocumentoUpdateManyWithWhereWithoutAtendimentoInput[]
     deleteMany?: DocumentoScalarWhereInput | DocumentoScalarWhereInput[]
+  }
+
+  export type RetornoDemandaJudicialUncheckedUpdateOneWithoutAtendimentoNestedInput = {
+    create?: XOR<RetornoDemandaJudicialCreateWithoutAtendimentoInput, RetornoDemandaJudicialUncheckedCreateWithoutAtendimentoInput>
+    connectOrCreate?: RetornoDemandaJudicialCreateOrConnectWithoutAtendimentoInput
+    upsert?: RetornoDemandaJudicialUpsertWithoutAtendimentoInput
+    disconnect?: RetornoDemandaJudicialWhereInput | boolean
+    delete?: RetornoDemandaJudicialWhereInput | boolean
+    connect?: RetornoDemandaJudicialWhereUniqueInput
+    update?: XOR<XOR<RetornoDemandaJudicialUpdateToOneWithWhereWithoutAtendimentoInput, RetornoDemandaJudicialUpdateWithoutAtendimentoInput>, RetornoDemandaJudicialUncheckedUpdateWithoutAtendimentoInput>
+  }
+
+  export type OrientacaoJuridicaUncheckedUpdateOneWithoutAtendimentoNestedInput = {
+    create?: XOR<OrientacaoJuridicaCreateWithoutAtendimentoInput, OrientacaoJuridicaUncheckedCreateWithoutAtendimentoInput>
+    connectOrCreate?: OrientacaoJuridicaCreateOrConnectWithoutAtendimentoInput
+    upsert?: OrientacaoJuridicaUpsertWithoutAtendimentoInput
+    disconnect?: OrientacaoJuridicaWhereInput | boolean
+    delete?: OrientacaoJuridicaWhereInput | boolean
+    connect?: OrientacaoJuridicaWhereUniqueInput
+    update?: XOR<XOR<OrientacaoJuridicaUpdateToOneWithWhereWithoutAtendimentoInput, OrientacaoJuridicaUpdateWithoutAtendimentoInput>, OrientacaoJuridicaUncheckedUpdateWithoutAtendimentoInput>
+  }
+
+  export type EncaminhamentoOutrosOrgaosUncheckedUpdateOneWithoutAtendimentoNestedInput = {
+    create?: XOR<EncaminhamentoOutrosOrgaosCreateWithoutAtendimentoInput, EncaminhamentoOutrosOrgaosUncheckedCreateWithoutAtendimentoInput>
+    connectOrCreate?: EncaminhamentoOutrosOrgaosCreateOrConnectWithoutAtendimentoInput
+    upsert?: EncaminhamentoOutrosOrgaosUpsertWithoutAtendimentoInput
+    disconnect?: EncaminhamentoOutrosOrgaosWhereInput | boolean
+    delete?: EncaminhamentoOutrosOrgaosWhereInput | boolean
+    connect?: EncaminhamentoOutrosOrgaosWhereUniqueInput
+    update?: XOR<XOR<EncaminhamentoOutrosOrgaosUpdateToOneWithWhereWithoutAtendimentoInput, EncaminhamentoOutrosOrgaosUpdateWithoutAtendimentoInput>, EncaminhamentoOutrosOrgaosUncheckedUpdateWithoutAtendimentoInput>
   }
 
   export type AtendimentoCreateNestedOneWithoutProcessoInput = {
@@ -26500,6 +36191,96 @@ export namespace Prisma {
     upsert?: UserUpsertWithoutDocumentosUploadOperadorInput
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutDocumentosUploadOperadorInput, UserUpdateWithoutDocumentosUploadOperadorInput>, UserUncheckedUpdateWithoutDocumentosUploadOperadorInput>
+  }
+
+  export type AtendimentoCreateNestedOneWithoutRetornoDemandaJudicialInput = {
+    create?: XOR<AtendimentoCreateWithoutRetornoDemandaJudicialInput, AtendimentoUncheckedCreateWithoutRetornoDemandaJudicialInput>
+    connectOrCreate?: AtendimentoCreateOrConnectWithoutRetornoDemandaJudicialInput
+    connect?: AtendimentoWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutRetornosDemandaJudicialInput = {
+    create?: XOR<UserCreateWithoutRetornosDemandaJudicialInput, UserUncheckedCreateWithoutRetornosDemandaJudicialInput>
+    connectOrCreate?: UserCreateOrConnectWithoutRetornosDemandaJudicialInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type AtendimentoUpdateOneRequiredWithoutRetornoDemandaJudicialNestedInput = {
+    create?: XOR<AtendimentoCreateWithoutRetornoDemandaJudicialInput, AtendimentoUncheckedCreateWithoutRetornoDemandaJudicialInput>
+    connectOrCreate?: AtendimentoCreateOrConnectWithoutRetornoDemandaJudicialInput
+    upsert?: AtendimentoUpsertWithoutRetornoDemandaJudicialInput
+    connect?: AtendimentoWhereUniqueInput
+    update?: XOR<XOR<AtendimentoUpdateToOneWithWhereWithoutRetornoDemandaJudicialInput, AtendimentoUpdateWithoutRetornoDemandaJudicialInput>, AtendimentoUncheckedUpdateWithoutRetornoDemandaJudicialInput>
+  }
+
+  export type UserUpdateOneWithoutRetornosDemandaJudicialNestedInput = {
+    create?: XOR<UserCreateWithoutRetornosDemandaJudicialInput, UserUncheckedCreateWithoutRetornosDemandaJudicialInput>
+    connectOrCreate?: UserCreateOrConnectWithoutRetornosDemandaJudicialInput
+    upsert?: UserUpsertWithoutRetornosDemandaJudicialInput
+    disconnect?: UserWhereInput | boolean
+    delete?: UserWhereInput | boolean
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutRetornosDemandaJudicialInput, UserUpdateWithoutRetornosDemandaJudicialInput>, UserUncheckedUpdateWithoutRetornosDemandaJudicialInput>
+  }
+
+  export type AtendimentoCreateNestedOneWithoutOrientacaoJuridicaInput = {
+    create?: XOR<AtendimentoCreateWithoutOrientacaoJuridicaInput, AtendimentoUncheckedCreateWithoutOrientacaoJuridicaInput>
+    connectOrCreate?: AtendimentoCreateOrConnectWithoutOrientacaoJuridicaInput
+    connect?: AtendimentoWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutOrientacoesJuridicasInput = {
+    create?: XOR<UserCreateWithoutOrientacoesJuridicasInput, UserUncheckedCreateWithoutOrientacoesJuridicasInput>
+    connectOrCreate?: UserCreateOrConnectWithoutOrientacoesJuridicasInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type AtendimentoUpdateOneRequiredWithoutOrientacaoJuridicaNestedInput = {
+    create?: XOR<AtendimentoCreateWithoutOrientacaoJuridicaInput, AtendimentoUncheckedCreateWithoutOrientacaoJuridicaInput>
+    connectOrCreate?: AtendimentoCreateOrConnectWithoutOrientacaoJuridicaInput
+    upsert?: AtendimentoUpsertWithoutOrientacaoJuridicaInput
+    connect?: AtendimentoWhereUniqueInput
+    update?: XOR<XOR<AtendimentoUpdateToOneWithWhereWithoutOrientacaoJuridicaInput, AtendimentoUpdateWithoutOrientacaoJuridicaInput>, AtendimentoUncheckedUpdateWithoutOrientacaoJuridicaInput>
+  }
+
+  export type UserUpdateOneWithoutOrientacoesJuridicasNestedInput = {
+    create?: XOR<UserCreateWithoutOrientacoesJuridicasInput, UserUncheckedCreateWithoutOrientacoesJuridicasInput>
+    connectOrCreate?: UserCreateOrConnectWithoutOrientacoesJuridicasInput
+    upsert?: UserUpsertWithoutOrientacoesJuridicasInput
+    disconnect?: UserWhereInput | boolean
+    delete?: UserWhereInput | boolean
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutOrientacoesJuridicasInput, UserUpdateWithoutOrientacoesJuridicasInput>, UserUncheckedUpdateWithoutOrientacoesJuridicasInput>
+  }
+
+  export type AtendimentoCreateNestedOneWithoutEncaminhamentoOutrosOrgaosInput = {
+    create?: XOR<AtendimentoCreateWithoutEncaminhamentoOutrosOrgaosInput, AtendimentoUncheckedCreateWithoutEncaminhamentoOutrosOrgaosInput>
+    connectOrCreate?: AtendimentoCreateOrConnectWithoutEncaminhamentoOutrosOrgaosInput
+    connect?: AtendimentoWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutEncaminhamentosOutrosOrgaosInput = {
+    create?: XOR<UserCreateWithoutEncaminhamentosOutrosOrgaosInput, UserUncheckedCreateWithoutEncaminhamentosOutrosOrgaosInput>
+    connectOrCreate?: UserCreateOrConnectWithoutEncaminhamentosOutrosOrgaosInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type AtendimentoUpdateOneRequiredWithoutEncaminhamentoOutrosOrgaosNestedInput = {
+    create?: XOR<AtendimentoCreateWithoutEncaminhamentoOutrosOrgaosInput, AtendimentoUncheckedCreateWithoutEncaminhamentoOutrosOrgaosInput>
+    connectOrCreate?: AtendimentoCreateOrConnectWithoutEncaminhamentoOutrosOrgaosInput
+    upsert?: AtendimentoUpsertWithoutEncaminhamentoOutrosOrgaosInput
+    connect?: AtendimentoWhereUniqueInput
+    update?: XOR<XOR<AtendimentoUpdateToOneWithWhereWithoutEncaminhamentoOutrosOrgaosInput, AtendimentoUpdateWithoutEncaminhamentoOutrosOrgaosInput>, AtendimentoUncheckedUpdateWithoutEncaminhamentoOutrosOrgaosInput>
+  }
+
+  export type UserUpdateOneWithoutEncaminhamentosOutrosOrgaosNestedInput = {
+    create?: XOR<UserCreateWithoutEncaminhamentosOutrosOrgaosInput, UserUncheckedCreateWithoutEncaminhamentosOutrosOrgaosInput>
+    connectOrCreate?: UserCreateOrConnectWithoutEncaminhamentosOutrosOrgaosInput
+    upsert?: UserUpsertWithoutEncaminhamentosOutrosOrgaosInput
+    disconnect?: UserWhereInput | boolean
+    delete?: UserWhereInput | boolean
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutEncaminhamentosOutrosOrgaosInput, UserUpdateWithoutEncaminhamentosOutrosOrgaosInput>, UserUncheckedUpdateWithoutEncaminhamentosOutrosOrgaosInput>
   }
 
   export type AssistidoCreateNestedManyWithoutTipoAtendimentoInput = {
@@ -27100,6 +36881,62 @@ export namespace Prisma {
     deleteMany?: AtendimentoScalarWhereInput | AtendimentoScalarWhereInput[]
   }
 
+  export type OrgaoEncaminhamentoCreateNestedManyWithoutTipoOrgaoEncaminhamentoInput = {
+    create?: XOR<OrgaoEncaminhamentoCreateWithoutTipoOrgaoEncaminhamentoInput, OrgaoEncaminhamentoUncheckedCreateWithoutTipoOrgaoEncaminhamentoInput> | OrgaoEncaminhamentoCreateWithoutTipoOrgaoEncaminhamentoInput[] | OrgaoEncaminhamentoUncheckedCreateWithoutTipoOrgaoEncaminhamentoInput[]
+    connectOrCreate?: OrgaoEncaminhamentoCreateOrConnectWithoutTipoOrgaoEncaminhamentoInput | OrgaoEncaminhamentoCreateOrConnectWithoutTipoOrgaoEncaminhamentoInput[]
+    createMany?: OrgaoEncaminhamentoCreateManyTipoOrgaoEncaminhamentoInputEnvelope
+    connect?: OrgaoEncaminhamentoWhereUniqueInput | OrgaoEncaminhamentoWhereUniqueInput[]
+  }
+
+  export type OrgaoEncaminhamentoUncheckedCreateNestedManyWithoutTipoOrgaoEncaminhamentoInput = {
+    create?: XOR<OrgaoEncaminhamentoCreateWithoutTipoOrgaoEncaminhamentoInput, OrgaoEncaminhamentoUncheckedCreateWithoutTipoOrgaoEncaminhamentoInput> | OrgaoEncaminhamentoCreateWithoutTipoOrgaoEncaminhamentoInput[] | OrgaoEncaminhamentoUncheckedCreateWithoutTipoOrgaoEncaminhamentoInput[]
+    connectOrCreate?: OrgaoEncaminhamentoCreateOrConnectWithoutTipoOrgaoEncaminhamentoInput | OrgaoEncaminhamentoCreateOrConnectWithoutTipoOrgaoEncaminhamentoInput[]
+    createMany?: OrgaoEncaminhamentoCreateManyTipoOrgaoEncaminhamentoInputEnvelope
+    connect?: OrgaoEncaminhamentoWhereUniqueInput | OrgaoEncaminhamentoWhereUniqueInput[]
+  }
+
+  export type OrgaoEncaminhamentoUpdateManyWithoutTipoOrgaoEncaminhamentoNestedInput = {
+    create?: XOR<OrgaoEncaminhamentoCreateWithoutTipoOrgaoEncaminhamentoInput, OrgaoEncaminhamentoUncheckedCreateWithoutTipoOrgaoEncaminhamentoInput> | OrgaoEncaminhamentoCreateWithoutTipoOrgaoEncaminhamentoInput[] | OrgaoEncaminhamentoUncheckedCreateWithoutTipoOrgaoEncaminhamentoInput[]
+    connectOrCreate?: OrgaoEncaminhamentoCreateOrConnectWithoutTipoOrgaoEncaminhamentoInput | OrgaoEncaminhamentoCreateOrConnectWithoutTipoOrgaoEncaminhamentoInput[]
+    upsert?: OrgaoEncaminhamentoUpsertWithWhereUniqueWithoutTipoOrgaoEncaminhamentoInput | OrgaoEncaminhamentoUpsertWithWhereUniqueWithoutTipoOrgaoEncaminhamentoInput[]
+    createMany?: OrgaoEncaminhamentoCreateManyTipoOrgaoEncaminhamentoInputEnvelope
+    set?: OrgaoEncaminhamentoWhereUniqueInput | OrgaoEncaminhamentoWhereUniqueInput[]
+    disconnect?: OrgaoEncaminhamentoWhereUniqueInput | OrgaoEncaminhamentoWhereUniqueInput[]
+    delete?: OrgaoEncaminhamentoWhereUniqueInput | OrgaoEncaminhamentoWhereUniqueInput[]
+    connect?: OrgaoEncaminhamentoWhereUniqueInput | OrgaoEncaminhamentoWhereUniqueInput[]
+    update?: OrgaoEncaminhamentoUpdateWithWhereUniqueWithoutTipoOrgaoEncaminhamentoInput | OrgaoEncaminhamentoUpdateWithWhereUniqueWithoutTipoOrgaoEncaminhamentoInput[]
+    updateMany?: OrgaoEncaminhamentoUpdateManyWithWhereWithoutTipoOrgaoEncaminhamentoInput | OrgaoEncaminhamentoUpdateManyWithWhereWithoutTipoOrgaoEncaminhamentoInput[]
+    deleteMany?: OrgaoEncaminhamentoScalarWhereInput | OrgaoEncaminhamentoScalarWhereInput[]
+  }
+
+  export type OrgaoEncaminhamentoUncheckedUpdateManyWithoutTipoOrgaoEncaminhamentoNestedInput = {
+    create?: XOR<OrgaoEncaminhamentoCreateWithoutTipoOrgaoEncaminhamentoInput, OrgaoEncaminhamentoUncheckedCreateWithoutTipoOrgaoEncaminhamentoInput> | OrgaoEncaminhamentoCreateWithoutTipoOrgaoEncaminhamentoInput[] | OrgaoEncaminhamentoUncheckedCreateWithoutTipoOrgaoEncaminhamentoInput[]
+    connectOrCreate?: OrgaoEncaminhamentoCreateOrConnectWithoutTipoOrgaoEncaminhamentoInput | OrgaoEncaminhamentoCreateOrConnectWithoutTipoOrgaoEncaminhamentoInput[]
+    upsert?: OrgaoEncaminhamentoUpsertWithWhereUniqueWithoutTipoOrgaoEncaminhamentoInput | OrgaoEncaminhamentoUpsertWithWhereUniqueWithoutTipoOrgaoEncaminhamentoInput[]
+    createMany?: OrgaoEncaminhamentoCreateManyTipoOrgaoEncaminhamentoInputEnvelope
+    set?: OrgaoEncaminhamentoWhereUniqueInput | OrgaoEncaminhamentoWhereUniqueInput[]
+    disconnect?: OrgaoEncaminhamentoWhereUniqueInput | OrgaoEncaminhamentoWhereUniqueInput[]
+    delete?: OrgaoEncaminhamentoWhereUniqueInput | OrgaoEncaminhamentoWhereUniqueInput[]
+    connect?: OrgaoEncaminhamentoWhereUniqueInput | OrgaoEncaminhamentoWhereUniqueInput[]
+    update?: OrgaoEncaminhamentoUpdateWithWhereUniqueWithoutTipoOrgaoEncaminhamentoInput | OrgaoEncaminhamentoUpdateWithWhereUniqueWithoutTipoOrgaoEncaminhamentoInput[]
+    updateMany?: OrgaoEncaminhamentoUpdateManyWithWhereWithoutTipoOrgaoEncaminhamentoInput | OrgaoEncaminhamentoUpdateManyWithWhereWithoutTipoOrgaoEncaminhamentoInput[]
+    deleteMany?: OrgaoEncaminhamentoScalarWhereInput | OrgaoEncaminhamentoScalarWhereInput[]
+  }
+
+  export type TipoOrgaoEncaminhamentoCreateNestedOneWithoutOrgaoEncaminhamentoInput = {
+    create?: XOR<TipoOrgaoEncaminhamentoCreateWithoutOrgaoEncaminhamentoInput, TipoOrgaoEncaminhamentoUncheckedCreateWithoutOrgaoEncaminhamentoInput>
+    connectOrCreate?: TipoOrgaoEncaminhamentoCreateOrConnectWithoutOrgaoEncaminhamentoInput
+    connect?: TipoOrgaoEncaminhamentoWhereUniqueInput
+  }
+
+  export type TipoOrgaoEncaminhamentoUpdateOneRequiredWithoutOrgaoEncaminhamentoNestedInput = {
+    create?: XOR<TipoOrgaoEncaminhamentoCreateWithoutOrgaoEncaminhamentoInput, TipoOrgaoEncaminhamentoUncheckedCreateWithoutOrgaoEncaminhamentoInput>
+    connectOrCreate?: TipoOrgaoEncaminhamentoCreateOrConnectWithoutOrgaoEncaminhamentoInput
+    upsert?: TipoOrgaoEncaminhamentoUpsertWithoutOrgaoEncaminhamentoInput
+    connect?: TipoOrgaoEncaminhamentoWhereUniqueInput
+    update?: XOR<XOR<TipoOrgaoEncaminhamentoUpdateToOneWithWhereWithoutOrgaoEncaminhamentoInput, TipoOrgaoEncaminhamentoUpdateWithoutOrgaoEncaminhamentoInput>, TipoOrgaoEncaminhamentoUncheckedUpdateWithoutOrgaoEncaminhamentoInput>
+  }
+
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -27456,7 +37293,7 @@ export namespace Prisma {
     valorCausa?: number | null
     processosAndamento: $Enums.ProcessosAndamento
     estadoCivil: EstadoCivilCreateNestedOneWithoutAtendimentosInput
-    profissao: ProfissaoCreateNestedOneWithoutAtendimentosInput
+    profissao?: ProfissaoCreateNestedOneWithoutAtendimentosInput
     tipoDomicilio: TipoDomicilioCreateNestedOneWithoutAtendimentosInput
     tipoDemandaPrevidenciaria: TipoDemandaPrevidenciariaCreateNestedOneWithoutAtendimentosInput
     competenciaJudicial: CompetenciaJudicialCreateNestedOneWithoutAtendimentosInput
@@ -27465,6 +37302,9 @@ export namespace Prisma {
     processo?: ProcessoCreateNestedOneWithoutAtendimentoInput
     formularios?: FormularioPreenchidoCreateNestedManyWithoutAtendimentoInput
     documentos?: DocumentoCreateNestedManyWithoutAtendimentoInput
+    retornoDemandaJudicial?: RetornoDemandaJudicialCreateNestedOneWithoutAtendimentoInput
+    orientacaoJuridica?: OrientacaoJuridicaCreateNestedOneWithoutAtendimentoInput
+    encaminhamentoOutrosOrgaos?: EncaminhamentoOutrosOrgaosCreateNestedOneWithoutAtendimentoInput
   }
 
   export type AtendimentoUncheckedCreateWithoutOperadorInput = {
@@ -27482,7 +37322,7 @@ export namespace Prisma {
     valorCausa?: number | null
     processosAndamento: $Enums.ProcessosAndamento
     estadoCivilId: number
-    profissaoId: string
+    profissaoId?: string | null
     tipoDomicilioId: number
     tipoDemandaPrevidenciariaId: number
     competenciaJudicialId: number
@@ -27491,6 +37331,9 @@ export namespace Prisma {
     processo?: ProcessoUncheckedCreateNestedOneWithoutAtendimentoInput
     formularios?: FormularioPreenchidoUncheckedCreateNestedManyWithoutAtendimentoInput
     documentos?: DocumentoUncheckedCreateNestedManyWithoutAtendimentoInput
+    retornoDemandaJudicial?: RetornoDemandaJudicialUncheckedCreateNestedOneWithoutAtendimentoInput
+    orientacaoJuridica?: OrientacaoJuridicaUncheckedCreateNestedOneWithoutAtendimentoInput
+    encaminhamentoOutrosOrgaos?: EncaminhamentoOutrosOrgaosUncheckedCreateNestedOneWithoutAtendimentoInput
   }
 
   export type AtendimentoCreateOrConnectWithoutOperadorInput = {
@@ -27629,6 +37472,84 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type RetornoDemandaJudicialCreateWithoutOperadorInput = {
+    id?: string
+    pajAssistido: string
+    retornoRealizado: string
+    dataCriacao?: Date | string
+    atendimento: AtendimentoCreateNestedOneWithoutRetornoDemandaJudicialInput
+  }
+
+  export type RetornoDemandaJudicialUncheckedCreateWithoutOperadorInput = {
+    id?: string
+    pajAssistido: string
+    retornoRealizado: string
+    dataCriacao?: Date | string
+    atendimentoId: string
+  }
+
+  export type RetornoDemandaJudicialCreateOrConnectWithoutOperadorInput = {
+    where: RetornoDemandaJudicialWhereUniqueInput
+    create: XOR<RetornoDemandaJudicialCreateWithoutOperadorInput, RetornoDemandaJudicialUncheckedCreateWithoutOperadorInput>
+  }
+
+  export type RetornoDemandaJudicialCreateManyOperadorInputEnvelope = {
+    data: RetornoDemandaJudicialCreateManyOperadorInput | RetornoDemandaJudicialCreateManyOperadorInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type OrientacaoJuridicaCreateWithoutOperadorInput = {
+    id?: string
+    orientacaoRealizada: string
+    dataCriacao?: Date | string
+    atendimento: AtendimentoCreateNestedOneWithoutOrientacaoJuridicaInput
+  }
+
+  export type OrientacaoJuridicaUncheckedCreateWithoutOperadorInput = {
+    id?: string
+    orientacaoRealizada: string
+    dataCriacao?: Date | string
+    atendimentoId: string
+  }
+
+  export type OrientacaoJuridicaCreateOrConnectWithoutOperadorInput = {
+    where: OrientacaoJuridicaWhereUniqueInput
+    create: XOR<OrientacaoJuridicaCreateWithoutOperadorInput, OrientacaoJuridicaUncheckedCreateWithoutOperadorInput>
+  }
+
+  export type OrientacaoJuridicaCreateManyOperadorInputEnvelope = {
+    data: OrientacaoJuridicaCreateManyOperadorInput | OrientacaoJuridicaCreateManyOperadorInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type EncaminhamentoOutrosOrgaosCreateWithoutOperadorInput = {
+    id?: string
+    orgaoDestino: string
+    motivoEncaminhamento: string
+    observacoes?: string | null
+    dataCriacao?: Date | string
+    atendimento: AtendimentoCreateNestedOneWithoutEncaminhamentoOutrosOrgaosInput
+  }
+
+  export type EncaminhamentoOutrosOrgaosUncheckedCreateWithoutOperadorInput = {
+    id?: string
+    orgaoDestino: string
+    motivoEncaminhamento: string
+    observacoes?: string | null
+    dataCriacao?: Date | string
+    atendimentoId: string
+  }
+
+  export type EncaminhamentoOutrosOrgaosCreateOrConnectWithoutOperadorInput = {
+    where: EncaminhamentoOutrosOrgaosWhereUniqueInput
+    create: XOR<EncaminhamentoOutrosOrgaosCreateWithoutOperadorInput, EncaminhamentoOutrosOrgaosUncheckedCreateWithoutOperadorInput>
+  }
+
+  export type EncaminhamentoOutrosOrgaosCreateManyOperadorInputEnvelope = {
+    data: EncaminhamentoOutrosOrgaosCreateManyOperadorInput | EncaminhamentoOutrosOrgaosCreateManyOperadorInput[]
+    skipDuplicates?: boolean
+  }
+
   export type AtendimentoUpsertWithWhereUniqueWithoutOperadorInput = {
     where: AtendimentoWhereUniqueInput
     update: XOR<AtendimentoUpdateWithoutOperadorInput, AtendimentoUncheckedUpdateWithoutOperadorInput>
@@ -27663,7 +37584,7 @@ export namespace Prisma {
     valorCausa?: FloatNullableFilter<"Atendimento"> | number | null
     processosAndamento?: EnumProcessosAndamentoFilter<"Atendimento"> | $Enums.ProcessosAndamento
     estadoCivilId?: IntFilter<"Atendimento"> | number
-    profissaoId?: StringFilter<"Atendimento"> | string
+    profissaoId?: StringNullableFilter<"Atendimento"> | string | null
     tipoDomicilioId?: IntFilter<"Atendimento"> | number
     tipoDemandaPrevidenciariaId?: IntFilter<"Atendimento"> | number
     competenciaJudicialId?: IntFilter<"Atendimento"> | number
@@ -27756,6 +37677,90 @@ export namespace Prisma {
     operadorUploadId?: StringFilter<"Documento"> | string
   }
 
+  export type RetornoDemandaJudicialUpsertWithWhereUniqueWithoutOperadorInput = {
+    where: RetornoDemandaJudicialWhereUniqueInput
+    update: XOR<RetornoDemandaJudicialUpdateWithoutOperadorInput, RetornoDemandaJudicialUncheckedUpdateWithoutOperadorInput>
+    create: XOR<RetornoDemandaJudicialCreateWithoutOperadorInput, RetornoDemandaJudicialUncheckedCreateWithoutOperadorInput>
+  }
+
+  export type RetornoDemandaJudicialUpdateWithWhereUniqueWithoutOperadorInput = {
+    where: RetornoDemandaJudicialWhereUniqueInput
+    data: XOR<RetornoDemandaJudicialUpdateWithoutOperadorInput, RetornoDemandaJudicialUncheckedUpdateWithoutOperadorInput>
+  }
+
+  export type RetornoDemandaJudicialUpdateManyWithWhereWithoutOperadorInput = {
+    where: RetornoDemandaJudicialScalarWhereInput
+    data: XOR<RetornoDemandaJudicialUpdateManyMutationInput, RetornoDemandaJudicialUncheckedUpdateManyWithoutOperadorInput>
+  }
+
+  export type RetornoDemandaJudicialScalarWhereInput = {
+    AND?: RetornoDemandaJudicialScalarWhereInput | RetornoDemandaJudicialScalarWhereInput[]
+    OR?: RetornoDemandaJudicialScalarWhereInput[]
+    NOT?: RetornoDemandaJudicialScalarWhereInput | RetornoDemandaJudicialScalarWhereInput[]
+    id?: StringFilter<"RetornoDemandaJudicial"> | string
+    pajAssistido?: StringFilter<"RetornoDemandaJudicial"> | string
+    retornoRealizado?: StringFilter<"RetornoDemandaJudicial"> | string
+    dataCriacao?: DateTimeFilter<"RetornoDemandaJudicial"> | Date | string
+    atendimentoId?: StringFilter<"RetornoDemandaJudicial"> | string
+    operadorId?: StringNullableFilter<"RetornoDemandaJudicial"> | string | null
+  }
+
+  export type OrientacaoJuridicaUpsertWithWhereUniqueWithoutOperadorInput = {
+    where: OrientacaoJuridicaWhereUniqueInput
+    update: XOR<OrientacaoJuridicaUpdateWithoutOperadorInput, OrientacaoJuridicaUncheckedUpdateWithoutOperadorInput>
+    create: XOR<OrientacaoJuridicaCreateWithoutOperadorInput, OrientacaoJuridicaUncheckedCreateWithoutOperadorInput>
+  }
+
+  export type OrientacaoJuridicaUpdateWithWhereUniqueWithoutOperadorInput = {
+    where: OrientacaoJuridicaWhereUniqueInput
+    data: XOR<OrientacaoJuridicaUpdateWithoutOperadorInput, OrientacaoJuridicaUncheckedUpdateWithoutOperadorInput>
+  }
+
+  export type OrientacaoJuridicaUpdateManyWithWhereWithoutOperadorInput = {
+    where: OrientacaoJuridicaScalarWhereInput
+    data: XOR<OrientacaoJuridicaUpdateManyMutationInput, OrientacaoJuridicaUncheckedUpdateManyWithoutOperadorInput>
+  }
+
+  export type OrientacaoJuridicaScalarWhereInput = {
+    AND?: OrientacaoJuridicaScalarWhereInput | OrientacaoJuridicaScalarWhereInput[]
+    OR?: OrientacaoJuridicaScalarWhereInput[]
+    NOT?: OrientacaoJuridicaScalarWhereInput | OrientacaoJuridicaScalarWhereInput[]
+    id?: StringFilter<"OrientacaoJuridica"> | string
+    orientacaoRealizada?: StringFilter<"OrientacaoJuridica"> | string
+    dataCriacao?: DateTimeFilter<"OrientacaoJuridica"> | Date | string
+    atendimentoId?: StringFilter<"OrientacaoJuridica"> | string
+    operadorId?: StringNullableFilter<"OrientacaoJuridica"> | string | null
+  }
+
+  export type EncaminhamentoOutrosOrgaosUpsertWithWhereUniqueWithoutOperadorInput = {
+    where: EncaminhamentoOutrosOrgaosWhereUniqueInput
+    update: XOR<EncaminhamentoOutrosOrgaosUpdateWithoutOperadorInput, EncaminhamentoOutrosOrgaosUncheckedUpdateWithoutOperadorInput>
+    create: XOR<EncaminhamentoOutrosOrgaosCreateWithoutOperadorInput, EncaminhamentoOutrosOrgaosUncheckedCreateWithoutOperadorInput>
+  }
+
+  export type EncaminhamentoOutrosOrgaosUpdateWithWhereUniqueWithoutOperadorInput = {
+    where: EncaminhamentoOutrosOrgaosWhereUniqueInput
+    data: XOR<EncaminhamentoOutrosOrgaosUpdateWithoutOperadorInput, EncaminhamentoOutrosOrgaosUncheckedUpdateWithoutOperadorInput>
+  }
+
+  export type EncaminhamentoOutrosOrgaosUpdateManyWithWhereWithoutOperadorInput = {
+    where: EncaminhamentoOutrosOrgaosScalarWhereInput
+    data: XOR<EncaminhamentoOutrosOrgaosUpdateManyMutationInput, EncaminhamentoOutrosOrgaosUncheckedUpdateManyWithoutOperadorInput>
+  }
+
+  export type EncaminhamentoOutrosOrgaosScalarWhereInput = {
+    AND?: EncaminhamentoOutrosOrgaosScalarWhereInput | EncaminhamentoOutrosOrgaosScalarWhereInput[]
+    OR?: EncaminhamentoOutrosOrgaosScalarWhereInput[]
+    NOT?: EncaminhamentoOutrosOrgaosScalarWhereInput | EncaminhamentoOutrosOrgaosScalarWhereInput[]
+    id?: StringFilter<"EncaminhamentoOutrosOrgaos"> | string
+    orgaoDestino?: StringFilter<"EncaminhamentoOutrosOrgaos"> | string
+    motivoEncaminhamento?: StringFilter<"EncaminhamentoOutrosOrgaos"> | string
+    observacoes?: StringNullableFilter<"EncaminhamentoOutrosOrgaos"> | string | null
+    dataCriacao?: DateTimeFilter<"EncaminhamentoOutrosOrgaos"> | Date | string
+    atendimentoId?: StringFilter<"EncaminhamentoOutrosOrgaos"> | string
+    operadorId?: StringNullableFilter<"EncaminhamentoOutrosOrgaos"> | string | null
+  }
+
   export type UserCreateWithoutAtendimentosTriagemInput = {
     id?: string
     email: string
@@ -27767,6 +37772,9 @@ export namespace Prisma {
     atendimentosRealizados?: AtendimentoCreateNestedManyWithoutOperadorInput
     atendimentosEmAndamento?: FilaAtendimentoCreateNestedManyWithoutOperadorAtendimentoInput
     documentosUploadOperador?: DocumentoCreateNestedManyWithoutOperadorUploadInput
+    retornosDemandaJudicial?: RetornoDemandaJudicialCreateNestedManyWithoutOperadorInput
+    orientacoesJuridicas?: OrientacaoJuridicaCreateNestedManyWithoutOperadorInput
+    encaminhamentosOutrosOrgaos?: EncaminhamentoOutrosOrgaosCreateNestedManyWithoutOperadorInput
   }
 
   export type UserUncheckedCreateWithoutAtendimentosTriagemInput = {
@@ -27780,6 +37788,9 @@ export namespace Prisma {
     atendimentosRealizados?: AtendimentoUncheckedCreateNestedManyWithoutOperadorInput
     atendimentosEmAndamento?: FilaAtendimentoUncheckedCreateNestedManyWithoutOperadorAtendimentoInput
     documentosUploadOperador?: DocumentoUncheckedCreateNestedManyWithoutOperadorUploadInput
+    retornosDemandaJudicial?: RetornoDemandaJudicialUncheckedCreateNestedManyWithoutOperadorInput
+    orientacoesJuridicas?: OrientacaoJuridicaUncheckedCreateNestedManyWithoutOperadorInput
+    encaminhamentosOutrosOrgaos?: EncaminhamentoOutrosOrgaosUncheckedCreateNestedManyWithoutOperadorInput
   }
 
   export type UserCreateOrConnectWithoutAtendimentosTriagemInput = {
@@ -27798,6 +37809,9 @@ export namespace Prisma {
     atendimentosRealizados?: AtendimentoCreateNestedManyWithoutOperadorInput
     atendimentosTriagem?: FilaAtendimentoCreateNestedManyWithoutOperadorTriagemInput
     documentosUploadOperador?: DocumentoCreateNestedManyWithoutOperadorUploadInput
+    retornosDemandaJudicial?: RetornoDemandaJudicialCreateNestedManyWithoutOperadorInput
+    orientacoesJuridicas?: OrientacaoJuridicaCreateNestedManyWithoutOperadorInput
+    encaminhamentosOutrosOrgaos?: EncaminhamentoOutrosOrgaosCreateNestedManyWithoutOperadorInput
   }
 
   export type UserUncheckedCreateWithoutAtendimentosEmAndamentoInput = {
@@ -27811,6 +37825,9 @@ export namespace Prisma {
     atendimentosRealizados?: AtendimentoUncheckedCreateNestedManyWithoutOperadorInput
     atendimentosTriagem?: FilaAtendimentoUncheckedCreateNestedManyWithoutOperadorTriagemInput
     documentosUploadOperador?: DocumentoUncheckedCreateNestedManyWithoutOperadorUploadInput
+    retornosDemandaJudicial?: RetornoDemandaJudicialUncheckedCreateNestedManyWithoutOperadorInput
+    orientacoesJuridicas?: OrientacaoJuridicaUncheckedCreateNestedManyWithoutOperadorInput
+    encaminhamentosOutrosOrgaos?: EncaminhamentoOutrosOrgaosUncheckedCreateNestedManyWithoutOperadorInput
   }
 
   export type UserCreateOrConnectWithoutAtendimentosEmAndamentoInput = {
@@ -27833,7 +37850,7 @@ export namespace Prisma {
     valorCausa?: number | null
     processosAndamento: $Enums.ProcessosAndamento
     estadoCivil: EstadoCivilCreateNestedOneWithoutAtendimentosInput
-    profissao: ProfissaoCreateNestedOneWithoutAtendimentosInput
+    profissao?: ProfissaoCreateNestedOneWithoutAtendimentosInput
     tipoDomicilio: TipoDomicilioCreateNestedOneWithoutAtendimentosInput
     tipoDemandaPrevidenciaria: TipoDemandaPrevidenciariaCreateNestedOneWithoutAtendimentosInput
     competenciaJudicial: CompetenciaJudicialCreateNestedOneWithoutAtendimentosInput
@@ -27842,6 +37859,9 @@ export namespace Prisma {
     processo?: ProcessoCreateNestedOneWithoutAtendimentoInput
     formularios?: FormularioPreenchidoCreateNestedManyWithoutAtendimentoInput
     documentos?: DocumentoCreateNestedManyWithoutAtendimentoInput
+    retornoDemandaJudicial?: RetornoDemandaJudicialCreateNestedOneWithoutAtendimentoInput
+    orientacaoJuridica?: OrientacaoJuridicaCreateNestedOneWithoutAtendimentoInput
+    encaminhamentoOutrosOrgaos?: EncaminhamentoOutrosOrgaosCreateNestedOneWithoutAtendimentoInput
   }
 
   export type AtendimentoUncheckedCreateWithoutFilaInput = {
@@ -27859,7 +37879,7 @@ export namespace Prisma {
     valorCausa?: number | null
     processosAndamento: $Enums.ProcessosAndamento
     estadoCivilId: number
-    profissaoId: string
+    profissaoId?: string | null
     tipoDomicilioId: number
     tipoDemandaPrevidenciariaId: number
     competenciaJudicialId: number
@@ -27868,6 +37888,9 @@ export namespace Prisma {
     processo?: ProcessoUncheckedCreateNestedOneWithoutAtendimentoInput
     formularios?: FormularioPreenchidoUncheckedCreateNestedManyWithoutAtendimentoInput
     documentos?: DocumentoUncheckedCreateNestedManyWithoutAtendimentoInput
+    retornoDemandaJudicial?: RetornoDemandaJudicialUncheckedCreateNestedOneWithoutAtendimentoInput
+    orientacaoJuridica?: OrientacaoJuridicaUncheckedCreateNestedOneWithoutAtendimentoInput
+    encaminhamentoOutrosOrgaos?: EncaminhamentoOutrosOrgaosUncheckedCreateNestedOneWithoutAtendimentoInput
   }
 
   export type AtendimentoCreateOrConnectWithoutFilaInput = {
@@ -27937,6 +37960,9 @@ export namespace Prisma {
     atendimentosRealizados?: AtendimentoUpdateManyWithoutOperadorNestedInput
     atendimentosEmAndamento?: FilaAtendimentoUpdateManyWithoutOperadorAtendimentoNestedInput
     documentosUploadOperador?: DocumentoUpdateManyWithoutOperadorUploadNestedInput
+    retornosDemandaJudicial?: RetornoDemandaJudicialUpdateManyWithoutOperadorNestedInput
+    orientacoesJuridicas?: OrientacaoJuridicaUpdateManyWithoutOperadorNestedInput
+    encaminhamentosOutrosOrgaos?: EncaminhamentoOutrosOrgaosUpdateManyWithoutOperadorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAtendimentosTriagemInput = {
@@ -27950,6 +37976,9 @@ export namespace Prisma {
     atendimentosRealizados?: AtendimentoUncheckedUpdateManyWithoutOperadorNestedInput
     atendimentosEmAndamento?: FilaAtendimentoUncheckedUpdateManyWithoutOperadorAtendimentoNestedInput
     documentosUploadOperador?: DocumentoUncheckedUpdateManyWithoutOperadorUploadNestedInput
+    retornosDemandaJudicial?: RetornoDemandaJudicialUncheckedUpdateManyWithoutOperadorNestedInput
+    orientacoesJuridicas?: OrientacaoJuridicaUncheckedUpdateManyWithoutOperadorNestedInput
+    encaminhamentosOutrosOrgaos?: EncaminhamentoOutrosOrgaosUncheckedUpdateManyWithoutOperadorNestedInput
   }
 
   export type UserUpsertWithoutAtendimentosEmAndamentoInput = {
@@ -27974,6 +38003,9 @@ export namespace Prisma {
     atendimentosRealizados?: AtendimentoUpdateManyWithoutOperadorNestedInput
     atendimentosTriagem?: FilaAtendimentoUpdateManyWithoutOperadorTriagemNestedInput
     documentosUploadOperador?: DocumentoUpdateManyWithoutOperadorUploadNestedInput
+    retornosDemandaJudicial?: RetornoDemandaJudicialUpdateManyWithoutOperadorNestedInput
+    orientacoesJuridicas?: OrientacaoJuridicaUpdateManyWithoutOperadorNestedInput
+    encaminhamentosOutrosOrgaos?: EncaminhamentoOutrosOrgaosUpdateManyWithoutOperadorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAtendimentosEmAndamentoInput = {
@@ -27987,6 +38019,9 @@ export namespace Prisma {
     atendimentosRealizados?: AtendimentoUncheckedUpdateManyWithoutOperadorNestedInput
     atendimentosTriagem?: FilaAtendimentoUncheckedUpdateManyWithoutOperadorTriagemNestedInput
     documentosUploadOperador?: DocumentoUncheckedUpdateManyWithoutOperadorUploadNestedInput
+    retornosDemandaJudicial?: RetornoDemandaJudicialUncheckedUpdateManyWithoutOperadorNestedInput
+    orientacoesJuridicas?: OrientacaoJuridicaUncheckedUpdateManyWithoutOperadorNestedInput
+    encaminhamentosOutrosOrgaos?: EncaminhamentoOutrosOrgaosUncheckedUpdateManyWithoutOperadorNestedInput
   }
 
   export type AtendimentoUpsertWithoutFilaInput = {
@@ -28015,7 +38050,7 @@ export namespace Prisma {
     valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
     estadoCivil?: EstadoCivilUpdateOneRequiredWithoutAtendimentosNestedInput
-    profissao?: ProfissaoUpdateOneRequiredWithoutAtendimentosNestedInput
+    profissao?: ProfissaoUpdateOneWithoutAtendimentosNestedInput
     tipoDomicilio?: TipoDomicilioUpdateOneRequiredWithoutAtendimentosNestedInput
     tipoDemandaPrevidenciaria?: TipoDemandaPrevidenciariaUpdateOneRequiredWithoutAtendimentosNestedInput
     competenciaJudicial?: CompetenciaJudicialUpdateOneRequiredWithoutAtendimentosNestedInput
@@ -28024,6 +38059,9 @@ export namespace Prisma {
     processo?: ProcessoUpdateOneWithoutAtendimentoNestedInput
     formularios?: FormularioPreenchidoUpdateManyWithoutAtendimentoNestedInput
     documentos?: DocumentoUpdateManyWithoutAtendimentoNestedInput
+    retornoDemandaJudicial?: RetornoDemandaJudicialUpdateOneWithoutAtendimentoNestedInput
+    orientacaoJuridica?: OrientacaoJuridicaUpdateOneWithoutAtendimentoNestedInput
+    encaminhamentoOutrosOrgaos?: EncaminhamentoOutrosOrgaosUpdateOneWithoutAtendimentoNestedInput
   }
 
   export type AtendimentoUncheckedUpdateWithoutFilaInput = {
@@ -28041,7 +38079,7 @@ export namespace Prisma {
     valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
     estadoCivilId?: IntFieldUpdateOperationsInput | number
-    profissaoId?: StringFieldUpdateOperationsInput | string
+    profissaoId?: NullableStringFieldUpdateOperationsInput | string | null
     tipoDomicilioId?: IntFieldUpdateOperationsInput | number
     tipoDemandaPrevidenciariaId?: IntFieldUpdateOperationsInput | number
     competenciaJudicialId?: IntFieldUpdateOperationsInput | number
@@ -28050,6 +38088,9 @@ export namespace Prisma {
     processo?: ProcessoUncheckedUpdateOneWithoutAtendimentoNestedInput
     formularios?: FormularioPreenchidoUncheckedUpdateManyWithoutAtendimentoNestedInput
     documentos?: DocumentoUncheckedUpdateManyWithoutAtendimentoNestedInput
+    retornoDemandaJudicial?: RetornoDemandaJudicialUncheckedUpdateOneWithoutAtendimentoNestedInput
+    orientacaoJuridica?: OrientacaoJuridicaUncheckedUpdateOneWithoutAtendimentoNestedInput
+    encaminhamentoOutrosOrgaos?: EncaminhamentoOutrosOrgaosUncheckedUpdateOneWithoutAtendimentoNestedInput
   }
 
   export type TipoPrioridadeUpsertWithoutFilaAtendimentoInput = {
@@ -28186,6 +38227,9 @@ export namespace Prisma {
     atendimentosTriagem?: FilaAtendimentoCreateNestedManyWithoutOperadorTriagemInput
     atendimentosEmAndamento?: FilaAtendimentoCreateNestedManyWithoutOperadorAtendimentoInput
     documentosUploadOperador?: DocumentoCreateNestedManyWithoutOperadorUploadInput
+    retornosDemandaJudicial?: RetornoDemandaJudicialCreateNestedManyWithoutOperadorInput
+    orientacoesJuridicas?: OrientacaoJuridicaCreateNestedManyWithoutOperadorInput
+    encaminhamentosOutrosOrgaos?: EncaminhamentoOutrosOrgaosCreateNestedManyWithoutOperadorInput
   }
 
   export type UserUncheckedCreateWithoutAtendimentosRealizadosInput = {
@@ -28199,6 +38243,9 @@ export namespace Prisma {
     atendimentosTriagem?: FilaAtendimentoUncheckedCreateNestedManyWithoutOperadorTriagemInput
     atendimentosEmAndamento?: FilaAtendimentoUncheckedCreateNestedManyWithoutOperadorAtendimentoInput
     documentosUploadOperador?: DocumentoUncheckedCreateNestedManyWithoutOperadorUploadInput
+    retornosDemandaJudicial?: RetornoDemandaJudicialUncheckedCreateNestedManyWithoutOperadorInput
+    orientacoesJuridicas?: OrientacaoJuridicaUncheckedCreateNestedManyWithoutOperadorInput
+    encaminhamentosOutrosOrgaos?: EncaminhamentoOutrosOrgaosUncheckedCreateNestedManyWithoutOperadorInput
   }
 
   export type UserCreateOrConnectWithoutAtendimentosRealizadosInput = {
@@ -28353,6 +38400,69 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type RetornoDemandaJudicialCreateWithoutAtendimentoInput = {
+    id?: string
+    pajAssistido: string
+    retornoRealizado: string
+    dataCriacao?: Date | string
+    operador?: UserCreateNestedOneWithoutRetornosDemandaJudicialInput
+  }
+
+  export type RetornoDemandaJudicialUncheckedCreateWithoutAtendimentoInput = {
+    id?: string
+    pajAssistido: string
+    retornoRealizado: string
+    dataCriacao?: Date | string
+    operadorId?: string | null
+  }
+
+  export type RetornoDemandaJudicialCreateOrConnectWithoutAtendimentoInput = {
+    where: RetornoDemandaJudicialWhereUniqueInput
+    create: XOR<RetornoDemandaJudicialCreateWithoutAtendimentoInput, RetornoDemandaJudicialUncheckedCreateWithoutAtendimentoInput>
+  }
+
+  export type OrientacaoJuridicaCreateWithoutAtendimentoInput = {
+    id?: string
+    orientacaoRealizada: string
+    dataCriacao?: Date | string
+    operador?: UserCreateNestedOneWithoutOrientacoesJuridicasInput
+  }
+
+  export type OrientacaoJuridicaUncheckedCreateWithoutAtendimentoInput = {
+    id?: string
+    orientacaoRealizada: string
+    dataCriacao?: Date | string
+    operadorId?: string | null
+  }
+
+  export type OrientacaoJuridicaCreateOrConnectWithoutAtendimentoInput = {
+    where: OrientacaoJuridicaWhereUniqueInput
+    create: XOR<OrientacaoJuridicaCreateWithoutAtendimentoInput, OrientacaoJuridicaUncheckedCreateWithoutAtendimentoInput>
+  }
+
+  export type EncaminhamentoOutrosOrgaosCreateWithoutAtendimentoInput = {
+    id?: string
+    orgaoDestino: string
+    motivoEncaminhamento: string
+    observacoes?: string | null
+    dataCriacao?: Date | string
+    operador?: UserCreateNestedOneWithoutEncaminhamentosOutrosOrgaosInput
+  }
+
+  export type EncaminhamentoOutrosOrgaosUncheckedCreateWithoutAtendimentoInput = {
+    id?: string
+    orgaoDestino: string
+    motivoEncaminhamento: string
+    observacoes?: string | null
+    dataCriacao?: Date | string
+    operadorId?: string | null
+  }
+
+  export type EncaminhamentoOutrosOrgaosCreateOrConnectWithoutAtendimentoInput = {
+    where: EncaminhamentoOutrosOrgaosWhereUniqueInput
+    create: XOR<EncaminhamentoOutrosOrgaosCreateWithoutAtendimentoInput, EncaminhamentoOutrosOrgaosUncheckedCreateWithoutAtendimentoInput>
+  }
+
   export type EstadoCivilUpsertWithoutAtendimentosInput = {
     update: XOR<EstadoCivilUpdateWithoutAtendimentosInput, EstadoCivilUncheckedUpdateWithoutAtendimentosInput>
     create: XOR<EstadoCivilCreateWithoutAtendimentosInput, EstadoCivilUncheckedCreateWithoutAtendimentosInput>
@@ -28476,6 +38586,9 @@ export namespace Prisma {
     atendimentosTriagem?: FilaAtendimentoUpdateManyWithoutOperadorTriagemNestedInput
     atendimentosEmAndamento?: FilaAtendimentoUpdateManyWithoutOperadorAtendimentoNestedInput
     documentosUploadOperador?: DocumentoUpdateManyWithoutOperadorUploadNestedInput
+    retornosDemandaJudicial?: RetornoDemandaJudicialUpdateManyWithoutOperadorNestedInput
+    orientacoesJuridicas?: OrientacaoJuridicaUpdateManyWithoutOperadorNestedInput
+    encaminhamentosOutrosOrgaos?: EncaminhamentoOutrosOrgaosUpdateManyWithoutOperadorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAtendimentosRealizadosInput = {
@@ -28489,6 +38602,9 @@ export namespace Prisma {
     atendimentosTriagem?: FilaAtendimentoUncheckedUpdateManyWithoutOperadorTriagemNestedInput
     atendimentosEmAndamento?: FilaAtendimentoUncheckedUpdateManyWithoutOperadorAtendimentoNestedInput
     documentosUploadOperador?: DocumentoUncheckedUpdateManyWithoutOperadorUploadNestedInput
+    retornosDemandaJudicial?: RetornoDemandaJudicialUncheckedUpdateManyWithoutOperadorNestedInput
+    orientacoesJuridicas?: OrientacaoJuridicaUncheckedUpdateManyWithoutOperadorNestedInput
+    encaminhamentosOutrosOrgaos?: EncaminhamentoOutrosOrgaosUncheckedUpdateManyWithoutOperadorNestedInput
   }
 
   export type FilaAtendimentoUpsertWithoutAtendimentoInput = {
@@ -28639,6 +38755,87 @@ export namespace Prisma {
     data: XOR<DocumentoUpdateManyMutationInput, DocumentoUncheckedUpdateManyWithoutAtendimentoInput>
   }
 
+  export type RetornoDemandaJudicialUpsertWithoutAtendimentoInput = {
+    update: XOR<RetornoDemandaJudicialUpdateWithoutAtendimentoInput, RetornoDemandaJudicialUncheckedUpdateWithoutAtendimentoInput>
+    create: XOR<RetornoDemandaJudicialCreateWithoutAtendimentoInput, RetornoDemandaJudicialUncheckedCreateWithoutAtendimentoInput>
+    where?: RetornoDemandaJudicialWhereInput
+  }
+
+  export type RetornoDemandaJudicialUpdateToOneWithWhereWithoutAtendimentoInput = {
+    where?: RetornoDemandaJudicialWhereInput
+    data: XOR<RetornoDemandaJudicialUpdateWithoutAtendimentoInput, RetornoDemandaJudicialUncheckedUpdateWithoutAtendimentoInput>
+  }
+
+  export type RetornoDemandaJudicialUpdateWithoutAtendimentoInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    pajAssistido?: StringFieldUpdateOperationsInput | string
+    retornoRealizado?: StringFieldUpdateOperationsInput | string
+    dataCriacao?: DateTimeFieldUpdateOperationsInput | Date | string
+    operador?: UserUpdateOneWithoutRetornosDemandaJudicialNestedInput
+  }
+
+  export type RetornoDemandaJudicialUncheckedUpdateWithoutAtendimentoInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    pajAssistido?: StringFieldUpdateOperationsInput | string
+    retornoRealizado?: StringFieldUpdateOperationsInput | string
+    dataCriacao?: DateTimeFieldUpdateOperationsInput | Date | string
+    operadorId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type OrientacaoJuridicaUpsertWithoutAtendimentoInput = {
+    update: XOR<OrientacaoJuridicaUpdateWithoutAtendimentoInput, OrientacaoJuridicaUncheckedUpdateWithoutAtendimentoInput>
+    create: XOR<OrientacaoJuridicaCreateWithoutAtendimentoInput, OrientacaoJuridicaUncheckedCreateWithoutAtendimentoInput>
+    where?: OrientacaoJuridicaWhereInput
+  }
+
+  export type OrientacaoJuridicaUpdateToOneWithWhereWithoutAtendimentoInput = {
+    where?: OrientacaoJuridicaWhereInput
+    data: XOR<OrientacaoJuridicaUpdateWithoutAtendimentoInput, OrientacaoJuridicaUncheckedUpdateWithoutAtendimentoInput>
+  }
+
+  export type OrientacaoJuridicaUpdateWithoutAtendimentoInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    orientacaoRealizada?: StringFieldUpdateOperationsInput | string
+    dataCriacao?: DateTimeFieldUpdateOperationsInput | Date | string
+    operador?: UserUpdateOneWithoutOrientacoesJuridicasNestedInput
+  }
+
+  export type OrientacaoJuridicaUncheckedUpdateWithoutAtendimentoInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    orientacaoRealizada?: StringFieldUpdateOperationsInput | string
+    dataCriacao?: DateTimeFieldUpdateOperationsInput | Date | string
+    operadorId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type EncaminhamentoOutrosOrgaosUpsertWithoutAtendimentoInput = {
+    update: XOR<EncaminhamentoOutrosOrgaosUpdateWithoutAtendimentoInput, EncaminhamentoOutrosOrgaosUncheckedUpdateWithoutAtendimentoInput>
+    create: XOR<EncaminhamentoOutrosOrgaosCreateWithoutAtendimentoInput, EncaminhamentoOutrosOrgaosUncheckedCreateWithoutAtendimentoInput>
+    where?: EncaminhamentoOutrosOrgaosWhereInput
+  }
+
+  export type EncaminhamentoOutrosOrgaosUpdateToOneWithWhereWithoutAtendimentoInput = {
+    where?: EncaminhamentoOutrosOrgaosWhereInput
+    data: XOR<EncaminhamentoOutrosOrgaosUpdateWithoutAtendimentoInput, EncaminhamentoOutrosOrgaosUncheckedUpdateWithoutAtendimentoInput>
+  }
+
+  export type EncaminhamentoOutrosOrgaosUpdateWithoutAtendimentoInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    orgaoDestino?: StringFieldUpdateOperationsInput | string
+    motivoEncaminhamento?: StringFieldUpdateOperationsInput | string
+    observacoes?: NullableStringFieldUpdateOperationsInput | string | null
+    dataCriacao?: DateTimeFieldUpdateOperationsInput | Date | string
+    operador?: UserUpdateOneWithoutEncaminhamentosOutrosOrgaosNestedInput
+  }
+
+  export type EncaminhamentoOutrosOrgaosUncheckedUpdateWithoutAtendimentoInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    orgaoDestino?: StringFieldUpdateOperationsInput | string
+    motivoEncaminhamento?: StringFieldUpdateOperationsInput | string
+    observacoes?: NullableStringFieldUpdateOperationsInput | string | null
+    dataCriacao?: DateTimeFieldUpdateOperationsInput | Date | string
+    operadorId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
   export type AtendimentoCreateWithoutProcessoInput = {
     id?: string
     capacidadeCivil: boolean
@@ -28654,7 +38851,7 @@ export namespace Prisma {
     valorCausa?: number | null
     processosAndamento: $Enums.ProcessosAndamento
     estadoCivil: EstadoCivilCreateNestedOneWithoutAtendimentosInput
-    profissao: ProfissaoCreateNestedOneWithoutAtendimentosInput
+    profissao?: ProfissaoCreateNestedOneWithoutAtendimentosInput
     tipoDomicilio: TipoDomicilioCreateNestedOneWithoutAtendimentosInput
     tipoDemandaPrevidenciaria: TipoDemandaPrevidenciariaCreateNestedOneWithoutAtendimentosInput
     competenciaJudicial: CompetenciaJudicialCreateNestedOneWithoutAtendimentosInput
@@ -28663,6 +38860,9 @@ export namespace Prisma {
     membrosFamiliares?: MembroFamiliarCreateNestedManyWithoutAtendimentoInput
     formularios?: FormularioPreenchidoCreateNestedManyWithoutAtendimentoInput
     documentos?: DocumentoCreateNestedManyWithoutAtendimentoInput
+    retornoDemandaJudicial?: RetornoDemandaJudicialCreateNestedOneWithoutAtendimentoInput
+    orientacaoJuridica?: OrientacaoJuridicaCreateNestedOneWithoutAtendimentoInput
+    encaminhamentoOutrosOrgaos?: EncaminhamentoOutrosOrgaosCreateNestedOneWithoutAtendimentoInput
   }
 
   export type AtendimentoUncheckedCreateWithoutProcessoInput = {
@@ -28680,7 +38880,7 @@ export namespace Prisma {
     valorCausa?: number | null
     processosAndamento: $Enums.ProcessosAndamento
     estadoCivilId: number
-    profissaoId: string
+    profissaoId?: string | null
     tipoDomicilioId: number
     tipoDemandaPrevidenciariaId: number
     competenciaJudicialId: number
@@ -28689,6 +38889,9 @@ export namespace Prisma {
     membrosFamiliares?: MembroFamiliarUncheckedCreateNestedManyWithoutAtendimentoInput
     formularios?: FormularioPreenchidoUncheckedCreateNestedManyWithoutAtendimentoInput
     documentos?: DocumentoUncheckedCreateNestedManyWithoutAtendimentoInput
+    retornoDemandaJudicial?: RetornoDemandaJudicialUncheckedCreateNestedOneWithoutAtendimentoInput
+    orientacaoJuridica?: OrientacaoJuridicaUncheckedCreateNestedOneWithoutAtendimentoInput
+    encaminhamentoOutrosOrgaos?: EncaminhamentoOutrosOrgaosUncheckedCreateNestedOneWithoutAtendimentoInput
   }
 
   export type AtendimentoCreateOrConnectWithoutProcessoInput = {
@@ -28722,7 +38925,7 @@ export namespace Prisma {
     valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
     estadoCivil?: EstadoCivilUpdateOneRequiredWithoutAtendimentosNestedInput
-    profissao?: ProfissaoUpdateOneRequiredWithoutAtendimentosNestedInput
+    profissao?: ProfissaoUpdateOneWithoutAtendimentosNestedInput
     tipoDomicilio?: TipoDomicilioUpdateOneRequiredWithoutAtendimentosNestedInput
     tipoDemandaPrevidenciaria?: TipoDemandaPrevidenciariaUpdateOneRequiredWithoutAtendimentosNestedInput
     competenciaJudicial?: CompetenciaJudicialUpdateOneRequiredWithoutAtendimentosNestedInput
@@ -28731,6 +38934,9 @@ export namespace Prisma {
     membrosFamiliares?: MembroFamiliarUpdateManyWithoutAtendimentoNestedInput
     formularios?: FormularioPreenchidoUpdateManyWithoutAtendimentoNestedInput
     documentos?: DocumentoUpdateManyWithoutAtendimentoNestedInput
+    retornoDemandaJudicial?: RetornoDemandaJudicialUpdateOneWithoutAtendimentoNestedInput
+    orientacaoJuridica?: OrientacaoJuridicaUpdateOneWithoutAtendimentoNestedInput
+    encaminhamentoOutrosOrgaos?: EncaminhamentoOutrosOrgaosUpdateOneWithoutAtendimentoNestedInput
   }
 
   export type AtendimentoUncheckedUpdateWithoutProcessoInput = {
@@ -28748,7 +38954,7 @@ export namespace Prisma {
     valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
     estadoCivilId?: IntFieldUpdateOperationsInput | number
-    profissaoId?: StringFieldUpdateOperationsInput | string
+    profissaoId?: NullableStringFieldUpdateOperationsInput | string | null
     tipoDomicilioId?: IntFieldUpdateOperationsInput | number
     tipoDemandaPrevidenciariaId?: IntFieldUpdateOperationsInput | number
     competenciaJudicialId?: IntFieldUpdateOperationsInput | number
@@ -28757,6 +38963,9 @@ export namespace Prisma {
     membrosFamiliares?: MembroFamiliarUncheckedUpdateManyWithoutAtendimentoNestedInput
     formularios?: FormularioPreenchidoUncheckedUpdateManyWithoutAtendimentoNestedInput
     documentos?: DocumentoUncheckedUpdateManyWithoutAtendimentoNestedInput
+    retornoDemandaJudicial?: RetornoDemandaJudicialUncheckedUpdateOneWithoutAtendimentoNestedInput
+    orientacaoJuridica?: OrientacaoJuridicaUncheckedUpdateOneWithoutAtendimentoNestedInput
+    encaminhamentoOutrosOrgaos?: EncaminhamentoOutrosOrgaosUncheckedUpdateOneWithoutAtendimentoNestedInput
   }
 
   export type AtendimentoCreateWithoutFormulariosInput = {
@@ -28774,7 +38983,7 @@ export namespace Prisma {
     valorCausa?: number | null
     processosAndamento: $Enums.ProcessosAndamento
     estadoCivil: EstadoCivilCreateNestedOneWithoutAtendimentosInput
-    profissao: ProfissaoCreateNestedOneWithoutAtendimentosInput
+    profissao?: ProfissaoCreateNestedOneWithoutAtendimentosInput
     tipoDomicilio: TipoDomicilioCreateNestedOneWithoutAtendimentosInput
     tipoDemandaPrevidenciaria: TipoDemandaPrevidenciariaCreateNestedOneWithoutAtendimentosInput
     competenciaJudicial: CompetenciaJudicialCreateNestedOneWithoutAtendimentosInput
@@ -28783,6 +38992,9 @@ export namespace Prisma {
     membrosFamiliares?: MembroFamiliarCreateNestedManyWithoutAtendimentoInput
     processo?: ProcessoCreateNestedOneWithoutAtendimentoInput
     documentos?: DocumentoCreateNestedManyWithoutAtendimentoInput
+    retornoDemandaJudicial?: RetornoDemandaJudicialCreateNestedOneWithoutAtendimentoInput
+    orientacaoJuridica?: OrientacaoJuridicaCreateNestedOneWithoutAtendimentoInput
+    encaminhamentoOutrosOrgaos?: EncaminhamentoOutrosOrgaosCreateNestedOneWithoutAtendimentoInput
   }
 
   export type AtendimentoUncheckedCreateWithoutFormulariosInput = {
@@ -28800,7 +39012,7 @@ export namespace Prisma {
     valorCausa?: number | null
     processosAndamento: $Enums.ProcessosAndamento
     estadoCivilId: number
-    profissaoId: string
+    profissaoId?: string | null
     tipoDomicilioId: number
     tipoDemandaPrevidenciariaId: number
     competenciaJudicialId: number
@@ -28809,6 +39021,9 @@ export namespace Prisma {
     membrosFamiliares?: MembroFamiliarUncheckedCreateNestedManyWithoutAtendimentoInput
     processo?: ProcessoUncheckedCreateNestedOneWithoutAtendimentoInput
     documentos?: DocumentoUncheckedCreateNestedManyWithoutAtendimentoInput
+    retornoDemandaJudicial?: RetornoDemandaJudicialUncheckedCreateNestedOneWithoutAtendimentoInput
+    orientacaoJuridica?: OrientacaoJuridicaUncheckedCreateNestedOneWithoutAtendimentoInput
+    encaminhamentoOutrosOrgaos?: EncaminhamentoOutrosOrgaosUncheckedCreateNestedOneWithoutAtendimentoInput
   }
 
   export type AtendimentoCreateOrConnectWithoutFormulariosInput = {
@@ -28842,7 +39057,7 @@ export namespace Prisma {
     valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
     estadoCivil?: EstadoCivilUpdateOneRequiredWithoutAtendimentosNestedInput
-    profissao?: ProfissaoUpdateOneRequiredWithoutAtendimentosNestedInput
+    profissao?: ProfissaoUpdateOneWithoutAtendimentosNestedInput
     tipoDomicilio?: TipoDomicilioUpdateOneRequiredWithoutAtendimentosNestedInput
     tipoDemandaPrevidenciaria?: TipoDemandaPrevidenciariaUpdateOneRequiredWithoutAtendimentosNestedInput
     competenciaJudicial?: CompetenciaJudicialUpdateOneRequiredWithoutAtendimentosNestedInput
@@ -28851,6 +39066,9 @@ export namespace Prisma {
     membrosFamiliares?: MembroFamiliarUpdateManyWithoutAtendimentoNestedInput
     processo?: ProcessoUpdateOneWithoutAtendimentoNestedInput
     documentos?: DocumentoUpdateManyWithoutAtendimentoNestedInput
+    retornoDemandaJudicial?: RetornoDemandaJudicialUpdateOneWithoutAtendimentoNestedInput
+    orientacaoJuridica?: OrientacaoJuridicaUpdateOneWithoutAtendimentoNestedInput
+    encaminhamentoOutrosOrgaos?: EncaminhamentoOutrosOrgaosUpdateOneWithoutAtendimentoNestedInput
   }
 
   export type AtendimentoUncheckedUpdateWithoutFormulariosInput = {
@@ -28868,7 +39086,7 @@ export namespace Prisma {
     valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
     estadoCivilId?: IntFieldUpdateOperationsInput | number
-    profissaoId?: StringFieldUpdateOperationsInput | string
+    profissaoId?: NullableStringFieldUpdateOperationsInput | string | null
     tipoDomicilioId?: IntFieldUpdateOperationsInput | number
     tipoDemandaPrevidenciariaId?: IntFieldUpdateOperationsInput | number
     competenciaJudicialId?: IntFieldUpdateOperationsInput | number
@@ -28877,6 +39095,9 @@ export namespace Prisma {
     membrosFamiliares?: MembroFamiliarUncheckedUpdateManyWithoutAtendimentoNestedInput
     processo?: ProcessoUncheckedUpdateOneWithoutAtendimentoNestedInput
     documentos?: DocumentoUncheckedUpdateManyWithoutAtendimentoNestedInput
+    retornoDemandaJudicial?: RetornoDemandaJudicialUncheckedUpdateOneWithoutAtendimentoNestedInput
+    orientacaoJuridica?: OrientacaoJuridicaUncheckedUpdateOneWithoutAtendimentoNestedInput
+    encaminhamentoOutrosOrgaos?: EncaminhamentoOutrosOrgaosUncheckedUpdateOneWithoutAtendimentoNestedInput
   }
 
   export type AtendimentoCreateWithoutDocumentosInput = {
@@ -28894,7 +39115,7 @@ export namespace Prisma {
     valorCausa?: number | null
     processosAndamento: $Enums.ProcessosAndamento
     estadoCivil: EstadoCivilCreateNestedOneWithoutAtendimentosInput
-    profissao: ProfissaoCreateNestedOneWithoutAtendimentosInput
+    profissao?: ProfissaoCreateNestedOneWithoutAtendimentosInput
     tipoDomicilio: TipoDomicilioCreateNestedOneWithoutAtendimentosInput
     tipoDemandaPrevidenciaria: TipoDemandaPrevidenciariaCreateNestedOneWithoutAtendimentosInput
     competenciaJudicial: CompetenciaJudicialCreateNestedOneWithoutAtendimentosInput
@@ -28903,6 +39124,9 @@ export namespace Prisma {
     membrosFamiliares?: MembroFamiliarCreateNestedManyWithoutAtendimentoInput
     processo?: ProcessoCreateNestedOneWithoutAtendimentoInput
     formularios?: FormularioPreenchidoCreateNestedManyWithoutAtendimentoInput
+    retornoDemandaJudicial?: RetornoDemandaJudicialCreateNestedOneWithoutAtendimentoInput
+    orientacaoJuridica?: OrientacaoJuridicaCreateNestedOneWithoutAtendimentoInput
+    encaminhamentoOutrosOrgaos?: EncaminhamentoOutrosOrgaosCreateNestedOneWithoutAtendimentoInput
   }
 
   export type AtendimentoUncheckedCreateWithoutDocumentosInput = {
@@ -28920,7 +39144,7 @@ export namespace Prisma {
     valorCausa?: number | null
     processosAndamento: $Enums.ProcessosAndamento
     estadoCivilId: number
-    profissaoId: string
+    profissaoId?: string | null
     tipoDomicilioId: number
     tipoDemandaPrevidenciariaId: number
     competenciaJudicialId: number
@@ -28929,6 +39153,9 @@ export namespace Prisma {
     membrosFamiliares?: MembroFamiliarUncheckedCreateNestedManyWithoutAtendimentoInput
     processo?: ProcessoUncheckedCreateNestedOneWithoutAtendimentoInput
     formularios?: FormularioPreenchidoUncheckedCreateNestedManyWithoutAtendimentoInput
+    retornoDemandaJudicial?: RetornoDemandaJudicialUncheckedCreateNestedOneWithoutAtendimentoInput
+    orientacaoJuridica?: OrientacaoJuridicaUncheckedCreateNestedOneWithoutAtendimentoInput
+    encaminhamentoOutrosOrgaos?: EncaminhamentoOutrosOrgaosUncheckedCreateNestedOneWithoutAtendimentoInput
   }
 
   export type AtendimentoCreateOrConnectWithoutDocumentosInput = {
@@ -28947,6 +39174,9 @@ export namespace Prisma {
     atendimentosRealizados?: AtendimentoCreateNestedManyWithoutOperadorInput
     atendimentosTriagem?: FilaAtendimentoCreateNestedManyWithoutOperadorTriagemInput
     atendimentosEmAndamento?: FilaAtendimentoCreateNestedManyWithoutOperadorAtendimentoInput
+    retornosDemandaJudicial?: RetornoDemandaJudicialCreateNestedManyWithoutOperadorInput
+    orientacoesJuridicas?: OrientacaoJuridicaCreateNestedManyWithoutOperadorInput
+    encaminhamentosOutrosOrgaos?: EncaminhamentoOutrosOrgaosCreateNestedManyWithoutOperadorInput
   }
 
   export type UserUncheckedCreateWithoutDocumentosUploadOperadorInput = {
@@ -28960,6 +39190,9 @@ export namespace Prisma {
     atendimentosRealizados?: AtendimentoUncheckedCreateNestedManyWithoutOperadorInput
     atendimentosTriagem?: FilaAtendimentoUncheckedCreateNestedManyWithoutOperadorTriagemInput
     atendimentosEmAndamento?: FilaAtendimentoUncheckedCreateNestedManyWithoutOperadorAtendimentoInput
+    retornosDemandaJudicial?: RetornoDemandaJudicialUncheckedCreateNestedManyWithoutOperadorInput
+    orientacoesJuridicas?: OrientacaoJuridicaUncheckedCreateNestedManyWithoutOperadorInput
+    encaminhamentosOutrosOrgaos?: EncaminhamentoOutrosOrgaosUncheckedCreateNestedManyWithoutOperadorInput
   }
 
   export type UserCreateOrConnectWithoutDocumentosUploadOperadorInput = {
@@ -28993,7 +39226,7 @@ export namespace Prisma {
     valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
     estadoCivil?: EstadoCivilUpdateOneRequiredWithoutAtendimentosNestedInput
-    profissao?: ProfissaoUpdateOneRequiredWithoutAtendimentosNestedInput
+    profissao?: ProfissaoUpdateOneWithoutAtendimentosNestedInput
     tipoDomicilio?: TipoDomicilioUpdateOneRequiredWithoutAtendimentosNestedInput
     tipoDemandaPrevidenciaria?: TipoDemandaPrevidenciariaUpdateOneRequiredWithoutAtendimentosNestedInput
     competenciaJudicial?: CompetenciaJudicialUpdateOneRequiredWithoutAtendimentosNestedInput
@@ -29002,6 +39235,9 @@ export namespace Prisma {
     membrosFamiliares?: MembroFamiliarUpdateManyWithoutAtendimentoNestedInput
     processo?: ProcessoUpdateOneWithoutAtendimentoNestedInput
     formularios?: FormularioPreenchidoUpdateManyWithoutAtendimentoNestedInput
+    retornoDemandaJudicial?: RetornoDemandaJudicialUpdateOneWithoutAtendimentoNestedInput
+    orientacaoJuridica?: OrientacaoJuridicaUpdateOneWithoutAtendimentoNestedInput
+    encaminhamentoOutrosOrgaos?: EncaminhamentoOutrosOrgaosUpdateOneWithoutAtendimentoNestedInput
   }
 
   export type AtendimentoUncheckedUpdateWithoutDocumentosInput = {
@@ -29019,7 +39255,7 @@ export namespace Prisma {
     valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
     estadoCivilId?: IntFieldUpdateOperationsInput | number
-    profissaoId?: StringFieldUpdateOperationsInput | string
+    profissaoId?: NullableStringFieldUpdateOperationsInput | string | null
     tipoDomicilioId?: IntFieldUpdateOperationsInput | number
     tipoDemandaPrevidenciariaId?: IntFieldUpdateOperationsInput | number
     competenciaJudicialId?: IntFieldUpdateOperationsInput | number
@@ -29028,6 +39264,9 @@ export namespace Prisma {
     membrosFamiliares?: MembroFamiliarUncheckedUpdateManyWithoutAtendimentoNestedInput
     processo?: ProcessoUncheckedUpdateOneWithoutAtendimentoNestedInput
     formularios?: FormularioPreenchidoUncheckedUpdateManyWithoutAtendimentoNestedInput
+    retornoDemandaJudicial?: RetornoDemandaJudicialUncheckedUpdateOneWithoutAtendimentoNestedInput
+    orientacaoJuridica?: OrientacaoJuridicaUncheckedUpdateOneWithoutAtendimentoNestedInput
+    encaminhamentoOutrosOrgaos?: EncaminhamentoOutrosOrgaosUncheckedUpdateOneWithoutAtendimentoNestedInput
   }
 
   export type UserUpsertWithoutDocumentosUploadOperadorInput = {
@@ -29052,6 +39291,9 @@ export namespace Prisma {
     atendimentosRealizados?: AtendimentoUpdateManyWithoutOperadorNestedInput
     atendimentosTriagem?: FilaAtendimentoUpdateManyWithoutOperadorTriagemNestedInput
     atendimentosEmAndamento?: FilaAtendimentoUpdateManyWithoutOperadorAtendimentoNestedInput
+    retornosDemandaJudicial?: RetornoDemandaJudicialUpdateManyWithoutOperadorNestedInput
+    orientacoesJuridicas?: OrientacaoJuridicaUpdateManyWithoutOperadorNestedInput
+    encaminhamentosOutrosOrgaos?: EncaminhamentoOutrosOrgaosUpdateManyWithoutOperadorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutDocumentosUploadOperadorInput = {
@@ -29065,6 +39307,645 @@ export namespace Prisma {
     atendimentosRealizados?: AtendimentoUncheckedUpdateManyWithoutOperadorNestedInput
     atendimentosTriagem?: FilaAtendimentoUncheckedUpdateManyWithoutOperadorTriagemNestedInput
     atendimentosEmAndamento?: FilaAtendimentoUncheckedUpdateManyWithoutOperadorAtendimentoNestedInput
+    retornosDemandaJudicial?: RetornoDemandaJudicialUncheckedUpdateManyWithoutOperadorNestedInput
+    orientacoesJuridicas?: OrientacaoJuridicaUncheckedUpdateManyWithoutOperadorNestedInput
+    encaminhamentosOutrosOrgaos?: EncaminhamentoOutrosOrgaosUncheckedUpdateManyWithoutOperadorNestedInput
+  }
+
+  export type AtendimentoCreateWithoutRetornoDemandaJudicialInput = {
+    id?: string
+    capacidadeCivil: boolean
+    cep: string
+    endereco: string
+    numero: number
+    complemento?: string | null
+    bairro: string
+    cidade: string
+    uf: string
+    dataInicioBeneficio?: Date | string | null
+    parcelasVencidas?: number | null
+    valorCausa?: number | null
+    processosAndamento: $Enums.ProcessosAndamento
+    estadoCivil: EstadoCivilCreateNestedOneWithoutAtendimentosInput
+    profissao?: ProfissaoCreateNestedOneWithoutAtendimentosInput
+    tipoDomicilio: TipoDomicilioCreateNestedOneWithoutAtendimentosInput
+    tipoDemandaPrevidenciaria: TipoDemandaPrevidenciariaCreateNestedOneWithoutAtendimentosInput
+    competenciaJudicial: CompetenciaJudicialCreateNestedOneWithoutAtendimentosInput
+    operador: UserCreateNestedOneWithoutAtendimentosRealizadosInput
+    fila?: FilaAtendimentoCreateNestedOneWithoutAtendimentoInput
+    membrosFamiliares?: MembroFamiliarCreateNestedManyWithoutAtendimentoInput
+    processo?: ProcessoCreateNestedOneWithoutAtendimentoInput
+    formularios?: FormularioPreenchidoCreateNestedManyWithoutAtendimentoInput
+    documentos?: DocumentoCreateNestedManyWithoutAtendimentoInput
+    orientacaoJuridica?: OrientacaoJuridicaCreateNestedOneWithoutAtendimentoInput
+    encaminhamentoOutrosOrgaos?: EncaminhamentoOutrosOrgaosCreateNestedOneWithoutAtendimentoInput
+  }
+
+  export type AtendimentoUncheckedCreateWithoutRetornoDemandaJudicialInput = {
+    id?: string
+    capacidadeCivil: boolean
+    cep: string
+    endereco: string
+    numero: number
+    complemento?: string | null
+    bairro: string
+    cidade: string
+    uf: string
+    dataInicioBeneficio?: Date | string | null
+    parcelasVencidas?: number | null
+    valorCausa?: number | null
+    processosAndamento: $Enums.ProcessosAndamento
+    estadoCivilId: number
+    profissaoId?: string | null
+    tipoDomicilioId: number
+    tipoDemandaPrevidenciariaId: number
+    competenciaJudicialId: number
+    operadorId: string
+    filaId?: string | null
+    membrosFamiliares?: MembroFamiliarUncheckedCreateNestedManyWithoutAtendimentoInput
+    processo?: ProcessoUncheckedCreateNestedOneWithoutAtendimentoInput
+    formularios?: FormularioPreenchidoUncheckedCreateNestedManyWithoutAtendimentoInput
+    documentos?: DocumentoUncheckedCreateNestedManyWithoutAtendimentoInput
+    orientacaoJuridica?: OrientacaoJuridicaUncheckedCreateNestedOneWithoutAtendimentoInput
+    encaminhamentoOutrosOrgaos?: EncaminhamentoOutrosOrgaosUncheckedCreateNestedOneWithoutAtendimentoInput
+  }
+
+  export type AtendimentoCreateOrConnectWithoutRetornoDemandaJudicialInput = {
+    where: AtendimentoWhereUniqueInput
+    create: XOR<AtendimentoCreateWithoutRetornoDemandaJudicialInput, AtendimentoUncheckedCreateWithoutRetornoDemandaJudicialInput>
+  }
+
+  export type UserCreateWithoutRetornosDemandaJudicialInput = {
+    id?: string
+    email: string
+    nome: string
+    senha: string
+    role?: $Enums.Role
+    aprovado?: boolean
+    dataCadastro?: Date | string
+    atendimentosRealizados?: AtendimentoCreateNestedManyWithoutOperadorInput
+    atendimentosTriagem?: FilaAtendimentoCreateNestedManyWithoutOperadorTriagemInput
+    atendimentosEmAndamento?: FilaAtendimentoCreateNestedManyWithoutOperadorAtendimentoInput
+    documentosUploadOperador?: DocumentoCreateNestedManyWithoutOperadorUploadInput
+    orientacoesJuridicas?: OrientacaoJuridicaCreateNestedManyWithoutOperadorInput
+    encaminhamentosOutrosOrgaos?: EncaminhamentoOutrosOrgaosCreateNestedManyWithoutOperadorInput
+  }
+
+  export type UserUncheckedCreateWithoutRetornosDemandaJudicialInput = {
+    id?: string
+    email: string
+    nome: string
+    senha: string
+    role?: $Enums.Role
+    aprovado?: boolean
+    dataCadastro?: Date | string
+    atendimentosRealizados?: AtendimentoUncheckedCreateNestedManyWithoutOperadorInput
+    atendimentosTriagem?: FilaAtendimentoUncheckedCreateNestedManyWithoutOperadorTriagemInput
+    atendimentosEmAndamento?: FilaAtendimentoUncheckedCreateNestedManyWithoutOperadorAtendimentoInput
+    documentosUploadOperador?: DocumentoUncheckedCreateNestedManyWithoutOperadorUploadInput
+    orientacoesJuridicas?: OrientacaoJuridicaUncheckedCreateNestedManyWithoutOperadorInput
+    encaminhamentosOutrosOrgaos?: EncaminhamentoOutrosOrgaosUncheckedCreateNestedManyWithoutOperadorInput
+  }
+
+  export type UserCreateOrConnectWithoutRetornosDemandaJudicialInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutRetornosDemandaJudicialInput, UserUncheckedCreateWithoutRetornosDemandaJudicialInput>
+  }
+
+  export type AtendimentoUpsertWithoutRetornoDemandaJudicialInput = {
+    update: XOR<AtendimentoUpdateWithoutRetornoDemandaJudicialInput, AtendimentoUncheckedUpdateWithoutRetornoDemandaJudicialInput>
+    create: XOR<AtendimentoCreateWithoutRetornoDemandaJudicialInput, AtendimentoUncheckedCreateWithoutRetornoDemandaJudicialInput>
+    where?: AtendimentoWhereInput
+  }
+
+  export type AtendimentoUpdateToOneWithWhereWithoutRetornoDemandaJudicialInput = {
+    where?: AtendimentoWhereInput
+    data: XOR<AtendimentoUpdateWithoutRetornoDemandaJudicialInput, AtendimentoUncheckedUpdateWithoutRetornoDemandaJudicialInput>
+  }
+
+  export type AtendimentoUpdateWithoutRetornoDemandaJudicialInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    capacidadeCivil?: BoolFieldUpdateOperationsInput | boolean
+    cep?: StringFieldUpdateOperationsInput | string
+    endereco?: StringFieldUpdateOperationsInput | string
+    numero?: IntFieldUpdateOperationsInput | number
+    complemento?: NullableStringFieldUpdateOperationsInput | string | null
+    bairro?: StringFieldUpdateOperationsInput | string
+    cidade?: StringFieldUpdateOperationsInput | string
+    uf?: StringFieldUpdateOperationsInput | string
+    dataInicioBeneficio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    parcelasVencidas?: NullableIntFieldUpdateOperationsInput | number | null
+    valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
+    processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
+    estadoCivil?: EstadoCivilUpdateOneRequiredWithoutAtendimentosNestedInput
+    profissao?: ProfissaoUpdateOneWithoutAtendimentosNestedInput
+    tipoDomicilio?: TipoDomicilioUpdateOneRequiredWithoutAtendimentosNestedInput
+    tipoDemandaPrevidenciaria?: TipoDemandaPrevidenciariaUpdateOneRequiredWithoutAtendimentosNestedInput
+    competenciaJudicial?: CompetenciaJudicialUpdateOneRequiredWithoutAtendimentosNestedInput
+    operador?: UserUpdateOneRequiredWithoutAtendimentosRealizadosNestedInput
+    fila?: FilaAtendimentoUpdateOneWithoutAtendimentoNestedInput
+    membrosFamiliares?: MembroFamiliarUpdateManyWithoutAtendimentoNestedInput
+    processo?: ProcessoUpdateOneWithoutAtendimentoNestedInput
+    formularios?: FormularioPreenchidoUpdateManyWithoutAtendimentoNestedInput
+    documentos?: DocumentoUpdateManyWithoutAtendimentoNestedInput
+    orientacaoJuridica?: OrientacaoJuridicaUpdateOneWithoutAtendimentoNestedInput
+    encaminhamentoOutrosOrgaos?: EncaminhamentoOutrosOrgaosUpdateOneWithoutAtendimentoNestedInput
+  }
+
+  export type AtendimentoUncheckedUpdateWithoutRetornoDemandaJudicialInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    capacidadeCivil?: BoolFieldUpdateOperationsInput | boolean
+    cep?: StringFieldUpdateOperationsInput | string
+    endereco?: StringFieldUpdateOperationsInput | string
+    numero?: IntFieldUpdateOperationsInput | number
+    complemento?: NullableStringFieldUpdateOperationsInput | string | null
+    bairro?: StringFieldUpdateOperationsInput | string
+    cidade?: StringFieldUpdateOperationsInput | string
+    uf?: StringFieldUpdateOperationsInput | string
+    dataInicioBeneficio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    parcelasVencidas?: NullableIntFieldUpdateOperationsInput | number | null
+    valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
+    processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
+    estadoCivilId?: IntFieldUpdateOperationsInput | number
+    profissaoId?: NullableStringFieldUpdateOperationsInput | string | null
+    tipoDomicilioId?: IntFieldUpdateOperationsInput | number
+    tipoDemandaPrevidenciariaId?: IntFieldUpdateOperationsInput | number
+    competenciaJudicialId?: IntFieldUpdateOperationsInput | number
+    operadorId?: StringFieldUpdateOperationsInput | string
+    filaId?: NullableStringFieldUpdateOperationsInput | string | null
+    membrosFamiliares?: MembroFamiliarUncheckedUpdateManyWithoutAtendimentoNestedInput
+    processo?: ProcessoUncheckedUpdateOneWithoutAtendimentoNestedInput
+    formularios?: FormularioPreenchidoUncheckedUpdateManyWithoutAtendimentoNestedInput
+    documentos?: DocumentoUncheckedUpdateManyWithoutAtendimentoNestedInput
+    orientacaoJuridica?: OrientacaoJuridicaUncheckedUpdateOneWithoutAtendimentoNestedInput
+    encaminhamentoOutrosOrgaos?: EncaminhamentoOutrosOrgaosUncheckedUpdateOneWithoutAtendimentoNestedInput
+  }
+
+  export type UserUpsertWithoutRetornosDemandaJudicialInput = {
+    update: XOR<UserUpdateWithoutRetornosDemandaJudicialInput, UserUncheckedUpdateWithoutRetornosDemandaJudicialInput>
+    create: XOR<UserCreateWithoutRetornosDemandaJudicialInput, UserUncheckedCreateWithoutRetornosDemandaJudicialInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutRetornosDemandaJudicialInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutRetornosDemandaJudicialInput, UserUncheckedUpdateWithoutRetornosDemandaJudicialInput>
+  }
+
+  export type UserUpdateWithoutRetornosDemandaJudicialInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    nome?: StringFieldUpdateOperationsInput | string
+    senha?: StringFieldUpdateOperationsInput | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    aprovado?: BoolFieldUpdateOperationsInput | boolean
+    dataCadastro?: DateTimeFieldUpdateOperationsInput | Date | string
+    atendimentosRealizados?: AtendimentoUpdateManyWithoutOperadorNestedInput
+    atendimentosTriagem?: FilaAtendimentoUpdateManyWithoutOperadorTriagemNestedInput
+    atendimentosEmAndamento?: FilaAtendimentoUpdateManyWithoutOperadorAtendimentoNestedInput
+    documentosUploadOperador?: DocumentoUpdateManyWithoutOperadorUploadNestedInput
+    orientacoesJuridicas?: OrientacaoJuridicaUpdateManyWithoutOperadorNestedInput
+    encaminhamentosOutrosOrgaos?: EncaminhamentoOutrosOrgaosUpdateManyWithoutOperadorNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutRetornosDemandaJudicialInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    nome?: StringFieldUpdateOperationsInput | string
+    senha?: StringFieldUpdateOperationsInput | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    aprovado?: BoolFieldUpdateOperationsInput | boolean
+    dataCadastro?: DateTimeFieldUpdateOperationsInput | Date | string
+    atendimentosRealizados?: AtendimentoUncheckedUpdateManyWithoutOperadorNestedInput
+    atendimentosTriagem?: FilaAtendimentoUncheckedUpdateManyWithoutOperadorTriagemNestedInput
+    atendimentosEmAndamento?: FilaAtendimentoUncheckedUpdateManyWithoutOperadorAtendimentoNestedInput
+    documentosUploadOperador?: DocumentoUncheckedUpdateManyWithoutOperadorUploadNestedInput
+    orientacoesJuridicas?: OrientacaoJuridicaUncheckedUpdateManyWithoutOperadorNestedInput
+    encaminhamentosOutrosOrgaos?: EncaminhamentoOutrosOrgaosUncheckedUpdateManyWithoutOperadorNestedInput
+  }
+
+  export type AtendimentoCreateWithoutOrientacaoJuridicaInput = {
+    id?: string
+    capacidadeCivil: boolean
+    cep: string
+    endereco: string
+    numero: number
+    complemento?: string | null
+    bairro: string
+    cidade: string
+    uf: string
+    dataInicioBeneficio?: Date | string | null
+    parcelasVencidas?: number | null
+    valorCausa?: number | null
+    processosAndamento: $Enums.ProcessosAndamento
+    estadoCivil: EstadoCivilCreateNestedOneWithoutAtendimentosInput
+    profissao?: ProfissaoCreateNestedOneWithoutAtendimentosInput
+    tipoDomicilio: TipoDomicilioCreateNestedOneWithoutAtendimentosInput
+    tipoDemandaPrevidenciaria: TipoDemandaPrevidenciariaCreateNestedOneWithoutAtendimentosInput
+    competenciaJudicial: CompetenciaJudicialCreateNestedOneWithoutAtendimentosInput
+    operador: UserCreateNestedOneWithoutAtendimentosRealizadosInput
+    fila?: FilaAtendimentoCreateNestedOneWithoutAtendimentoInput
+    membrosFamiliares?: MembroFamiliarCreateNestedManyWithoutAtendimentoInput
+    processo?: ProcessoCreateNestedOneWithoutAtendimentoInput
+    formularios?: FormularioPreenchidoCreateNestedManyWithoutAtendimentoInput
+    documentos?: DocumentoCreateNestedManyWithoutAtendimentoInput
+    retornoDemandaJudicial?: RetornoDemandaJudicialCreateNestedOneWithoutAtendimentoInput
+    encaminhamentoOutrosOrgaos?: EncaminhamentoOutrosOrgaosCreateNestedOneWithoutAtendimentoInput
+  }
+
+  export type AtendimentoUncheckedCreateWithoutOrientacaoJuridicaInput = {
+    id?: string
+    capacidadeCivil: boolean
+    cep: string
+    endereco: string
+    numero: number
+    complemento?: string | null
+    bairro: string
+    cidade: string
+    uf: string
+    dataInicioBeneficio?: Date | string | null
+    parcelasVencidas?: number | null
+    valorCausa?: number | null
+    processosAndamento: $Enums.ProcessosAndamento
+    estadoCivilId: number
+    profissaoId?: string | null
+    tipoDomicilioId: number
+    tipoDemandaPrevidenciariaId: number
+    competenciaJudicialId: number
+    operadorId: string
+    filaId?: string | null
+    membrosFamiliares?: MembroFamiliarUncheckedCreateNestedManyWithoutAtendimentoInput
+    processo?: ProcessoUncheckedCreateNestedOneWithoutAtendimentoInput
+    formularios?: FormularioPreenchidoUncheckedCreateNestedManyWithoutAtendimentoInput
+    documentos?: DocumentoUncheckedCreateNestedManyWithoutAtendimentoInput
+    retornoDemandaJudicial?: RetornoDemandaJudicialUncheckedCreateNestedOneWithoutAtendimentoInput
+    encaminhamentoOutrosOrgaos?: EncaminhamentoOutrosOrgaosUncheckedCreateNestedOneWithoutAtendimentoInput
+  }
+
+  export type AtendimentoCreateOrConnectWithoutOrientacaoJuridicaInput = {
+    where: AtendimentoWhereUniqueInput
+    create: XOR<AtendimentoCreateWithoutOrientacaoJuridicaInput, AtendimentoUncheckedCreateWithoutOrientacaoJuridicaInput>
+  }
+
+  export type UserCreateWithoutOrientacoesJuridicasInput = {
+    id?: string
+    email: string
+    nome: string
+    senha: string
+    role?: $Enums.Role
+    aprovado?: boolean
+    dataCadastro?: Date | string
+    atendimentosRealizados?: AtendimentoCreateNestedManyWithoutOperadorInput
+    atendimentosTriagem?: FilaAtendimentoCreateNestedManyWithoutOperadorTriagemInput
+    atendimentosEmAndamento?: FilaAtendimentoCreateNestedManyWithoutOperadorAtendimentoInput
+    documentosUploadOperador?: DocumentoCreateNestedManyWithoutOperadorUploadInput
+    retornosDemandaJudicial?: RetornoDemandaJudicialCreateNestedManyWithoutOperadorInput
+    encaminhamentosOutrosOrgaos?: EncaminhamentoOutrosOrgaosCreateNestedManyWithoutOperadorInput
+  }
+
+  export type UserUncheckedCreateWithoutOrientacoesJuridicasInput = {
+    id?: string
+    email: string
+    nome: string
+    senha: string
+    role?: $Enums.Role
+    aprovado?: boolean
+    dataCadastro?: Date | string
+    atendimentosRealizados?: AtendimentoUncheckedCreateNestedManyWithoutOperadorInput
+    atendimentosTriagem?: FilaAtendimentoUncheckedCreateNestedManyWithoutOperadorTriagemInput
+    atendimentosEmAndamento?: FilaAtendimentoUncheckedCreateNestedManyWithoutOperadorAtendimentoInput
+    documentosUploadOperador?: DocumentoUncheckedCreateNestedManyWithoutOperadorUploadInput
+    retornosDemandaJudicial?: RetornoDemandaJudicialUncheckedCreateNestedManyWithoutOperadorInput
+    encaminhamentosOutrosOrgaos?: EncaminhamentoOutrosOrgaosUncheckedCreateNestedManyWithoutOperadorInput
+  }
+
+  export type UserCreateOrConnectWithoutOrientacoesJuridicasInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutOrientacoesJuridicasInput, UserUncheckedCreateWithoutOrientacoesJuridicasInput>
+  }
+
+  export type AtendimentoUpsertWithoutOrientacaoJuridicaInput = {
+    update: XOR<AtendimentoUpdateWithoutOrientacaoJuridicaInput, AtendimentoUncheckedUpdateWithoutOrientacaoJuridicaInput>
+    create: XOR<AtendimentoCreateWithoutOrientacaoJuridicaInput, AtendimentoUncheckedCreateWithoutOrientacaoJuridicaInput>
+    where?: AtendimentoWhereInput
+  }
+
+  export type AtendimentoUpdateToOneWithWhereWithoutOrientacaoJuridicaInput = {
+    where?: AtendimentoWhereInput
+    data: XOR<AtendimentoUpdateWithoutOrientacaoJuridicaInput, AtendimentoUncheckedUpdateWithoutOrientacaoJuridicaInput>
+  }
+
+  export type AtendimentoUpdateWithoutOrientacaoJuridicaInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    capacidadeCivil?: BoolFieldUpdateOperationsInput | boolean
+    cep?: StringFieldUpdateOperationsInput | string
+    endereco?: StringFieldUpdateOperationsInput | string
+    numero?: IntFieldUpdateOperationsInput | number
+    complemento?: NullableStringFieldUpdateOperationsInput | string | null
+    bairro?: StringFieldUpdateOperationsInput | string
+    cidade?: StringFieldUpdateOperationsInput | string
+    uf?: StringFieldUpdateOperationsInput | string
+    dataInicioBeneficio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    parcelasVencidas?: NullableIntFieldUpdateOperationsInput | number | null
+    valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
+    processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
+    estadoCivil?: EstadoCivilUpdateOneRequiredWithoutAtendimentosNestedInput
+    profissao?: ProfissaoUpdateOneWithoutAtendimentosNestedInput
+    tipoDomicilio?: TipoDomicilioUpdateOneRequiredWithoutAtendimentosNestedInput
+    tipoDemandaPrevidenciaria?: TipoDemandaPrevidenciariaUpdateOneRequiredWithoutAtendimentosNestedInput
+    competenciaJudicial?: CompetenciaJudicialUpdateOneRequiredWithoutAtendimentosNestedInput
+    operador?: UserUpdateOneRequiredWithoutAtendimentosRealizadosNestedInput
+    fila?: FilaAtendimentoUpdateOneWithoutAtendimentoNestedInput
+    membrosFamiliares?: MembroFamiliarUpdateManyWithoutAtendimentoNestedInput
+    processo?: ProcessoUpdateOneWithoutAtendimentoNestedInput
+    formularios?: FormularioPreenchidoUpdateManyWithoutAtendimentoNestedInput
+    documentos?: DocumentoUpdateManyWithoutAtendimentoNestedInput
+    retornoDemandaJudicial?: RetornoDemandaJudicialUpdateOneWithoutAtendimentoNestedInput
+    encaminhamentoOutrosOrgaos?: EncaminhamentoOutrosOrgaosUpdateOneWithoutAtendimentoNestedInput
+  }
+
+  export type AtendimentoUncheckedUpdateWithoutOrientacaoJuridicaInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    capacidadeCivil?: BoolFieldUpdateOperationsInput | boolean
+    cep?: StringFieldUpdateOperationsInput | string
+    endereco?: StringFieldUpdateOperationsInput | string
+    numero?: IntFieldUpdateOperationsInput | number
+    complemento?: NullableStringFieldUpdateOperationsInput | string | null
+    bairro?: StringFieldUpdateOperationsInput | string
+    cidade?: StringFieldUpdateOperationsInput | string
+    uf?: StringFieldUpdateOperationsInput | string
+    dataInicioBeneficio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    parcelasVencidas?: NullableIntFieldUpdateOperationsInput | number | null
+    valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
+    processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
+    estadoCivilId?: IntFieldUpdateOperationsInput | number
+    profissaoId?: NullableStringFieldUpdateOperationsInput | string | null
+    tipoDomicilioId?: IntFieldUpdateOperationsInput | number
+    tipoDemandaPrevidenciariaId?: IntFieldUpdateOperationsInput | number
+    competenciaJudicialId?: IntFieldUpdateOperationsInput | number
+    operadorId?: StringFieldUpdateOperationsInput | string
+    filaId?: NullableStringFieldUpdateOperationsInput | string | null
+    membrosFamiliares?: MembroFamiliarUncheckedUpdateManyWithoutAtendimentoNestedInput
+    processo?: ProcessoUncheckedUpdateOneWithoutAtendimentoNestedInput
+    formularios?: FormularioPreenchidoUncheckedUpdateManyWithoutAtendimentoNestedInput
+    documentos?: DocumentoUncheckedUpdateManyWithoutAtendimentoNestedInput
+    retornoDemandaJudicial?: RetornoDemandaJudicialUncheckedUpdateOneWithoutAtendimentoNestedInput
+    encaminhamentoOutrosOrgaos?: EncaminhamentoOutrosOrgaosUncheckedUpdateOneWithoutAtendimentoNestedInput
+  }
+
+  export type UserUpsertWithoutOrientacoesJuridicasInput = {
+    update: XOR<UserUpdateWithoutOrientacoesJuridicasInput, UserUncheckedUpdateWithoutOrientacoesJuridicasInput>
+    create: XOR<UserCreateWithoutOrientacoesJuridicasInput, UserUncheckedCreateWithoutOrientacoesJuridicasInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutOrientacoesJuridicasInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutOrientacoesJuridicasInput, UserUncheckedUpdateWithoutOrientacoesJuridicasInput>
+  }
+
+  export type UserUpdateWithoutOrientacoesJuridicasInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    nome?: StringFieldUpdateOperationsInput | string
+    senha?: StringFieldUpdateOperationsInput | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    aprovado?: BoolFieldUpdateOperationsInput | boolean
+    dataCadastro?: DateTimeFieldUpdateOperationsInput | Date | string
+    atendimentosRealizados?: AtendimentoUpdateManyWithoutOperadorNestedInput
+    atendimentosTriagem?: FilaAtendimentoUpdateManyWithoutOperadorTriagemNestedInput
+    atendimentosEmAndamento?: FilaAtendimentoUpdateManyWithoutOperadorAtendimentoNestedInput
+    documentosUploadOperador?: DocumentoUpdateManyWithoutOperadorUploadNestedInput
+    retornosDemandaJudicial?: RetornoDemandaJudicialUpdateManyWithoutOperadorNestedInput
+    encaminhamentosOutrosOrgaos?: EncaminhamentoOutrosOrgaosUpdateManyWithoutOperadorNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutOrientacoesJuridicasInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    nome?: StringFieldUpdateOperationsInput | string
+    senha?: StringFieldUpdateOperationsInput | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    aprovado?: BoolFieldUpdateOperationsInput | boolean
+    dataCadastro?: DateTimeFieldUpdateOperationsInput | Date | string
+    atendimentosRealizados?: AtendimentoUncheckedUpdateManyWithoutOperadorNestedInput
+    atendimentosTriagem?: FilaAtendimentoUncheckedUpdateManyWithoutOperadorTriagemNestedInput
+    atendimentosEmAndamento?: FilaAtendimentoUncheckedUpdateManyWithoutOperadorAtendimentoNestedInput
+    documentosUploadOperador?: DocumentoUncheckedUpdateManyWithoutOperadorUploadNestedInput
+    retornosDemandaJudicial?: RetornoDemandaJudicialUncheckedUpdateManyWithoutOperadorNestedInput
+    encaminhamentosOutrosOrgaos?: EncaminhamentoOutrosOrgaosUncheckedUpdateManyWithoutOperadorNestedInput
+  }
+
+  export type AtendimentoCreateWithoutEncaminhamentoOutrosOrgaosInput = {
+    id?: string
+    capacidadeCivil: boolean
+    cep: string
+    endereco: string
+    numero: number
+    complemento?: string | null
+    bairro: string
+    cidade: string
+    uf: string
+    dataInicioBeneficio?: Date | string | null
+    parcelasVencidas?: number | null
+    valorCausa?: number | null
+    processosAndamento: $Enums.ProcessosAndamento
+    estadoCivil: EstadoCivilCreateNestedOneWithoutAtendimentosInput
+    profissao?: ProfissaoCreateNestedOneWithoutAtendimentosInput
+    tipoDomicilio: TipoDomicilioCreateNestedOneWithoutAtendimentosInput
+    tipoDemandaPrevidenciaria: TipoDemandaPrevidenciariaCreateNestedOneWithoutAtendimentosInput
+    competenciaJudicial: CompetenciaJudicialCreateNestedOneWithoutAtendimentosInput
+    operador: UserCreateNestedOneWithoutAtendimentosRealizadosInput
+    fila?: FilaAtendimentoCreateNestedOneWithoutAtendimentoInput
+    membrosFamiliares?: MembroFamiliarCreateNestedManyWithoutAtendimentoInput
+    processo?: ProcessoCreateNestedOneWithoutAtendimentoInput
+    formularios?: FormularioPreenchidoCreateNestedManyWithoutAtendimentoInput
+    documentos?: DocumentoCreateNestedManyWithoutAtendimentoInput
+    retornoDemandaJudicial?: RetornoDemandaJudicialCreateNestedOneWithoutAtendimentoInput
+    orientacaoJuridica?: OrientacaoJuridicaCreateNestedOneWithoutAtendimentoInput
+  }
+
+  export type AtendimentoUncheckedCreateWithoutEncaminhamentoOutrosOrgaosInput = {
+    id?: string
+    capacidadeCivil: boolean
+    cep: string
+    endereco: string
+    numero: number
+    complemento?: string | null
+    bairro: string
+    cidade: string
+    uf: string
+    dataInicioBeneficio?: Date | string | null
+    parcelasVencidas?: number | null
+    valorCausa?: number | null
+    processosAndamento: $Enums.ProcessosAndamento
+    estadoCivilId: number
+    profissaoId?: string | null
+    tipoDomicilioId: number
+    tipoDemandaPrevidenciariaId: number
+    competenciaJudicialId: number
+    operadorId: string
+    filaId?: string | null
+    membrosFamiliares?: MembroFamiliarUncheckedCreateNestedManyWithoutAtendimentoInput
+    processo?: ProcessoUncheckedCreateNestedOneWithoutAtendimentoInput
+    formularios?: FormularioPreenchidoUncheckedCreateNestedManyWithoutAtendimentoInput
+    documentos?: DocumentoUncheckedCreateNestedManyWithoutAtendimentoInput
+    retornoDemandaJudicial?: RetornoDemandaJudicialUncheckedCreateNestedOneWithoutAtendimentoInput
+    orientacaoJuridica?: OrientacaoJuridicaUncheckedCreateNestedOneWithoutAtendimentoInput
+  }
+
+  export type AtendimentoCreateOrConnectWithoutEncaminhamentoOutrosOrgaosInput = {
+    where: AtendimentoWhereUniqueInput
+    create: XOR<AtendimentoCreateWithoutEncaminhamentoOutrosOrgaosInput, AtendimentoUncheckedCreateWithoutEncaminhamentoOutrosOrgaosInput>
+  }
+
+  export type UserCreateWithoutEncaminhamentosOutrosOrgaosInput = {
+    id?: string
+    email: string
+    nome: string
+    senha: string
+    role?: $Enums.Role
+    aprovado?: boolean
+    dataCadastro?: Date | string
+    atendimentosRealizados?: AtendimentoCreateNestedManyWithoutOperadorInput
+    atendimentosTriagem?: FilaAtendimentoCreateNestedManyWithoutOperadorTriagemInput
+    atendimentosEmAndamento?: FilaAtendimentoCreateNestedManyWithoutOperadorAtendimentoInput
+    documentosUploadOperador?: DocumentoCreateNestedManyWithoutOperadorUploadInput
+    retornosDemandaJudicial?: RetornoDemandaJudicialCreateNestedManyWithoutOperadorInput
+    orientacoesJuridicas?: OrientacaoJuridicaCreateNestedManyWithoutOperadorInput
+  }
+
+  export type UserUncheckedCreateWithoutEncaminhamentosOutrosOrgaosInput = {
+    id?: string
+    email: string
+    nome: string
+    senha: string
+    role?: $Enums.Role
+    aprovado?: boolean
+    dataCadastro?: Date | string
+    atendimentosRealizados?: AtendimentoUncheckedCreateNestedManyWithoutOperadorInput
+    atendimentosTriagem?: FilaAtendimentoUncheckedCreateNestedManyWithoutOperadorTriagemInput
+    atendimentosEmAndamento?: FilaAtendimentoUncheckedCreateNestedManyWithoutOperadorAtendimentoInput
+    documentosUploadOperador?: DocumentoUncheckedCreateNestedManyWithoutOperadorUploadInput
+    retornosDemandaJudicial?: RetornoDemandaJudicialUncheckedCreateNestedManyWithoutOperadorInput
+    orientacoesJuridicas?: OrientacaoJuridicaUncheckedCreateNestedManyWithoutOperadorInput
+  }
+
+  export type UserCreateOrConnectWithoutEncaminhamentosOutrosOrgaosInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutEncaminhamentosOutrosOrgaosInput, UserUncheckedCreateWithoutEncaminhamentosOutrosOrgaosInput>
+  }
+
+  export type AtendimentoUpsertWithoutEncaminhamentoOutrosOrgaosInput = {
+    update: XOR<AtendimentoUpdateWithoutEncaminhamentoOutrosOrgaosInput, AtendimentoUncheckedUpdateWithoutEncaminhamentoOutrosOrgaosInput>
+    create: XOR<AtendimentoCreateWithoutEncaminhamentoOutrosOrgaosInput, AtendimentoUncheckedCreateWithoutEncaminhamentoOutrosOrgaosInput>
+    where?: AtendimentoWhereInput
+  }
+
+  export type AtendimentoUpdateToOneWithWhereWithoutEncaminhamentoOutrosOrgaosInput = {
+    where?: AtendimentoWhereInput
+    data: XOR<AtendimentoUpdateWithoutEncaminhamentoOutrosOrgaosInput, AtendimentoUncheckedUpdateWithoutEncaminhamentoOutrosOrgaosInput>
+  }
+
+  export type AtendimentoUpdateWithoutEncaminhamentoOutrosOrgaosInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    capacidadeCivil?: BoolFieldUpdateOperationsInput | boolean
+    cep?: StringFieldUpdateOperationsInput | string
+    endereco?: StringFieldUpdateOperationsInput | string
+    numero?: IntFieldUpdateOperationsInput | number
+    complemento?: NullableStringFieldUpdateOperationsInput | string | null
+    bairro?: StringFieldUpdateOperationsInput | string
+    cidade?: StringFieldUpdateOperationsInput | string
+    uf?: StringFieldUpdateOperationsInput | string
+    dataInicioBeneficio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    parcelasVencidas?: NullableIntFieldUpdateOperationsInput | number | null
+    valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
+    processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
+    estadoCivil?: EstadoCivilUpdateOneRequiredWithoutAtendimentosNestedInput
+    profissao?: ProfissaoUpdateOneWithoutAtendimentosNestedInput
+    tipoDomicilio?: TipoDomicilioUpdateOneRequiredWithoutAtendimentosNestedInput
+    tipoDemandaPrevidenciaria?: TipoDemandaPrevidenciariaUpdateOneRequiredWithoutAtendimentosNestedInput
+    competenciaJudicial?: CompetenciaJudicialUpdateOneRequiredWithoutAtendimentosNestedInput
+    operador?: UserUpdateOneRequiredWithoutAtendimentosRealizadosNestedInput
+    fila?: FilaAtendimentoUpdateOneWithoutAtendimentoNestedInput
+    membrosFamiliares?: MembroFamiliarUpdateManyWithoutAtendimentoNestedInput
+    processo?: ProcessoUpdateOneWithoutAtendimentoNestedInput
+    formularios?: FormularioPreenchidoUpdateManyWithoutAtendimentoNestedInput
+    documentos?: DocumentoUpdateManyWithoutAtendimentoNestedInput
+    retornoDemandaJudicial?: RetornoDemandaJudicialUpdateOneWithoutAtendimentoNestedInput
+    orientacaoJuridica?: OrientacaoJuridicaUpdateOneWithoutAtendimentoNestedInput
+  }
+
+  export type AtendimentoUncheckedUpdateWithoutEncaminhamentoOutrosOrgaosInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    capacidadeCivil?: BoolFieldUpdateOperationsInput | boolean
+    cep?: StringFieldUpdateOperationsInput | string
+    endereco?: StringFieldUpdateOperationsInput | string
+    numero?: IntFieldUpdateOperationsInput | number
+    complemento?: NullableStringFieldUpdateOperationsInput | string | null
+    bairro?: StringFieldUpdateOperationsInput | string
+    cidade?: StringFieldUpdateOperationsInput | string
+    uf?: StringFieldUpdateOperationsInput | string
+    dataInicioBeneficio?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    parcelasVencidas?: NullableIntFieldUpdateOperationsInput | number | null
+    valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
+    processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
+    estadoCivilId?: IntFieldUpdateOperationsInput | number
+    profissaoId?: NullableStringFieldUpdateOperationsInput | string | null
+    tipoDomicilioId?: IntFieldUpdateOperationsInput | number
+    tipoDemandaPrevidenciariaId?: IntFieldUpdateOperationsInput | number
+    competenciaJudicialId?: IntFieldUpdateOperationsInput | number
+    operadorId?: StringFieldUpdateOperationsInput | string
+    filaId?: NullableStringFieldUpdateOperationsInput | string | null
+    membrosFamiliares?: MembroFamiliarUncheckedUpdateManyWithoutAtendimentoNestedInput
+    processo?: ProcessoUncheckedUpdateOneWithoutAtendimentoNestedInput
+    formularios?: FormularioPreenchidoUncheckedUpdateManyWithoutAtendimentoNestedInput
+    documentos?: DocumentoUncheckedUpdateManyWithoutAtendimentoNestedInput
+    retornoDemandaJudicial?: RetornoDemandaJudicialUncheckedUpdateOneWithoutAtendimentoNestedInput
+    orientacaoJuridica?: OrientacaoJuridicaUncheckedUpdateOneWithoutAtendimentoNestedInput
+  }
+
+  export type UserUpsertWithoutEncaminhamentosOutrosOrgaosInput = {
+    update: XOR<UserUpdateWithoutEncaminhamentosOutrosOrgaosInput, UserUncheckedUpdateWithoutEncaminhamentosOutrosOrgaosInput>
+    create: XOR<UserCreateWithoutEncaminhamentosOutrosOrgaosInput, UserUncheckedCreateWithoutEncaminhamentosOutrosOrgaosInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutEncaminhamentosOutrosOrgaosInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutEncaminhamentosOutrosOrgaosInput, UserUncheckedUpdateWithoutEncaminhamentosOutrosOrgaosInput>
+  }
+
+  export type UserUpdateWithoutEncaminhamentosOutrosOrgaosInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    nome?: StringFieldUpdateOperationsInput | string
+    senha?: StringFieldUpdateOperationsInput | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    aprovado?: BoolFieldUpdateOperationsInput | boolean
+    dataCadastro?: DateTimeFieldUpdateOperationsInput | Date | string
+    atendimentosRealizados?: AtendimentoUpdateManyWithoutOperadorNestedInput
+    atendimentosTriagem?: FilaAtendimentoUpdateManyWithoutOperadorTriagemNestedInput
+    atendimentosEmAndamento?: FilaAtendimentoUpdateManyWithoutOperadorAtendimentoNestedInput
+    documentosUploadOperador?: DocumentoUpdateManyWithoutOperadorUploadNestedInput
+    retornosDemandaJudicial?: RetornoDemandaJudicialUpdateManyWithoutOperadorNestedInput
+    orientacoesJuridicas?: OrientacaoJuridicaUpdateManyWithoutOperadorNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutEncaminhamentosOutrosOrgaosInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    nome?: StringFieldUpdateOperationsInput | string
+    senha?: StringFieldUpdateOperationsInput | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    aprovado?: BoolFieldUpdateOperationsInput | boolean
+    dataCadastro?: DateTimeFieldUpdateOperationsInput | Date | string
+    atendimentosRealizados?: AtendimentoUncheckedUpdateManyWithoutOperadorNestedInput
+    atendimentosTriagem?: FilaAtendimentoUncheckedUpdateManyWithoutOperadorTriagemNestedInput
+    atendimentosEmAndamento?: FilaAtendimentoUncheckedUpdateManyWithoutOperadorAtendimentoNestedInput
+    documentosUploadOperador?: DocumentoUncheckedUpdateManyWithoutOperadorUploadNestedInput
+    retornosDemandaJudicial?: RetornoDemandaJudicialUncheckedUpdateManyWithoutOperadorNestedInput
+    orientacoesJuridicas?: OrientacaoJuridicaUncheckedUpdateManyWithoutOperadorNestedInput
   }
 
   export type AssistidoCreateWithoutTipoAtendimentoInput = {
@@ -29690,7 +40571,7 @@ export namespace Prisma {
     parcelasVencidas?: number | null
     valorCausa?: number | null
     processosAndamento: $Enums.ProcessosAndamento
-    profissao: ProfissaoCreateNestedOneWithoutAtendimentosInput
+    profissao?: ProfissaoCreateNestedOneWithoutAtendimentosInput
     tipoDomicilio: TipoDomicilioCreateNestedOneWithoutAtendimentosInput
     tipoDemandaPrevidenciaria: TipoDemandaPrevidenciariaCreateNestedOneWithoutAtendimentosInput
     competenciaJudicial: CompetenciaJudicialCreateNestedOneWithoutAtendimentosInput
@@ -29700,6 +40581,9 @@ export namespace Prisma {
     processo?: ProcessoCreateNestedOneWithoutAtendimentoInput
     formularios?: FormularioPreenchidoCreateNestedManyWithoutAtendimentoInput
     documentos?: DocumentoCreateNestedManyWithoutAtendimentoInput
+    retornoDemandaJudicial?: RetornoDemandaJudicialCreateNestedOneWithoutAtendimentoInput
+    orientacaoJuridica?: OrientacaoJuridicaCreateNestedOneWithoutAtendimentoInput
+    encaminhamentoOutrosOrgaos?: EncaminhamentoOutrosOrgaosCreateNestedOneWithoutAtendimentoInput
   }
 
   export type AtendimentoUncheckedCreateWithoutEstadoCivilInput = {
@@ -29716,7 +40600,7 @@ export namespace Prisma {
     parcelasVencidas?: number | null
     valorCausa?: number | null
     processosAndamento: $Enums.ProcessosAndamento
-    profissaoId: string
+    profissaoId?: string | null
     tipoDomicilioId: number
     tipoDemandaPrevidenciariaId: number
     competenciaJudicialId: number
@@ -29726,6 +40610,9 @@ export namespace Prisma {
     processo?: ProcessoUncheckedCreateNestedOneWithoutAtendimentoInput
     formularios?: FormularioPreenchidoUncheckedCreateNestedManyWithoutAtendimentoInput
     documentos?: DocumentoUncheckedCreateNestedManyWithoutAtendimentoInput
+    retornoDemandaJudicial?: RetornoDemandaJudicialUncheckedCreateNestedOneWithoutAtendimentoInput
+    orientacaoJuridica?: OrientacaoJuridicaUncheckedCreateNestedOneWithoutAtendimentoInput
+    encaminhamentoOutrosOrgaos?: EncaminhamentoOutrosOrgaosUncheckedCreateNestedOneWithoutAtendimentoInput
   }
 
   export type AtendimentoCreateOrConnectWithoutEstadoCivilInput = {
@@ -29778,6 +40665,9 @@ export namespace Prisma {
     processo?: ProcessoCreateNestedOneWithoutAtendimentoInput
     formularios?: FormularioPreenchidoCreateNestedManyWithoutAtendimentoInput
     documentos?: DocumentoCreateNestedManyWithoutAtendimentoInput
+    retornoDemandaJudicial?: RetornoDemandaJudicialCreateNestedOneWithoutAtendimentoInput
+    orientacaoJuridica?: OrientacaoJuridicaCreateNestedOneWithoutAtendimentoInput
+    encaminhamentoOutrosOrgaos?: EncaminhamentoOutrosOrgaosCreateNestedOneWithoutAtendimentoInput
   }
 
   export type AtendimentoUncheckedCreateWithoutProfissaoInput = {
@@ -29804,6 +40694,9 @@ export namespace Prisma {
     processo?: ProcessoUncheckedCreateNestedOneWithoutAtendimentoInput
     formularios?: FormularioPreenchidoUncheckedCreateNestedManyWithoutAtendimentoInput
     documentos?: DocumentoUncheckedCreateNestedManyWithoutAtendimentoInput
+    retornoDemandaJudicial?: RetornoDemandaJudicialUncheckedCreateNestedOneWithoutAtendimentoInput
+    orientacaoJuridica?: OrientacaoJuridicaUncheckedCreateNestedOneWithoutAtendimentoInput
+    encaminhamentoOutrosOrgaos?: EncaminhamentoOutrosOrgaosUncheckedCreateNestedOneWithoutAtendimentoInput
   }
 
   export type AtendimentoCreateOrConnectWithoutProfissaoInput = {
@@ -29847,7 +40740,7 @@ export namespace Prisma {
     valorCausa?: number | null
     processosAndamento: $Enums.ProcessosAndamento
     estadoCivil: EstadoCivilCreateNestedOneWithoutAtendimentosInput
-    profissao: ProfissaoCreateNestedOneWithoutAtendimentosInput
+    profissao?: ProfissaoCreateNestedOneWithoutAtendimentosInput
     tipoDemandaPrevidenciaria: TipoDemandaPrevidenciariaCreateNestedOneWithoutAtendimentosInput
     competenciaJudicial: CompetenciaJudicialCreateNestedOneWithoutAtendimentosInput
     operador: UserCreateNestedOneWithoutAtendimentosRealizadosInput
@@ -29856,6 +40749,9 @@ export namespace Prisma {
     processo?: ProcessoCreateNestedOneWithoutAtendimentoInput
     formularios?: FormularioPreenchidoCreateNestedManyWithoutAtendimentoInput
     documentos?: DocumentoCreateNestedManyWithoutAtendimentoInput
+    retornoDemandaJudicial?: RetornoDemandaJudicialCreateNestedOneWithoutAtendimentoInput
+    orientacaoJuridica?: OrientacaoJuridicaCreateNestedOneWithoutAtendimentoInput
+    encaminhamentoOutrosOrgaos?: EncaminhamentoOutrosOrgaosCreateNestedOneWithoutAtendimentoInput
   }
 
   export type AtendimentoUncheckedCreateWithoutTipoDomicilioInput = {
@@ -29873,7 +40769,7 @@ export namespace Prisma {
     valorCausa?: number | null
     processosAndamento: $Enums.ProcessosAndamento
     estadoCivilId: number
-    profissaoId: string
+    profissaoId?: string | null
     tipoDemandaPrevidenciariaId: number
     competenciaJudicialId: number
     operadorId: string
@@ -29882,6 +40778,9 @@ export namespace Prisma {
     processo?: ProcessoUncheckedCreateNestedOneWithoutAtendimentoInput
     formularios?: FormularioPreenchidoUncheckedCreateNestedManyWithoutAtendimentoInput
     documentos?: DocumentoUncheckedCreateNestedManyWithoutAtendimentoInput
+    retornoDemandaJudicial?: RetornoDemandaJudicialUncheckedCreateNestedOneWithoutAtendimentoInput
+    orientacaoJuridica?: OrientacaoJuridicaUncheckedCreateNestedOneWithoutAtendimentoInput
+    encaminhamentoOutrosOrgaos?: EncaminhamentoOutrosOrgaosUncheckedCreateNestedOneWithoutAtendimentoInput
   }
 
   export type AtendimentoCreateOrConnectWithoutTipoDomicilioInput = {
@@ -29925,7 +40824,7 @@ export namespace Prisma {
     valorCausa?: number | null
     processosAndamento: $Enums.ProcessosAndamento
     estadoCivil: EstadoCivilCreateNestedOneWithoutAtendimentosInput
-    profissao: ProfissaoCreateNestedOneWithoutAtendimentosInput
+    profissao?: ProfissaoCreateNestedOneWithoutAtendimentosInput
     tipoDomicilio: TipoDomicilioCreateNestedOneWithoutAtendimentosInput
     tipoDemandaPrevidenciaria: TipoDemandaPrevidenciariaCreateNestedOneWithoutAtendimentosInput
     competenciaJudicial: CompetenciaJudicialCreateNestedOneWithoutAtendimentosInput
@@ -29934,6 +40833,9 @@ export namespace Prisma {
     processo?: ProcessoCreateNestedOneWithoutAtendimentoInput
     formularios?: FormularioPreenchidoCreateNestedManyWithoutAtendimentoInput
     documentos?: DocumentoCreateNestedManyWithoutAtendimentoInput
+    retornoDemandaJudicial?: RetornoDemandaJudicialCreateNestedOneWithoutAtendimentoInput
+    orientacaoJuridica?: OrientacaoJuridicaCreateNestedOneWithoutAtendimentoInput
+    encaminhamentoOutrosOrgaos?: EncaminhamentoOutrosOrgaosCreateNestedOneWithoutAtendimentoInput
   }
 
   export type AtendimentoUncheckedCreateWithoutMembrosFamiliaresInput = {
@@ -29951,7 +40853,7 @@ export namespace Prisma {
     valorCausa?: number | null
     processosAndamento: $Enums.ProcessosAndamento
     estadoCivilId: number
-    profissaoId: string
+    profissaoId?: string | null
     tipoDomicilioId: number
     tipoDemandaPrevidenciariaId: number
     competenciaJudicialId: number
@@ -29960,6 +40862,9 @@ export namespace Prisma {
     processo?: ProcessoUncheckedCreateNestedOneWithoutAtendimentoInput
     formularios?: FormularioPreenchidoUncheckedCreateNestedManyWithoutAtendimentoInput
     documentos?: DocumentoUncheckedCreateNestedManyWithoutAtendimentoInput
+    retornoDemandaJudicial?: RetornoDemandaJudicialUncheckedCreateNestedOneWithoutAtendimentoInput
+    orientacaoJuridica?: OrientacaoJuridicaUncheckedCreateNestedOneWithoutAtendimentoInput
+    encaminhamentoOutrosOrgaos?: EncaminhamentoOutrosOrgaosUncheckedCreateNestedOneWithoutAtendimentoInput
   }
 
   export type AtendimentoCreateOrConnectWithoutMembrosFamiliaresInput = {
@@ -29993,7 +40898,7 @@ export namespace Prisma {
     valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
     estadoCivil?: EstadoCivilUpdateOneRequiredWithoutAtendimentosNestedInput
-    profissao?: ProfissaoUpdateOneRequiredWithoutAtendimentosNestedInput
+    profissao?: ProfissaoUpdateOneWithoutAtendimentosNestedInput
     tipoDomicilio?: TipoDomicilioUpdateOneRequiredWithoutAtendimentosNestedInput
     tipoDemandaPrevidenciaria?: TipoDemandaPrevidenciariaUpdateOneRequiredWithoutAtendimentosNestedInput
     competenciaJudicial?: CompetenciaJudicialUpdateOneRequiredWithoutAtendimentosNestedInput
@@ -30002,6 +40907,9 @@ export namespace Prisma {
     processo?: ProcessoUpdateOneWithoutAtendimentoNestedInput
     formularios?: FormularioPreenchidoUpdateManyWithoutAtendimentoNestedInput
     documentos?: DocumentoUpdateManyWithoutAtendimentoNestedInput
+    retornoDemandaJudicial?: RetornoDemandaJudicialUpdateOneWithoutAtendimentoNestedInput
+    orientacaoJuridica?: OrientacaoJuridicaUpdateOneWithoutAtendimentoNestedInput
+    encaminhamentoOutrosOrgaos?: EncaminhamentoOutrosOrgaosUpdateOneWithoutAtendimentoNestedInput
   }
 
   export type AtendimentoUncheckedUpdateWithoutMembrosFamiliaresInput = {
@@ -30019,7 +40927,7 @@ export namespace Prisma {
     valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
     estadoCivilId?: IntFieldUpdateOperationsInput | number
-    profissaoId?: StringFieldUpdateOperationsInput | string
+    profissaoId?: NullableStringFieldUpdateOperationsInput | string | null
     tipoDomicilioId?: IntFieldUpdateOperationsInput | number
     tipoDemandaPrevidenciariaId?: IntFieldUpdateOperationsInput | number
     competenciaJudicialId?: IntFieldUpdateOperationsInput | number
@@ -30028,6 +40936,9 @@ export namespace Prisma {
     processo?: ProcessoUncheckedUpdateOneWithoutAtendimentoNestedInput
     formularios?: FormularioPreenchidoUncheckedUpdateManyWithoutAtendimentoNestedInput
     documentos?: DocumentoUncheckedUpdateManyWithoutAtendimentoNestedInput
+    retornoDemandaJudicial?: RetornoDemandaJudicialUncheckedUpdateOneWithoutAtendimentoNestedInput
+    orientacaoJuridica?: OrientacaoJuridicaUncheckedUpdateOneWithoutAtendimentoNestedInput
+    encaminhamentoOutrosOrgaos?: EncaminhamentoOutrosOrgaosUncheckedUpdateOneWithoutAtendimentoNestedInput
   }
 
   export type AtendimentoCreateWithoutTipoDemandaPrevidenciariaInput = {
@@ -30045,7 +40956,7 @@ export namespace Prisma {
     valorCausa?: number | null
     processosAndamento: $Enums.ProcessosAndamento
     estadoCivil: EstadoCivilCreateNestedOneWithoutAtendimentosInput
-    profissao: ProfissaoCreateNestedOneWithoutAtendimentosInput
+    profissao?: ProfissaoCreateNestedOneWithoutAtendimentosInput
     tipoDomicilio: TipoDomicilioCreateNestedOneWithoutAtendimentosInput
     competenciaJudicial: CompetenciaJudicialCreateNestedOneWithoutAtendimentosInput
     operador: UserCreateNestedOneWithoutAtendimentosRealizadosInput
@@ -30054,6 +40965,9 @@ export namespace Prisma {
     processo?: ProcessoCreateNestedOneWithoutAtendimentoInput
     formularios?: FormularioPreenchidoCreateNestedManyWithoutAtendimentoInput
     documentos?: DocumentoCreateNestedManyWithoutAtendimentoInput
+    retornoDemandaJudicial?: RetornoDemandaJudicialCreateNestedOneWithoutAtendimentoInput
+    orientacaoJuridica?: OrientacaoJuridicaCreateNestedOneWithoutAtendimentoInput
+    encaminhamentoOutrosOrgaos?: EncaminhamentoOutrosOrgaosCreateNestedOneWithoutAtendimentoInput
   }
 
   export type AtendimentoUncheckedCreateWithoutTipoDemandaPrevidenciariaInput = {
@@ -30071,7 +40985,7 @@ export namespace Prisma {
     valorCausa?: number | null
     processosAndamento: $Enums.ProcessosAndamento
     estadoCivilId: number
-    profissaoId: string
+    profissaoId?: string | null
     tipoDomicilioId: number
     competenciaJudicialId: number
     operadorId: string
@@ -30080,6 +40994,9 @@ export namespace Prisma {
     processo?: ProcessoUncheckedCreateNestedOneWithoutAtendimentoInput
     formularios?: FormularioPreenchidoUncheckedCreateNestedManyWithoutAtendimentoInput
     documentos?: DocumentoUncheckedCreateNestedManyWithoutAtendimentoInput
+    retornoDemandaJudicial?: RetornoDemandaJudicialUncheckedCreateNestedOneWithoutAtendimentoInput
+    orientacaoJuridica?: OrientacaoJuridicaUncheckedCreateNestedOneWithoutAtendimentoInput
+    encaminhamentoOutrosOrgaos?: EncaminhamentoOutrosOrgaosUncheckedCreateNestedOneWithoutAtendimentoInput
   }
 
   export type AtendimentoCreateOrConnectWithoutTipoDemandaPrevidenciariaInput = {
@@ -30123,7 +41040,7 @@ export namespace Prisma {
     valorCausa?: number | null
     processosAndamento: $Enums.ProcessosAndamento
     estadoCivil: EstadoCivilCreateNestedOneWithoutAtendimentosInput
-    profissao: ProfissaoCreateNestedOneWithoutAtendimentosInput
+    profissao?: ProfissaoCreateNestedOneWithoutAtendimentosInput
     tipoDomicilio: TipoDomicilioCreateNestedOneWithoutAtendimentosInput
     tipoDemandaPrevidenciaria: TipoDemandaPrevidenciariaCreateNestedOneWithoutAtendimentosInput
     operador: UserCreateNestedOneWithoutAtendimentosRealizadosInput
@@ -30132,6 +41049,9 @@ export namespace Prisma {
     processo?: ProcessoCreateNestedOneWithoutAtendimentoInput
     formularios?: FormularioPreenchidoCreateNestedManyWithoutAtendimentoInput
     documentos?: DocumentoCreateNestedManyWithoutAtendimentoInput
+    retornoDemandaJudicial?: RetornoDemandaJudicialCreateNestedOneWithoutAtendimentoInput
+    orientacaoJuridica?: OrientacaoJuridicaCreateNestedOneWithoutAtendimentoInput
+    encaminhamentoOutrosOrgaos?: EncaminhamentoOutrosOrgaosCreateNestedOneWithoutAtendimentoInput
   }
 
   export type AtendimentoUncheckedCreateWithoutCompetenciaJudicialInput = {
@@ -30149,7 +41069,7 @@ export namespace Prisma {
     valorCausa?: number | null
     processosAndamento: $Enums.ProcessosAndamento
     estadoCivilId: number
-    profissaoId: string
+    profissaoId?: string | null
     tipoDomicilioId: number
     tipoDemandaPrevidenciariaId: number
     operadorId: string
@@ -30158,6 +41078,9 @@ export namespace Prisma {
     processo?: ProcessoUncheckedCreateNestedOneWithoutAtendimentoInput
     formularios?: FormularioPreenchidoUncheckedCreateNestedManyWithoutAtendimentoInput
     documentos?: DocumentoUncheckedCreateNestedManyWithoutAtendimentoInput
+    retornoDemandaJudicial?: RetornoDemandaJudicialUncheckedCreateNestedOneWithoutAtendimentoInput
+    orientacaoJuridica?: OrientacaoJuridicaUncheckedCreateNestedOneWithoutAtendimentoInput
+    encaminhamentoOutrosOrgaos?: EncaminhamentoOutrosOrgaosUncheckedCreateNestedOneWithoutAtendimentoInput
   }
 
   export type AtendimentoCreateOrConnectWithoutCompetenciaJudicialInput = {
@@ -30186,6 +41109,95 @@ export namespace Prisma {
     data: XOR<AtendimentoUpdateManyMutationInput, AtendimentoUncheckedUpdateManyWithoutCompetenciaJudicialInput>
   }
 
+  export type OrgaoEncaminhamentoCreateWithoutTipoOrgaoEncaminhamentoInput = {
+    nome: string
+    ativo?: boolean
+  }
+
+  export type OrgaoEncaminhamentoUncheckedCreateWithoutTipoOrgaoEncaminhamentoInput = {
+    id?: number
+    nome: string
+    ativo?: boolean
+  }
+
+  export type OrgaoEncaminhamentoCreateOrConnectWithoutTipoOrgaoEncaminhamentoInput = {
+    where: OrgaoEncaminhamentoWhereUniqueInput
+    create: XOR<OrgaoEncaminhamentoCreateWithoutTipoOrgaoEncaminhamentoInput, OrgaoEncaminhamentoUncheckedCreateWithoutTipoOrgaoEncaminhamentoInput>
+  }
+
+  export type OrgaoEncaminhamentoCreateManyTipoOrgaoEncaminhamentoInputEnvelope = {
+    data: OrgaoEncaminhamentoCreateManyTipoOrgaoEncaminhamentoInput | OrgaoEncaminhamentoCreateManyTipoOrgaoEncaminhamentoInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type OrgaoEncaminhamentoUpsertWithWhereUniqueWithoutTipoOrgaoEncaminhamentoInput = {
+    where: OrgaoEncaminhamentoWhereUniqueInput
+    update: XOR<OrgaoEncaminhamentoUpdateWithoutTipoOrgaoEncaminhamentoInput, OrgaoEncaminhamentoUncheckedUpdateWithoutTipoOrgaoEncaminhamentoInput>
+    create: XOR<OrgaoEncaminhamentoCreateWithoutTipoOrgaoEncaminhamentoInput, OrgaoEncaminhamentoUncheckedCreateWithoutTipoOrgaoEncaminhamentoInput>
+  }
+
+  export type OrgaoEncaminhamentoUpdateWithWhereUniqueWithoutTipoOrgaoEncaminhamentoInput = {
+    where: OrgaoEncaminhamentoWhereUniqueInput
+    data: XOR<OrgaoEncaminhamentoUpdateWithoutTipoOrgaoEncaminhamentoInput, OrgaoEncaminhamentoUncheckedUpdateWithoutTipoOrgaoEncaminhamentoInput>
+  }
+
+  export type OrgaoEncaminhamentoUpdateManyWithWhereWithoutTipoOrgaoEncaminhamentoInput = {
+    where: OrgaoEncaminhamentoScalarWhereInput
+    data: XOR<OrgaoEncaminhamentoUpdateManyMutationInput, OrgaoEncaminhamentoUncheckedUpdateManyWithoutTipoOrgaoEncaminhamentoInput>
+  }
+
+  export type OrgaoEncaminhamentoScalarWhereInput = {
+    AND?: OrgaoEncaminhamentoScalarWhereInput | OrgaoEncaminhamentoScalarWhereInput[]
+    OR?: OrgaoEncaminhamentoScalarWhereInput[]
+    NOT?: OrgaoEncaminhamentoScalarWhereInput | OrgaoEncaminhamentoScalarWhereInput[]
+    id?: IntFilter<"OrgaoEncaminhamento"> | number
+    nome?: StringFilter<"OrgaoEncaminhamento"> | string
+    ativo?: BoolFilter<"OrgaoEncaminhamento"> | boolean
+    tipoOrgaoEncaminhamentoId?: IntFilter<"OrgaoEncaminhamento"> | number
+  }
+
+  export type TipoOrgaoEncaminhamentoCreateWithoutOrgaoEncaminhamentoInput = {
+    titulo: string
+    descricao: string
+    ativo?: boolean
+  }
+
+  export type TipoOrgaoEncaminhamentoUncheckedCreateWithoutOrgaoEncaminhamentoInput = {
+    id?: number
+    titulo: string
+    descricao: string
+    ativo?: boolean
+  }
+
+  export type TipoOrgaoEncaminhamentoCreateOrConnectWithoutOrgaoEncaminhamentoInput = {
+    where: TipoOrgaoEncaminhamentoWhereUniqueInput
+    create: XOR<TipoOrgaoEncaminhamentoCreateWithoutOrgaoEncaminhamentoInput, TipoOrgaoEncaminhamentoUncheckedCreateWithoutOrgaoEncaminhamentoInput>
+  }
+
+  export type TipoOrgaoEncaminhamentoUpsertWithoutOrgaoEncaminhamentoInput = {
+    update: XOR<TipoOrgaoEncaminhamentoUpdateWithoutOrgaoEncaminhamentoInput, TipoOrgaoEncaminhamentoUncheckedUpdateWithoutOrgaoEncaminhamentoInput>
+    create: XOR<TipoOrgaoEncaminhamentoCreateWithoutOrgaoEncaminhamentoInput, TipoOrgaoEncaminhamentoUncheckedCreateWithoutOrgaoEncaminhamentoInput>
+    where?: TipoOrgaoEncaminhamentoWhereInput
+  }
+
+  export type TipoOrgaoEncaminhamentoUpdateToOneWithWhereWithoutOrgaoEncaminhamentoInput = {
+    where?: TipoOrgaoEncaminhamentoWhereInput
+    data: XOR<TipoOrgaoEncaminhamentoUpdateWithoutOrgaoEncaminhamentoInput, TipoOrgaoEncaminhamentoUncheckedUpdateWithoutOrgaoEncaminhamentoInput>
+  }
+
+  export type TipoOrgaoEncaminhamentoUpdateWithoutOrgaoEncaminhamentoInput = {
+    titulo?: StringFieldUpdateOperationsInput | string
+    descricao?: StringFieldUpdateOperationsInput | string
+    ativo?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type TipoOrgaoEncaminhamentoUncheckedUpdateWithoutOrgaoEncaminhamentoInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    titulo?: StringFieldUpdateOperationsInput | string
+    descricao?: StringFieldUpdateOperationsInput | string
+    ativo?: BoolFieldUpdateOperationsInput | boolean
+  }
+
   export type AtendimentoCreateManyOperadorInput = {
     id?: string
     capacidadeCivil: boolean
@@ -30201,7 +41213,7 @@ export namespace Prisma {
     valorCausa?: number | null
     processosAndamento: $Enums.ProcessosAndamento
     estadoCivilId: number
-    profissaoId: string
+    profissaoId?: string | null
     tipoDomicilioId: number
     tipoDemandaPrevidenciariaId: number
     competenciaJudicialId: number
@@ -30254,6 +41266,30 @@ export namespace Prisma {
     atendimentoId: string
   }
 
+  export type RetornoDemandaJudicialCreateManyOperadorInput = {
+    id?: string
+    pajAssistido: string
+    retornoRealizado: string
+    dataCriacao?: Date | string
+    atendimentoId: string
+  }
+
+  export type OrientacaoJuridicaCreateManyOperadorInput = {
+    id?: string
+    orientacaoRealizada: string
+    dataCriacao?: Date | string
+    atendimentoId: string
+  }
+
+  export type EncaminhamentoOutrosOrgaosCreateManyOperadorInput = {
+    id?: string
+    orgaoDestino: string
+    motivoEncaminhamento: string
+    observacoes?: string | null
+    dataCriacao?: Date | string
+    atendimentoId: string
+  }
+
   export type AtendimentoUpdateWithoutOperadorInput = {
     id?: StringFieldUpdateOperationsInput | string
     capacidadeCivil?: BoolFieldUpdateOperationsInput | boolean
@@ -30269,7 +41305,7 @@ export namespace Prisma {
     valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
     estadoCivil?: EstadoCivilUpdateOneRequiredWithoutAtendimentosNestedInput
-    profissao?: ProfissaoUpdateOneRequiredWithoutAtendimentosNestedInput
+    profissao?: ProfissaoUpdateOneWithoutAtendimentosNestedInput
     tipoDomicilio?: TipoDomicilioUpdateOneRequiredWithoutAtendimentosNestedInput
     tipoDemandaPrevidenciaria?: TipoDemandaPrevidenciariaUpdateOneRequiredWithoutAtendimentosNestedInput
     competenciaJudicial?: CompetenciaJudicialUpdateOneRequiredWithoutAtendimentosNestedInput
@@ -30278,6 +41314,9 @@ export namespace Prisma {
     processo?: ProcessoUpdateOneWithoutAtendimentoNestedInput
     formularios?: FormularioPreenchidoUpdateManyWithoutAtendimentoNestedInput
     documentos?: DocumentoUpdateManyWithoutAtendimentoNestedInput
+    retornoDemandaJudicial?: RetornoDemandaJudicialUpdateOneWithoutAtendimentoNestedInput
+    orientacaoJuridica?: OrientacaoJuridicaUpdateOneWithoutAtendimentoNestedInput
+    encaminhamentoOutrosOrgaos?: EncaminhamentoOutrosOrgaosUpdateOneWithoutAtendimentoNestedInput
   }
 
   export type AtendimentoUncheckedUpdateWithoutOperadorInput = {
@@ -30295,7 +41334,7 @@ export namespace Prisma {
     valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
     estadoCivilId?: IntFieldUpdateOperationsInput | number
-    profissaoId?: StringFieldUpdateOperationsInput | string
+    profissaoId?: NullableStringFieldUpdateOperationsInput | string | null
     tipoDomicilioId?: IntFieldUpdateOperationsInput | number
     tipoDemandaPrevidenciariaId?: IntFieldUpdateOperationsInput | number
     competenciaJudicialId?: IntFieldUpdateOperationsInput | number
@@ -30304,6 +41343,9 @@ export namespace Prisma {
     processo?: ProcessoUncheckedUpdateOneWithoutAtendimentoNestedInput
     formularios?: FormularioPreenchidoUncheckedUpdateManyWithoutAtendimentoNestedInput
     documentos?: DocumentoUncheckedUpdateManyWithoutAtendimentoNestedInput
+    retornoDemandaJudicial?: RetornoDemandaJudicialUncheckedUpdateOneWithoutAtendimentoNestedInput
+    orientacaoJuridica?: OrientacaoJuridicaUncheckedUpdateOneWithoutAtendimentoNestedInput
+    encaminhamentoOutrosOrgaos?: EncaminhamentoOutrosOrgaosUncheckedUpdateOneWithoutAtendimentoNestedInput
   }
 
   export type AtendimentoUncheckedUpdateManyWithoutOperadorInput = {
@@ -30321,7 +41363,7 @@ export namespace Prisma {
     valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
     estadoCivilId?: IntFieldUpdateOperationsInput | number
-    profissaoId?: StringFieldUpdateOperationsInput | string
+    profissaoId?: NullableStringFieldUpdateOperationsInput | string | null
     tipoDomicilioId?: IntFieldUpdateOperationsInput | number
     tipoDemandaPrevidenciariaId?: IntFieldUpdateOperationsInput | number
     competenciaJudicialId?: IntFieldUpdateOperationsInput | number
@@ -30466,6 +41508,78 @@ export namespace Prisma {
     tamanho?: IntFieldUpdateOperationsInput | number
     caminho?: StringFieldUpdateOperationsInput | string
     tipoDocumento?: EnumTipoDocumentoFieldUpdateOperationsInput | $Enums.TipoDocumento
+    dataCriacao?: DateTimeFieldUpdateOperationsInput | Date | string
+    atendimentoId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type RetornoDemandaJudicialUpdateWithoutOperadorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    pajAssistido?: StringFieldUpdateOperationsInput | string
+    retornoRealizado?: StringFieldUpdateOperationsInput | string
+    dataCriacao?: DateTimeFieldUpdateOperationsInput | Date | string
+    atendimento?: AtendimentoUpdateOneRequiredWithoutRetornoDemandaJudicialNestedInput
+  }
+
+  export type RetornoDemandaJudicialUncheckedUpdateWithoutOperadorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    pajAssistido?: StringFieldUpdateOperationsInput | string
+    retornoRealizado?: StringFieldUpdateOperationsInput | string
+    dataCriacao?: DateTimeFieldUpdateOperationsInput | Date | string
+    atendimentoId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type RetornoDemandaJudicialUncheckedUpdateManyWithoutOperadorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    pajAssistido?: StringFieldUpdateOperationsInput | string
+    retornoRealizado?: StringFieldUpdateOperationsInput | string
+    dataCriacao?: DateTimeFieldUpdateOperationsInput | Date | string
+    atendimentoId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type OrientacaoJuridicaUpdateWithoutOperadorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    orientacaoRealizada?: StringFieldUpdateOperationsInput | string
+    dataCriacao?: DateTimeFieldUpdateOperationsInput | Date | string
+    atendimento?: AtendimentoUpdateOneRequiredWithoutOrientacaoJuridicaNestedInput
+  }
+
+  export type OrientacaoJuridicaUncheckedUpdateWithoutOperadorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    orientacaoRealizada?: StringFieldUpdateOperationsInput | string
+    dataCriacao?: DateTimeFieldUpdateOperationsInput | Date | string
+    atendimentoId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type OrientacaoJuridicaUncheckedUpdateManyWithoutOperadorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    orientacaoRealizada?: StringFieldUpdateOperationsInput | string
+    dataCriacao?: DateTimeFieldUpdateOperationsInput | Date | string
+    atendimentoId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type EncaminhamentoOutrosOrgaosUpdateWithoutOperadorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    orgaoDestino?: StringFieldUpdateOperationsInput | string
+    motivoEncaminhamento?: StringFieldUpdateOperationsInput | string
+    observacoes?: NullableStringFieldUpdateOperationsInput | string | null
+    dataCriacao?: DateTimeFieldUpdateOperationsInput | Date | string
+    atendimento?: AtendimentoUpdateOneRequiredWithoutEncaminhamentoOutrosOrgaosNestedInput
+  }
+
+  export type EncaminhamentoOutrosOrgaosUncheckedUpdateWithoutOperadorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    orgaoDestino?: StringFieldUpdateOperationsInput | string
+    motivoEncaminhamento?: StringFieldUpdateOperationsInput | string
+    observacoes?: NullableStringFieldUpdateOperationsInput | string | null
+    dataCriacao?: DateTimeFieldUpdateOperationsInput | Date | string
+    atendimentoId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type EncaminhamentoOutrosOrgaosUncheckedUpdateManyWithoutOperadorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    orgaoDestino?: StringFieldUpdateOperationsInput | string
+    motivoEncaminhamento?: StringFieldUpdateOperationsInput | string
+    observacoes?: NullableStringFieldUpdateOperationsInput | string | null
     dataCriacao?: DateTimeFieldUpdateOperationsInput | Date | string
     atendimentoId?: StringFieldUpdateOperationsInput | string
   }
@@ -30919,7 +42033,7 @@ export namespace Prisma {
     parcelasVencidas?: number | null
     valorCausa?: number | null
     processosAndamento: $Enums.ProcessosAndamento
-    profissaoId: string
+    profissaoId?: string | null
     tipoDomicilioId: number
     tipoDemandaPrevidenciariaId: number
     competenciaJudicialId: number
@@ -30941,7 +42055,7 @@ export namespace Prisma {
     parcelasVencidas?: NullableIntFieldUpdateOperationsInput | number | null
     valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
-    profissao?: ProfissaoUpdateOneRequiredWithoutAtendimentosNestedInput
+    profissao?: ProfissaoUpdateOneWithoutAtendimentosNestedInput
     tipoDomicilio?: TipoDomicilioUpdateOneRequiredWithoutAtendimentosNestedInput
     tipoDemandaPrevidenciaria?: TipoDemandaPrevidenciariaUpdateOneRequiredWithoutAtendimentosNestedInput
     competenciaJudicial?: CompetenciaJudicialUpdateOneRequiredWithoutAtendimentosNestedInput
@@ -30951,6 +42065,9 @@ export namespace Prisma {
     processo?: ProcessoUpdateOneWithoutAtendimentoNestedInput
     formularios?: FormularioPreenchidoUpdateManyWithoutAtendimentoNestedInput
     documentos?: DocumentoUpdateManyWithoutAtendimentoNestedInput
+    retornoDemandaJudicial?: RetornoDemandaJudicialUpdateOneWithoutAtendimentoNestedInput
+    orientacaoJuridica?: OrientacaoJuridicaUpdateOneWithoutAtendimentoNestedInput
+    encaminhamentoOutrosOrgaos?: EncaminhamentoOutrosOrgaosUpdateOneWithoutAtendimentoNestedInput
   }
 
   export type AtendimentoUncheckedUpdateWithoutEstadoCivilInput = {
@@ -30967,7 +42084,7 @@ export namespace Prisma {
     parcelasVencidas?: NullableIntFieldUpdateOperationsInput | number | null
     valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
-    profissaoId?: StringFieldUpdateOperationsInput | string
+    profissaoId?: NullableStringFieldUpdateOperationsInput | string | null
     tipoDomicilioId?: IntFieldUpdateOperationsInput | number
     tipoDemandaPrevidenciariaId?: IntFieldUpdateOperationsInput | number
     competenciaJudicialId?: IntFieldUpdateOperationsInput | number
@@ -30977,6 +42094,9 @@ export namespace Prisma {
     processo?: ProcessoUncheckedUpdateOneWithoutAtendimentoNestedInput
     formularios?: FormularioPreenchidoUncheckedUpdateManyWithoutAtendimentoNestedInput
     documentos?: DocumentoUncheckedUpdateManyWithoutAtendimentoNestedInput
+    retornoDemandaJudicial?: RetornoDemandaJudicialUncheckedUpdateOneWithoutAtendimentoNestedInput
+    orientacaoJuridica?: OrientacaoJuridicaUncheckedUpdateOneWithoutAtendimentoNestedInput
+    encaminhamentoOutrosOrgaos?: EncaminhamentoOutrosOrgaosUncheckedUpdateOneWithoutAtendimentoNestedInput
   }
 
   export type AtendimentoUncheckedUpdateManyWithoutEstadoCivilInput = {
@@ -30993,7 +42113,7 @@ export namespace Prisma {
     parcelasVencidas?: NullableIntFieldUpdateOperationsInput | number | null
     valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
-    profissaoId?: StringFieldUpdateOperationsInput | string
+    profissaoId?: NullableStringFieldUpdateOperationsInput | string | null
     tipoDomicilioId?: IntFieldUpdateOperationsInput | number
     tipoDemandaPrevidenciariaId?: IntFieldUpdateOperationsInput | number
     competenciaJudicialId?: IntFieldUpdateOperationsInput | number
@@ -31047,6 +42167,9 @@ export namespace Prisma {
     processo?: ProcessoUpdateOneWithoutAtendimentoNestedInput
     formularios?: FormularioPreenchidoUpdateManyWithoutAtendimentoNestedInput
     documentos?: DocumentoUpdateManyWithoutAtendimentoNestedInput
+    retornoDemandaJudicial?: RetornoDemandaJudicialUpdateOneWithoutAtendimentoNestedInput
+    orientacaoJuridica?: OrientacaoJuridicaUpdateOneWithoutAtendimentoNestedInput
+    encaminhamentoOutrosOrgaos?: EncaminhamentoOutrosOrgaosUpdateOneWithoutAtendimentoNestedInput
   }
 
   export type AtendimentoUncheckedUpdateWithoutProfissaoInput = {
@@ -31073,6 +42196,9 @@ export namespace Prisma {
     processo?: ProcessoUncheckedUpdateOneWithoutAtendimentoNestedInput
     formularios?: FormularioPreenchidoUncheckedUpdateManyWithoutAtendimentoNestedInput
     documentos?: DocumentoUncheckedUpdateManyWithoutAtendimentoNestedInput
+    retornoDemandaJudicial?: RetornoDemandaJudicialUncheckedUpdateOneWithoutAtendimentoNestedInput
+    orientacaoJuridica?: OrientacaoJuridicaUncheckedUpdateOneWithoutAtendimentoNestedInput
+    encaminhamentoOutrosOrgaos?: EncaminhamentoOutrosOrgaosUncheckedUpdateOneWithoutAtendimentoNestedInput
   }
 
   export type AtendimentoUncheckedUpdateManyWithoutProfissaoInput = {
@@ -31112,7 +42238,7 @@ export namespace Prisma {
     valorCausa?: number | null
     processosAndamento: $Enums.ProcessosAndamento
     estadoCivilId: number
-    profissaoId: string
+    profissaoId?: string | null
     tipoDemandaPrevidenciariaId: number
     competenciaJudicialId: number
     operadorId: string
@@ -31134,7 +42260,7 @@ export namespace Prisma {
     valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
     estadoCivil?: EstadoCivilUpdateOneRequiredWithoutAtendimentosNestedInput
-    profissao?: ProfissaoUpdateOneRequiredWithoutAtendimentosNestedInput
+    profissao?: ProfissaoUpdateOneWithoutAtendimentosNestedInput
     tipoDemandaPrevidenciaria?: TipoDemandaPrevidenciariaUpdateOneRequiredWithoutAtendimentosNestedInput
     competenciaJudicial?: CompetenciaJudicialUpdateOneRequiredWithoutAtendimentosNestedInput
     operador?: UserUpdateOneRequiredWithoutAtendimentosRealizadosNestedInput
@@ -31143,6 +42269,9 @@ export namespace Prisma {
     processo?: ProcessoUpdateOneWithoutAtendimentoNestedInput
     formularios?: FormularioPreenchidoUpdateManyWithoutAtendimentoNestedInput
     documentos?: DocumentoUpdateManyWithoutAtendimentoNestedInput
+    retornoDemandaJudicial?: RetornoDemandaJudicialUpdateOneWithoutAtendimentoNestedInput
+    orientacaoJuridica?: OrientacaoJuridicaUpdateOneWithoutAtendimentoNestedInput
+    encaminhamentoOutrosOrgaos?: EncaminhamentoOutrosOrgaosUpdateOneWithoutAtendimentoNestedInput
   }
 
   export type AtendimentoUncheckedUpdateWithoutTipoDomicilioInput = {
@@ -31160,7 +42289,7 @@ export namespace Prisma {
     valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
     estadoCivilId?: IntFieldUpdateOperationsInput | number
-    profissaoId?: StringFieldUpdateOperationsInput | string
+    profissaoId?: NullableStringFieldUpdateOperationsInput | string | null
     tipoDemandaPrevidenciariaId?: IntFieldUpdateOperationsInput | number
     competenciaJudicialId?: IntFieldUpdateOperationsInput | number
     operadorId?: StringFieldUpdateOperationsInput | string
@@ -31169,6 +42298,9 @@ export namespace Prisma {
     processo?: ProcessoUncheckedUpdateOneWithoutAtendimentoNestedInput
     formularios?: FormularioPreenchidoUncheckedUpdateManyWithoutAtendimentoNestedInput
     documentos?: DocumentoUncheckedUpdateManyWithoutAtendimentoNestedInput
+    retornoDemandaJudicial?: RetornoDemandaJudicialUncheckedUpdateOneWithoutAtendimentoNestedInput
+    orientacaoJuridica?: OrientacaoJuridicaUncheckedUpdateOneWithoutAtendimentoNestedInput
+    encaminhamentoOutrosOrgaos?: EncaminhamentoOutrosOrgaosUncheckedUpdateOneWithoutAtendimentoNestedInput
   }
 
   export type AtendimentoUncheckedUpdateManyWithoutTipoDomicilioInput = {
@@ -31186,7 +42318,7 @@ export namespace Prisma {
     valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
     estadoCivilId?: IntFieldUpdateOperationsInput | number
-    profissaoId?: StringFieldUpdateOperationsInput | string
+    profissaoId?: NullableStringFieldUpdateOperationsInput | string | null
     tipoDemandaPrevidenciariaId?: IntFieldUpdateOperationsInput | number
     competenciaJudicialId?: IntFieldUpdateOperationsInput | number
     operadorId?: StringFieldUpdateOperationsInput | string
@@ -31208,7 +42340,7 @@ export namespace Prisma {
     valorCausa?: number | null
     processosAndamento: $Enums.ProcessosAndamento
     estadoCivilId: number
-    profissaoId: string
+    profissaoId?: string | null
     tipoDomicilioId: number
     competenciaJudicialId: number
     operadorId: string
@@ -31230,7 +42362,7 @@ export namespace Prisma {
     valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
     estadoCivil?: EstadoCivilUpdateOneRequiredWithoutAtendimentosNestedInput
-    profissao?: ProfissaoUpdateOneRequiredWithoutAtendimentosNestedInput
+    profissao?: ProfissaoUpdateOneWithoutAtendimentosNestedInput
     tipoDomicilio?: TipoDomicilioUpdateOneRequiredWithoutAtendimentosNestedInput
     competenciaJudicial?: CompetenciaJudicialUpdateOneRequiredWithoutAtendimentosNestedInput
     operador?: UserUpdateOneRequiredWithoutAtendimentosRealizadosNestedInput
@@ -31239,6 +42371,9 @@ export namespace Prisma {
     processo?: ProcessoUpdateOneWithoutAtendimentoNestedInput
     formularios?: FormularioPreenchidoUpdateManyWithoutAtendimentoNestedInput
     documentos?: DocumentoUpdateManyWithoutAtendimentoNestedInput
+    retornoDemandaJudicial?: RetornoDemandaJudicialUpdateOneWithoutAtendimentoNestedInput
+    orientacaoJuridica?: OrientacaoJuridicaUpdateOneWithoutAtendimentoNestedInput
+    encaminhamentoOutrosOrgaos?: EncaminhamentoOutrosOrgaosUpdateOneWithoutAtendimentoNestedInput
   }
 
   export type AtendimentoUncheckedUpdateWithoutTipoDemandaPrevidenciariaInput = {
@@ -31256,7 +42391,7 @@ export namespace Prisma {
     valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
     estadoCivilId?: IntFieldUpdateOperationsInput | number
-    profissaoId?: StringFieldUpdateOperationsInput | string
+    profissaoId?: NullableStringFieldUpdateOperationsInput | string | null
     tipoDomicilioId?: IntFieldUpdateOperationsInput | number
     competenciaJudicialId?: IntFieldUpdateOperationsInput | number
     operadorId?: StringFieldUpdateOperationsInput | string
@@ -31265,6 +42400,9 @@ export namespace Prisma {
     processo?: ProcessoUncheckedUpdateOneWithoutAtendimentoNestedInput
     formularios?: FormularioPreenchidoUncheckedUpdateManyWithoutAtendimentoNestedInput
     documentos?: DocumentoUncheckedUpdateManyWithoutAtendimentoNestedInput
+    retornoDemandaJudicial?: RetornoDemandaJudicialUncheckedUpdateOneWithoutAtendimentoNestedInput
+    orientacaoJuridica?: OrientacaoJuridicaUncheckedUpdateOneWithoutAtendimentoNestedInput
+    encaminhamentoOutrosOrgaos?: EncaminhamentoOutrosOrgaosUncheckedUpdateOneWithoutAtendimentoNestedInput
   }
 
   export type AtendimentoUncheckedUpdateManyWithoutTipoDemandaPrevidenciariaInput = {
@@ -31282,7 +42420,7 @@ export namespace Prisma {
     valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
     estadoCivilId?: IntFieldUpdateOperationsInput | number
-    profissaoId?: StringFieldUpdateOperationsInput | string
+    profissaoId?: NullableStringFieldUpdateOperationsInput | string | null
     tipoDomicilioId?: IntFieldUpdateOperationsInput | number
     competenciaJudicialId?: IntFieldUpdateOperationsInput | number
     operadorId?: StringFieldUpdateOperationsInput | string
@@ -31304,7 +42442,7 @@ export namespace Prisma {
     valorCausa?: number | null
     processosAndamento: $Enums.ProcessosAndamento
     estadoCivilId: number
-    profissaoId: string
+    profissaoId?: string | null
     tipoDomicilioId: number
     tipoDemandaPrevidenciariaId: number
     operadorId: string
@@ -31326,7 +42464,7 @@ export namespace Prisma {
     valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
     estadoCivil?: EstadoCivilUpdateOneRequiredWithoutAtendimentosNestedInput
-    profissao?: ProfissaoUpdateOneRequiredWithoutAtendimentosNestedInput
+    profissao?: ProfissaoUpdateOneWithoutAtendimentosNestedInput
     tipoDomicilio?: TipoDomicilioUpdateOneRequiredWithoutAtendimentosNestedInput
     tipoDemandaPrevidenciaria?: TipoDemandaPrevidenciariaUpdateOneRequiredWithoutAtendimentosNestedInput
     operador?: UserUpdateOneRequiredWithoutAtendimentosRealizadosNestedInput
@@ -31335,6 +42473,9 @@ export namespace Prisma {
     processo?: ProcessoUpdateOneWithoutAtendimentoNestedInput
     formularios?: FormularioPreenchidoUpdateManyWithoutAtendimentoNestedInput
     documentos?: DocumentoUpdateManyWithoutAtendimentoNestedInput
+    retornoDemandaJudicial?: RetornoDemandaJudicialUpdateOneWithoutAtendimentoNestedInput
+    orientacaoJuridica?: OrientacaoJuridicaUpdateOneWithoutAtendimentoNestedInput
+    encaminhamentoOutrosOrgaos?: EncaminhamentoOutrosOrgaosUpdateOneWithoutAtendimentoNestedInput
   }
 
   export type AtendimentoUncheckedUpdateWithoutCompetenciaJudicialInput = {
@@ -31352,7 +42493,7 @@ export namespace Prisma {
     valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
     estadoCivilId?: IntFieldUpdateOperationsInput | number
-    profissaoId?: StringFieldUpdateOperationsInput | string
+    profissaoId?: NullableStringFieldUpdateOperationsInput | string | null
     tipoDomicilioId?: IntFieldUpdateOperationsInput | number
     tipoDemandaPrevidenciariaId?: IntFieldUpdateOperationsInput | number
     operadorId?: StringFieldUpdateOperationsInput | string
@@ -31361,6 +42502,9 @@ export namespace Prisma {
     processo?: ProcessoUncheckedUpdateOneWithoutAtendimentoNestedInput
     formularios?: FormularioPreenchidoUncheckedUpdateManyWithoutAtendimentoNestedInput
     documentos?: DocumentoUncheckedUpdateManyWithoutAtendimentoNestedInput
+    retornoDemandaJudicial?: RetornoDemandaJudicialUncheckedUpdateOneWithoutAtendimentoNestedInput
+    orientacaoJuridica?: OrientacaoJuridicaUncheckedUpdateOneWithoutAtendimentoNestedInput
+    encaminhamentoOutrosOrgaos?: EncaminhamentoOutrosOrgaosUncheckedUpdateOneWithoutAtendimentoNestedInput
   }
 
   export type AtendimentoUncheckedUpdateManyWithoutCompetenciaJudicialInput = {
@@ -31378,11 +42522,34 @@ export namespace Prisma {
     valorCausa?: NullableFloatFieldUpdateOperationsInput | number | null
     processosAndamento?: EnumProcessosAndamentoFieldUpdateOperationsInput | $Enums.ProcessosAndamento
     estadoCivilId?: IntFieldUpdateOperationsInput | number
-    profissaoId?: StringFieldUpdateOperationsInput | string
+    profissaoId?: NullableStringFieldUpdateOperationsInput | string | null
     tipoDomicilioId?: IntFieldUpdateOperationsInput | number
     tipoDemandaPrevidenciariaId?: IntFieldUpdateOperationsInput | number
     operadorId?: StringFieldUpdateOperationsInput | string
     filaId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type OrgaoEncaminhamentoCreateManyTipoOrgaoEncaminhamentoInput = {
+    id?: number
+    nome: string
+    ativo?: boolean
+  }
+
+  export type OrgaoEncaminhamentoUpdateWithoutTipoOrgaoEncaminhamentoInput = {
+    nome?: StringFieldUpdateOperationsInput | string
+    ativo?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type OrgaoEncaminhamentoUncheckedUpdateWithoutTipoOrgaoEncaminhamentoInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nome?: StringFieldUpdateOperationsInput | string
+    ativo?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type OrgaoEncaminhamentoUncheckedUpdateManyWithoutTipoOrgaoEncaminhamentoInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nome?: StringFieldUpdateOperationsInput | string
+    ativo?: BoolFieldUpdateOperationsInput | boolean
   }
 
 

@@ -19,10 +19,13 @@ model User {
   dataCadastro DateTime @default(now())
 
   // Relacionamentos
-  atendimentosRealizados   Atendimento[]     @relation("OperadorAtendimento")
-  atendimentosTriagem      FilaAtendimento[] @relation("OperadorTriagem")
-  atendimentosEmAndamento  FilaAtendimento[] @relation("OperadorAtendimento")
-  documentosUploadOperador Documento[]       @relation("OperadorUpload")
+  atendimentosRealizados      Atendimento[]                @relation("OperadorAtendimento")
+  atendimentosTriagem         FilaAtendimento[]            @relation("OperadorTriagem")
+  atendimentosEmAndamento     FilaAtendimento[]            @relation("OperadorAtendimento")
+  documentosUploadOperador    Documento[]                  @relation("OperadorUpload")
+  retornosDemandaJudicial     RetornoDemandaJudicial[]     @relation("OperadorRetornoDemanda")
+  orientacoesJuridicas        OrientacaoJuridica[]         @relation("OperadorOrientacaoJuridica")
+  encaminhamentosOutrosOrgaos EncaminhamentoOutrosOrgaos[] @relation("OperadorEncaminhamento")
 
   @@map("usuarios")
 }
@@ -74,7 +77,7 @@ enum StatusFilaAtendimento {
 
 // Atendimentos
 model Atendimento {
-  id                          String                    @id @default(uuid())
+  id                          String                      @id @default(uuid())
   capacidadeCivil             Boolean
   cep                         String
   endereco                    String
@@ -88,24 +91,27 @@ model Atendimento {
   valorCausa                  Float?
   processosAndamento          ProcessosAndamento
   estadoCivilId               Int
-  profissaoId                 String
+  profissaoId                 String?
   tipoDomicilioId             Int
   tipoDemandaPrevidenciariaId Int
   competenciaJudicialId       Int
   operadorId                  String
-  filaId                      String?                   @unique
+  filaId                      String?                     @unique
   // Relacionamentos
-  estadoCivil                 EstadoCivil               @relation(fields: [estadoCivilId], references: [id])
-  profissao                   Profissao                 @relation(fields: [profissaoId], references: [id])
-  tipoDomicilio               TipoDomicilio             @relation(fields: [tipoDomicilioId], references: [id])
-  tipoDemandaPrevidenciaria   TipoDemandaPrevidenciaria @relation(fields: [tipoDemandaPrevidenciariaId], references: [id])
-  competenciaJudicial         CompetenciaJudicial       @relation(fields: [competenciaJudicialId], references: [id])
-  operador                    User                      @relation("OperadorAtendimento", fields: [operadorId], references: [id])
-  fila                        FilaAtendimento?          @relation(fields: [filaId], references: [id])
+  estadoCivil                 EstadoCivil                 @relation(fields: [estadoCivilId], references: [id])
+  profissao                   Profissao?                  @relation(fields: [profissaoId], references: [id])
+  tipoDomicilio               TipoDomicilio               @relation(fields: [tipoDomicilioId], references: [id])
+  tipoDemandaPrevidenciaria   TipoDemandaPrevidenciaria   @relation(fields: [tipoDemandaPrevidenciariaId], references: [id])
+  competenciaJudicial         CompetenciaJudicial         @relation(fields: [competenciaJudicialId], references: [id])
+  operador                    User                        @relation("OperadorAtendimento", fields: [operadorId], references: [id])
+  fila                        FilaAtendimento?            @relation(fields: [filaId], references: [id])
   membrosFamiliares           MembroFamiliar[]
   processo                    Processo?
   formularios                 FormularioPreenchido[]
   documentos                  Documento[]
+  retornoDemandaJudicial      RetornoDemandaJudicial?
+  orientacaoJuridica          OrientacaoJuridica?
+  encaminhamentoOutrosOrgaos  EncaminhamentoOutrosOrgaos?
 
   @@map("atendimentos")
 }
@@ -163,6 +169,9 @@ enum TipoFormulario {
   VIABILIDADE_DEMANDA
   DOCUMENTOS_OBRIGATORIOS
   JUSTIFICATIVA_ARQUIVAMENTO
+  RETORNO_DEMANDA_JUDICIAL
+  ORIENTACAO_JURIDICA
+  ENCAMINHAMENTO_OUTROS_ORGAOS
 
   @@map("tipo_formulario")
 }
@@ -202,6 +211,46 @@ enum TipoDocumento {
   OUTROS
 
   @@map("tipo_documento")
+}
+
+// Retorno de Demanda Judicial
+model RetornoDemandaJudicial {
+  id               String      @id @default(uuid())
+  pajAssistido     String
+  retornoRealizado String      @db.Text
+  dataCriacao      DateTime    @default(now())
+  atendimentoId    String      @unique
+  atendimento      Atendimento @relation(fields: [atendimentoId], references: [id])
+  operadorId       String?
+  operador         User?       @relation("OperadorRetornoDemanda", fields: [operadorId], references: [id])
+
+  @@map("retorno_demanda_judicial")
+}
+
+model OrientacaoJuridica {
+  id                  String      @id @default(uuid())
+  orientacaoRealizada String      @db.Text
+  dataCriacao         DateTime    @default(now())
+  atendimentoId       String      @unique
+  atendimento         Atendimento @relation(fields: [atendimentoId], references: [id])
+  operadorId          String?
+  operador            User?       @relation("OperadorOrientacaoJuridica", fields: [operadorId], references: [id])
+
+  @@map("orientacao_juridica")
+}
+
+model EncaminhamentoOutrosOrgaos {
+  id                   String      @id @default(uuid())
+  orgaoDestino         String
+  motivoEncaminhamento String      @db.Text
+  observacoes          String?     @db.Text
+  dataCriacao          DateTime    @default(now())
+  atendimentoId        String      @unique
+  atendimento          Atendimento @relation(fields: [atendimentoId], references: [id])
+  operadorId           String?
+  operador             User?       @relation("OperadorEncaminhamento", fields: [operadorId], references: [id])
+
+  @@map("encaminhamento_outros_orgaos")
 }
 
 // Tabelas auxiliares
@@ -298,6 +347,13 @@ model TipoVulnerabilidade {
   @@map("tipo_vulnerabilidae")
 }
 
+model TipoPedidoDePrevidenciaJudiciaria {
+  id        Int    @id @default(autoincrement())
+  descricao String
+
+  @@map("tipo_previcencia_judiciaria")
+}
+
 model TipoDemandaPrevidenciaria {
   id           Int           @id @default(autoincrement())
   descricao    String
@@ -312,4 +368,33 @@ model CompetenciaJudicial {
   atendimentos Atendimento[]
 
   @@map("competencia_judicial")
+}
+
+model TipoOrgaoEncaminhamento {
+  id                  Int                   @id @default(autoincrement())
+  titulo              String
+  descricao           String
+  ativo               Boolean               @default(true)
+  OrgaoEncaminhamento OrgaoEncaminhamento[] @relation("TipoOrgaoEncaminhamento")
+
+  @@map("orgao_encaminhamento_tipo")
+}
+
+model OrgaoEncaminhamento {
+  id                        Int                     @id @default(autoincrement())
+  nome                      String
+  ativo                     Boolean                 @default(true)
+  tipoOrgaoEncaminhamentoId Int
+  tipoOrgaoEncaminhamento   TipoOrgaoEncaminhamento @relation("TipoOrgaoEncaminhamento", fields: [tipoOrgaoEncaminhamentoId], references: [id])
+
+  @@map("orgao_encaminhamento")
+}
+
+model LogFilaAtendimento {
+  id        String   @id @default(uuid())
+  action    String // Ex: "ADD", "START", "FINALIZE"
+  queueId   String // ID do FilaAtendimento afetado
+  userId    String // Quem realizou a ação
+  timestamp DateTime @default(now())
+  details   String? // Informações extras (opcional)
 }

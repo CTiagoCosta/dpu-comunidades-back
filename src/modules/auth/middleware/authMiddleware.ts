@@ -47,6 +47,7 @@ export const authenticate = async (
     }
 
     req.body["accessUser"] = user;
+    (req as any).user = user; // Adiciona também em req.user para o adaptador
     next();
     return;
   } catch (error: any) {

@@ -3,6 +3,7 @@ import { App } from "./app";
 import http from "http";
 import { Server as SocketIOServer } from "socket.io";
 import { getQueue, addToQueue, startAttendance, finalizeAttendance } from "./utils/queueManager";
+import { SocketService } from "./infra/SocketService";
 import jwt from "jsonwebtoken";
 
 const JWT_SECRET = process.env.JWT_SECRET;
@@ -22,6 +23,9 @@ async function bootstrap() {
         methods: ["GET", "POST"]
       }
     });
+
+    // Registra o Socket.IO no serviço global
+    SocketService.setIO(io);
 
     io.use((socket, next) => {
       const token = socket.handshake.auth.token;

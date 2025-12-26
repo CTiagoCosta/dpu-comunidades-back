@@ -20,6 +20,7 @@ export interface HttpRequest {
   headers?: any;
   files?: File[];
   originalUrl?: string;
+  user?: any; // Adicionado pelo middleware de autenticação
 }
 
 export interface SocketRequest {

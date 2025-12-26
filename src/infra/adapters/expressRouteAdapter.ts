@@ -10,7 +10,8 @@ export const adaptRoute = (controller: BaseController) => {
       headers: req.headers,
       params: req.params,
       query: req.query,
-      originalUrl: req.originalUrl
+      originalUrl: req.originalUrl,
+      user: (req as any).user
     };
 
     const httpResponse = await controller.execute(httpRequest);
@@ -27,7 +28,8 @@ export const adaptCookiesRoute = (controller: BaseController) => {
       headers: req.headers,
       params: req.params,
       query: req.query,
-      originalUrl: req.originalUrl
+      originalUrl: req.originalUrl,
+      user: (req as any).user
     };
 
     const httpResponse = await controller.execute(httpRequest);

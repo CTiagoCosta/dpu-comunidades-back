@@ -36,6 +36,7 @@ export class App {
     this.app.use(makeComplementaryDataRoutes().getRouter());
     this.app.use("/user", makeUserDataRoutes().getRouter());
     this.app.use("/service-queue", makeServiceQueueRoutes().getRouter());
+    this.app.use("/atendimento", new (require("./routes/atendimento.routes").AtendimentoRoutes)().getRouter());
   }
 
   public static async connectToDatabase() {

@@ -203,6 +203,33 @@ exports.Prisma.DocumentoScalarFieldEnum = {
   operadorUploadId: 'operadorUploadId'
 };
 
+exports.Prisma.RetornoDemandaJudicialScalarFieldEnum = {
+  id: 'id',
+  pajAssistido: 'pajAssistido',
+  retornoRealizado: 'retornoRealizado',
+  dataCriacao: 'dataCriacao',
+  atendimentoId: 'atendimentoId',
+  operadorId: 'operadorId'
+};
+
+exports.Prisma.OrientacaoJuridicaScalarFieldEnum = {
+  id: 'id',
+  orientacaoRealizada: 'orientacaoRealizada',
+  dataCriacao: 'dataCriacao',
+  atendimentoId: 'atendimentoId',
+  operadorId: 'operadorId'
+};
+
+exports.Prisma.EncaminhamentoOutrosOrgaosScalarFieldEnum = {
+  id: 'id',
+  orgaoDestino: 'orgaoDestino',
+  motivoEncaminhamento: 'motivoEncaminhamento',
+  observacoes: 'observacoes',
+  dataCriacao: 'dataCriacao',
+  atendimentoId: 'atendimentoId',
+  operadorId: 'operadorId'
+};
+
 exports.Prisma.TipoAtendimentoScalarFieldEnum = {
   id: 'id',
   descricao: 'descricao'
@@ -262,6 +289,11 @@ exports.Prisma.TipoVulnerabilidadeScalarFieldEnum = {
   descricao: 'descricao'
 };
 
+exports.Prisma.TipoPedidoDePrevidenciaJudiciariaScalarFieldEnum = {
+  id: 'id',
+  descricao: 'descricao'
+};
+
 exports.Prisma.TipoDemandaPrevidenciariaScalarFieldEnum = {
   id: 'id',
   descricao: 'descricao'
@@ -270,6 +302,29 @@ exports.Prisma.TipoDemandaPrevidenciariaScalarFieldEnum = {
 exports.Prisma.CompetenciaJudicialScalarFieldEnum = {
   id: 'id',
   descricao: 'descricao'
+};
+
+exports.Prisma.TipoOrgaoEncaminhamentoScalarFieldEnum = {
+  id: 'id',
+  titulo: 'titulo',
+  descricao: 'descricao',
+  ativo: 'ativo'
+};
+
+exports.Prisma.OrgaoEncaminhamentoScalarFieldEnum = {
+  id: 'id',
+  nome: 'nome',
+  ativo: 'ativo',
+  tipoOrgaoEncaminhamentoId: 'tipoOrgaoEncaminhamentoId'
+};
+
+exports.Prisma.LogFilaAtendimentoScalarFieldEnum = {
+  id: 'id',
+  action: 'action',
+  queueId: 'queueId',
+  userId: 'userId',
+  timestamp: 'timestamp',
+  details: 'details'
 };
 
 exports.Prisma.SortOrder = {
@@ -334,7 +389,10 @@ exports.TipoFormulario = exports.$Enums.TipoFormulario = {
   ANALISE_RENDA: 'ANALISE_RENDA',
   VIABILIDADE_DEMANDA: 'VIABILIDADE_DEMANDA',
   DOCUMENTOS_OBRIGATORIOS: 'DOCUMENTOS_OBRIGATORIOS',
-  JUSTIFICATIVA_ARQUIVAMENTO: 'JUSTIFICATIVA_ARQUIVAMENTO'
+  JUSTIFICATIVA_ARQUIVAMENTO: 'JUSTIFICATIVA_ARQUIVAMENTO',
+  RETORNO_DEMANDA_JUDICIAL: 'RETORNO_DEMANDA_JUDICIAL',
+  ORIENTACAO_JURIDICA: 'ORIENTACAO_JURIDICA',
+  ENCAMINHAMENTO_OUTROS_ORGAOS: 'ENCAMINHAMENTO_OUTROS_ORGAOS'
 };
 
 exports.TipoDocumento = exports.$Enums.TipoDocumento = {
@@ -361,6 +419,9 @@ exports.Prisma.ModelName = {
   Processo: 'Processo',
   FormularioPreenchido: 'FormularioPreenchido',
   Documento: 'Documento',
+  RetornoDemandaJudicial: 'RetornoDemandaJudicial',
+  OrientacaoJuridica: 'OrientacaoJuridica',
+  EncaminhamentoOutrosOrgaos: 'EncaminhamentoOutrosOrgaos',
   TipoAtendimento: 'TipoAtendimento',
   TipoPrioridade: 'TipoPrioridade',
   Assistido: 'Assistido',
@@ -370,8 +431,12 @@ exports.Prisma.ModelName = {
   TipoDomicilio: 'TipoDomicilio',
   MembroFamiliar: 'MembroFamiliar',
   TipoVulnerabilidade: 'TipoVulnerabilidade',
+  TipoPedidoDePrevidenciaJudiciaria: 'TipoPedidoDePrevidenciaJudiciaria',
   TipoDemandaPrevidenciaria: 'TipoDemandaPrevidenciaria',
-  CompetenciaJudicial: 'CompetenciaJudicial'
+  CompetenciaJudicial: 'CompetenciaJudicial',
+  TipoOrgaoEncaminhamento: 'TipoOrgaoEncaminhamento',
+  OrgaoEncaminhamento: 'OrgaoEncaminhamento',
+  LogFilaAtendimento: 'LogFilaAtendimento'
 };
 
 /**

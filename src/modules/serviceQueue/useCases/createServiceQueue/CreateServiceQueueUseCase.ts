@@ -1,5 +1,6 @@
 import { User } from "../../../../generated/prisma";
 import { InvalidValueError } from "../../../../infra/errors/InvalidValueError";
+import { SocketService } from "../../../../infra/SocketService";
 import { PriorityTypeRepository } from "../../../complementaryData/respositories/PriorityTypeRepository";
 import { TypeOfServiceRepository } from "../../../complementaryData/respositories/TypeOfServicesRepository";
 import { ListPriorityTypeResponse } from "../../../complementaryData/useCase/listPriorityType/ListPriorityTypeDtos";
@@ -27,6 +28,8 @@ export class CreateServiceQueueUseCase {
 
     const serviceQueueCreated = await this.serviceQueueRepository.create(createUserDto);
 
+    // Notifica todos os clientes conectados sobre a atualização da fila
+    await SocketService.notifyQueueUpdate();
 
     return serviceQueueCreated;
   }
