@@ -14,7 +14,6 @@ export class FinalizarAtendimentoUseCase {
   async execute(dto: FinalizarAtendimentoRequestDto): Promise<FinalizarAtendimentoResponseDto> {
     const { atendimentoId } = dto;
 
-    // Tenta buscar o atendimento
     let atendimento = await this.prisma.atendimento.findUnique({
       where: { id: atendimentoId },
     });
@@ -24,7 +23,6 @@ export class FinalizarAtendimentoUseCase {
     if (atendimento) {
       filaId = atendimento.filaId;
     } else {
-      // Se não encontrou atendimento, tenta buscar diretamente pela fila
       const fila = await this.prisma.filaAtendimento.findUnique({
         where: { id: atendimentoId },
       });

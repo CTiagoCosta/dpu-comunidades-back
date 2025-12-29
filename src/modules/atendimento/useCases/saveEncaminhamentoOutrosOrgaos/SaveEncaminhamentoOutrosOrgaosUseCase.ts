@@ -11,25 +11,21 @@ export class SaveEncaminhamentoOutrosOrgaosUseCase {
   ): Promise<SaveEncaminhamentoOutrosOrgaosResponse> {
     const { atendimentoId, orgaoDestino, motivoEncaminhamento, observacoes, operadorId } = request;
 
-    // Primeiro tenta buscar um atendimento existente
     let atendimento = await prismaClient.atendimento.findUnique({
       where: { id: atendimentoId },
     });
 
-    // Se não encontrou atendimento, verifica se é um ID de fila e busca por ele
     if (!atendimento) {
       const fila = await prismaClient.filaAtendimento.findUnique({
         where: { id: atendimentoId },
       });
 
       if (fila) {
-        // Busca atendimento pelo filaId
         atendimento = await prismaClient.atendimento.findFirst({
           where: { filaId: fila.id },
         });
       }
 
-      // Se ainda não encontrou, cria um novo atendimento mínimo
       if (!atendimento) {
         atendimento = await prismaClient.atendimento.create({
           data: {
@@ -52,7 +48,6 @@ export class SaveEncaminhamentoOutrosOrgaosUseCase {
       }
     }
 
-    // Cria o registro de encaminhamento a outros órgãos
     const encaminhamento = await prismaClient.encaminhamentoOutrosOrgaos.create({
       data: {
         atendimentoId: atendimento.id,
@@ -63,7 +58,6 @@ export class SaveEncaminhamentoOutrosOrgaosUseCase {
       },
     });
 
-    // Atualiza a fila para ATENDIDO (se tiver fila associada)
     if (atendimento.filaId) {
       await prismaClient.filaAtendimento.update({
         where: { id: atendimento.filaId },
@@ -73,7 +67,6 @@ export class SaveEncaminhamentoOutrosOrgaosUseCase {
         },
       });
       
-      // Notifica todos os clientes conectados sobre a atualização da fila
       await SocketService.notifyQueueUpdate();
     }
 

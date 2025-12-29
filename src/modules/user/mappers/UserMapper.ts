@@ -13,6 +13,11 @@ export abstract class UserMapper {
       email: dto.email,
       role: dto.role,
       approved: dto.aprovado,
+      telefone: dto.telefone,
+      cargo: dto.cargo,
+      fotoPerfil: dto.fotoPerfil,
+      unidadeId: dto.unidadeId,
+      createdAt: dto.dataCadastro?.toISOString(),
     };
   }
 
@@ -25,9 +30,13 @@ export abstract class UserMapper {
       nome: dto.name,
       email: dto.email,
       senha: encriptPassword,
+      cargo: null,
+      telefone: null,
+      fotoPerfil: null,
       role: dto.role || "OPERADOR",
       aprovado: dto.approved || false,
       dataCadastro: new Date(),
+      unidadeId: null,
     };
   }
 }

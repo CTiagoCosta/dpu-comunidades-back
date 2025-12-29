@@ -3,6 +3,23 @@ import { PrismaClient } from "../src/generated/prisma";
 const prisma = new PrismaClient();
 
 async function main() {
+  // Unidades
+  await prisma.unidade.createMany({
+    data: [
+      { nome: "Defensoria Pública da União", sigla: "DPU" },
+      { nome: "DPU - Sede Brasília", sigla: "DPU-BSB" },
+      { nome: "DPU - São Paulo", sigla: "DPU-SP" },
+      { nome: "DPU - Rio de Janeiro", sigla: "DPU-RJ" },
+      { nome: "DPU - Minas Gerais", sigla: "DPU-MG" },
+      { nome: "DPU - Bahia", sigla: "DPU-BA" },
+      { nome: "DPU - Pernambuco", sigla: "DPU-PE" },
+      { nome: "DPU - Ceará", sigla: "DPU-CE" },
+      { nome: "DPU - Pará", sigla: "DPU-PA" },
+      { nome: "DPU - Amazonas", sigla: "DPU-AM" },
+      { nome: "DPU - Mato Grosso do Sul", sigla: "DPU-MS" },
+    ],
+    skipDuplicates: true,
+  }),
   await prisma.tipoAtendimento.createMany({
     data: [{ id: 1, descricao: "Assistencia Jurídica DPU em Mutirão" }],
     skipDuplicates: true,
@@ -112,6 +129,26 @@ async function main() {
       ],
       skipDuplicates: true,
     });
+
+  // Tipos de demanda previdenciária (tabela usada pelo primeiro atendimento)
+  await prisma.tipoDemandaPrevidenciaria.createMany({
+    data: [
+      { descricao: "APOSENTADORIA POR IDADE RURAL" },
+      { descricao: "CONVERSÃO DE LOAS EM APOSENTADORIA POR IDADE SEGURADO ESPECIAL" },
+      { descricao: "SEGURO DEFESO" },
+      { descricao: "PENSÃO POR MORTE RURAL" },
+      { descricao: "AUXÍLIO RECLUSÃO RURAL" },
+      { descricao: "SALÁRIO MATERNIDADE RURAL" },
+      { descricao: "BPC LOAS IDOSO" },
+      { descricao: "BPC LOAS DEFICIENTE" },
+      { descricao: "AUXILIO DOENÇA E APOSENTADORIA POR INVALIDEZ" },
+      { descricao: "CANCELAMENTO DE CONSIGNADO/ILEGAL" },
+      { descricao: "APOSENTADORIA POR IDADE URBANA" },
+      { descricao: "SALARIO MATERNIDADE URBANO" },
+      { descricao: "PEDIDO GENÉRICO" },
+    ],
+    skipDuplicates: true,
+  });
   await prisma.tipoOrgaoEncaminhamento.createMany({
     data: [
       {

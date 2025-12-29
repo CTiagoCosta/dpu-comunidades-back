@@ -1,4 +1,5 @@
 import express, { Application, RequestHandler } from "express";
+import path from "path";
 import { makeComplementaryDataRoutes } from "./factories/routes/complementaryDataRouterFactory";
 import dotenvConfig from "./configs/dotenvConfig";
 import { configureCors } from "./configs/corsConfig";
@@ -6,6 +7,8 @@ import configs from "./configs";
 import { PrismaClient } from "./generated/prisma";
 import { makeUserDataRoutes } from "./factories/routes/userDataRouterFactory";
 import { makeServiceQueueRoutes } from "./factories/routes/serviceQueueRouterFactory";
+import { makePrimeiroAtendimentoRoutes } from "./factories/routes/primeiroAtendimentoRouterFactory";
+import { makeDashboardRoutes } from "./factories/routes/dashboardRouterFactory";
 
 
 
@@ -30,6 +33,11 @@ export class App {
   private configureMiddleWares() {
     this.app.use(express.json() as RequestHandler);
     this.app.use(configureCors());
+
+    // Servir arquivos estáticos de fotos de perfil
+    this.app.use('/uploads/profile-photos',
+      express.static(path.join(__dirname, '../uploads/profile-photos'))
+    );
   }
 
   private configureRoutes(): void {
@@ -37,6 +45,8 @@ export class App {
     this.app.use("/user", makeUserDataRoutes().getRouter());
     this.app.use("/service-queue", makeServiceQueueRoutes().getRouter());
     this.app.use("/atendimento", new (require("./routes/atendimento.routes").AtendimentoRoutes)().getRouter());
+    this.app.use("/primeiro-atendimento", makePrimeiroAtendimentoRoutes().getRouter());
+    this.app.use("/dashboard", makeDashboardRoutes().getRouter());
   }
 
   public static async connectToDatabase() {

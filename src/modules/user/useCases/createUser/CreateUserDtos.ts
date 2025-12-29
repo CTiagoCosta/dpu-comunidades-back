@@ -12,4 +12,9 @@ export interface UserOutput {
   email: string;
   role: "ADMIN" | "OPERADOR" | "JURISTA";
   approved: boolean;
+  telefone?: string | null;
+  cargo?: string | null;
+  fotoPerfil?: string | null;
+  unidadeId?: number | null;
+  createdAt?: string;
 }

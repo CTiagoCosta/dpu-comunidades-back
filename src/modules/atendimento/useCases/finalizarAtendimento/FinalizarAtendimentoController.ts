@@ -12,7 +12,7 @@ export class FinalizarAtendimentoController extends BaseController {
   }
 
   protected validateRequest(request: HttpRequest): undefined | ValidateResponse {
-    return undefined; // Sem validações específicas
+    return undefined; 
   }
 
   protected async specificImplementation(request: HttpRequest): Promise<HttpResponse> {

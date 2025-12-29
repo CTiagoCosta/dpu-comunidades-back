@@ -14,11 +14,16 @@ model User {
   email        String   @unique
   nome         String
   senha        String
+  cargo        String?
+  telefone     String?
+  fotoPerfil   String?
   role         Role     @default(OPERADOR)
   aprovado     Boolean  @default(false)
   dataCadastro DateTime @default(now())
+  unidadeId    Int?
 
   // Relacionamentos
+  unidade                     Unidade?                     @relation(fields: [unidadeId], references: [id])
   atendimentosRealizados      Atendimento[]                @relation("OperadorAtendimento")
   atendimentosTriagem         FilaAtendimento[]            @relation("OperadorTriagem")
   atendimentosEmAndamento     FilaAtendimento[]            @relation("OperadorAtendimento")
@@ -26,6 +31,7 @@ model User {
   retornosDemandaJudicial     RetornoDemandaJudicial[]     @relation("OperadorRetornoDemanda")
   orientacoesJuridicas        OrientacaoJuridica[]         @relation("OperadorOrientacaoJuridica")
   encaminhamentosOutrosOrgaos EncaminhamentoOutrosOrgaos[] @relation("OperadorEncaminhamento")
+  primeirosAtendimentos       PrimeiroAtendimento[]        @relation("OperadorPrimeiroAtendimento")
 
   @@map("usuarios")
 }
@@ -36,6 +42,20 @@ enum Role {
   JURISTA
 
   @@map("Role")
+}
+
+// Unidades
+model Unidade {
+  id          Int      @id @default(autoincrement())
+  nome        String   @unique
+  sigla       String   @unique
+  ativo       Boolean  @default(true)
+  dataCriacao DateTime @default(now())
+
+  // Relacionamentos
+  usuarios User[]
+
+  @@map("unidades")
 }
 
 // Triagem
@@ -54,14 +74,15 @@ model FilaAtendimento {
 
   // Relacionamentos
   operadorTriagemId     String
-  operadorTriagem       User            @relation("OperadorTriagem", fields: [operadorTriagemId], references: [id])
+  operadorTriagem       User                 @relation("OperadorTriagem", fields: [operadorTriagemId], references: [id])
   operadorAtendimentoId String?
-  operadorAtendimento   User?           @relation("OperadorAtendimento", fields: [operadorAtendimentoId], references: [id])
+  operadorAtendimento   User?                @relation("OperadorAtendimento", fields: [operadorAtendimentoId], references: [id])
   atendimento           Atendimento?
+  primeiroAtendimento   PrimeiroAtendimento?
   tipoPrioridadeId      Int?
-  tipoPrioridade        TipoPrioridade? @relation("AtendimentoTipoPrioridade", fields: [tipoPrioridadeId], references: [id])
+  tipoPrioridade        TipoPrioridade?      @relation("AtendimentoTipoPrioridade", fields: [tipoPrioridadeId], references: [id])
   tipoAtendimentoId     Int
-  tipoAtendimento       TipoAtendimento @relation(fields: [tipoAtendimentoId], references: [id])
+  tipoAtendimento       TipoAtendimento      @relation(fields: [tipoAtendimentoId], references: [id])
 
   @@map("fila_atendimentos")
 }
@@ -306,25 +327,28 @@ model TipoServicoAtendimento {
 }
 
 model EstadoCivil {
-  id           Int           @id @default(autoincrement())
-  descricao    String
-  atendimentos Atendimento[]
+  id                    Int                   @id @default(autoincrement())
+  descricao             String
+  atendimentos          Atendimento[]
+  primeirosAtendimentos PrimeiroAtendimento[]
 
   @@map("estado_civil")
 }
 
 model Profissao {
-  id           String        @id @default(uuid())
-  descricao    String
-  atendimentos Atendimento[]
+  id                    String                @id @default(uuid())
+  descricao             String
+  atendimentos          Atendimento[]
+  primeirosAtendimentos PrimeiroAtendimento[]
 
   @@map("profissao")
 }
 
 model TipoDomicilio {
-  id           Int           @id @default(autoincrement())
-  descricao    String
-  atendimentos Atendimento[]
+  id                    Int                   @id @default(autoincrement())
+  descricao             String
+  atendimentos          Atendimento[]
+  primeirosAtendimentos PrimeiroAtendimento[]
 
   @@map("tipo_domicilio")
 }
@@ -341,8 +365,9 @@ model MembroFamiliar {
 }
 
 model TipoVulnerabilidade {
-  id        Int    @id @default(autoincrement())
-  descricao String
+  id                    Int                   @id @default(autoincrement())
+  descricao             String
+  primeirosAtendimentos PrimeiroAtendimento[]
 
   @@map("tipo_vulnerabilidae")
 }
@@ -355,17 +380,19 @@ model TipoPedidoDePrevidenciaJudiciaria {
 }
 
 model TipoDemandaPrevidenciaria {
-  id           Int           @id @default(autoincrement())
-  descricao    String
-  atendimentos Atendimento[]
+  id                    Int                   @id @default(autoincrement())
+  descricao             String
+  atendimentos          Atendimento[]
+  primeirosAtendimentos PrimeiroAtendimento[]
 
   @@map("tipo_demanda_previdenciaria")
 }
 
 model CompetenciaJudicial {
-  id           Int           @id @default(autoincrement())
-  descricao    String
-  atendimentos Atendimento[]
+  id                    Int                   @id @default(autoincrement())
+  descricao             String
+  atendimentos          Atendimento[]
+  primeirosAtendimentos PrimeiroAtendimento[]
 
   @@map("competencia_judicial")
 }
@@ -397,4 +424,397 @@ model LogFilaAtendimento {
   userId    String // Quem realizou a ação
   timestamp DateTime @default(now())
   details   String? // Informações extras (opcional)
+}
+
+// ============================================================================
+// NOVOS MODELS: PRIMEIRO ATENDIMENTO - DEMANDA JUDICIAL
+// ============================================================================
+
+// Enums para Primeiro Atendimento
+enum StatusPrimeiroAtendimento {
+  EM_ANDAMENTO
+  CONCLUIDO
+  ARQUIVADO
+  CANCELADO
+
+  @@map("status_primeiro_atendimento")
+}
+
+enum EtapaPrimeiroAtendimento {
+  CAPACIDADE_CIVIL
+  REPRESENTANTE_LEGAL
+  COMPLEMENTO_DADOS
+  ANALISE_RENDA
+  TIPO_DEMANDA_PREVIDENCIARIA
+  FORMULARIO_BENEFICIO
+  VIABILIDADE_DEMANDA
+  DOCUMENTOS_OBRIGATORIOS
+  FINALIZADO
+
+  @@map("etapa_primeiro_atendimento")
+}
+
+enum CategoriaDocumento {
+  DOCUMENTO_PESSOAL_REPRESENTANTE
+  TERMO_CURATELA
+  DOCUMENTO_RENDA
+  DOCUMENTO_PESSOAL
+  COMPROVANTE_RESIDENCIA
+  CAD_UNICO
+  CNIS
+  OUTORGA_PODERES
+  NEGATIVA_REQUERIMENTO
+  INDIGENA
+  ASSENTADO_RURAL
+  PESCADOR
+  OUTROS
+
+  @@map("categoria_documento")
+}
+
+enum AcaoProgresso {
+  ETAPA_INICIADA
+  ETAPA_SALVA
+  ETAPA_CONCLUIDA
+  ETAPA_RETROCEDIDA
+  ATENDIMENTO_CANCELADO
+  ATENDIMENTO_CONCLUIDO
+  ATENDIMENTO_RETOMADO
+
+  @@map("acao_progresso")
+}
+
+// Model Principal: Primeiro Atendimento
+model PrimeiroAtendimento {
+  id         String @id @default(uuid())
+  filaId     String @unique
+  operadorId String
+
+  // Status e controle de progresso
+  status              StatusPrimeiroAtendimento @default(EM_ANDAMENTO)
+  etapaAtual          EtapaPrimeiroAtendimento  @default(CAPACIDADE_CIVIL)
+  percentualConclusao Int                       @default(0)
+
+  // Timestamps
+  dataInicio            DateTime  @default(now())
+  dataUltimaAtualizacao DateTime  @updatedAt
+  dataConclusao         DateTime?
+
+  // Suspensão manual
+  suspensoPeloOperador Boolean   @default(false)
+  motivoSuspensao      String?   @db.Text
+  dataSuspensao        DateTime?
+
+  // Etapa 1: Capacidade Civil
+  capacidadeCivil               Boolean?
+  etapaCapacidadeCivilConcluida Boolean   @default(false)
+  etapaCapacidadeCivilTimestamp DateTime?
+
+  // Etapa 2: Representante Legal (condicional)
+  representanteLegalId        String?   @unique
+  etapaRepresentanteConcluida Boolean   @default(false)
+  etapaRepresentanteTimestamp DateTime?
+
+  // Etapa 3: Complemento de Dados
+  estadoCivilId                  Int?
+  profissaoId                    String?
+  outraProfissao                 String?
+  tipoDomicilioId                Int?
+  cep                            String?
+  endereco                       String?
+  numero                         Int?
+  complemento                    String?
+  bairro                         String?
+  cidade                         String?
+  uf                             String?
+  descricaoDomicilio             String?
+  tipoVulnerabilidadeId          Int?
+  outroTipoVulnerabilidade       String?
+  etapaComplementoDadosConcluida Boolean   @default(false)
+  etapaComplementoDadosTimestamp DateTime?
+
+  // Etapa 4: Análise de Renda (condicional)
+  analiseRendaId             String?   @unique
+  etapaAnaliseRendaConcluida Boolean   @default(false)
+  etapaAnaliseRendaTimestamp DateTime?
+
+  // Etapa 5: Tipo de Demanda Previdenciária
+  tipoDemandaPrevidenciariaId Int?
+  etapaTipoDemandaConcluida   Boolean   @default(false)
+  etapaTipoDemandaTimestamp   DateTime?
+
+  // Etapa 6: Formulários Específicos (polimórfico)
+  aposentadoriaRuralId              String?   @unique
+  seguroDefesoId                    String?   @unique
+  pensaoMorteRuralId                String?   @unique
+  salarioMaternidadeRuralId         String?   @unique
+  loasIdosoId                       String?   @unique
+  loasDeficienteId                  String?   @unique
+  auxilioDoencaInvalidezId          String?   @unique
+  aposentadoriaUrbanaId             String?   @unique
+  salarioMaternidadeUrbanoId        String?   @unique
+  etapaFormularioBeneficioConcluida Boolean   @default(false)
+  etapaFormularioBeneficioTimestamp DateTime?
+
+  // Etapa 7: Viabilidade da Demanda
+  viabilidadeDemanda        String?
+  fundamentacaoViabilidade  String?             @db.Text
+  observacoesViabilidade    String?             @db.Text
+  competenciaJudicialId     Int?
+  dataInicioBeneficio       DateTime?
+  parcelasVencidas          String?
+  valorCausa                Decimal?            @db.Decimal(12, 2)
+  processosAndamento        ProcessosAndamento?
+  numeroProcesso            String?
+  etapaViabilidadeConcluida Boolean             @default(false)
+  etapaViabilidadeTimestamp DateTime?
+
+  // Etapa 8: Documentos Obrigatórios
+  documentosApresentados   String?   @db.Text
+  documentosFaltantes      String?   @db.Text
+  observacoesDocumentos    String?   @db.Text
+  etapaDocumentosConcluida Boolean   @default(false)
+  etapaDocumentosTimestamp DateTime?
+
+  // Relacionamentos
+  fila                      FilaAtendimento            @relation(fields: [filaId], references: [id])
+  operador                  User                       @relation("OperadorPrimeiroAtendimento", fields: [operadorId], references: [id])
+  estadoCivil               EstadoCivil?               @relation(fields: [estadoCivilId], references: [id])
+  profissao                 Profissao?                 @relation(fields: [profissaoId], references: [id])
+  tipoDomicilio             TipoDomicilio?             @relation(fields: [tipoDomicilioId], references: [id])
+  tipoVulnerabilidade       TipoVulnerabilidade?       @relation(fields: [tipoVulnerabilidadeId], references: [id])
+  tipoDemandaPrevidenciaria TipoDemandaPrevidenciaria? @relation(fields: [tipoDemandaPrevidenciariaId], references: [id])
+  competenciaJudicial       CompetenciaJudicial?       @relation(fields: [competenciaJudicialId], references: [id])
+
+  representanteLegal       RepresentanteLegal?
+  analiseRenda             AnaliseRenda?
+  aposentadoriaRural       AposentadoriaRural?
+  seguroDefeso             SeguroDefeso?
+  pensaoMorteRural         PensaoMorteRural?
+  salarioMaternidadeRural  SalarioMaternidadeRural?
+  loasIdoso                LoasIdoso?
+  loasDeficiente           LoasDeficiente?
+  auxilioDoencaInvalidez   AuxilioDoencaInvalidez?
+  aposentadoriaUrbana      AposentadoriaUrbana?
+  salarioMaternidadeUrbano SalarioMaternidadeUrbano?
+
+  documentos         DocumentoPrimeiroAtendimento[]
+  historicoProgresso HistoricoProgressoPrimeiroAtendimento[]
+
+  @@map("primeiro_atendimento")
+}
+
+// Representante Legal
+model RepresentanteLegal {
+  id                    String @id @default(uuid())
+  primeiroAtendimentoId String @unique
+
+  nome           String
+  cpf            String
+  telefone       String?
+  grauParentesco String?
+
+  primeiroAtendimento PrimeiroAtendimento            @relation(fields: [primeiroAtendimentoId], references: [id], onDelete: Cascade)
+  documentos          DocumentoPrimeiroAtendimento[]
+
+  @@map("representante_legal")
+}
+
+// Análise de Renda
+model AnaliseRenda {
+  id                    String @id @default(uuid())
+  primeiroAtendimentoId String @unique
+
+  possuiRenda        Boolean
+  valorRendaFamiliar Decimal? @db.Decimal(12, 2)
+  quantidadePessoas  Int?
+  rendaPerCapita     Decimal? @db.Decimal(12, 2)
+  observacoes        String?  @db.Text
+
+  primeiroAtendimento PrimeiroAtendimento            @relation(fields: [primeiroAtendimentoId], references: [id], onDelete: Cascade)
+  documentos          DocumentoPrimeiroAtendimento[]
+
+  @@map("analise_renda")
+}
+
+// Aposentadoria Rural
+model AposentadoriaRural {
+  id                    String @id @default(uuid())
+  primeiroAtendimentoId String @unique
+
+  requisitoIdadeTempo String? @db.Text
+  narrativaInicial    String? @db.Text
+
+  primeiroAtendimento PrimeiroAtendimento @relation(fields: [primeiroAtendimentoId], references: [id], onDelete: Cascade)
+
+  @@map("aposentadoria_rural")
+}
+
+// Seguro Defeso
+model SeguroDefeso {
+  id                    String @id @default(uuid())
+  primeiroAtendimentoId String @unique
+
+  requisitos    String? @db.Text
+  narrativaCaso String? @db.Text
+
+  primeiroAtendimento PrimeiroAtendimento @relation(fields: [primeiroAtendimentoId], references: [id], onDelete: Cascade)
+
+  @@map("seguro_defeso")
+}
+
+// Pensão Morte Rural
+model PensaoMorteRural {
+  id                    String @id @default(uuid())
+  primeiroAtendimentoId String @unique
+
+  requisitos    String? @db.Text
+  narrativaCaso String? @db.Text
+
+  primeiroAtendimento PrimeiroAtendimento @relation(fields: [primeiroAtendimentoId], references: [id], onDelete: Cascade)
+
+  @@map("pensao_morte_rural")
+}
+
+// Salário Maternidade Rural
+model SalarioMaternidadeRural {
+  id                    String @id @default(uuid())
+  primeiroAtendimentoId String @unique
+
+  requisitos    String? @db.Text
+  narrativaCaso String? @db.Text
+
+  primeiroAtendimento PrimeiroAtendimento @relation(fields: [primeiroAtendimentoId], references: [id], onDelete: Cascade)
+
+  @@map("salario_maternidade_rural")
+}
+
+// LOAS Idoso
+model LoasIdoso {
+  id                    String @id @default(uuid())
+  primeiroAtendimentoId String @unique
+
+  requisitoIdade     String?
+  requisitoRenda     String?
+  possuiCadUnico     String?
+  motivosNegativas   String?  @db.Text
+  exclusoesRenda     String?  @db.Text
+  totalRendaFamiliar Decimal? @db.Decimal(12, 2)
+  narrativaCaso      String?  @db.Text
+
+  primeiroAtendimento PrimeiroAtendimento  @relation(fields: [primeiroAtendimentoId], references: [id], onDelete: Cascade)
+  membrosFamiliares   MembroFamiliarLoas[]
+
+  @@map("loas_idoso")
+}
+
+// LOAS Deficiente
+model LoasDeficiente {
+  id                    String @id @default(uuid())
+  primeiroAtendimentoId String @unique
+
+  requisitoDeficiencia String?
+  requisitoRenda       String?
+  possuiCadUnico       String?
+  motivosNegativas     String?  @db.Text
+  exclusoesRenda       String?  @db.Text
+  totalRendaFamiliar   Decimal? @db.Decimal(12, 2)
+  narrativaCaso        String?  @db.Text
+
+  primeiroAtendimento PrimeiroAtendimento  @relation(fields: [primeiroAtendimentoId], references: [id], onDelete: Cascade)
+  membrosFamiliares   MembroFamiliarLoas[]
+
+  @@map("loas_deficiente")
+}
+
+// Auxílio Doença/Invalidez
+model AuxilioDoencaInvalidez {
+  id                    String @id @default(uuid())
+  primeiroAtendimentoId String @unique
+
+  requisitos    String? @db.Text
+  narrativaCaso String? @db.Text
+
+  primeiroAtendimento PrimeiroAtendimento @relation(fields: [primeiroAtendimentoId], references: [id], onDelete: Cascade)
+
+  @@map("auxilio_doenca_invalidez")
+}
+
+// Aposentadoria Urbana
+model AposentadoriaUrbana {
+  id                    String @id @default(uuid())
+  primeiroAtendimentoId String @unique
+
+  requisitos    String? @db.Text
+  narrativaCaso String? @db.Text
+
+  primeiroAtendimento PrimeiroAtendimento @relation(fields: [primeiroAtendimentoId], references: [id], onDelete: Cascade)
+
+  @@map("aposentadoria_urbana")
+}
+
+// Salário Maternidade Urbano
+model SalarioMaternidadeUrbano {
+  id                    String @id @default(uuid())
+  primeiroAtendimentoId String @unique
+
+  requisitos    String? @db.Text
+  narrativaCaso String? @db.Text
+
+  primeiroAtendimento PrimeiroAtendimento @relation(fields: [primeiroAtendimentoId], references: [id], onDelete: Cascade)
+
+  @@map("salario_maternidade_urbano")
+}
+
+// Membros Familiares (para LOAS)
+model MembroFamiliarLoas {
+  id               String  @id @default(uuid())
+  loasIdosoId      String?
+  loasDeficienteId String?
+
+  nomeCompleto String
+  cpf          String
+  rendaMensal  Decimal @db.Decimal(12, 2)
+
+  loasIdoso      LoasIdoso?      @relation(fields: [loasIdosoId], references: [id], onDelete: Cascade)
+  loasDeficiente LoasDeficiente? @relation(fields: [loasDeficienteId], references: [id], onDelete: Cascade)
+
+  @@map("membro_familiar_loas")
+}
+
+// Documentos do Primeiro Atendimento
+model DocumentoPrimeiroAtendimento {
+  id                    String  @id @default(uuid())
+  primeiroAtendimentoId String?
+  representanteLegalId  String?
+  analiseRendaId        String?
+
+  nomeOriginal      String
+  nomeArmazenamento String
+  tipo              String
+  tamanho           Int
+  caminho           String
+  categoria         CategoriaDocumento
+  dataCriacao       DateTime           @default(now())
+
+  primeiroAtendimento PrimeiroAtendimento? @relation(fields: [primeiroAtendimentoId], references: [id], onDelete: Cascade)
+  representanteLegal  RepresentanteLegal?  @relation(fields: [representanteLegalId], references: [id], onDelete: Cascade)
+  analiseRenda        AnaliseRenda?        @relation(fields: [analiseRendaId], references: [id], onDelete: Cascade)
+
+  @@map("documento_primeiro_atendimento")
+}
+
+// Histórico de Progresso
+model HistoricoProgressoPrimeiroAtendimento {
+  id                    String @id @default(uuid())
+  primeiroAtendimentoId String
+
+  etapa          EtapaPrimeiroAtendimento
+  acao           AcaoProgresso
+  dadosAlterados Json?
+  timestamp      DateTime                 @default(now())
+
+  primeiroAtendimento PrimeiroAtendimento @relation(fields: [primeiroAtendimentoId], references: [id], onDelete: Cascade)
+
+  @@map("historico_progresso_primeiro_atendimento")
 }

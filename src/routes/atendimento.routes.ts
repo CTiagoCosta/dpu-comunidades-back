@@ -6,6 +6,7 @@ import { makeSaveRetornoDemandaJudicialController } from "../factories/controlle
 import { makeSaveOrientacaoJuridicaController } from "../factories/controllers/atendimento/saveOrientacaoJuridicaControllerFactory";
 import { makeSaveEncaminhamentoOutrosOrgaosController } from "../factories/controllers/atendimento/saveEncaminhamentoOutrosOrgaosControllerFactory";
 import { finalizarAtendimentoControllerFactory } from "../factories/controllers/atendimento/finalizarAtendimentoControllerFactory";
+import { getMyAtendimentosController } from "../modules/atendimento/useCases/getMyAtendimentos";
 
 export class AtendimentoRoutes implements Route {
   private router: Router;
@@ -15,33 +16,14 @@ export class AtendimentoRoutes implements Route {
   }
 
   getRouter(): Router {
-    // Retorno de demanda judicial
-    this.router.post(
-      "/:atendimentoId/retorno-demanda-judicial",
-      authenticate,
-      adaptRoute(makeSaveRetornoDemandaJudicialController())
-    );
+    this.router.get("/my-atendimentos", authenticate, async (req, res) => {
+      await getMyAtendimentosController.handle(req, res);
+    });
 
-    // Orientação jurídica
-    this.router.post(
-      "/:atendimentoId/orientacao-juridica",
-      authenticate,
-      adaptRoute(makeSaveOrientacaoJuridicaController())
-    );
-
-    // Encaminhamento a outros órgãos
-    this.router.post(
-      "/:atendimentoId/encaminhamento-outros-orgaos",
-      authenticate,
-      adaptRoute(makeSaveEncaminhamentoOutrosOrgaosController())
-    );
-
-    // Finalizar atendimento
-    this.router.post(
-      "/:atendimentoId/finalizar",
-      authenticate,
-      adaptRoute(finalizarAtendimentoControllerFactory())
-    );
+    this.router.post("/:atendimentoId/retorno-demanda-judicial", authenticate, adaptRoute(makeSaveRetornoDemandaJudicialController()));
+    this.router.post("/:atendimentoId/orientacao-juridica", authenticate, adaptRoute(makeSaveOrientacaoJuridicaController()));
+    this.router.post("/:atendimentoId/encaminhamento-outros-orgaos", authenticate, adaptRoute(makeSaveEncaminhamentoOutrosOrgaosController()));
+    this.router.post("/:atendimentoId/finalizar", authenticate, adaptRoute(finalizarAtendimentoControllerFactory()));
 
     return this.router;
   }

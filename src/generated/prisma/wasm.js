@@ -125,9 +125,21 @@ exports.Prisma.UserScalarFieldEnum = {
   email: 'email',
   nome: 'nome',
   senha: 'senha',
+  cargo: 'cargo',
+  telefone: 'telefone',
+  fotoPerfil: 'fotoPerfil',
   role: 'role',
   aprovado: 'aprovado',
-  dataCadastro: 'dataCadastro'
+  dataCadastro: 'dataCadastro',
+  unidadeId: 'unidadeId'
+};
+
+exports.Prisma.UnidadeScalarFieldEnum = {
+  id: 'id',
+  nome: 'nome',
+  sigla: 'sigla',
+  ativo: 'ativo',
+  dataCriacao: 'dataCriacao'
 };
 
 exports.Prisma.FilaAtendimentoScalarFieldEnum = {
@@ -327,12 +339,211 @@ exports.Prisma.LogFilaAtendimentoScalarFieldEnum = {
   details: 'details'
 };
 
+exports.Prisma.PrimeiroAtendimentoScalarFieldEnum = {
+  id: 'id',
+  filaId: 'filaId',
+  operadorId: 'operadorId',
+  status: 'status',
+  etapaAtual: 'etapaAtual',
+  percentualConclusao: 'percentualConclusao',
+  dataInicio: 'dataInicio',
+  dataUltimaAtualizacao: 'dataUltimaAtualizacao',
+  dataConclusao: 'dataConclusao',
+  suspensoPeloOperador: 'suspensoPeloOperador',
+  motivoSuspensao: 'motivoSuspensao',
+  dataSuspensao: 'dataSuspensao',
+  capacidadeCivil: 'capacidadeCivil',
+  etapaCapacidadeCivilConcluida: 'etapaCapacidadeCivilConcluida',
+  etapaCapacidadeCivilTimestamp: 'etapaCapacidadeCivilTimestamp',
+  representanteLegalId: 'representanteLegalId',
+  etapaRepresentanteConcluida: 'etapaRepresentanteConcluida',
+  etapaRepresentanteTimestamp: 'etapaRepresentanteTimestamp',
+  estadoCivilId: 'estadoCivilId',
+  profissaoId: 'profissaoId',
+  outraProfissao: 'outraProfissao',
+  tipoDomicilioId: 'tipoDomicilioId',
+  cep: 'cep',
+  endereco: 'endereco',
+  numero: 'numero',
+  complemento: 'complemento',
+  bairro: 'bairro',
+  cidade: 'cidade',
+  uf: 'uf',
+  descricaoDomicilio: 'descricaoDomicilio',
+  tipoVulnerabilidadeId: 'tipoVulnerabilidadeId',
+  outroTipoVulnerabilidade: 'outroTipoVulnerabilidade',
+  etapaComplementoDadosConcluida: 'etapaComplementoDadosConcluida',
+  etapaComplementoDadosTimestamp: 'etapaComplementoDadosTimestamp',
+  analiseRendaId: 'analiseRendaId',
+  etapaAnaliseRendaConcluida: 'etapaAnaliseRendaConcluida',
+  etapaAnaliseRendaTimestamp: 'etapaAnaliseRendaTimestamp',
+  tipoDemandaPrevidenciariaId: 'tipoDemandaPrevidenciariaId',
+  etapaTipoDemandaConcluida: 'etapaTipoDemandaConcluida',
+  etapaTipoDemandaTimestamp: 'etapaTipoDemandaTimestamp',
+  aposentadoriaRuralId: 'aposentadoriaRuralId',
+  seguroDefesoId: 'seguroDefesoId',
+  pensaoMorteRuralId: 'pensaoMorteRuralId',
+  salarioMaternidadeRuralId: 'salarioMaternidadeRuralId',
+  loasIdosoId: 'loasIdosoId',
+  loasDeficienteId: 'loasDeficienteId',
+  auxilioDoencaInvalidezId: 'auxilioDoencaInvalidezId',
+  aposentadoriaUrbanaId: 'aposentadoriaUrbanaId',
+  salarioMaternidadeUrbanoId: 'salarioMaternidadeUrbanoId',
+  etapaFormularioBeneficioConcluida: 'etapaFormularioBeneficioConcluida',
+  etapaFormularioBeneficioTimestamp: 'etapaFormularioBeneficioTimestamp',
+  viabilidadeDemanda: 'viabilidadeDemanda',
+  fundamentacaoViabilidade: 'fundamentacaoViabilidade',
+  observacoesViabilidade: 'observacoesViabilidade',
+  competenciaJudicialId: 'competenciaJudicialId',
+  dataInicioBeneficio: 'dataInicioBeneficio',
+  parcelasVencidas: 'parcelasVencidas',
+  valorCausa: 'valorCausa',
+  processosAndamento: 'processosAndamento',
+  numeroProcesso: 'numeroProcesso',
+  etapaViabilidadeConcluida: 'etapaViabilidadeConcluida',
+  etapaViabilidadeTimestamp: 'etapaViabilidadeTimestamp',
+  documentosApresentados: 'documentosApresentados',
+  documentosFaltantes: 'documentosFaltantes',
+  observacoesDocumentos: 'observacoesDocumentos',
+  etapaDocumentosConcluida: 'etapaDocumentosConcluida',
+  etapaDocumentosTimestamp: 'etapaDocumentosTimestamp'
+};
+
+exports.Prisma.RepresentanteLegalScalarFieldEnum = {
+  id: 'id',
+  primeiroAtendimentoId: 'primeiroAtendimentoId',
+  nome: 'nome',
+  cpf: 'cpf',
+  telefone: 'telefone',
+  grauParentesco: 'grauParentesco'
+};
+
+exports.Prisma.AnaliseRendaScalarFieldEnum = {
+  id: 'id',
+  primeiroAtendimentoId: 'primeiroAtendimentoId',
+  possuiRenda: 'possuiRenda',
+  valorRendaFamiliar: 'valorRendaFamiliar',
+  quantidadePessoas: 'quantidadePessoas',
+  rendaPerCapita: 'rendaPerCapita',
+  observacoes: 'observacoes'
+};
+
+exports.Prisma.AposentadoriaRuralScalarFieldEnum = {
+  id: 'id',
+  primeiroAtendimentoId: 'primeiroAtendimentoId',
+  requisitoIdadeTempo: 'requisitoIdadeTempo',
+  narrativaInicial: 'narrativaInicial'
+};
+
+exports.Prisma.SeguroDefesoScalarFieldEnum = {
+  id: 'id',
+  primeiroAtendimentoId: 'primeiroAtendimentoId',
+  requisitos: 'requisitos',
+  narrativaCaso: 'narrativaCaso'
+};
+
+exports.Prisma.PensaoMorteRuralScalarFieldEnum = {
+  id: 'id',
+  primeiroAtendimentoId: 'primeiroAtendimentoId',
+  requisitos: 'requisitos',
+  narrativaCaso: 'narrativaCaso'
+};
+
+exports.Prisma.SalarioMaternidadeRuralScalarFieldEnum = {
+  id: 'id',
+  primeiroAtendimentoId: 'primeiroAtendimentoId',
+  requisitos: 'requisitos',
+  narrativaCaso: 'narrativaCaso'
+};
+
+exports.Prisma.LoasIdosoScalarFieldEnum = {
+  id: 'id',
+  primeiroAtendimentoId: 'primeiroAtendimentoId',
+  requisitoIdade: 'requisitoIdade',
+  requisitoRenda: 'requisitoRenda',
+  possuiCadUnico: 'possuiCadUnico',
+  motivosNegativas: 'motivosNegativas',
+  exclusoesRenda: 'exclusoesRenda',
+  totalRendaFamiliar: 'totalRendaFamiliar',
+  narrativaCaso: 'narrativaCaso'
+};
+
+exports.Prisma.LoasDeficienteScalarFieldEnum = {
+  id: 'id',
+  primeiroAtendimentoId: 'primeiroAtendimentoId',
+  requisitoDeficiencia: 'requisitoDeficiencia',
+  requisitoRenda: 'requisitoRenda',
+  possuiCadUnico: 'possuiCadUnico',
+  motivosNegativas: 'motivosNegativas',
+  exclusoesRenda: 'exclusoesRenda',
+  totalRendaFamiliar: 'totalRendaFamiliar',
+  narrativaCaso: 'narrativaCaso'
+};
+
+exports.Prisma.AuxilioDoencaInvalidezScalarFieldEnum = {
+  id: 'id',
+  primeiroAtendimentoId: 'primeiroAtendimentoId',
+  requisitos: 'requisitos',
+  narrativaCaso: 'narrativaCaso'
+};
+
+exports.Prisma.AposentadoriaUrbanaScalarFieldEnum = {
+  id: 'id',
+  primeiroAtendimentoId: 'primeiroAtendimentoId',
+  requisitos: 'requisitos',
+  narrativaCaso: 'narrativaCaso'
+};
+
+exports.Prisma.SalarioMaternidadeUrbanoScalarFieldEnum = {
+  id: 'id',
+  primeiroAtendimentoId: 'primeiroAtendimentoId',
+  requisitos: 'requisitos',
+  narrativaCaso: 'narrativaCaso'
+};
+
+exports.Prisma.MembroFamiliarLoasScalarFieldEnum = {
+  id: 'id',
+  loasIdosoId: 'loasIdosoId',
+  loasDeficienteId: 'loasDeficienteId',
+  nomeCompleto: 'nomeCompleto',
+  cpf: 'cpf',
+  rendaMensal: 'rendaMensal'
+};
+
+exports.Prisma.DocumentoPrimeiroAtendimentoScalarFieldEnum = {
+  id: 'id',
+  primeiroAtendimentoId: 'primeiroAtendimentoId',
+  representanteLegalId: 'representanteLegalId',
+  analiseRendaId: 'analiseRendaId',
+  nomeOriginal: 'nomeOriginal',
+  nomeArmazenamento: 'nomeArmazenamento',
+  tipo: 'tipo',
+  tamanho: 'tamanho',
+  caminho: 'caminho',
+  categoria: 'categoria',
+  dataCriacao: 'dataCriacao'
+};
+
+exports.Prisma.HistoricoProgressoPrimeiroAtendimentoScalarFieldEnum = {
+  id: 'id',
+  primeiroAtendimentoId: 'primeiroAtendimentoId',
+  etapa: 'etapa',
+  acao: 'acao',
+  dadosAlterados: 'dadosAlterados',
+  timestamp: 'timestamp'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
 };
 
 exports.Prisma.JsonNullValueInput = {
+  JsonNull: Prisma.JsonNull
+};
+
+exports.Prisma.NullableJsonNullValueInput = {
+  DbNull: Prisma.DbNull,
   JsonNull: Prisma.JsonNull
 };
 
@@ -412,8 +623,54 @@ exports.TipoDocumento = exports.$Enums.TipoDocumento = {
   OUTROS: 'OUTROS'
 };
 
+exports.StatusPrimeiroAtendimento = exports.$Enums.StatusPrimeiroAtendimento = {
+  EM_ANDAMENTO: 'EM_ANDAMENTO',
+  CONCLUIDO: 'CONCLUIDO',
+  ARQUIVADO: 'ARQUIVADO',
+  CANCELADO: 'CANCELADO'
+};
+
+exports.EtapaPrimeiroAtendimento = exports.$Enums.EtapaPrimeiroAtendimento = {
+  CAPACIDADE_CIVIL: 'CAPACIDADE_CIVIL',
+  REPRESENTANTE_LEGAL: 'REPRESENTANTE_LEGAL',
+  COMPLEMENTO_DADOS: 'COMPLEMENTO_DADOS',
+  ANALISE_RENDA: 'ANALISE_RENDA',
+  TIPO_DEMANDA_PREVIDENCIARIA: 'TIPO_DEMANDA_PREVIDENCIARIA',
+  FORMULARIO_BENEFICIO: 'FORMULARIO_BENEFICIO',
+  VIABILIDADE_DEMANDA: 'VIABILIDADE_DEMANDA',
+  DOCUMENTOS_OBRIGATORIOS: 'DOCUMENTOS_OBRIGATORIOS',
+  FINALIZADO: 'FINALIZADO'
+};
+
+exports.CategoriaDocumento = exports.$Enums.CategoriaDocumento = {
+  DOCUMENTO_PESSOAL_REPRESENTANTE: 'DOCUMENTO_PESSOAL_REPRESENTANTE',
+  TERMO_CURATELA: 'TERMO_CURATELA',
+  DOCUMENTO_RENDA: 'DOCUMENTO_RENDA',
+  DOCUMENTO_PESSOAL: 'DOCUMENTO_PESSOAL',
+  COMPROVANTE_RESIDENCIA: 'COMPROVANTE_RESIDENCIA',
+  CAD_UNICO: 'CAD_UNICO',
+  CNIS: 'CNIS',
+  OUTORGA_PODERES: 'OUTORGA_PODERES',
+  NEGATIVA_REQUERIMENTO: 'NEGATIVA_REQUERIMENTO',
+  INDIGENA: 'INDIGENA',
+  ASSENTADO_RURAL: 'ASSENTADO_RURAL',
+  PESCADOR: 'PESCADOR',
+  OUTROS: 'OUTROS'
+};
+
+exports.AcaoProgresso = exports.$Enums.AcaoProgresso = {
+  ETAPA_INICIADA: 'ETAPA_INICIADA',
+  ETAPA_SALVA: 'ETAPA_SALVA',
+  ETAPA_CONCLUIDA: 'ETAPA_CONCLUIDA',
+  ETAPA_RETROCEDIDA: 'ETAPA_RETROCEDIDA',
+  ATENDIMENTO_CANCELADO: 'ATENDIMENTO_CANCELADO',
+  ATENDIMENTO_CONCLUIDO: 'ATENDIMENTO_CONCLUIDO',
+  ATENDIMENTO_RETOMADO: 'ATENDIMENTO_RETOMADO'
+};
+
 exports.Prisma.ModelName = {
   User: 'User',
+  Unidade: 'Unidade',
   FilaAtendimento: 'FilaAtendimento',
   Atendimento: 'Atendimento',
   Processo: 'Processo',
@@ -436,7 +693,22 @@ exports.Prisma.ModelName = {
   CompetenciaJudicial: 'CompetenciaJudicial',
   TipoOrgaoEncaminhamento: 'TipoOrgaoEncaminhamento',
   OrgaoEncaminhamento: 'OrgaoEncaminhamento',
-  LogFilaAtendimento: 'LogFilaAtendimento'
+  LogFilaAtendimento: 'LogFilaAtendimento',
+  PrimeiroAtendimento: 'PrimeiroAtendimento',
+  RepresentanteLegal: 'RepresentanteLegal',
+  AnaliseRenda: 'AnaliseRenda',
+  AposentadoriaRural: 'AposentadoriaRural',
+  SeguroDefeso: 'SeguroDefeso',
+  PensaoMorteRural: 'PensaoMorteRural',
+  SalarioMaternidadeRural: 'SalarioMaternidadeRural',
+  LoasIdoso: 'LoasIdoso',
+  LoasDeficiente: 'LoasDeficiente',
+  AuxilioDoencaInvalidez: 'AuxilioDoencaInvalidez',
+  AposentadoriaUrbana: 'AposentadoriaUrbana',
+  SalarioMaternidadeUrbano: 'SalarioMaternidadeUrbano',
+  MembroFamiliarLoas: 'MembroFamiliarLoas',
+  DocumentoPrimeiroAtendimento: 'DocumentoPrimeiroAtendimento',
+  HistoricoProgressoPrimeiroAtendimento: 'HistoricoProgressoPrimeiroAtendimento'
 };
 
 /**
