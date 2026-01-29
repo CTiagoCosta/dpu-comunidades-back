@@ -21,6 +21,9 @@ export class SalvarComplementoDadosController {
         email,
         endereco,
         tipoDomicilioId,
+        descricaoDomicilio,
+        tipoVulnerabilidadeId,
+        outroTipoVulnerabilidade,
         concluirEtapa
       } = request.body;
       const operadorId = (request as any).user?.id;
@@ -32,6 +35,27 @@ export class SalvarComplementoDadosController {
             message: "Usuário não autenticado",
           },
         });
+      }
+
+      // Validar campos obrigatórios quando for concluir a etapa
+      if (concluirEtapa !== false) {
+        const camposFaltantes: string[] = [];
+
+        if (!estadoCivilId) camposFaltantes.push("Estado Civil");
+        if (!profissaoId) camposFaltantes.push("Profissão");
+        if (!tipoDomicilioId) camposFaltantes.push("Tipo de Domicílio");
+        if (!tipoVulnerabilidadeId) camposFaltantes.push("Tipo de Vulnerabilidade Social");
+
+        if (camposFaltantes.length > 0) {
+          return response.status(400).json({
+            success: false,
+            error: {
+              code: "VALIDATION_ERROR",
+              message: `Campos obrigatórios faltando: ${camposFaltantes.join(", ")}`,
+              campos: camposFaltantes,
+            },
+          });
+        }
       }
 
       const result = await this.salvarComplementoDadosUseCase.execute({
@@ -47,6 +71,9 @@ export class SalvarComplementoDadosController {
         email,
         endereco,
         tipoDomicilioId,
+        descricaoDomicilio,
+        tipoVulnerabilidadeId: tipoVulnerabilidadeId ? Number(tipoVulnerabilidadeId) : undefined,
+        outroTipoVulnerabilidade,
         concluirEtapa: concluirEtapa ?? true,
         operadorId,
       });

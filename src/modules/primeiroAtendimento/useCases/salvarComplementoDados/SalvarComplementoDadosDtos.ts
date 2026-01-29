@@ -22,6 +22,9 @@ export interface SalvarComplementoDadosRequest {
   email?: string;
   endereco?: EnderecoData;
   tipoDomicilioId?: string;
+  descricaoDomicilio?: string;
+  tipoVulnerabilidadeId?: number;
+  outroTipoVulnerabilidade?: string;
   concluirEtapa: boolean;
   operadorId: string;
 }

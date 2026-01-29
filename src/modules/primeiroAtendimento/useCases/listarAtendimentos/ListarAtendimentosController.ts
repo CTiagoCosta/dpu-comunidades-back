@@ -7,7 +7,7 @@ export class ListarAtendimentosController {
 
   async handle(request: Request, response: Response): Promise<Response> {
     try {
-      const { status, operadorId, dataInicio, dataFim, pagina, limite } =
+      const { status, operadorId, cpf, dataInicio, dataFim, pagina, limite } =
         request.query;
 
       // Construir request do UseCase
@@ -32,6 +32,11 @@ export class ListarAtendimentosController {
       // Adicionar operadorId se fornecido
       if (operadorId) {
         useCaseRequest.operadorId = String(operadorId);
+      }
+
+      // Adicionar cpf se fornecido
+      if (cpf) {
+        useCaseRequest.cpf = String(cpf);
       }
 
       // Adicionar dataInicio se fornecida

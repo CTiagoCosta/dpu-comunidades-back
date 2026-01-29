@@ -153,15 +153,19 @@ export class SalvarFormularioBeneficioUseCase {
     primeiroAtendimentoId: string,
     tipoBeneficio: string,
     dados: Record<string, any>
-  ): Promise<string> {    // Filtrar apenas os campos válidos para cada tipo de benefício
+  ): Promise<string> {
+    // Filtrar apenas os campos válidos para cada tipo de benefício
     const camposPorTipo: Record<string, string[]> = {
+      APOSENTADORIA_IDADE_RURAL: ["requisitos", "narrativaCaso"],
+      APOSENTADORIA_URBANA: ["requisitos", "narrativaCaso"],
+      APOSENTADORIA_INVALIDEZ: ["requisitos", "narrativaCaso"],
       SEGURO_DEFESO: ["requisitos", "narrativaCaso"],
       PENSAO_MORTE_RURAL: ["requisitos", "narrativaCaso"],
       SALARIO_MATERNIDADE_RURAL: ["requisitos", "narrativaCaso"],
+      SALARIO_MATERNIDADE_URBANO: ["requisitos", "narrativaCaso"],
       LOAS_IDOSO: ["requisitos", "narrativaCaso"],
       LOAS_DEFICIENTE: ["requisitos", "narrativaCaso"],
       BENEFICIO_ASSISTENCIAL_PESSOA_DEFICIENCIA: ["requisitos", "narrativaCaso"],
-      APOSENTADORIA_INVALIDEZ: ["requisitos", "narrativaCaso"],
       AUXILIO_DOENCA: ["requisitos", "narrativaCaso"],
       AUXILIO_RECLUSAO: ["requisitos", "narrativaCaso"],
       OUTROS_BENEFICIOS: ["requisitos", "narrativaCaso"],

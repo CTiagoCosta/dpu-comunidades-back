@@ -9,8 +9,7 @@ import { makeUserDataRoutes } from "./factories/routes/userDataRouterFactory";
 import { makeServiceQueueRoutes } from "./factories/routes/serviceQueueRouterFactory";
 import { makePrimeiroAtendimentoRoutes } from "./factories/routes/primeiroAtendimentoRouterFactory";
 import { makeDashboardRoutes } from "./factories/routes/dashboardRouterFactory";
-
-
+import { makeProcessoRoutes } from "./factories/routes/processoRouterFactory";
 
 dotenvConfig();
 
@@ -34,7 +33,6 @@ export class App {
     this.app.use(express.json() as RequestHandler);
     this.app.use(configureCors());
 
-    // Servir arquivos estáticos de fotos de perfil
     this.app.use('/uploads/profile-photos',
       express.static(path.join(__dirname, '../uploads/profile-photos'))
     );
@@ -47,12 +45,12 @@ export class App {
     this.app.use("/atendimento", new (require("./routes/atendimento.routes").AtendimentoRoutes)().getRouter());
     this.app.use("/primeiro-atendimento", makePrimeiroAtendimentoRoutes().getRouter());
     this.app.use("/dashboard", makeDashboardRoutes().getRouter());
+    this.app.use("/processo", makeProcessoRoutes().getRouter());
   }
 
   public static async connectToDatabase() {
     if (!App.prisma) {
       App.prisma = new PrismaClient();
-      // Optionally test the connection
       await App.prisma.$connect();
      }
   }

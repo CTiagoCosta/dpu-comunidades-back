@@ -32,6 +32,9 @@ export class SalvarComplementoDadosUseCase {
       email,
       endereco,
       tipoDomicilioId,
+      descricaoDomicilio,
+      tipoVulnerabilidadeId,
+      outroTipoVulnerabilidade,
       concluirEtapa,
       operadorId,
     } = request;
@@ -57,18 +60,21 @@ export class SalvarComplementoDadosUseCase {
       throw new Error("Etapa de complemento de dados já foi concluída");
     }
 
-    // Preparar dados para atualização
+    // Preparar dados para atualização (convertendo strings para inteiros onde necessário)
     const dadosAtualizacao: any = {
       nome,
       cpf,
       rg,
       dataNascimento: dataNascimento ? new Date(dataNascimento) : undefined,
       sexo,
-      estadoCivilId,
-      profissaoId,
+      estadoCivilId: estadoCivilId ? parseInt(String(estadoCivilId)) : undefined,
+      profissaoId, // profissaoId é String no schema
       telefone,
       email,
-      tipoDomicilioId,
+      tipoDomicilioId: tipoDomicilioId ? parseInt(String(tipoDomicilioId)) : undefined,
+      descricaoDomicilio,
+      tipoVulnerabilidadeId: tipoVulnerabilidadeId ? parseInt(String(tipoVulnerabilidadeId)) : undefined,
+      outroTipoVulnerabilidade,
     };
 
     // Se endereço foi fornecido, desestruturar campos individuais

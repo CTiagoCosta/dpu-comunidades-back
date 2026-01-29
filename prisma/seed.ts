@@ -149,6 +149,15 @@ async function main() {
     ],
     skipDuplicates: true,
   });
+  await prisma.competenciaJudicial.createMany({
+    data: [
+      { descricao: "Justiça Federal" },
+      { descricao: "Justiça Estadual" },
+      { descricao: "Justiça do Trabalho" },
+      { descricao: "Não se aplica" },
+    ],
+    skipDuplicates: true,
+  });
   await prisma.tipoOrgaoEncaminhamento.createMany({
     data: [
       {

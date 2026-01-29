@@ -1,6 +1,7 @@
 export interface ListarAtendimentosRequest {
   status?: 'EM_ATENDIMENTO' | 'CONCLUIDO' | 'SUSPENSO' | 'TODOS';
   operadorId?: string;  // Filtrar por operador
+  cpf?: string;         // Filtrar por CPF do assistido
   dataInicio?: string;  // Data inicial
   dataFim?: string;     // Data final
   pagina?: number;

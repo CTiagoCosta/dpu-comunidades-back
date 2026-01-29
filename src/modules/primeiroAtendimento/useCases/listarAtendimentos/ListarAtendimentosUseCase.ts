@@ -12,6 +12,7 @@ export class ListarAtendimentosUseCase {
     const {
       status = "TODOS",
       operadorId,
+      cpf,
       dataInicio,
       dataFim,
       pagina = 1,
@@ -33,6 +34,14 @@ export class ListarAtendimentosUseCase {
       where.primeiroAtendimento = {
         ...where.primeiroAtendimento,
         operadorId,
+      };
+    }
+
+    // Filtro por CPF (remove formatação para comparar)
+    if (cpf) {
+      const cpfLimpo = cpf.replace(/\D/g, "");
+      where.cpf = {
+        contains: cpfLimpo,
       };
     }
 
